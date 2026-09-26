@@ -20,3 +20,8 @@ export default defineConfig(() => {
     },
   };
 });
+export default defineConfig({
+  base: '/', // Jodi custom domain root (e.g. yourdomain.com) hoy tahobe '/' thakbe. 
+             // Ar jodi sub-path (e.g. username.github.io/repo-name) hoy tahobe '/repo-name/' hobe.
+  plugins: [react()],
+})

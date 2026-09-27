@@ -33,7 +33,7 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
       {showTooltip && (
         <div className="pointer-events-auto bg-[#181310] text-white p-3 rounded-lg shadow-lg border border-stone-800 text-xs max-w-xs animate-fade-in relative mb-1">
           <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10">
-            <span className="font-semibold text-[#E8A366] text-[11px] uppercase tracking-wider">
+            <span className="font-bold text-[#E5BE58] text-[11px] uppercase tracking-wider">
               Direct Sourcing Desk
             </span>
             <button
@@ -59,10 +59,10 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
             trackEvent("request_quote_click", { location: "floating_action" });
             onRequestQuote();
           }}
-          className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2.5 bg-[#181310] hover:bg-[#2C211B] text-white text-xs font-semibold rounded-full shadow-lg border border-stone-700 hover:shadow-xl transition-all cursor-pointer"
+          className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2.5 bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] text-[#15120E] text-xs font-bold rounded-full shadow-gold-subtle hover:shadow-gold-glow transition-all cursor-pointer"
         >
           <span>Request Quote</span>
-          <ArrowUpRight className="w-3.5 h-3.5 text-[#C87D3B]" />
+          <ArrowUpRight className="w-3.5 h-3.5 text-[#15120E]" />
         </button>
 
         {/* Floating WhatsApp Button */}

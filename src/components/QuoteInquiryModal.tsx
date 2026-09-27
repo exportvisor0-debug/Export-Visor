@@ -119,11 +119,11 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-[#FAF8F5]">
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#C87D3B]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               Direct Inquiries Desk
             </span>
-            <h3 className="font-display text-xl font-semibold text-[#181310]">
-              Request a Leather Quotation
+            <h3 className="font-display text-xl font-bold text-[#15120E]">
+              Request a Leather <span className="text-gold-gradient">Quotation</span>
             </h3>
           </div>
           <button
@@ -233,7 +233,7 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:ring-1 focus:ring-[#C87D3B]"
+                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                     placeholder="e.g. John Doe"
                   />
                 </div>
@@ -247,7 +247,7 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                     name="companyName"
                     value={formData.companyName}
                     onChange={handleChange}
-                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:ring-1 focus:ring-[#C87D3B]"
+                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                     placeholder="e.g. Acme Footwear"
                   />
                 </div>
@@ -261,7 +261,7 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                     name="country"
                     value={formData.country}
                     onChange={handleChange}
-                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:ring-1 focus:ring-[#C87D3B]"
+                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                     placeholder="e.g. Germany"
                   />
                 </div>
@@ -275,7 +275,7 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:ring-1 focus:ring-[#C87D3B]"
+                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                     placeholder="buyer@acme.com"
                   />
                 </div>
@@ -288,7 +288,7 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:ring-1 focus:ring-[#C87D3B]"
+                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                     placeholder="+49 123 456789"
                   />
                 </div>
@@ -300,7 +300,7 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                     name="product"
                     value={formData.product}
                     onChange={handleChange}
-                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:ring-1 focus:ring-[#C87D3B]"
+                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                   >
                     <option value="Crust Leather">Crust Leather</option>
                     <option value="Finished Leather">Finished Leather</option>
@@ -321,7 +321,7 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                     name="quantity"
                     value={formData.quantity}
                     onChange={handleChange}
-                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:ring-1 focus:ring-[#C87D3B]"
+                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                   />
                 </div>
                 <div>
@@ -333,7 +333,7 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                     name="thickness"
                     value={formData.thickness}
                     onChange={handleChange}
-                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:ring-1 focus:ring-[#C87D3B]"
+                    className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                   />
                 </div>
               </div>
@@ -348,16 +348,16 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Specify destination port, temper preference, or color requirements..."
-                  className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:ring-1 focus:ring-[#C87D3B]"
+                  className="w-full px-3 py-1.5 text-xs bg-white border border-stone-300 rounded focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                 />
               </div>
 
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 text-xs font-semibold uppercase tracking-wider text-white bg-[#181310] hover:bg-[#2C211B] rounded shadow-xs cursor-pointer flex items-center justify-center gap-1.5"
+                  className="w-full py-3 px-5 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-lg shadow-gold-subtle cursor-pointer flex items-center justify-center gap-1.5 transition-all"
                 >
-                  <Send className="w-3.5 h-3.5 text-[#C87D3B]" />
+                  <Send className="w-3.5 h-3.5 text-[#15120E]" />
                   <span>Send Inquiry</span>
                 </button>
               </div>

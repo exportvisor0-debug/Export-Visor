@@ -143,11 +143,11 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 gap-6">
           <div className="max-w-3xl">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#C87D3B]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
               B2B Value-Add & Technical Advisory
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#181310] leading-tight mt-1">
-              Leather Knowledge Hub
+            </div>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+              Leather <span className="text-gold-gradient">Knowledge Hub & Specifications</span>
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
               Professional guidelines for handling, climate-controlled warehousing, and maintaining different leather forms—from hydrated wet blue hides to delicate finished aniline surfaces.
@@ -157,17 +157,17 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
           <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
             <a
               href="#grading-guide"
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-stone-700 bg-[#FAF8F5] hover:bg-stone-100 border border-stone-300 rounded-md transition-colors cursor-pointer shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold text-stone-800 bg-[#FAF8F5] hover:bg-stone-100 border border-stone-300 rounded-lg transition-colors cursor-pointer shadow-2xs"
             >
-              <BookOpen className="w-3.5 h-3.5 text-[#C87D3B]" />
+              <BookOpen className="w-3.5 h-3.5 text-[#C89D43]" />
               <span>Grading Standards Guide</span>
             </a>
             <button
               onClick={() => onRequestQuote("Technical Sourcing Advisory")}
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#181310] hover:bg-[#2C211B] rounded-md transition-colors shadow-xs cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#15120E] hover:bg-[#261E17] border border-[#C89D43]/40 rounded-lg transition-colors shadow-xs cursor-pointer whitespace-nowrap"
             >
               <span>Request Tech Consultation</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#C87D3B]" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#E5BE58]" />
             </button>
           </div>
         </div>
@@ -233,19 +233,19 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
             return (
               <div
                 key={item.id}
-                className="bg-[#FAF8F5] border border-stone-200 rounded-lg p-6 flex flex-col justify-between hover:border-stone-300 transition-all shadow-xs"
+                className="bg-[#FAF8F5] border border-stone-200/90 rounded-xl p-6 flex flex-col justify-between hover:border-[#C89D43]/50 transition-all shadow-2xs hover:shadow-md group"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#C87D3B]">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#7A5A17] bg-[#C89D43]/10 px-2 py-0.5 rounded-full border border-[#C89D43]/20">
                       {item.categoryLabel}
                     </span>
-                    <div className="w-8 h-8 rounded bg-white border border-stone-200 text-[#C87D3B] flex items-center justify-center">
+                    <div className="w-9 h-9 rounded-lg bg-white border border-[#C89D43]/30 text-[#C89D43] flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="font-display text-xl font-semibold text-[#181310] leading-snug">
+                  <h3 className="font-display text-xl font-bold text-[#15120E] leading-snug group-hover:text-[#C89D43] transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs text-stone-500 mt-1 mb-4">
@@ -263,8 +263,8 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
                 </div>
 
                 <div className="mt-5 pt-4 border-t border-stone-200/80">
-                  <div className="p-2.5 bg-white border border-stone-200/60 rounded text-[11px] text-stone-600 leading-relaxed">
-                    <span className="font-semibold text-stone-800">Technical Context:</span>{" "}
+                  <div className="p-3 bg-white border border-stone-200/80 rounded-lg text-[11px] text-stone-600 leading-relaxed shadow-2xs">
+                    <span className="font-bold text-[#15120E]">Technical Context:</span>{" "}
                     {item.technicalNote}
                   </div>
                 </div>
@@ -281,9 +281,12 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
         </div>
 
         {/* Bottom Direct Assistance Strip */}
-        <div className="mt-12 p-6 sm:p-8 bg-stone-900 text-white rounded-lg flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 max-w-xl">
-            <h4 className="font-display text-xl sm:text-2xl font-semibold text-white">
+        <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-stone-900 via-[#1F1914] to-stone-900 border border-[#C89D43]/35 text-white rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="space-y-1.5 max-w-xl">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-[#E5BE58] font-bold">
+              Global Compliance Advisory
+            </span>
+            <h4 className="font-display text-xl sm:text-2xl font-bold text-white">
               Have Specific Testing or Chemical Compliance Standards?
             </h4>
             <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
@@ -292,7 +295,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
           </div>
           <button
             onClick={() => onRequestQuote("REACH / Chemical Standards Inquiry")}
-            className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-[#181310] bg-[#C87D3B] hover:bg-[#E8A366] rounded-md transition-colors whitespace-nowrap cursor-pointer shadow-xs"
+            className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-lg transition-all whitespace-nowrap cursor-pointer shadow-gold-subtle hover:shadow-lg"
           >
             Submit Technical RFQ
           </button>

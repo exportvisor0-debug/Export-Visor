@@ -50,11 +50,11 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 gap-6">
           <div className="max-w-2xl">
-            <div className="text-xs font-semibold uppercase tracking-wider text-[#C87D3B] mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
               Sourcing Catalogue
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#181310] leading-tight">
-              Export-Grade Bangladesh Leather
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight">
+              Export-Grade Bangladesh <span className="text-gold-gradient">Leather Catalogue</span>
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
               Explore our core leather sourcing classifications. Every shipment is tailored to buyer technical specifications, substance tolerances, and intended applications.
@@ -62,12 +62,12 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
           </div>
 
           {/* Sourcing Availability Disclaimer Badge */}
-          <div className="p-4 bg-stone-100/90 border border-stone-200 rounded-lg max-w-sm text-xs text-stone-600">
-            <div className="flex items-center gap-1.5 font-semibold text-stone-800 mb-1">
-              <Info className="w-3.5 h-3.5 text-[#C87D3B]" />
+          <div className="p-4 bg-white border border-[#C89D43]/30 rounded-xl max-w-sm text-xs text-stone-600 shadow-2xs">
+            <div className="flex items-center gap-1.5 font-bold text-[#15120E] mb-1">
+              <Info className="w-3.5 h-3.5 text-[#C89D43]" />
               <span>Sourcing Note</span>
             </div>
-            <p className="text-[11px] leading-relaxed">
+            <p className="text-[11px] leading-relaxed text-stone-500">
               All leather varieties are sourced and processed according to specific buyer orders and tannery availability. Final commercial parameters are confirmed upon technical review.
             </p>
           </div>
@@ -77,7 +77,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           
           {/* Segmented Filter Buttons */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-stone-200/70 rounded-lg">
+          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-stone-200/80 rounded-xl">
             {categories.map((cat) => {
               const isSelected = selectedCategory === cat;
               const isSustainableCat = cat === "Sustainable Sourcing";
@@ -85,13 +85,13 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                 <button
                   key={cat}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all cursor-pointer whitespace-nowrap ${
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer whitespace-nowrap ${
                     isSelected
                       ? isSustainableCat
                         ? "bg-emerald-900 text-emerald-100 shadow-xs"
-                        : "bg-[#181310] text-white shadow-xs"
+                        : "bg-[#15120E] text-white border border-[#C89D43]/50 shadow-xs"
                       : isSustainableCat
-                      ? "text-emerald-800 hover:text-emerald-950 hover:bg-emerald-100/60 font-semibold"
+                      ? "text-emerald-800 hover:text-emerald-950 hover:bg-emerald-100/60 font-bold"
                       : "text-stone-700 hover:text-stone-900 hover:bg-stone-200"
                   }`}
                 >
@@ -110,7 +110,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
               placeholder="Search by leather type, shoe, sofa..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B] text-stone-800 placeholder-stone-400"
+              className="w-full pl-9 pr-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40 focus:border-[#C89D43] text-stone-800 placeholder-stone-400 shadow-2xs"
             />
           </div>
 
@@ -127,7 +127,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                 setSelectedCategory("All");
                 setSearchQuery("");
               }}
-              className="mt-3 text-xs font-semibold text-[#C87D3B] underline cursor-pointer"
+              className="mt-3 text-xs font-semibold text-[#C89D43] hover:text-[#D6AC4B] underline cursor-pointer"
             >
               Reset filters
             </button>
@@ -171,7 +171,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                         {product.category}
                       </span>
                       {product.badgeLabel && (
-                        <span className="text-[10px] font-semibold uppercase tracking-wider text-[#E8A366]">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#E5BE58] px-2 py-0.5 rounded bg-black/60 backdrop-blur-xs border border-[#C89D43]/40">
                           {product.badgeLabel}
                         </span>
                       )}
@@ -182,7 +182,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                   <div className="p-5 sm:p-6 space-y-4">
                     <div>
                       <h3
-                        className="font-display text-2xl font-semibold text-[#181310] group-hover:text-[#C87D3B] transition-colors cursor-pointer"
+                        className="font-display text-2xl font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors cursor-pointer"
                         onClick={() => {
                           trackEvent("product_detail_view", { product_id: product.id });
                           onSelectProduct(product);
@@ -197,9 +197,9 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
 
                     {/* Eco-Compliant Sourcing Tag */}
                     {product.isSustainable && (
-                      <div className="flex items-center gap-1.5 p-2 bg-emerald-50 border border-emerald-200/80 rounded text-[11px] text-emerald-900">
+                      <div className="flex items-center gap-1.5 p-2 bg-emerald-50 border border-emerald-200/80 rounded-lg text-[11px] text-emerald-900">
                         <Leaf className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span className="font-semibold text-emerald-950">Eco-Compliant:</span>
+                        <span className="font-bold text-emerald-950">Eco-Compliant:</span>
                         <span className="truncate text-emerald-800">{product.sustainabilityNote}</span>
                       </div>
                     )}
@@ -207,25 +207,25 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                     {/* Unboxed Metadata Parameters with typographic separators */}
                     <div className="text-[11px] text-stone-500 space-y-1.5 pt-2 border-t border-stone-100">
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-stone-700 font-medium">Origin:</span>
+                        <span className="text-stone-700 font-semibold">Origin:</span>
                         <span>{product.origin}</span>
                         <span aria-hidden="true" className="text-stone-300">·</span>
-                        <span className="text-stone-700 font-medium">Thickness:</span>
-                        <span>{product.thicknessRange.split(",")[0]}</span>
+                        <span className="text-stone-700 font-semibold">Thickness:</span>
+                        <span className="text-[#7A5A17] font-semibold">{product.thicknessRange.split(",")[0]}</span>
                       </div>
                       
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-stone-700 font-medium">MOQ & Volume:</span>
+                        <span className="text-stone-700 font-semibold">MOQ & Volume:</span>
                         <span>Determined per RFQ</span>
                         <span aria-hidden="true" className="text-stone-300">·</span>
-                        <span className="text-stone-700 font-medium">Schedule:</span>
+                        <span className="text-stone-700 font-semibold">Schedule:</span>
                         <span>Per RFQ</span>
                       </div>
                     </div>
 
                     {/* Pricing Benchmark Note */}
-                    <div className="p-2.5 bg-[#FAF8F5] border border-stone-200/70 rounded text-[11px] text-stone-600 leading-snug">
-                      <span className="font-semibold text-stone-800">Commercial Terms:</span>{" "}
+                    <div className="p-2.5 bg-[#FBF8F1] border border-[#C89D43]/25 rounded-lg text-[11px] text-stone-700 leading-snug">
+                      <span className="font-bold text-[#7A5A17]">Commercial Terms:</span>{" "}
                       Quoted upon RFQ based on grade, substance, finish specifications, and batch volume.
                     </div>
 
@@ -234,7 +234,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                       <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 block">
                         Typical Applications
                       </span>
-                      <p className="text-xs text-stone-600 line-clamp-1">
+                      <p className="text-xs text-stone-600 line-clamp-1 font-medium">
                         {product.applications.join(" · ")}
                       </p>
                     </div>
@@ -248,7 +248,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                       trackEvent("product_detail_view", { product_id: product.id });
                       onSelectProduct(product);
                     }}
-                    className="text-xs font-semibold text-stone-700 hover:text-[#181310] underline underline-offset-4 cursor-pointer"
+                    className="text-xs font-bold text-stone-700 hover:text-[#C89D43] underline underline-offset-4 cursor-pointer transition-colors"
                   >
                     View Specifications
                   </button>
@@ -261,10 +261,10 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                       });
                       onRequestQuote(product.name);
                     }}
-                    className="inline-flex items-center px-3.5 py-2 text-xs font-semibold text-white bg-[#181310] hover:bg-[#2C211B] rounded-md transition-colors shadow-2xs cursor-pointer whitespace-nowrap"
+                    className="inline-flex items-center px-4 py-2 text-xs font-bold text-white bg-[#15120E] hover:bg-[#221C16] border border-[#C89D43]/40 rounded-lg transition-all shadow-xs hover:shadow-md cursor-pointer whitespace-nowrap group/btn"
                   >
                     <span>Request Quote</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#C87D3B]" />
+                    <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#E5BE58] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                   </button>
                 </div>
 
@@ -274,18 +274,21 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
         )}
 
         {/* Global Sourcing Footer CTA inside Catalogue */}
-        <div className="mt-12 p-6 sm:p-8 bg-white border border-stone-200 rounded-lg flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-stone-900 via-[#1D1712] to-stone-900 text-white border border-[#C89D43]/35 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
           <div>
-            <h4 className="font-display text-xl sm:text-2xl font-semibold text-[#181310]">
+            <div className="text-[11px] font-mono text-[#E5BE58] uppercase tracking-wider mb-1 font-bold">
+              Custom Leather Formulation
+            </div>
+            <h4 className="font-display text-xl sm:text-2xl font-bold text-white">
               Need a Custom Leather Specification or Specific Color Match?
             </h4>
-            <p className="text-xs sm:text-sm text-stone-600 mt-1 max-w-xl">
+            <p className="text-xs sm:text-sm text-stone-300 mt-1 max-w-xl leading-relaxed">
               ExportVisor coordinates custom tannage formulation, lab dip approvals, and physical counter-samples based on your master physical swatch.
             </p>
           </div>
           <button
             onClick={() => onRequestQuote("Custom Leather Sourcing")}
-            className="px-5 py-3 text-xs font-semibold text-white bg-[#181310] hover:bg-[#2C211B] rounded-md whitespace-nowrap cursor-pointer transition-colors shadow-xs"
+            className="px-6 py-3.5 text-xs font-bold bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] text-[#15120E] rounded-lg whitespace-nowrap cursor-pointer transition-all shadow-gold-subtle hover:shadow-lg"
           >
             Submit Custom Specification
           </button>

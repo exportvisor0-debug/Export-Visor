@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Globe, CheckCircle2, Factory, Shield, Layers } from "lucide-react";
+import { CheckCircle2, Factory, Shield, Layers } from "lucide-react";
 
 export const BangladeshAdvantage: React.FC = () => {
   return (
@@ -8,14 +8,14 @@ export const BangladeshAdvantage: React.FC = () => {
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#C87D3B]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
             Origin Ecosystem
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#181310] leading-tight mt-1">
-            Source Leather from Bangladesh
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+            Why Global Brands <span className="text-gold-gradient">Source Leather from Bangladesh</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-            Bangladesh possesses an established, resource-rich leather tanning sector with direct access to domestic raw bovine hides, organized industrial tanning estates, and competitive export manufacturing capabilities.
+            Bangladesh possesses an established, resource-rich leather tanning sector with direct access to domestic raw bovine hides, organized industrial tanning estates, duty-free access to major global markets, and competitive export manufacturing capabilities.
           </p>
         </div>
 
@@ -25,7 +25,7 @@ export const BangladeshAdvantage: React.FC = () => {
           {/* Left Column: Sourcing Realities */}
           <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
             <div className="space-y-4">
-              <h3 className="font-display text-2xl sm:text-3xl font-semibold text-[#181310]">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#15120E]">
                 The Bangladesh Sourcing Advantage
               </h3>
               <p className="text-sm text-stone-600 leading-relaxed">
@@ -33,43 +33,49 @@ export const BangladeshAdvantage: React.FC = () => {
               </p>
 
               <div className="space-y-3 pt-2">
-                <div className="p-4 bg-[#FAF8F5] border border-stone-200 rounded-lg">
-                  <div className="flex items-start gap-3">
-                    <Factory className="w-5 h-5 text-[#C87D3B] shrink-0 mt-0.5" />
+                <div className="p-5 bg-[#FAF8F5] border border-stone-200/90 rounded-xl shadow-2xs hover:border-[#C89D43]/50 transition-colors group">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30 flex items-center justify-center shrink-0 mt-0.5 transition-transform group-hover:scale-110 shadow-xs">
+                      <Factory className="w-5 h-5" />
+                    </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-[#181310]">
+                      <h4 className="text-base font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors">
                         Centralized Tannery Industrial Estate (Savar, Dhaka)
                       </h4>
                       <p className="mt-1 text-xs text-stone-600 leading-relaxed">
-                        Tanneries in Bangladesh have transitioned to the centralized Tannery Industrial Estate at Savar, facilitating clustered production, standardized effluent treatment infrastructure (CETP), and specialized chemical beamhouse operations.
+                        Tanneries in Bangladesh operate within the dedicated Tannery Industrial Estate at Savar, facilitating clustered production, standardized effluent treatment infrastructure (CETP), and specialized chemical beamhouse operations.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-4 bg-[#FAF8F5] border border-stone-200 rounded-lg">
-                  <div className="flex items-start gap-3">
-                    <Layers className="w-5 h-5 text-[#C87D3B] shrink-0 mt-0.5" />
+                <div className="p-5 bg-[#FAF8F5] border border-stone-200/90 rounded-xl shadow-2xs hover:border-emerald-500/40 transition-colors group">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 border border-emerald-500/25 flex items-center justify-center shrink-0 mt-0.5 transition-transform group-hover:scale-110 shadow-xs">
+                      <Layers className="w-5 h-5" />
+                    </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-[#181310]">
-                        Inherent Raw Material Quality
+                      <h4 className="text-base font-bold text-[#15120E] group-hover:text-emerald-700 transition-colors">
+                        Inherent Raw Material Quality & Grain Tightness
                       </h4>
                       <p className="mt-1 text-xs text-stone-600 leading-relaxed">
-                        Bangladesh bovine and goat skins are widely recognized for their fine fiber structure, tight grain characteristics, and natural tensile resilience, making them highly versatile across footwear uppers and supple leather accessories.
+                        Bangladesh bovine and goat skins are widely recognized for fine fiber structure, tight grain characteristics, and natural tensile resilience, making them highly versatile across footwear uppers and supple leather accessories.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-4 bg-[#FAF8F5] border border-stone-200 rounded-lg">
-                  <div className="flex items-start gap-3">
-                    <Shield className="w-5 h-5 text-[#C87D3B] shrink-0 mt-0.5" />
+                <div className="p-5 bg-[#FAF8F5] border border-stone-200/90 rounded-xl shadow-2xs hover:border-blue-500/40 transition-colors group">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-600 border border-blue-500/25 flex items-center justify-center shrink-0 mt-0.5 transition-transform group-hover:scale-110 shadow-xs">
+                      <Shield className="w-5 h-5" />
+                    </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-[#181310]">
-                        Competitive Value & Direct Tannery Linkage
+                      <h4 className="text-base font-bold text-[#15120E] group-hover:text-blue-700 transition-colors">
+                        Competitive Value & 0% Import Duty Advantage
                       </h4>
                       <p className="mt-1 text-xs text-stone-600 leading-relaxed">
-                        Sourcing directly from Bangladesh tanneries with ExportVisor eliminates multi-tiered international trading markups, giving you transparent pricing and direct production oversight.
+                        Sourcing directly from Bangladesh tanneries with ExportVisor eliminates multi-tiered trading markups. Furthermore, buyers benefit from preferential duty-free tariff access (GSP / EBA) into the European Union, UK, Japan, and other key trading markets.
                       </p>
                     </div>
                   </div>
@@ -77,28 +83,28 @@ export const BangladeshAdvantage: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-4 bg-stone-50 border border-stone-200 rounded-lg text-xs text-stone-600">
-              <span className="font-semibold text-stone-800">Our Role:</span> ExportVisor does not replace the tannery; we make the tannery accessible, accountable, and transparent to international buyers.
+            <div className="p-4 bg-[#FBF8F1] border border-[#C89D43]/30 rounded-xl text-xs text-stone-700 shadow-2xs">
+              <span className="font-bold text-[#7A5A17]">Our Commitment:</span> ExportVisor does not replace the tannery; we make the tannery accessible, accountable, and transparent to international buyers with strict quality oversight.
             </div>
           </div>
 
           {/* Right Column: Bangladesh Map & Sourcing Hub Card */}
-          <div className="lg:col-span-5 bg-[#181310] text-white rounded-lg p-6 sm:p-8 flex flex-col justify-between shadow-md relative overflow-hidden">
+          <div className="lg:col-span-5 bg-gradient-to-b from-[#15120E] via-[#221C16] to-[#15120E] text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl border border-[#C89D43]/35 relative overflow-hidden">
             {/* Ambient pattern */}
-            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C87D3B_1px,transparent_1px)] [background-size:16px_16px]" />
+            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C89D43_1px,transparent_1px)] [background-size:16px_16px]" />
 
             <div className="relative space-y-6">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <span className="text-xs uppercase tracking-widest text-[#E8A366] font-bold">
+                <span className="text-xs uppercase tracking-widest text-[#E5BE58] font-bold">
                   Sourcing Hub Profile
                 </span>
-                <span className="font-mono-data text-xs text-stone-400">
+                <span className="font-mono-data text-xs text-[#E5BE58] font-bold px-2 py-0.5 rounded bg-white/10">
                   Dhaka / Savar
                 </span>
               </div>
 
               <div>
-                <h4 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight text-white">
+                <h4 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
                   Industrial Leather Axis
                 </h4>
                 <p className="mt-2 text-xs text-stone-300 leading-relaxed">
@@ -107,44 +113,44 @@ export const BangladeshAdvantage: React.FC = () => {
               </div>
 
               {/* Schematic Map Representation */}
-              <div className="p-4 bg-white/5 border border-white/10 rounded-lg space-y-3">
+              <div className="p-4 bg-white/5 border border-white/10 rounded-xl space-y-3">
                 <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
                   <span className="text-stone-400">Primary Tannery Cluster</span>
-                  <span className="font-semibold text-white">Savar Industrial Estate</span>
+                  <span className="font-bold text-white">Savar Industrial Estate</span>
                 </div>
                 <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
                   <span className="text-stone-400">Primary Sea Freight Port</span>
-                  <span className="font-semibold text-white">Chittagong Port (CTG)</span>
+                  <span className="font-bold text-white">Chittagong Port (CTG)</span>
                 </div>
                 <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
                   <span className="text-stone-400">Air Cargo Hub</span>
-                  <span className="font-semibold text-white">Dhaka Airport (DAC)</span>
+                  <span className="font-bold text-white">Dhaka Airport (DAC)</span>
                 </div>
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-stone-400">Typical Lead Time</span>
-                  <span className="font-semibold text-[#E8A366]">15–20 Days</span>
+                  <span className="font-bold text-[#E5BE58]">15–20 Days</span>
                 </div>
               </div>
 
-              <div className="space-y-2 text-xs text-stone-300">
+              <div className="space-y-2.5 text-xs text-stone-300">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#C87D3B]" />
-                  <span>Direct tannery coordination in Dhaka</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#E5BE58] shrink-0" />
+                  <span>Direct tannery coordination in Dhaka & Savar</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#C87D3B]" />
+                  <CheckCircle2 className="w-4 h-4 text-[#E5BE58] shrink-0" />
                   <span>Full container load (FCL) & LCL consolidation</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#C87D3B]" />
-                  <span>Multi-country export documentation support</span>
+                  <CheckCircle2 className="w-4 h-4 text-[#E5BE58] shrink-0" />
+                  <span>Multi-country export documentation & GSP/COO support</span>
                 </div>
               </div>
             </div>
 
             <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-stone-400">
               <span>Timezone: GMT+6</span>
-              <span className="text-[#E8A366]">ExportVisor Field Presence</span>
+              <span className="text-[#E5BE58] font-bold">ExportVisor Field Presence</span>
             </div>
 
           </div>

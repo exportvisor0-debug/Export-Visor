@@ -33,10 +33,10 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
         {/* Modal Top Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-[#FAF8F5] print:hidden">
           <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded bg-[#181310] text-[#C87D3B] flex items-center justify-center font-serif text-xs font-bold">
+            <span className="w-6 h-6 rounded bg-[#181310] text-[#C89D43] flex items-center justify-center font-serif text-xs font-bold border border-[#C89D43]/40">
               EV
             </span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-stone-700">
+            <span className="text-xs font-bold uppercase tracking-wider text-stone-700">
               ExportVisor Corporate Brief & Scope
             </span>
           </div>
@@ -67,7 +67,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="text-2xl font-bold tracking-tight text-[#181310]">
-                  Export<span className="text-[#C87D3B]">Visor</span>
+                  Export<span className="text-[#C89D43]">Visor</span>
                 </span>
                 <span className="text-xs uppercase tracking-widest text-stone-400 font-semibold">
                   · Corporate Profile
@@ -84,7 +84,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
 
           {/* Executive Overview */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#C87D3B]">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               1. Executive Summary
             </h2>
             <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
@@ -94,7 +94,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
 
           {/* Sourcing Scope */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#C87D3B]">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               2. Sourcing Scope & Product Classifications
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
@@ -121,7 +121,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
 
           {/* Commercial Framework */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#C87D3B]">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               3. Commercial Framework & RFQ Evaluation
             </h2>
             <div className="border border-stone-200 rounded divide-y divide-stone-200 text-xs">
@@ -154,7 +154,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
 
           {/* Operational Coordination Workflow */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold uppercase tracking-wider text-[#C87D3B]">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               4. Key Buyer Services
             </h2>
             <ul className="text-xs text-stone-700 space-y-1.5 list-disc list-inside">
@@ -193,7 +193,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
               onClose();
               onRequestQuote();
             }}
-            className="px-4 py-2 text-xs font-semibold text-white bg-[#181310] hover:bg-[#2C211B] rounded-md transition-colors"
+            className="px-5 py-2.5 text-xs font-bold text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-lg transition-all shadow-gold-subtle cursor-pointer"
           >
             Submit Sourcing Inquiry
           </button>

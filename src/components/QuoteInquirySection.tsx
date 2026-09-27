@@ -134,11 +134,11 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#C87D3B]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
             Direct Sourcing Desk
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#181310] leading-tight mt-1">
-            Request a Quotation & Leather Specification Review
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+            Request a Quotation & <span className="text-gold-gradient">Leather Specification Review</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
             Submit your technical leather requirements below. Our Bangladesh sourcing team will review tannery feasibility, availability, and prepare an indicative commercial offer.
@@ -150,8 +150,8 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
           {/* Left Column: Direct Contact Info & Sourcing Guidelines */}
           <div className="lg:col-span-4 space-y-6">
             
-            <div className="p-6 bg-[#FAF8F5] border border-stone-200 rounded-lg space-y-5">
-              <h3 className="font-display text-xl font-semibold text-[#181310]">
+            <div className="p-6 bg-[#FAF8F5] border border-stone-200/90 rounded-xl space-y-5 shadow-2xs">
+              <h3 className="font-display text-xl font-bold text-[#15120E]">
                 Direct Contact Channels
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed">
@@ -164,16 +164,16 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent("whatsapp_click", { location: "inquiry_sidebar" })}
-                  className="flex items-center gap-3 p-3 bg-white border border-stone-200 rounded-md hover:border-emerald-500 transition-colors group"
+                  className="flex items-center gap-3 p-3.5 bg-white border border-stone-200 rounded-xl hover:border-emerald-500 transition-colors group shadow-2xs"
                 >
-                  <div className="w-9 h-9 rounded bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <MessageSquareText className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 block">
                       WhatsApp Commercial Desk
                     </span>
-                    <span className="text-xs font-semibold text-stone-900 group-hover:text-emerald-700">
+                    <span className="text-xs font-bold text-stone-900 group-hover:text-emerald-700">
                       {siteConfig.contact.whatsappFormatted}
                     </span>
                   </div>
@@ -182,16 +182,16 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                 <a
                   href={siteConfig.contact.emailUrl}
                   onClick={() => trackEvent("email_click", { location: "inquiry_sidebar" })}
-                  className="flex items-center gap-3 p-3 bg-white border border-stone-200 rounded-md hover:border-[#C87D3B] transition-colors group"
+                  className="flex items-center gap-3 p-3.5 bg-white border border-stone-200 rounded-xl hover:border-[#C89D43] transition-colors group shadow-2xs"
                 >
-                  <div className="w-9 h-9 rounded bg-amber-50 text-[#C87D3B] flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
                     <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 block">
                       Official Inquiries Email
                     </span>
-                    <span className="text-xs font-semibold text-stone-900 group-hover:text-[#C87D3B]">
+                    <span className="text-xs font-bold text-stone-900 group-hover:text-[#C89D43]">
                       {siteConfig.contact.email}
                     </span>
                   </div>
@@ -211,21 +211,21 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
             </div>
 
             {/* Sourcing Parameters Reminder */}
-            <div className="p-5 border border-stone-200 rounded-lg space-y-3 bg-white">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
+            <div className="p-5 border border-stone-200/90 rounded-xl space-y-3 bg-white shadow-2xs">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A5A17] block">
                 RFQ Sourcing Guidelines
               </span>
               <ul className="text-xs text-stone-600 space-y-2">
                 <li className="flex items-start gap-2">
-                  <span className="text-[#C87D3B] font-bold">•</span>
+                  <span className="text-[#C89D43] font-bold">•</span>
                   <span><strong>MOQ & Volumes:</strong> Tailored to your RFQ and tannery drum capacity.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#C87D3B] font-bold">•</span>
+                  <span className="text-[#C89D43] font-bold">•</span>
                   <span><strong>Quotation:</strong> Formulated based on grade, substance, finish & lot size.</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-[#C87D3B] font-bold">•</span>
+                  <span className="text-[#C89D43] font-bold">•</span>
                   <span><strong>Payment:</strong> International LC at sight or TT.</span>
                 </li>
               </ul>
@@ -349,7 +349,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                         <button
                           type="button"
                           onClick={onClearPrefill}
-                          className="text-[#C87D3B] hover:underline font-medium cursor-pointer"
+                          className="text-[#C89D43] hover:underline font-semibold cursor-pointer"
                         >
                           Change product
                         </button>
@@ -374,7 +374,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.fullName}
                           onChange={handleChange}
                           placeholder="e.g. David Vance"
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
@@ -389,7 +389,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.companyName}
                           onChange={handleChange}
                           placeholder="e.g. Vance Leather Footwear Ltd"
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
@@ -404,7 +404,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.country}
                           onChange={handleChange}
                           placeholder="e.g. Italy, Germany, USA, Japan..."
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
@@ -419,7 +419,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.email}
                           onChange={handleChange}
                           placeholder="sourcing@company.com"
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
@@ -433,7 +433,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="+1 (555) 000-0000 (includes country code)"
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
                     </div>
@@ -454,7 +454,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           name="product"
                           value={formData.product}
                           onChange={handleChange}
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         >
                           <option value="Crust Leather">Crust Leather</option>
                           <option value="Finished Leather">Finished Leather</option>
@@ -478,7 +478,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.quantity}
                           onChange={handleChange}
                           placeholder="e.g. 10,000 sq ft or 20ft FCL"
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
@@ -492,7 +492,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.thickness}
                           onChange={handleChange}
                           placeholder="e.g. 1.1 - 1.3 mm"
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
@@ -506,7 +506,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.color}
                           onChange={handleChange}
                           placeholder="e.g. Tan, Black, Cognac, or Swatch"
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
@@ -520,7 +520,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.finish}
                           onChange={handleChange}
                           placeholder="e.g. Smooth, Pull-up, Milled, Matte"
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
@@ -534,7 +534,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           value={formData.targetPrice}
                           onChange={handleChange}
                           placeholder="Optional (e.g. $1.05)"
-                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                          className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
@@ -553,7 +553,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                         value={formData.application}
                         onChange={handleChange}
                         placeholder="e.g. Footwear Uppers, Handbags, Small Leather Goods, Furniture Upholstery..."
-                        className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                        className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                       />
                     </div>
 
@@ -567,7 +567,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Specify any special tests, grain selection ratio (TR, A/B/C), destination port, or sampling requests..."
-                        className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C87D3B] focus:border-[#C87D3B]"
+                        className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                       />
                     </div>
 
@@ -584,7 +584,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           className="absolute inset-0 opacity-0 cursor-pointer"
                         />
                         <div className="flex items-center justify-center gap-2 text-xs text-stone-500">
-                          <UploadCloud className="w-4 h-4 text-[#C87D3B]" />
+                          <UploadCloud className="w-4 h-4 text-[#C89D43]" />
                           <span>Click to attach specifications or photos (PDF, PNG, JPG)</span>
                         </div>
                       </div>
@@ -609,9 +609,9 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                   <div className="pt-2">
                     <button
                       type="submit"
-                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#181310] hover:bg-[#2C211B] rounded-md transition-all shadow-xs hover:shadow-md cursor-pointer"
+                      className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-xl transition-all shadow-gold-subtle hover:shadow-gold-glow cursor-pointer"
                     >
-                      <Send className="w-4 h-4 text-[#C87D3B]" />
+                      <Send className="w-4 h-4 text-[#15120E]" />
                       <span>Send Sourcing Inquiry to ExportVisor</span>
                     </button>
                     <p className="text-center text-[11px] text-stone-500 mt-2">

@@ -58,13 +58,14 @@ export const FAQSection: React.FC = () => {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#C87D3B]">
-            Commercial Questions
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight text-[#181310] leading-tight mt-1">
-            Frequently Asked Questions
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
+            <HelpCircle className="w-3.5 h-3.5 text-[#C89D43]" />
+            <span>Commercial Inquiries & Policies</span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+            Frequently Asked <span className="text-gold-gradient">Questions</span>
           </h2>
-          <p className="mt-3 text-sm text-stone-600 max-w-xl mx-auto">
+          <p className="mt-3 text-sm text-stone-600 max-w-xl mx-auto leading-relaxed">
             Direct, factual answers regarding sourcing procedures, minimum orders, commercial benchmarks, and export logistics.
           </p>
         </div>
@@ -80,10 +81,10 @@ export const FAQSection: React.FC = () => {
                   onClick={() => setOpenIdx(isOpen ? null : index)}
                   className="w-full flex items-center justify-between text-left py-2 focus:outline-none cursor-pointer group"
                 >
-                  <span className="text-sm sm:text-base font-semibold text-[#181310] group-hover:text-[#C87D3B] transition-colors pr-4">
+                  <span className="text-sm sm:text-base font-semibold text-[#15120E] group-hover:text-[#C89D43] transition-colors pr-4">
                     {faq.q}
                   </span>
-                  <div className={`w-6 h-6 rounded flex items-center justify-center text-stone-400 group-hover:text-stone-700 shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180 text-[#C87D3B]" : ""}`}>
+                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-stone-400 group-hover:text-stone-900 shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180 bg-amber-50 text-[#C89D43]" : "bg-stone-100"}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>

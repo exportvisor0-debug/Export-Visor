@@ -67,28 +67,28 @@ const DESTINATION_DATA: DestinationDataPoint[] = [
     share: 42,
     volumeSqFt: "3.4M sq ft",
     topPorts: "Hamburg, Genoa, Valencia, Rotterdam",
-    color: "#80420E", // Deep brand amber/cognac
+    color: "#C89D43", // Radiant Logo Gold
   },
   {
     name: "East & SE Asia",
     share: 28,
     volumeSqFt: "2.3M sq ft",
     topPorts: "Hai Phong, Busan, Yokohama, Shanghai",
-    color: "#C87D3B", // Primary amber
+    color: "#2563EB", // Sapphire Maritime Blue
   },
   {
     name: "North America",
     share: 16,
     volumeSqFt: "1.3M sq ft",
     topPorts: "New York, Savannah, Long Beach",
-    color: "#2C211B", // Dark leather charcoal
+    color: "#059669", // Emerald Green
   },
   {
     name: "Middle East & Others",
     share: 14,
     volumeSqFt: "1.1M sq ft",
     topPorts: "Jebel Ali, Istanbul, Melbourne",
-    color: "#78716C", // Warm stone
+    color: "#7C3AED", // Royal Indigo Purple
   },
 ];
 
@@ -111,16 +111,16 @@ const VolumeTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label })
   if (active && payload && payload.length) {
     const total = payload.reduce((sum, entry) => sum + (Number(entry.value) || 0), 0);
     return (
-      <div className="bg-[#181310] text-white p-3 rounded-lg shadow-xl border border-stone-700 text-xs">
-        <p className="font-mono text-[#C87D3B] font-bold mb-1.5 pb-1 border-b border-stone-700">
+      <div className="bg-[#15120E] text-white p-3.5 rounded-xl shadow-xl border border-[#C89D43]/30 text-xs">
+        <p className="font-mono text-[#E5BE58] font-bold mb-1.5 pb-1 border-b border-white/10">
           FY {label} Sourcing Volume
         </p>
-        <div className="space-y-1">
+        <div className="space-y-1.5">
           {payload.map((entry, idx) => (
             <div key={idx} className="flex items-center justify-between gap-4">
               <span className="flex items-center gap-1.5 text-stone-300">
                 <span
-                  className="w-2 h-2 rounded-full inline-block"
+                  className="w-2.5 h-2.5 rounded-full inline-block"
                   style={{ backgroundColor: entry.color }}
                 />
                 {entry.name}:
@@ -130,9 +130,9 @@ const VolumeTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label })
               </span>
             </div>
           ))}
-          <div className="pt-1.5 mt-1 border-t border-stone-800 flex justify-between font-bold">
+          <div className="pt-1.5 mt-1 border-t border-white/10 flex justify-between font-bold">
             <span className="text-stone-300">Coordinated Total:</span>
-            <span className="font-mono text-emerald-400">{total.toFixed(1)}M sq.ft</span>
+            <span className="font-mono text-[#E5BE58]">{total.toFixed(1)}M sq.ft</span>
           </div>
         </div>
       </div>
@@ -145,15 +145,15 @@ const DestinationTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) =
   if (active && payload && payload.length) {
     const data = payload[0].payload as DestinationDataPoint;
     return (
-      <div className="bg-[#181310] text-white p-3 rounded-lg shadow-xl border border-stone-700 text-xs max-w-xs">
-        <div className="flex items-center justify-between gap-2 mb-1">
-          <span className="font-bold text-[#C87D3B]">{data.name}</span>
-          <span className="font-mono font-bold text-white bg-stone-800 px-1.5 py-0.5 rounded">
+      <div className="bg-[#15120E] text-white p-3.5 rounded-xl shadow-xl border border-[#C89D43]/30 text-xs max-w-xs">
+        <div className="flex items-center justify-between gap-2 mb-1.5 pb-1 border-b border-white/10">
+          <span className="font-bold text-[#E5BE58]">{data.name}</span>
+          <span className="font-mono font-bold text-stone-950 bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] px-2 py-0.5 rounded text-[10px]">
             {data.share}% Share
           </span>
         </div>
         <p className="text-[11px] text-stone-300">
-          <strong className="text-stone-100">Annual Volume:</strong> {data.volumeSqFt}
+          <strong className="text-white">Annual Volume:</strong> {data.volumeSqFt}
         </p>
         <p className="text-[10px] text-stone-400 mt-1">
           <strong className="text-stone-300">Discharge Hubs:</strong> {data.topPorts}
@@ -184,14 +184,14 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-10 border-b border-stone-200/90 gap-6">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#80420E] mb-1.5">
-              <Globe2 className="w-4 h-4 text-[#C87D3B]" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
+              <Globe2 className="w-3.5 h-3.5 text-[#C89D43]" />
               <span>International Trade Footprint</span>
               <span aria-hidden="true" className="text-stone-300">·</span>
               <span className="text-stone-500 font-normal">Export Intelligence & Data</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#181310] leading-tight">
-              Global Trade Impact & Sourcing Volumes
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight">
+              Global Trade Impact & <span className="text-gold-gradient">Sourcing Volumes</span>
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed max-w-2xl">
               Real-world metrics tracking our coordinated leather export throughput, container dispatch reliability from Chattogram Port, and expanding footprint across 28+ destination economies.
@@ -204,10 +204,10 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
               <button
                 type="button"
                 onClick={() => onRequestQuote("Inquiry: High Volume Annual Sourcing Contract")}
-                className="inline-flex items-center gap-2 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-white bg-[#181310] hover:bg-[#2C211B] rounded-md transition-colors shadow-xs cursor-pointer whitespace-nowrap"
+                className="inline-flex items-center gap-2 px-5 py-3 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-xl transition-all shadow-gold-subtle hover:shadow-gold-glow cursor-pointer whitespace-nowrap"
               >
                 <span>Plan Batch Allocation</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#C87D3B]" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#15120E]" />
               </button>
             )}
           </div>
@@ -215,14 +215,16 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
 
         {/* 4 High-Authority KPI Metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          <div className="bg-white border border-stone-200 rounded-lg p-5 shadow-2xs">
-            <div className="flex items-center justify-between text-stone-400 mb-2">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500">
+          <div className="bg-white border border-stone-200/90 rounded-xl p-5 shadow-2xs hover:border-[#C89D43]/50 transition-all group">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold">
                 Annual Sourcing Volume
               </span>
-              <Layers className="w-4 h-4 text-[#C87D3B]" />
+              <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30 flex items-center justify-center transition-transform group-hover:scale-110">
+                <Layers className="w-4 h-4" />
+              </div>
             </div>
-            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#181310]">
+            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E]">
               7.1M+ <span className="text-sm font-sans font-normal text-stone-500">sq.ft</span>
             </div>
             <p className="text-[11px] text-stone-600 mt-1">
@@ -230,14 +232,16 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
             </p>
           </div>
 
-          <div className="bg-white border border-stone-200 rounded-lg p-5 shadow-2xs">
-            <div className="flex items-center justify-between text-stone-400 mb-2">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500">
+          <div className="bg-white border border-stone-200/90 rounded-xl p-5 shadow-2xs hover:border-emerald-500/40 transition-all group">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold">
                 Destination Markets
               </span>
-              <Globe2 className="w-4 h-4 text-emerald-600" />
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 border border-emerald-500/25 flex items-center justify-center transition-transform group-hover:scale-110">
+                <Globe2 className="w-4 h-4" />
+              </div>
             </div>
-            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#181310]">
+            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E]">
               28+ <span className="text-sm font-sans font-normal text-stone-500">Nations</span>
             </div>
             <p className="text-[11px] text-stone-600 mt-1">
@@ -245,14 +249,16 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
             </p>
           </div>
 
-          <div className="bg-white border border-stone-200 rounded-lg p-5 shadow-2xs">
-            <div className="flex items-center justify-between text-stone-400 mb-2">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500">
+          <div className="bg-white border border-stone-200/90 rounded-xl p-5 shadow-2xs hover:border-blue-500/40 transition-all group">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold">
                 Pre-Shipment Pass Rate
               </span>
-              <ShieldCheck className="w-4 h-4 text-[#C87D3B]" />
+              <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-600 border border-blue-500/25 flex items-center justify-center transition-transform group-hover:scale-110">
+                <ShieldCheck className="w-4 h-4" />
+              </div>
             </div>
-            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#181310]">
+            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E]">
               99.2%
             </div>
             <p className="text-[11px] text-stone-600 mt-1">
@@ -260,14 +266,16 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
             </p>
           </div>
 
-          <div className="bg-white border border-stone-200 rounded-lg p-5 shadow-2xs">
-            <div className="flex items-center justify-between text-stone-400 mb-2">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500">
+          <div className="bg-white border border-stone-200/90 rounded-xl p-5 shadow-2xs hover:border-purple-500/40 transition-all group">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold">
                 Repeat Order Velocity
               </span>
-              <TrendingUp className="w-4 h-4 text-emerald-600" />
+              <div className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 border border-purple-500/25 flex items-center justify-center transition-transform group-hover:scale-110">
+                <TrendingUp className="w-4 h-4" />
+              </div>
             </div>
-            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#181310]">
+            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E]">
               94.6%
             </div>
             <p className="text-[11px] text-stone-600 mt-1">
@@ -343,16 +351,16 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                   >
                     <defs>
                       <linearGradient id="gradFinished" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#80420E" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#80420E" stopOpacity={0.1} />
+                        <stop offset="5%" stopColor="#C89D43" stopOpacity={0.85} />
+                        <stop offset="95%" stopColor="#C89D43" stopOpacity={0.12} />
                       </linearGradient>
                       <linearGradient id="gradCrust" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#C87D3B" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#C87D3B" stopOpacity={0.1} />
+                        <stop offset="5%" stopColor="#E5BE58" stopOpacity={0.8} />
+                        <stop offset="95%" stopColor="#E5BE58" stopOpacity={0.1} />
                       </linearGradient>
                       <linearGradient id="gradWetBlue" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#78716C" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#78716C" stopOpacity={0.1} />
+                        <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.75} />
+                        <stop offset="95%" stopColor="#3B82F6" stopOpacity={0.1} />
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" stroke="#E7E5E4" vertical={false} />
@@ -382,7 +390,7 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                       dataKey="finished"
                       name="Finished Leather"
                       stackId="1"
-                      stroke="#80420E"
+                      stroke="#C89D43"
                       fill="url(#gradFinished)"
                     />
                     <Area
@@ -390,7 +398,7 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                       dataKey="crust"
                       name="Crust Leather"
                       stackId="1"
-                      stroke="#C87D3B"
+                      stroke="#E5BE58"
                       fill="url(#gradCrust)"
                     />
                     <Area
@@ -398,7 +406,7 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                       dataKey="wetBlue"
                       name="Wet Blue Raw"
                       stackId="1"
-                      stroke="#78716C"
+                      stroke="#3B82F6"
                       fill="url(#gradWetBlue)"
                     />
                   </AreaChart>
@@ -530,7 +538,7 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                       yAxisId="left"
                       dataKey="containersDispatched"
                       name="FCL Containers Dispatched"
-                      fill="#C87D3B"
+                      fill="#C89D43"
                       radius={[4, 4, 0, 0]}
                     />
                     <Line
@@ -538,9 +546,9 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                       type="monotone"
                       dataKey="repeatOrderRate"
                       name="Repeat Order Rate"
-                      stroke="#80420E"
+                      stroke="#2563EB"
                       strokeWidth={2.5}
-                      dot={{ fill: "#80420E", r: 4 }}
+                      dot={{ fill: "#2563EB", r: 4 }}
                     />
                   </ComposedChart>
                 </ResponsiveContainer>

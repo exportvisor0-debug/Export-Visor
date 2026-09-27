@@ -2,13 +2,16 @@
 
 @layer base {
   :root {
-    --brand-primary: #181310;
-    --brand-secondary: #261D17;
-    --brand-accent: #C87D3B;
-    --brand-accent-dark: #A56126;
+    --brand-primary: #15120E;
+    --brand-secondary: #221C16;
+    --brand-accent: #C89D43;
+    --brand-accent-hover: #D6AC4B;
+    --brand-accent-light: #E5BE58;
+    --brand-accent-dark: #A67C24;
+    --brand-accent-glow: rgba(200, 157, 67, 0.25);
     --brand-cream: #FAF8F5;
-    --brand-surface: #F4EFEB;
-    --brand-border: rgba(24, 19, 16, 0.1);
+    --brand-surface: #F5EFE6;
+    --brand-border: rgba(200, 157, 67, 0.2);
   }
 
   html {
@@ -101,3 +104,76 @@
 .animate-ring-glow {
   animation: ring-glow 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* Premium Gold Utilities matching Logo Icon (#C89D43 / #D6AC4B / #B8892E) */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #DFB75A 0%, #C89D43 45%, #E5BE58 75%, #B8892E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-light {
+  color: #D6AC4B;
+}
+
+.text-gold-primary {
+  color: #C89D43;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #D6AC4B 0%, #C89D43 55%, #B8892E 100%);
+}
+
+.bg-gold-subtle {
+  background: linear-gradient(135deg, rgba(200, 157, 67, 0.12) 0%, rgba(229, 190, 88, 0.06) 100%);
+}
+
+.border-gold-accent {
+  border-color: rgba(200, 157, 67, 0.35);
+}
+
+.shadow-gold-subtle {
+  box-shadow: 0 4px 20px -2px rgba(200, 157, 67, 0.25);
+}
+
+.shadow-gold-glow {
+  box-shadow: 0 0 25px rgba(200, 157, 67, 0.3);
+}
+
+/* Eye-Catching Colorful Icon Card Utilities */
+.icon-badge-gold {
+  background: linear-gradient(135deg, rgba(200, 157, 67, 0.18) 0%, rgba(229, 190, 88, 0.08) 100%);
+  color: #C89D43;
+  border: 1px solid rgba(200, 157, 67, 0.3);
+}
+
+.icon-badge-emerald {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(5, 150, 105, 0.08) 100%);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.28);
+}
+
+.icon-badge-blue {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.16) 0%, rgba(59, 130, 246, 0.08) 100%);
+  color: #2563EB;
+  border: 1px solid rgba(37, 99, 235, 0.28);
+}
+
+.icon-badge-indigo {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.16) 0%, rgba(129, 140, 248, 0.08) 100%);
+  color: #4F46E5;
+  border: 1px solid rgba(99, 102, 241, 0.28);
+}
+
+.icon-badge-amber {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18) 0%, rgba(217, 119, 6, 0.08) 100%);
+  color: #D97706;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.icon-badge-rose {
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.16) 0%, rgba(225, 29, 72, 0.08) 100%);
+  color: #E11D48;
+  border: 1px solid rgba(244, 63, 94, 0.28);
+}
+

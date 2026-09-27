@@ -42,11 +42,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         {/* Header Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-[#FAF8F5]">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#C87D3B]">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               {product.category}
             </span>
             <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-xs text-stone-500 font-medium">
+            <span className="text-xs text-stone-600 font-medium">
               Origin: {product.origin}
             </span>
           </div>
@@ -227,9 +227,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           {/* Quality & Inspection Coordination Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
-            <div className="p-4 border border-stone-200 rounded-lg bg-[#FAF8F5]">
-              <div className="flex items-center gap-2 mb-2 text-stone-800 font-semibold text-xs">
-                <ShieldCheck className="w-4 h-4 text-[#C87D3B]" />
+            <div className="p-4 border border-stone-200 rounded-xl bg-[#FAF8F5]">
+              <div className="flex items-center gap-2 mb-2 text-stone-900 font-bold text-xs">
+                <div className="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-600 border border-emerald-500/25 flex items-center justify-center">
+                  <ShieldCheck className="w-4 h-4" />
+                </div>
                 <span>Quality & Inspection Protocol</span>
               </div>
               <p className="text-xs text-stone-600 leading-relaxed">
@@ -237,9 +239,11 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               </p>
             </div>
 
-            <div className="p-4 border border-stone-200 rounded-lg bg-[#FAF8F5]">
-              <div className="flex items-center gap-2 mb-2 text-stone-800 font-semibold text-xs">
-                <Package className="w-4 h-4 text-[#C87D3B]" />
+            <div className="p-4 border border-stone-200 rounded-xl bg-[#FAF8F5]">
+              <div className="flex items-center gap-2 mb-2 text-stone-900 font-bold text-xs">
+                <div className="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-600 border border-blue-500/25 flex items-center justify-center">
+                  <Package className="w-4 h-4" />
+                </div>
                 <span>Export Packaging & Shipping</span>
               </div>
               <p className="text-xs text-stone-600 leading-relaxed">
@@ -250,14 +254,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           {/* Buyer Requirements Guidance */}
-          <div className="p-4 bg-stone-50 border border-stone-200 rounded-lg text-xs space-y-1">
-            <span className="font-bold text-stone-800 uppercase tracking-wider block text-[10px]">
+          <div className="p-4 bg-stone-50 border border-stone-200 rounded-xl text-xs space-y-1">
+            <span className="font-bold text-[#7A5A17] uppercase tracking-wider block text-[10px]">
               Buyer Specification Guide
             </span>
             <p className="text-stone-600 leading-relaxed">
               {product.buyerRequirementsNote}
             </p>
-            <p className="text-[11px] text-[#C87D3B] font-medium pt-1">
+            <p className="text-[11px] text-[#C89D43] font-semibold pt-1">
               Availability: {product.availabilityNote}
             </p>
           </div>
@@ -283,7 +287,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                   location: "product_modal",
                 })
               }
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold text-stone-700 bg-white border border-stone-300 rounded-md hover:bg-stone-50 transition-colors"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-lg transition-colors"
             >
               <MessageSquareText className="w-3.5 h-3.5 text-emerald-600" />
               <span>Ask on WhatsApp</span>
@@ -294,10 +298,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
                 onClose();
                 onRequestQuote(product.name);
               }}
-              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-4 py-2 text-xs font-semibold text-white bg-[#181310] hover:bg-[#2C211B] rounded-md transition-all shadow-xs"
+              className="flex-1 sm:flex-initial inline-flex items-center justify-center px-5 py-2.5 text-xs font-bold text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-lg transition-all shadow-gold-subtle cursor-pointer"
             >
               <span>Request Quote for This Leather</span>
-              <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#C87D3B]" />
+              <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#15120E]" />
             </button>
           </div>
         </div>

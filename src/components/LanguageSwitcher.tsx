@@ -42,7 +42,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200/80 rounded-md transition-colors cursor-pointer border border-stone-200/70 focus:outline-none focus:ring-1 focus:ring-[#C87D3B]"
+        className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold text-stone-700 bg-stone-100 hover:bg-stone-200/80 rounded-md transition-colors cursor-pointer border border-stone-200/70 focus:outline-none focus:ring-1 focus:ring-[#C89D43]"
         aria-haspopup="true"
         aria-expanded={isOpen}
         aria-label="Select website language"
@@ -100,7 +100,7 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({
                       </span>
                     </div>
                   </div>
-                  {isSelected && <Check className="w-3.5 h-3.5 text-[#C87D3B]" />}
+                  {isSelected && <Check className="w-3.5 h-3.5 text-[#C89D43]" />}
                 </button>
               );
             })}

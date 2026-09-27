@@ -56,7 +56,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-stone-900 flex flex-col font-sans selection:bg-[#C87D3B]/20 selection:text-[#80420E]">
+    <div className="min-h-screen bg-[#FAF8F5] text-stone-900 flex flex-col font-sans selection:bg-[#C89D43]/25 selection:text-[#7A5A17]">
       
       {/* 1. Header (Sticky Top Bar with 3-Zone Contract + Multilingual Language Switcher) */}
       <Header
@@ -69,6 +69,7 @@ function AppContent() {
         <Hero
           onExploreLeather={handleExploreLeather}
           onRequestQuote={() => handleOpenQuoteModal()}
+          onOpenCompanyProfile={() => setIsCompanyProfileOpen(true)}
         />
 
         {/* 2.1 Trust & Compliance Strip */}

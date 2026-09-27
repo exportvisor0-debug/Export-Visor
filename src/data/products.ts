@@ -6,12 +6,13 @@
 
 // Import generated photorealistic assets
 import heroLeatherImg from "../assets/images/hero_leather_inspection_1790421583026.jpg";
+import heroExportImg from "../assets/images/hero_leather_export_1790424538382.jpg";
 import crustLeatherImg from "../assets/images/leather_crust_natural_1790421595126.jpg";
 import finishedAnilineImg from "../assets/images/leather_finished_aniline_1790421606041.jpg";
 import wetBlueImg from "../assets/images/leather_wet_blue_stage_1790421617932.jpg";
 import exportShippingImg from "../assets/images/export_shipping_containers_1790421629253.jpg";
 
-export { heroLeatherImg, crustLeatherImg, finishedAnilineImg, wetBlueImg, exportShippingImg };
+export { heroLeatherImg, heroExportImg, crustLeatherImg, finishedAnilineImg, wetBlueImg, exportShippingImg };
 
 export interface LeatherProduct {
   id: string;

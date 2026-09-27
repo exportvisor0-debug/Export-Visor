@@ -156,13 +156,14 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 gap-6">
           <div className="max-w-3xl">
-            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#C87D3B]">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
+              <TrendingUp className="w-3.5 h-3.5 text-[#C89D43]" />
               <span>Industry Intelligence & Sourcing Barometer</span>
               <span aria-hidden="true" className="text-stone-300">·</span>
               <span className="text-stone-500 font-normal">Bangladesh Leather Sector</span>
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-[#181310] leading-tight mt-1">
-              Leather Market Insights
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+              Leather Market <span className="text-gold-gradient">Intelligence & Trends</span>
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
               Curated market dynamics, environmental compliance updates, and raw material trends from Savar and Chattogram to help international buyers time procurement decisions effectively.
@@ -173,7 +174,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
           <div className="flex items-center gap-3">
             <button
               onClick={handleRefresh}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-stone-600 bg-white hover:bg-stone-50 border border-stone-300 rounded-md transition-colors cursor-pointer shadow-2xs"
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-stone-600 bg-white hover:bg-stone-50 border border-stone-300 rounded-lg transition-colors cursor-pointer shadow-2xs"
               title="Refresh industry intelligence feed"
             >
               <RefreshCw className={`w-3.5 h-3.5 text-stone-500 ${isRefreshing ? "animate-spin" : ""}`} />
@@ -181,10 +182,10 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
             </button>
             <button
               onClick={() => onRequestQuote("Market Timing Advisory")}
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#181310] hover:bg-[#2C211B] rounded-md transition-colors shadow-xs cursor-pointer whitespace-nowrap"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-lg transition-all shadow-gold-subtle cursor-pointer whitespace-nowrap"
             >
               <span>Consult Market Desk</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-[#C87D3B]" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#15120E]" />
             </button>
           </div>
         </div>
@@ -271,7 +272,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
               <div>
                 {/* Meta info: Category & Date */}
                 <div className="flex items-center justify-between text-[11px] text-stone-500 mb-3 pb-2.5 border-b border-stone-100">
-                  <span className="font-semibold uppercase tracking-wider text-[#C87D3B]">
+                  <span className="font-bold uppercase tracking-wider text-[#7A5A17] bg-[#C89D43]/10 px-2 py-0.5 rounded-full border border-[#C89D43]/20">
                     {insight.category}
                   </span>
                   <div className="flex items-center gap-1.5">
@@ -281,7 +282,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display text-xl font-semibold text-[#181310] leading-snug group-hover:text-[#C87D3B] transition-colors">
+                <h3 className="font-display text-xl font-bold text-[#15120E] leading-snug group-hover:text-[#C89D43] transition-colors">
                   {insight.title}
                 </h3>
 
@@ -324,7 +325,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
                 <div className="flex items-center justify-between pt-1">
                   <button
                     onClick={() => setActiveArticle(insight)}
-                    className="inline-flex items-center gap-1 text-xs font-semibold text-[#C87D3B] hover:text-[#A56126] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-[#C89D43] hover:text-[#D6AC4B] transition-colors cursor-pointer"
                   >
                     <span>Read Technical Analysis</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -332,7 +333,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
 
                   <button
                     onClick={() => onRequestQuote(`Market Insight: ${insight.title}`)}
-                    className="text-[11px] text-stone-500 hover:text-stone-900 underline underline-offset-2 transition-colors cursor-pointer"
+                    className="text-[11px] text-stone-500 hover:text-[#C89D43] underline underline-offset-2 transition-colors cursor-pointer"
                   >
                     Inquire on this Trend
                   </button>
@@ -343,23 +344,23 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
         </div>
 
         {/* Bottom Sourcing Guidance Strip */}
-        <div className="mt-12 p-6 sm:p-8 bg-white border border-stone-200 rounded-lg flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-700">
-              <ShieldCheck className="w-4 h-4 text-emerald-600" />
+        <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-stone-900 via-[#1F1914] to-stone-900 border border-[#C89D43]/35 text-white rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="space-y-1.5 max-w-2xl">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#E5BE58]">
+              <ShieldCheck className="w-4 h-4 text-[#E5BE58]" />
               <span>Independent Technical Assessment</span>
             </div>
-            <h4 className="font-display text-xl sm:text-2xl font-semibold text-[#181310]">
+            <h4 className="font-display text-xl sm:text-2xl font-bold text-white">
               Need Current Price Benchmarks or Drum Capacity Forecasts?
             </h4>
-            <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
               ExportVisor provides prospective international buyers with unfiltered ground feedback on raw hide inventory depth, chemical supply stability, and real-time tannery drum loading schedules.
             </p>
           </div>
 
           <button
             onClick={() => onRequestQuote("Live Price & Drum Capacity Forecast")}
-            className="px-5 py-3 text-xs font-semibold uppercase tracking-wider text-white bg-[#181310] hover:bg-[#2C211B] rounded-md transition-colors whitespace-nowrap cursor-pointer shadow-xs"
+            className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-lg transition-all whitespace-nowrap cursor-pointer shadow-gold-subtle hover:shadow-lg"
           >
             Request Market Advisory
           </button>
@@ -372,7 +373,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
           <div className="bg-white rounded-lg border border-stone-200 shadow-xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-5 animate-fade-in">
             <div className="flex items-center justify-between pb-3 border-b border-stone-200">
-              <span className="text-xs uppercase font-bold tracking-wider text-[#C87D3B]">
+              <span className="text-xs uppercase font-bold tracking-wider text-[#C89D43]">
                 {activeArticle.category} · Technical Briefing
               </span>
               <button
@@ -425,10 +426,10 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
                   setActiveArticle(null);
                   onRequestQuote(`Market Briefing Inquiry: ${title}`);
                 }}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-[#181310] hover:bg-[#2C211B] rounded-md transition-colors cursor-pointer"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-lg transition-all shadow-gold-subtle cursor-pointer"
               >
                 <span>Discuss with Sourcing Desk</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#C87D3B]" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#15120E]" />
               </button>
             </div>
           </div>

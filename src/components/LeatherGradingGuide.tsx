@@ -118,14 +118,14 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
       {/* Component Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 mb-8 border-b border-stone-200 gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#80420E]">
-            <Award className="w-4 h-4 text-[#C87D3B]" />
+          <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#7A5A17]">
+            <Award className="w-4 h-4 text-[#C89D43]" />
             <span>International Tannery Standards</span>
             <span aria-hidden="true" className="text-stone-300">·</span>
             <span className="text-stone-500 font-normal">Technical Grading Benchmark</span>
           </div>
-          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold text-[#181310] tracking-tight mt-1">
-            Visual Leather Grading Guide
+          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#15120E] tracking-tight mt-1">
+            Visual Leather <span className="text-gold-gradient">Grading Guide & Specifications</span>
           </h3>
           <p className="mt-2 text-xs sm:text-sm text-stone-600 max-w-2xl leading-relaxed">
             Understand how Bangladesh export tanneries grade wet blue, crust, and finished leather against European (Italian Scelta), American (LIA), and International Tannery Run (TR) specifications.
@@ -185,8 +185,8 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
                   onClick={() => setSelectedGrade(g)}
                   className={`p-3.5 text-left rounded-lg border transition-all cursor-pointer ${
                     isSelected
-                      ? "bg-white border-[#C87D3B] ring-1 ring-[#C87D3B] shadow-xs"
-                      : "bg-white/70 border-stone-200 hover:bg-white hover:border-stone-300"
+                      ? "bg-white border-[#C89D43] ring-2 ring-[#C89D43]/40 shadow-xs"
+                      : "bg-white/70 border-stone-200 hover:bg-white hover:border-[#C89D43]/40"
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1.5">
@@ -209,7 +209,7 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
                         g.yieldPercent >= 85
                           ? "bg-emerald-600"
                           : g.yieldPercent >= 70
-                          ? "bg-[#C87D3B]"
+                          ? "bg-[#C89D43]"
                           : g.yieldPercent >= 55
                           ? "bg-amber-600"
                           : "bg-stone-500"
@@ -453,10 +453,10 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
                   <div>
                     <div className="flex justify-between text-[11px] mb-1">
                       <span className="font-medium text-stone-700">Grade B (Table II)</span>
-                      <span className="font-mono font-bold text-[#80420E]">50%</span>
+                      <span className="font-mono font-bold text-[#7A5A17]">50%</span>
                     </div>
                     <div className="w-full bg-stone-100 rounded-full h-2 overflow-hidden">
-                      <div className="bg-[#C87D3B] h-full w-[50%]" />
+                      <div className="bg-[#C89D43] h-full w-[50%]" />
                     </div>
                   </div>
 
@@ -478,12 +478,12 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
             </div>
 
             {/* TR 2 Pack */}
-            <div className="bg-white border-2 border-[#C87D3B] rounded-lg p-5 flex flex-col justify-between shadow-xs relative">
-              <span className="absolute -top-2.5 right-4 px-2 py-0.5 bg-[#80420E] text-white text-[9px] font-mono uppercase font-bold tracking-wider rounded">
+            <div className="bg-white border-2 border-[#C89D43] rounded-xl p-5 flex flex-col justify-between shadow-gold-subtle relative">
+              <span className="absolute -top-2.5 right-4 px-2.5 py-0.5 bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] text-stone-950 text-[10px] font-mono uppercase font-bold tracking-wider rounded shadow-xs">
                 Most Popular B2B Export
               </span>
               <div>
-                <span className="text-[10px] font-mono uppercase tracking-wider text-[#80420E] font-bold block mb-1">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-[#7A5A17] font-bold block mb-1">
                   Balanced Commercial Standard
                 </span>
                 <h5 className="font-display text-xl font-bold text-[#181310]">
@@ -508,10 +508,10 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
                   <div>
                     <div className="flex justify-between text-[11px] mb-1">
                       <span className="font-medium text-stone-700">Grade B (Table II)</span>
-                      <span className="font-mono font-bold text-[#80420E]">45%</span>
+                      <span className="font-mono font-bold text-[#7A5A17]">45%</span>
                     </div>
                     <div className="w-full bg-stone-100 rounded-full h-2 overflow-hidden">
-                      <div className="bg-[#C87D3B] h-full w-[45%]" />
+                      <div className="bg-[#C89D43] h-full w-[45%]" />
                     </div>
                   </div>
 
@@ -543,7 +543,7 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
             </div>
 
             {/* TR 3 Pack */}
-            <div className="bg-white border border-stone-200 rounded-lg p-5 flex flex-col justify-between shadow-2xs">
+            <div className="bg-white border border-stone-200 rounded-xl p-5 flex flex-col justify-between shadow-2xs">
               <div>
                 <span className="text-[10px] font-mono uppercase tracking-wider text-stone-500 font-bold block mb-1">
                   Cost-Optimized / Heavy Emboss
@@ -560,10 +560,10 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
                   <div>
                     <div className="flex justify-between text-[11px] mb-1">
                       <span className="font-medium text-stone-700">Grade B (Table II)</span>
-                      <span className="font-mono font-bold text-[#80420E]">25%</span>
+                      <span className="font-mono font-bold text-[#7A5A17]">25%</span>
                     </div>
                     <div className="w-full bg-stone-100 rounded-full h-2 overflow-hidden">
-                      <div className="bg-[#C87D3B] h-full w-[25%]" />
+                      <div className="bg-[#C89D43] h-full w-[25%]" />
                     </div>
                   </div>
 

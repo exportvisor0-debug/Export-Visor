@@ -33,13 +33,15 @@ export const Footer: React.FC<FooterProps> = ({
           
           {/* Col 1: Brand & Sourcing Statement (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="w-8 h-8 rounded bg-white/10 text-[#C87D3B] flex items-center justify-center font-serif text-lg font-bold border border-white/10">
-                EV
-              </span>
-              <span className="text-xl font-bold tracking-tight text-white">
-                Export<span className="text-[#C87D3B]">Visor</span>
-              </span>
+            <div className="flex items-center py-1">
+              <img
+                src="/assets/branding/logo-white.png"
+                alt="ExportVisor - Go Global With ExportVisor"
+                className="h-10 w-auto object-contain"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = "/Logo3_4.png";
+                }}
+              />
             </div>
 
             <p className="text-xs text-stone-400 leading-relaxed max-w-sm">
@@ -48,11 +50,11 @@ export const Footer: React.FC<FooterProps> = ({
 
             <div className="pt-2 text-xs text-stone-400 space-y-1.5">
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#C87D3B] shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-[#C89D43] shrink-0" />
                 <span>{siteConfig.company.hqLocation}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Mail className="w-3.5 h-3.5 text-[#C87D3B] shrink-0" />
+                <Mail className="w-3.5 h-3.5 text-[#C89D43] shrink-0" />
                 <a
                   href={siteConfig.contact.emailUrl}
                   onClick={() => trackEvent("email_click", { location: "footer" })}
@@ -62,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-3.5 h-3.5 text-[#C87D3B] shrink-0" />
+                <Phone className="w-3.5 h-3.5 text-[#C89D43] shrink-0" />
                 <a
                   href={siteConfig.contact.whatsappUrl}
                   target="_blank"
@@ -256,10 +258,10 @@ export const Footer: React.FC<FooterProps> = ({
 
             <button
               onClick={() => onRequestQuote()}
-              className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-[#181310] bg-[#C87D3B] hover:bg-[#E8A366] rounded transition-colors shadow-xs"
+              className="w-full inline-flex items-center justify-center gap-1.5 px-4 py-3 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-lg transition-all shadow-gold-subtle hover:shadow-gold-glow cursor-pointer"
             >
               <span>Submit Sourcing Tech Pack</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#15120E]" />
             </button>
           </div>
 

@@ -1,6 +1,7 @@
 import React from "react";
 import { heroLeatherImg } from "../data/products";
 import { CheckCircle2, ShieldCheck, Eye, Layers, Ruler, Palette } from "lucide-react";
+import { SectionShareButton } from "./SectionShareButton";
 
 export const QualityInspectionSection: React.FC = () => {
   const qualityFactors = [
@@ -36,8 +37,11 @@ export const QualityInspectionSection: React.FC = () => {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
-            Inspection & Technical Standards
+          <div className="flex flex-wrap items-center gap-3 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              Inspection & Technical Standards
+            </div>
+            <SectionShareButton path="/quality-inspection" sectionName="Quality & Inspection" />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
             Understanding Leather Quality & <span className="text-gold-gradient">AQL 2.5 Inspection</span> Coordination

@@ -1,21 +1,28 @@
 import React from "react";
 import { Scale, Clock, CreditCard, Layers, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
+import { SectionShareButton } from "./SectionShareButton";
 
 export const CommercialTermsSection: React.FC = () => {
+  const { t } = useLanguage();
+
   return (
-    <section className="py-14 sm:py-20 bg-white border-b border-stone-200">
+    <section id="commercial-terms" className="py-14 sm:py-20 bg-white border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
-            Transparent Commercial Policy
-          </span>
+          <div className="flex items-center justify-center gap-2 mb-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              {t.commercial.kicker}
+            </span>
+            <SectionShareButton path="/terms" sectionName={t.commercial.kicker} />
+          </div>
           <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#15120E] mt-1">
-            RFQ-Driven <span className="text-gold-gradient">Commercial Terms & Standards</span>
+            {t.commercial.title} <span className="text-gold-gradient">{t.commercial.subtitle}</span>
           </h2>
           <p className="text-xs sm:text-sm text-stone-600 mt-2.5 leading-relaxed">
-            Every export shipment is uniquely calibrated. Minimum quantities, drum processing schedules, and commercial quotations are formulated strictly based on your Request for Quotation (RFQ) and technical specifications.
+            {t.commercial.notice}
           </p>
         </div>
 
@@ -33,13 +40,13 @@ export const CommercialTermsSection: React.FC = () => {
               </span>
             </div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
-              Minimum Order Quantity (MOQ)
+              {t.commercial.moqTitle}
             </span>
             <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
-              Determined by RFQ
+              Per RFQ
             </div>
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
-              Order volumes and minimums depend on selected leather category, hide grading distribution, drum loading capacity, and buyer production requirements.
+              {t.commercial.moqDesc}
             </p>
           </div>
 
@@ -54,13 +61,13 @@ export const CommercialTermsSection: React.FC = () => {
               </span>
             </div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
-              Tannery Quotation Basis
+              {t.commercial.pricingTitle}
             </span>
             <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
               Quoted upon RFQ
             </div>
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
-              Pricing is customized to your exact technical specifications—leather grade, substance/thickness, finish type, test compliance, and total order volume.
+              {t.commercial.pricingDesc}
             </p>
           </div>
 
@@ -75,13 +82,13 @@ export const CommercialTermsSection: React.FC = () => {
               </span>
             </div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
-              Production Lead Time
+              {t.commercial.leadTimeTitle}
             </span>
             <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
               Scheduled per RFQ
             </div>
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
-              Timelines are calculated upon review of raw material availability, beamhouse drum cycles, lab dip/counter-sample approvals, and total batch yardage.
+              {t.commercial.leadTimeDesc}
             </p>
           </div>
 
@@ -96,13 +103,13 @@ export const CommercialTermsSection: React.FC = () => {
               </span>
             </div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
-              International Payment Terms
+              {t.commercial.paymentTitle}
             </span>
             <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
               LC / TT
             </div>
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
-              Irrevocable Letter of Credit (LC at sight) or Telegraphic Transfer (TT) standard international banking channels for smooth cross-border trade.
+              {t.commercial.paymentDesc}
             </p>
           </div>
 
@@ -112,7 +119,7 @@ export const CommercialTermsSection: React.FC = () => {
         <div className="mt-8 p-4 border border-[#C89D43]/30 rounded-xl text-[11px] text-stone-600 flex items-start gap-3 bg-[#FBF8F1] shadow-2xs">
           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
           <span>
-            <strong className="text-stone-900">Transparency Notice:</strong> All commercial terms, batch commitments, and pricing quotations are finalized following technical RFQ review and proforma confirmation based on your exact grade, thickness, and volume requirements.
+            <strong className="text-stone-900">Transparency Notice:</strong> {t.commercial.notice}
           </span>
         </div>
 

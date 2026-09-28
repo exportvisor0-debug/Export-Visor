@@ -66,7 +66,7 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-22 border-b border-stone-200/80 bg-gradient-to-b from-[#FAF8F5] via-[#F6F3EE] to-[#FAF8F5]">
+    <section id="hero" className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-22 border-b border-stone-200/80 bg-gradient-to-b from-[#FAF8F5] via-[#F6F3EE] to-[#FAF8F5]">
       {/* Subtle architectural ambient grid & warm radial glow */}
       <div className="absolute inset-0 pointer-events-none opacity-45 bg-[radial-gradient(#C89D43_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_35%,#000_70%,transparent_100%)]" />
       <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#D6AC4B]/15 rounded-full blur-3xl pointer-events-none" />
@@ -105,11 +105,7 @@ export const Hero: React.FC<HeroProps> = ({
               variants={itemVariants}
               className="font-display text-3xl sm:text-5xl lg:text-[3.4rem] font-bold tracking-tight text-[#15120E] leading-[1.08] text-balance"
             >
-              Premier Leather Sourcing & Export Partner from{" "}
-              <span className="relative inline-block text-gold-gradient underline decoration-[#C89D43]/40 underline-offset-4 decoration-wavy decoration-1">
-                Bangladesh
-              </span>{" "}
-              to the World
+              {t.hero.headline}
             </motion.h1>
 
             {/* Sub-headline */}
@@ -117,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({
               variants={itemVariants}
               className="font-body text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl text-pretty"
             >
-              {subheadline}
+              {t.hero.subheadline}
             </motion.p>
 
             {/* Core Capability Badges Strip */}
@@ -205,49 +201,49 @@ export const Hero: React.FC<HeroProps> = ({
                 
                 <div className="p-2.5 rounded-md hover:bg-white/60 transition-colors">
                   <span className="block text-[11px] uppercase tracking-wider text-stone-500 font-semibold">
-                    Pricing Basis
+                    {t.hero.pricingBasis}
                   </span>
                   <span className="font-mono-data text-lg font-bold text-[#181310] block mt-0.5">
-                    Direct Factory
+                    {t.hero.pricingValue}
                   </span>
                   <span className="text-[11px] text-stone-500 leading-tight block">
-                    FOB / CIF per RFQ
+                    {t.hero.pricingNote}
                   </span>
                 </div>
 
                 <div className="p-2.5 rounded-md hover:bg-white/60 transition-colors">
                   <span className="block text-[11px] uppercase tracking-wider text-stone-500 font-semibold">
-                    Volume & MOQ
+                    {t.hero.volumeBasis}
                   </span>
                   <span className="font-mono-data text-lg font-bold text-[#181310] block mt-0.5">
-                    FCL & LCL
+                    {t.hero.volumeValue}
                   </span>
                   <span className="text-[11px] text-stone-500 leading-tight block">
-                    Tailored to buyer specs
+                    {t.hero.volumeNote}
                   </span>
                 </div>
 
                 <div className="p-2.5 rounded-md hover:bg-white/60 transition-colors">
                   <span className="block text-[11px] uppercase tracking-wider text-stone-500 font-semibold">
-                    Quality Inspection
+                    {t.hero.leadTimeBasis}
                   </span>
                   <span className="font-mono-data text-lg font-bold text-[#181310] block mt-0.5">
-                    100% On-Site
+                    {t.hero.leadTimeValue}
                   </span>
                   <span className="text-[11px] text-stone-500 leading-tight block">
-                    AQL 2.5 + Lab certification
+                    {t.hero.leadTimeNote}
                   </span>
                 </div>
 
                 <div className="p-2.5 rounded-md hover:bg-white/60 transition-colors">
                   <span className="block text-[11px] uppercase tracking-wider text-stone-500 font-semibold">
-                    Payment Terms
+                    {t.hero.paymentBasis}
                   </span>
                   <span className="font-mono-data text-lg font-bold text-[#181310] block mt-0.5">
-                    LC / TT
+                    {t.hero.paymentValue}
                   </span>
                   <span className="text-[11px] text-stone-500 leading-tight block">
-                    Irrevocable trade terms
+                    {t.hero.paymentNote}
                   </span>
                 </div>
 

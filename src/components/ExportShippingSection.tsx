@@ -1,6 +1,7 @@
 import React from "react";
 import { exportShippingImg } from "../data/products";
 import { Anchor, Plane, FileCheck2, Box, ShieldCheck, MapPin } from "lucide-react";
+import { SectionShareButton } from "./SectionShareButton";
 
 export const ExportShippingSection: React.FC = () => {
   const exportSteps = [
@@ -36,8 +37,11 @@ export const ExportShippingSection: React.FC = () => {
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
-            Global Logistics Management
+          <div className="flex flex-wrap items-center gap-3 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              Global Logistics Management
+            </div>
+            <SectionShareButton path="/export-shipping" sectionName="Export & Shipping" />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
             Export Logistics & <span className="text-gold-gradient">International Shipping Support</span>

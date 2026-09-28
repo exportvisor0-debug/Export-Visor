@@ -11,7 +11,11 @@ import {
   AlertCircle,
   Paperclip,
   UploadCloud,
+  MapPin,
+  ExternalLink,
+  Navigation,
 } from "lucide-react";
+import { SectionShareButton } from "./SectionShareButton";
 
 interface QuoteInquirySectionProps {
   prefilledProduct?: string;
@@ -134,8 +138,11 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
-            Direct Sourcing Desk
+          <div className="flex flex-wrap items-center gap-3 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              Direct Sourcing Desk
+            </div>
+            <SectionShareButton path="/quote" sectionName="Request Quote" />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
             Request a Quotation & <span className="text-gold-gradient">Leather Specification Review</span>
@@ -193,6 +200,34 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                     </span>
                     <span className="text-xs font-bold text-stone-900 group-hover:text-[#C89D43]">
                       {siteConfig.contact.email}
+                    </span>
+                  </div>
+                </a>
+
+                {/* Office Location on Google Maps */}
+                <a
+                  href={siteConfig.company.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("phone_click", { location: "office_map_sidebar" })}
+                  className="flex items-start gap-3 p-3.5 bg-white border border-stone-200 rounded-xl hover:border-[#C89D43] transition-colors group shadow-2xs"
+                >
+                  <div className="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 border border-rose-200 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform mt-0.5">
+                    <MapPin className="w-4 h-4" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 block">
+                        Registered Office & Sourcing Hub
+                      </span>
+                      <ExternalLink className="w-3 h-3 text-stone-400 group-hover:text-[#C89D43] shrink-0" />
+                    </div>
+                    <span className="text-xs font-bold text-stone-900 group-hover:text-[#C89D43] block mt-0.5 leading-snug">
+                      {siteConfig.company.address}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#7A5A17] mt-1 group-hover:underline">
+                      <Navigation className="w-3 h-3 text-[#C89D43]" />
+                      <span>Open in Google Maps</span>
                     </span>
                   </div>
                 </a>

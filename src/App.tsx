@@ -22,12 +22,16 @@ import { CompanyProfileModal } from "./components/CompanyProfileModal";
 import { QuoteInquiryModal } from "./components/QuoteInquiryModal";
 import { FloatingActions } from "./components/FloatingActions";
 import { LeatherProduct } from "./data/products";
+import { useSectionRouter, navigateTo } from "./utils/router";
 
 function AppContent() {
   const [selectedProduct, setSelectedProduct] = useState<LeatherProduct | null>(null);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [quotePrefill, setQuotePrefill] = useState<string>("");
   const [isCompanyProfileOpen, setIsCompanyProfileOpen] = useState(false);
+
+  // Initialize section routing & scroll synchronization
+  useSectionRouter();
 
   const handleOpenQuoteModal = (productName?: string) => {
     if (productName) {
@@ -40,19 +44,11 @@ function AppContent() {
     if (productName) {
       setQuotePrefill(productName);
     }
-    const contactElem = document.getElementById("contact");
-    if (contactElem) {
-      contactElem.scrollIntoView({ behavior: "smooth" });
-    } else {
-      setIsQuoteModalOpen(true);
-    }
+    navigateTo("/quote", true);
   };
 
   const handleExploreLeather = () => {
-    const catalogueElem = document.getElementById("leather-products");
-    if (catalogueElem) {
-      catalogueElem.scrollIntoView({ behavior: "smooth" });
-    }
+    navigateTo("/products", true);
   };
 
   return (

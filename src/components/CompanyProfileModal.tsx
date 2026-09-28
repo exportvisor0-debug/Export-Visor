@@ -175,9 +175,17 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
               <p>WhatsApp: {siteConfig.contact.whatsappFormatted}</p>
             </div>
             <div>
-              <p className="font-semibold text-stone-900">Registered Hub</p>
-              <p>{siteConfig.company.hqLocation}</p>
-              <p>© 2026 ExportVisor. All rights reserved.</p>
+              <p className="font-semibold text-stone-900">Registered Office & Hub</p>
+              <p>{siteConfig.company.address}</p>
+              <a
+                href={siteConfig.company.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#C89D43] font-semibold hover:underline block mt-0.5 print:hidden"
+              >
+                View on Google Maps ↗
+              </a>
+              <p className="text-[11px] text-stone-400 mt-1">© 2026 ExportVisor. All rights reserved.</p>
             </div>
           </div>
 

@@ -28,6 +28,7 @@ import {
   ShieldCheck,
   Calendar,
 } from "lucide-react";
+import { SectionShareButton } from "./SectionShareButton";
 
 interface VolumeDataPoint {
   year: string;
@@ -184,11 +185,12 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-10 border-b border-stone-200/90 gap-6">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
-              <Globe2 className="w-3.5 h-3.5 text-[#C89D43]" />
-              <span>International Trade Footprint</span>
-              <span aria-hidden="true" className="text-stone-300">·</span>
-              <span className="text-stone-500 font-normal">Export Intelligence & Data</span>
+            <div className="flex flex-wrap items-center gap-3 mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+                <Globe2 className="w-3.5 h-3.5 text-[#C89D43]" />
+                <span>International Trade Footprint</span>
+              </div>
+              <SectionShareButton path="/global-trade-impact" sectionName="Global Trade Impact" />
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight">
               Global Trade Impact & <span className="text-gold-gradient">Sourcing Volumes</span>

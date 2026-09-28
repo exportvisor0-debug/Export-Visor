@@ -14,6 +14,7 @@ export interface SiteConfig {
     origin: string;
     hqLocation: string;
     address: string;
+    mapsUrl: string;
   };
   contact: {
     email: string;
@@ -48,14 +49,15 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   company: {
     name: "ExportVisor",
-    tagline: "Your Trusted Leather Sourcing Partner from Bangladesh",
+    tagline: "Go Global with ExportVisor",
     shortDescription:
       "A Bangladesh-based B2B leather sourcing and export agency connecting international buyers with vetted tanneries.",
     fullDescription:
       "ExportVisor acts as a dedicated leather sourcing and export partner in Bangladesh. We facilitate international buyer access to wet blue, crust, and finished leather by coordinating supplier matching, technical specifications, quality inspection, order management, and export documentation.",
     origin: "Dhaka, Bangladesh",
-    hqLocation: "Savar Tannery Industrial Estate / Dhaka, Bangladesh",
-    address: "Savar Tannery Industrial Zone, Hemayetpur, Dhaka, Bangladesh [ADD REGISTERED OFFICE SUITE/STREET]",
+    hqLocation: "Dhaka, Bangladesh",
+    address: "Beribadh Road, Sikdar Estate, Chorokghata, Nawabganj, Dhaka - 1312, Bangladesh",
+    mapsUrl: "https://maps.app.goo.gl/F9aseXrAYr9og3PT9",
   },
   contact: {
     email: "info@exportvisor.com",

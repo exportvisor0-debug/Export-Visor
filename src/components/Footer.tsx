@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { siteConfig } from "../config/siteConfig";
 import { trackEvent } from "../utils/analytics";
+import { navigateTo } from "../utils/router";
 import {
   Mail,
   Phone,
@@ -48,10 +49,23 @@ export const Footer: React.FC<FooterProps> = ({
               Bangladesh-based B2B leather sourcing and export agency. We connect international buyers with reliable tanneries in Bangladesh, facilitating technical specification matching, quality inspection coordination, and seamless export management.
             </p>
 
-            <div className="pt-2 text-xs text-stone-400 space-y-1.5">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-[#C89D43] shrink-0" />
-                <span>{siteConfig.company.hqLocation}</span>
+            <div className="pt-2 text-xs text-stone-400 space-y-2">
+              <div className="flex items-start gap-2">
+                <MapPin className="w-3.5 h-3.5 text-[#C89D43] shrink-0 mt-0.5" />
+                <div>
+                  <a
+                    href={siteConfig.company.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="View ExportVisor office location on Google Maps"
+                    className="hover:text-white transition-colors block leading-relaxed"
+                  >
+                    <span>{siteConfig.company.address}</span>
+                    <span className="text-[11px] text-[#C89D43] hover:underline font-semibold block mt-0.5">
+                      Open in Google Maps ↗
+                    </span>
+                  </a>
+                </div>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#C89D43] shrink-0" />
@@ -178,55 +192,118 @@ export const Footer: React.FC<FooterProps> = ({
             </h4>
             <ul className="text-xs text-stone-400 space-y-2">
               <li>
-                <a href="#about" className="hover:text-white transition-colors">
+                <a
+                  href="/about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/about", true);
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   About ExportVisor
                 </a>
               </li>
               <li>
-                <a href="#sourcing-process" className="hover:text-white transition-colors">
+                <a
+                  href="/sourcing-process"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/sourcing-process", true);
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   10-Stage Process
                 </a>
               </li>
               <li>
-                <a href="#quality-inspection" className="hover:text-white transition-colors">
+                <a
+                  href="/quality-inspection"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/quality-inspection", true);
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   Quality Coordination
                 </a>
               </li>
               <li>
-                <a href="#knowledge-hub" className="hover:text-white transition-colors">
+                <a
+                  href="/knowledge-hub"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/knowledge-hub", true);
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   Leather Knowledge Hub
                 </a>
               </li>
               <li>
-                <a href="#market-insights" className="hover:text-white transition-colors">
+                <a
+                  href="/market-insights"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/market-insights", true);
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   Market Insights & Trends
                 </a>
               </li>
               <li>
-                <a href="#export-shipping" className="hover:text-white transition-colors">
+                <a
+                  href="/export-shipping"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/export-shipping", true);
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   Export & Logistics
                 </a>
               </li>
               <li>
-                <a href="#bangladesh-sourcing" className="hover:text-white transition-colors">
+                <a
+                  href="/bangladesh-sourcing"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/bangladesh-sourcing", true);
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   Bangladesh Sourcing
                 </a>
               </li>
               <li>
-                <a href="#global-trade-impact" className="hover:text-white transition-colors">
+                <a
+                  href="/global-trade-impact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/global-trade-impact", true);
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   Global Trade Impact & Data
                 </a>
               </li>
               <li>
                 <button
                   onClick={onOpenCompanyProfile}
-                  className="hover:text-white transition-colors text-left"
+                  className="hover:text-white transition-colors text-left cursor-pointer"
                 >
                   Company Profile (PDF)
                 </button>
               </li>
               <li>
-                <a href="#faq" className="hover:text-white transition-colors">
+                <a
+                  href="/faq"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigateTo("/faq", true);
+                  }}
+                  className="hover:text-white transition-colors"
+                >
                   Sourcing FAQ
                 </a>
               </li>
@@ -283,7 +360,15 @@ export const Footer: React.FC<FooterProps> = ({
             >
               Terms of Sourcing Agency
             </button>
-            <span>Dhaka, Bangladesh</span>
+            <a
+              href={siteConfig.company.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#C89D43] transition-colors flex items-center gap-1 text-[11px]"
+            >
+              <MapPin className="w-3 h-3 text-[#C89D43]" />
+              <span>Dhaka, Bangladesh (Google Maps)</span>
+            </a>
           </div>
         </div>
 

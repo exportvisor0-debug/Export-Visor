@@ -1,6 +1,8 @@
 import React from "react";
 import { siteConfig } from "../config/siteConfig";
 import { CheckCircle2, Shield, Eye, FileSpreadsheet, Anchor, ArrowRight } from "lucide-react";
+import { SectionShareButton } from "./SectionShareButton";
+import { useLanguage } from "../context/LanguageContext";
 
 interface AboutSectionProps {
   onOpenProfile: () => void;
@@ -11,41 +13,32 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   onOpenProfile,
   onRequestQuote,
 }) => {
+  const { t } = useLanguage();
+
   const corePillars = [
     {
-      title: "Supplier Matching & Vetting",
-      description:
-        "We identify suitable Bangladesh tanneries with the machinery, raw hide access, and technical finishing capability aligned with your exact product specifications.",
+      title: t.about.point1Title,
+      description: t.about.point1Desc,
       icon: CheckCircle2,
       color: "bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30",
     },
     {
-      title: "Technical Specification Alignment",
-      description:
-        "Translating buyer tech packs—thickness tolerances, temper, tensile strength, color swatches, and grain selection—directly into actionable production instructions for local tanners.",
+      title: t.about.point2Title,
+      description: t.about.point2Desc,
       icon: FileSpreadsheet,
       color: "bg-blue-500/10 text-blue-600 border border-blue-500/25",
     },
     {
-      title: "Quality & Inspection Coordination",
-      description:
-        "Coordinating stage-by-stage inspections from raw wet blue classification through crust sorting and finished hide calibration to mitigate off-spec risks before packing.",
+      title: t.about.point3Title,
+      description: t.about.point3Desc,
       icon: Eye,
       color: "bg-emerald-500/10 text-emerald-600 border border-emerald-500/25",
     },
     {
-      title: "Order & Production Monitoring",
-      description:
-        "Serving as the buyer's on-the-ground liaison in Bangladesh, tracking chemical batch processing, milling, toggling, and drying schedules to ensure committed timelines.",
+      title: t.about.point4Title,
+      description: t.about.point4Desc,
       icon: Shield,
       color: "bg-purple-500/10 text-purple-600 border border-purple-500/25",
-    },
-    {
-      title: "Export & Documentation Logistics",
-      description:
-        "Facilitating smooth international trade procedures, including Bill of Lading, Certificate of Origin, packing lists, container consolidation, and shipping line coordination.",
-      icon: Anchor,
-      color: "bg-teal-500/10 text-teal-600 border border-teal-500/25",
     },
   ];
 
@@ -55,15 +48,18 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-3">
-            About ExportVisor
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              {t.about.kicker}
+            </div>
+            <SectionShareButton path="/about" sectionName={t.about.kicker} />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight text-balance">
-            Your Dedicated Sourcing Eyes & Technical Hands in{" "}
-            <span className="text-gold-gradient">Bangladesh</span>
+            {t.about.title}{" "}
+            <span className="text-gold-gradient">{t.about.titleHighlight}</span>
           </h2>
           <p className="mt-4 text-base sm:text-lg text-stone-600 leading-relaxed text-pretty">
-            ExportVisor operates as a specialized leather sourcing and export agency based in Bangladesh. We are not a factory or finished goods manufacturer; instead, we represent international buyers, importers, footwear brands, and upholstery producers to navigate the local tannery ecosystem with transparency, technical clarity, and rigorous commercial coordination.
+            {t.about.subtitle}
           </p>
         </div>
 

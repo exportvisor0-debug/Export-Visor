@@ -1,5 +1,6 @@
 import React from "react";
 import { CheckCircle2, Factory, Shield, Layers } from "lucide-react";
+import { SectionShareButton } from "./SectionShareButton";
 
 export const BangladeshAdvantage: React.FC = () => {
   return (
@@ -8,8 +9,11 @@ export const BangladeshAdvantage: React.FC = () => {
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
-            Origin Ecosystem
+          <div className="flex flex-wrap items-center gap-3 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              Origin Ecosystem
+            </div>
+            <SectionShareButton path="/bangladesh-sourcing" sectionName="Bangladesh Sourcing" />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
             Why Global Brands <span className="text-gold-gradient">Source Leather from Bangladesh</span>

@@ -19,9 +19,16 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<SupportedLanguage>("en");
 
-  // Load preferred language from localStorage if present
+  // Load preferred language from URL search param or localStorage
   useEffect(() => {
     try {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get("lang") as SupportedLanguage;
+      if (urlLang && TRANSLATIONS[urlLang]) {
+        setLanguageState(urlLang);
+        return;
+      }
+
       const saved = localStorage.getItem("exportvisor_lang") as SupportedLanguage;
       if (saved && TRANSLATIONS[saved]) {
         setLanguageState(saved);
@@ -34,6 +41,29 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+    // Dynamic SEO synchronization
+    const activeT = TRANSLATIONS[language] || TRANSLATIONS.en;
+    if (activeT && activeT.hero) {
+      if (language === "en") {
+        document.title = "ExportVisor | Bangladesh Leather Sourcing & Export Partner";
+      } else {
+        document.title = `${activeT.hero.headline} | ExportVisor`;
+      }
+
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        metaDesc.setAttribute("content", activeT.hero.subheadline);
+      }
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      if (ogTitle) {
+        ogTitle.setAttribute("content", `${activeT.hero.headline} | ExportVisor`);
+      }
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      if (ogDesc) {
+        ogDesc.setAttribute("content", activeT.hero.subheadline);
+      }
+    }
   }, [language]);
 
   const setLanguage = (lang: SupportedLanguage) => {

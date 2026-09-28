@@ -24,7 +24,8 @@ export type AnalyticsEventName =
   | "product_detail_view"
   | "sample_request_click"
   | "company_profile_view"
-  | "phone_click";
+  | "phone_click"
+  | "share_link_copied";
 
 export function trackEvent(
   eventName: AnalyticsEventName,

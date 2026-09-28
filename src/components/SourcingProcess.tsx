@@ -1,5 +1,7 @@
 import React from "react";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { SectionShareButton } from "./SectionShareButton";
+import { useLanguage } from "../context/LanguageContext";
 
 interface SourcingProcessProps {
   onRequestQuote: () => void;
@@ -8,65 +10,67 @@ interface SourcingProcessProps {
 export const SourcingProcess: React.FC<SourcingProcessProps> = ({
   onRequestQuote,
 }) => {
+  const { t } = useLanguage();
+
   const steps = [
     {
       num: "01",
-      title: "Buyer Inquiry",
-      desc: "Buyer submits target leather type, required quantity, target substance/thickness, finish type, and application requirements.",
+      title: t.process.stage1Title,
+      desc: t.process.stage1Desc,
       color: "from-amber-500 to-amber-600",
     },
     {
       num: "02",
-      title: "Requirement Analysis",
-      desc: "ExportVisor technical team reviews specifications, assessing grain grading tolerances, chemical standards, and color parameters.",
+      title: t.process.stage2Title,
+      desc: t.process.stage2Desc,
       color: "from-emerald-500 to-emerald-600",
     },
     {
       num: "03",
-      title: "Product & Supplier Matching",
-      desc: "We match the requirement with audited Bangladesh tanneries having proven competency and appropriate drumming/finishing lines.",
+      title: t.process.stage3Title,
+      desc: t.process.stage3Desc,
       color: "from-blue-500 to-blue-600",
     },
     {
       num: "04",
-      title: "Sample & Specification Discussion",
-      desc: "Review of physical master swatches, digital technical data sheets, and preparation of counter-samples or reference cuttings.",
+      title: t.process.stage4Title,
+      desc: t.process.stage4Desc,
       color: "from-purple-500 to-purple-600",
     },
     {
       num: "05",
-      title: "Price & Commercial Confirmation",
-      desc: "Formulation of competitive FOB Chittagong or CIF quotations, confirming MOQ, lead times, and LC/TT payment structures.",
+      title: t.process.stage5Title,
+      desc: t.process.stage5Desc,
       color: "from-[#D6AC4B] to-[#B8892E]",
     },
     {
       num: "06",
-      title: "Quality & Inspection Protocol",
-      desc: "Establishment of agreed tolerance thresholds, surface defect criteria, substance uniformity rules, and testing standards.",
+      title: t.process.stage6Title,
+      desc: t.process.stage6Desc,
       color: "from-teal-500 to-teal-600",
     },
     {
       num: "07",
-      title: "Order Formalization",
-      desc: "Proforma Invoice issuance, contract signing, and financial instrument (LC/TT) verification through established banking channels.",
+      title: t.process.stage7Title,
+      desc: t.process.stage7Desc,
       color: "from-indigo-500 to-indigo-600",
     },
     {
       num: "08",
-      title: "Production Coordination",
-      desc: "On-site monitoring of tannery beamhouse operations, re-tanning drum cycles, vacuum drying, toggling, and topcoat finishing.",
+      title: t.process.stage8Title,
+      desc: t.process.stage8Desc,
       color: "from-orange-500 to-orange-600",
     },
     {
       num: "09",
-      title: "Final Pre-Shipment Inspection",
-      desc: "Rigorous hide-by-hide area calibration, rub fastness, finish adhesion, color consistency, and seaworthy packing verification.",
+      title: t.process.stage9Title,
+      desc: t.process.stage9Desc,
       color: "from-emerald-600 to-teal-700",
     },
     {
       num: "10",
-      title: "Export & Shipment Coordination",
-      desc: "Handling customs clearance, container stuffing, Bill of Lading, Certificate of Origin, and export documentation dispatch.",
+      title: t.process.stage10Title,
+      desc: t.process.stage10Desc,
       color: "from-blue-600 to-indigo-700",
     },
   ];
@@ -77,14 +81,17 @@ export const SourcingProcess: React.FC<SourcingProcessProps> = ({
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
-            Structured Workflow
+          <div className="flex flex-wrap items-center gap-3 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              {t.process.kicker}
+            </div>
+            <SectionShareButton path="/sourcing-process" sectionName={t.process.kicker} />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
-            Our 10-Stage <span className="text-gold-gradient">Sourcing & Export Pipeline</span>
+            {t.process.title} <span className="text-gold-gradient">{t.process.titleHighlight}</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-            From initial technical brief to final container seal at the port, ExportVisor coordinates every milestone with structured transparency.
+            {t.process.subtitle}
           </p>
         </div>
 

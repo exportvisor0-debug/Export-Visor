@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { siteConfig } from "../config/siteConfig";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import { SectionShareButton } from "./SectionShareButton";
 
 export const FAQSection: React.FC = () => {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
@@ -58,9 +59,12 @@ export const FAQSection: React.FC = () => {
         
         {/* Header */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
-            <HelpCircle className="w-3.5 h-3.5 text-[#C89D43]" />
-            <span>Commercial Inquiries & Policies</span>
+          <div className="inline-flex items-center gap-3 mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              <HelpCircle className="w-3.5 h-3.5 text-[#C89D43]" />
+              <span>Commercial Inquiries & Policies</span>
+            </div>
+            <SectionShareButton path="/faq" sectionName="FAQ" />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
             Frequently Asked <span className="text-gold-gradient">Questions</span>

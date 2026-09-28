@@ -13,6 +13,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { LeatherGradingGuide } from "./LeatherGradingGuide";
+import { SectionShareButton } from "./SectionShareButton";
 
 interface LeatherKnowledgeHubProps {
   onRequestQuote: (prefill?: string) => void;
@@ -143,8 +144,11 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 gap-6">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider mb-2">
-              B2B Value-Add & Technical Advisory
+            <div className="flex flex-wrap items-center gap-3 mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+                B2B Value-Add & Technical Advisory
+              </div>
+              <SectionShareButton path="/knowledge-hub" sectionName="Knowledge Hub" />
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
               Leather <span className="text-gold-gradient">Knowledge Hub & Specifications</span>

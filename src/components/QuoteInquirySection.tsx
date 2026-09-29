@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { siteConfig } from "../config/siteConfig";
 import { trackEvent } from "../utils/analytics";
+import { useLanguage } from "../context/LanguageContext";
 import {
   Send,
   CheckCircle2,
@@ -26,6 +27,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
   prefilledProduct = "",
   onClearPrefill,
 }) => {
+  const { t, language } = useLanguage();
   const [formData, setFormData] = useState({
     fullName: "",
     companyName: "",
@@ -140,15 +142,15 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
-              Direct Sourcing Desk
+              {t.inquiry.kicker}
             </div>
-            <SectionShareButton path="/quote" sectionName="Request Quote" />
+            <SectionShareButton path="/quote" sectionName={t.inquiry.kicker} />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
-            Request a Quotation & <span className="text-gold-gradient">Leather Specification Review</span>
+            {t.inquiry.title}
           </h2>
           <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-            Submit your technical leather requirements below. Our Bangladesh sourcing team will review tannery feasibility, availability, and prepare an indicative commercial offer.
+            {t.inquiry.subtitle}
           </p>
         </div>
 
@@ -159,10 +161,12 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
             
             <div className="p-6 bg-[#FAF8F5] border border-stone-200/90 rounded-xl space-y-5 shadow-2xs">
               <h3 className="font-display text-xl font-bold text-[#15120E]">
-                Direct Contact Channels
+                {language === "bn" ? "সরাসরি যোগাযোগ মাধ্যম" : "Direct Contact Channels"}
               </h3>
               <p className="text-xs text-stone-600 leading-relaxed">
-                Prefer immediate technical consultation? Connect directly with our team via WhatsApp or email.
+                {language === "bn"
+                  ? "তাৎক্ষণিক টেকনিক্যাল পরামর্শ প্রয়োজন? সরাসরি হোয়াটসঅ্যাপ বা ইমেইলে আমাদের সাথে যোগাযোগ করুন।"
+                  : "Prefer immediate technical consultation? Connect directly with our team via WhatsApp or email."}
               </p>
 
               <div className="space-y-4 pt-1">
@@ -395,12 +399,12 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                   {/* Section 1: Contact Information */}
                   <div>
                     <span className="text-[11px] uppercase font-bold tracking-wider text-stone-400 block mb-3">
-                      1. Company & Contact Details
+                      {language === "bn" ? "১. কোম্পানি ও যোগাযোগের বিবরণ" : "1. Company & Contact Details"}
                     </span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Full Name *
+                          {t.inquiry.nameLabel} *
                         </label>
                         <input
                           type="text"
@@ -408,14 +412,14 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           required
                           value={formData.fullName}
                           onChange={handleChange}
-                          placeholder="e.g. David Vance"
+                          placeholder={t.inquiry.namePlaceholder}
                           className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Company Name *
+                          {t.inquiry.companyLabel} *
                         </label>
                         <input
                           type="text"
@@ -423,14 +427,14 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           required
                           value={formData.companyName}
                           onChange={handleChange}
-                          placeholder="e.g. Vance Leather Footwear Ltd"
+                          placeholder={t.inquiry.companyPlaceholder}
                           className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Country / Region *
+                          {language === "bn" ? "দেশ / অঞ্চল *" : "Country / Region *"}
                         </label>
                         <input
                           type="text"
@@ -438,14 +442,14 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           required
                           value={formData.country}
                           onChange={handleChange}
-                          placeholder="e.g. Italy, Germany, USA, Japan..."
+                          placeholder={language === "bn" ? "উদাঃ ইতালি, জার্মানি, যুক্তরাষ্ট্র, জাপান..." : "e.g. Italy, Germany, USA, Japan..."}
                           className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Business Email *
+                          {t.inquiry.emailLabel} *
                         </label>
                         <input
                           type="email"
@@ -453,21 +457,21 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           required
                           value={formData.email}
                           onChange={handleChange}
-                          placeholder="sourcing@company.com"
+                          placeholder={t.inquiry.emailPlaceholder}
                           className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
                       <div className="sm:col-span-2">
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          WhatsApp / Phone Number
+                          {t.inquiry.phoneLabel}
                         </label>
                         <input
                           type="text"
                           name="phone"
                           value={formData.phone}
                           onChange={handleChange}
-                          placeholder="+1 (555) 000-0000 (includes country code)"
+                          placeholder={t.inquiry.phonePlaceholder}
                           className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
@@ -477,13 +481,13 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                   {/* Section 2: Leather Specification */}
                   <div className="pt-2 border-t border-stone-200">
                     <span className="text-[11px] uppercase font-bold tracking-wider text-stone-400 block mb-3">
-                      2. Leather Requirements
+                      {language === "bn" ? "২. চামড়ার স্পেসিফিকেশন ও প্রয়োজনীয়তা" : "2. Leather Requirements"}
                     </span>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                       
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Leather Category
+                          {t.inquiry.leatherTypeLabel}
                         </label>
                         <select
                           name="product"
@@ -491,35 +495,35 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                           onChange={handleChange}
                           className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         >
-                          <option value="Crust Leather">Crust Leather</option>
-                          <option value="Finished Leather">Finished Leather</option>
-                          <option value="Wet Blue Leather">Wet Blue Leather</option>
-                          <option value="Full Grain Leather">Full Grain Leather</option>
-                          <option value="Top Grain Leather">Top Grain Leather</option>
-                          <option value="Corrected Grain Leather">Corrected Grain Leather</option>
-                          <option value="Aniline & Semi-Aniline">Aniline & Semi-Aniline</option>
-                          <option value="Pigmented Leather">Pigmented Leather</option>
-                          <option value="Buyer-Specified Custom Leather">Buyer-Specified Custom Leather</option>
+                          <option value="Crust Leather">{language === "bn" ? "ক্রাস্ট লেদার (Crust Leather)" : "Crust Leather"}</option>
+                          <option value="Finished Leather">{language === "bn" ? "ফিনিশড লেদার (Finished Leather)" : "Finished Leather"}</option>
+                          <option value="Wet Blue Leather">{language === "bn" ? "ওয়েট ব্লু লেদার (Wet Blue Leather)" : "Wet Blue Leather"}</option>
+                          <option value="Full Grain Leather">{language === "bn" ? "ফুল গ্রেইন লেদার (Full Grain)" : "Full Grain Leather"}</option>
+                          <option value="Top Grain Leather">{language === "bn" ? "টপ গ্রেইন লেদার (Top Grain)" : "Top Grain Leather"}</option>
+                          <option value="Corrected Grain Leather">{language === "bn" ? "কারেক্টেড গ্রেইন লেদার" : "Corrected Grain Leather"}</option>
+                          <option value="Aniline & Semi-Aniline">{language === "bn" ? "অ্যানিলিন ও সেমি-অ্যানিলিন" : "Aniline & Semi-Aniline"}</option>
+                          <option value="Pigmented Leather">{language === "bn" ? "পিগমেন্টেড লেদার" : "Pigmented Leather"}</option>
+                          <option value="Buyer-Specified Custom Leather">{language === "bn" ? "বায়ার-নির্দিষ্ট কাস্টম চামড়া" : "Buyer-Specified Custom Leather"}</option>
                         </select>
                       </div>
 
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Required Quantity (sq ft)
+                          {t.inquiry.quantityLabel}
                         </label>
                         <input
                           type="text"
                           name="quantity"
                           value={formData.quantity}
                           onChange={handleChange}
-                          placeholder="e.g. 10,000 sq ft or 20ft FCL"
+                          placeholder={t.inquiry.quantityPlaceholder}
                           className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Target Thickness
+                          {language === "bn" ? "কাঙ্ক্ষিত পুরুত্ব (Thickness)" : "Target Thickness"}
                         </label>
                         <input
                           type="text"
@@ -533,7 +537,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
 
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Preferred Color / Shade
+                          {language === "bn" ? "পছন্দের রঙ / শেড" : "Preferred Color / Shade"}
                         </label>
                         <input
                           type="text"
@@ -547,7 +551,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
 
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Finish / Surface Type
+                          {language === "bn" ? "ফিনিশিং / সারফেস ধরন" : "Finish / Surface Type"}
                         </label>
                         <input
                           type="text"
@@ -561,14 +565,14 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
 
                       <div>
                         <label className="block text-xs font-medium text-stone-700 mb-1">
-                          Target Price (USD/sq ft)
+                          {language === "bn" ? "টার্গেট মূল্য (USD/বর্গফুট)" : "Target Price (USD/sq ft)"}
                         </label>
                         <input
                           type="text"
                           name="targetPrice"
                           value={formData.targetPrice}
                           onChange={handleChange}
-                          placeholder="Optional (e.g. $1.05)"
+                          placeholder={language === "bn" ? "ঐচ্ছিক (উদাঃ $১.০৫)" : "Optional (e.g. $1.05)"}
                           className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                         />
                       </div>
@@ -580,28 +584,28 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                   <div className="pt-2 border-t border-stone-200 space-y-4">
                     <div>
                       <label className="block text-xs font-medium text-stone-700 mb-1">
-                        Intended Application
+                        {language === "bn" ? "ব্যবহারের ক্ষেত্র (Application)" : "Intended Application"}
                       </label>
                       <input
                         type="text"
                         name="application"
                         value={formData.application}
                         onChange={handleChange}
-                        placeholder="e.g. Footwear Uppers, Handbags, Small Leather Goods, Furniture Upholstery..."
+                        placeholder={language === "bn" ? "উদাঃ জুতা (Footwear), ব্যাগ, লেদার গুডস, আসবাবপত্র..." : "e.g. Footwear Uppers, Handbags, Small Leather Goods, Furniture Upholstery..."}
                         className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                       />
                     </div>
 
                     <div>
                       <label className="block text-xs font-medium text-stone-700 mb-1">
-                        Additional Specifications, Grading Expectations or Message
+                        {t.inquiry.detailsLabel}
                       </label>
                       <textarea
                         name="message"
                         rows={3}
                         value={formData.message}
                         onChange={handleChange}
-                        placeholder="Specify any special tests, grain selection ratio (TR, A/B/C), destination port, or sampling requests..."
+                        placeholder={t.inquiry.detailsPlaceholder}
                         className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                       />
                     </div>
@@ -609,7 +613,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                     {/* File Attachment Simulation */}
                     <div>
                       <label className="block text-xs font-medium text-stone-700 mb-1">
-                        Reference Tech Pack / Swatch Photo (Optional)
+                        {language === "bn" ? "রেফারেন্স টেক প্যাক / সোয়াচ ফটো (ঐচ্ছিক)" : "Reference Tech Pack / Swatch Photo (Optional)"}
                       </label>
                       <div className="border border-dashed border-stone-300 rounded-md p-3 bg-white text-center hover:bg-stone-50 transition-colors relative cursor-pointer">
                         <input
@@ -620,7 +624,11 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                         />
                         <div className="flex items-center justify-center gap-2 text-xs text-stone-500">
                           <UploadCloud className="w-4 h-4 text-[#C89D43]" />
-                          <span>Click to attach specifications or photos (PDF, PNG, JPG)</span>
+                          <span>
+                            {language === "bn"
+                              ? "স্পেসিফিকেশন ফাইল বা ছবি সংযুক্ত করতে ক্লিক করুন (PDF, PNG, JPG)"
+                              : "Click to attach specifications or photos (PDF, PNG, JPG)"}
+                          </span>
                         </div>
                       </div>
 
@@ -647,10 +655,12 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                       className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-xl transition-all shadow-gold-subtle hover:shadow-gold-glow cursor-pointer"
                     >
                       <Send className="w-4 h-4 text-[#15120E]" />
-                      <span>Send Sourcing Inquiry to ExportVisor</span>
+                      <span>{t.inquiry.submitBtn}</span>
                     </button>
                     <p className="text-center text-[11px] text-stone-500 mt-2">
-                      Inquiries are handled strictly confidentially. Commercial terms confirmed upon technical review.
+                      {language === "bn"
+                        ? "অনুসন্ধান সম্পূর্ণ গোপনীয়তার সাথে পরিচালনা করা হয়। টেকনিক্যাল পর্যালোচনার পর বাণিজ্যিক শর্তাবলী নিশ্চিত করা হয়।"
+                        : "Inquiries are handled strictly confidentially. Commercial terms confirmed upon technical review."}
                     </p>
                   </div>
 

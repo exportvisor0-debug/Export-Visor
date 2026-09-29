@@ -38,7 +38,7 @@ export const es: TranslationDictionary = {
     "titleHighlight": "Bangladés",
     "subtitle": "Enlace directo entre marcas internacionales y curtidurías homologadas en Savar, Daca. Máxima transparencia, auditoría en planta y coordinación logística integral.",
     "point1Title": "Acceso Directo a Curtidurías",
-    "point1Desc": "Sin intermediarios. Trato directo con curtidurías ISO y LWG a precios reales de fábrica.",
+    "point1Desc": "Sin intermediarios. Trato directo con curtidurías de exportación verificadas a precios reales de fábrica.",
     "point2Title": "Calibración Técnica Exacta",
     "point2Desc": "Control milimétrico de grosor (±0,1 mm), flor natural, resistencia a la tracción e igualación de color.",
     "point3Title": "Inspección AQL 2.5 en Planta",

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { siteConfig } from "../config/siteConfig";
 import { trackEvent } from "../utils/analytics";
 import { navigateTo } from "../utils/router";
+import { useLanguage } from "../context/LanguageContext";
 import {
   Mail,
   Phone,
@@ -23,6 +24,7 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenCompanyProfile,
   onRequestQuote,
 }) => {
+  const { t, language } = useLanguage();
   const [legalModal, setLegalModal] = useState<"privacy" | "terms" | null>(null);
 
   return (
@@ -46,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({
             </div>
 
             <p className="text-xs text-stone-400 leading-relaxed max-w-sm">
-              Bangladesh-based B2B leather sourcing and export agency. We connect international buyers with reliable tanneries in Bangladesh, facilitating technical specification matching, quality inspection coordination, and seamless export management.
+              {t.footer.desc}
             </p>
 
             <div className="pt-2 text-xs text-stone-400 space-y-2">
@@ -62,7 +64,7 @@ export const Footer: React.FC<FooterProps> = ({
                   >
                     <span>{siteConfig.company.address}</span>
                     <span className="text-[11px] text-[#C89D43] hover:underline font-semibold block mt-0.5">
-                      Open in Google Maps ↗
+                      {t.footer.openInMaps} ↗
                     </span>
                   </a>
                 </div>
@@ -131,7 +133,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 2: Leather Scope (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
             <h4 className="text-xs uppercase font-bold tracking-wider text-white">
-              Leather Sourcing Scope
+              {t.footer.categories}
             </h4>
             <ul className="text-xs text-stone-400 space-y-2">
               <li>
@@ -139,7 +141,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onRequestQuote("Crust Leather")}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Crust Leather (Natural & Milling)
+                  {language === "bn" ? "ক্রাস্ট লেদার (ন্যাচারাল ও মিলিং)" : "Crust Leather (Natural & Milling)"}
                 </button>
               </li>
               <li>
@@ -147,7 +149,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onRequestQuote("Finished Leather")}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Finished Leather (Full / Top Grain)
+                  {language === "bn" ? "ফিনিশড লেদার (ফুল ও টপ গ্রেইন)" : "Finished Leather (Full / Top Grain)"}
                 </button>
               </li>
               <li>
@@ -155,7 +157,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onRequestQuote("Wet Blue Leather")}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Wet Blue Chrome Tanned Hides
+                  {language === "bn" ? "ওয়েট ব্লু ক্রোম ট্যানড হাইডস" : "Wet Blue Chrome Tanned Hides"}
                 </button>
               </li>
               <li>
@@ -163,7 +165,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onRequestQuote("Aniline & Semi-Aniline")}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Aniline & Semi-Aniline Leather
+                  {language === "bn" ? "অ্যানিলিন ও সেমি-অ্যানিলিন লেদার" : "Aniline & Semi-Aniline Leather"}
                 </button>
               </li>
               <li>
@@ -171,7 +173,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onRequestQuote("Corrected Grain Leather")}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Corrected Grain & Embossed
+                  {language === "bn" ? "কারেক্টেড গ্রেইন ও এমবসিং" : "Corrected Grain & Embossed"}
                 </button>
               </li>
               <li>
@@ -179,7 +181,7 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onRequestQuote("Custom Sourcing")}
                   className="hover:text-white transition-colors text-left"
                 >
-                  Buyer Custom Specification
+                  {language === "bn" ? "বায়ার কাস্টম স্পেসিফিকেশন" : "Buyer Custom Specification"}
                 </button>
               </li>
             </ul>
@@ -188,7 +190,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Col 3: Company & Process (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-xs uppercase font-bold tracking-wider text-white">
-              Company
+              {t.footer.quickLinks}
             </h4>
             <ul className="text-xs text-stone-400 space-y-2">
               <li>
@@ -200,7 +202,7 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="hover:text-white transition-colors"
                 >
-                  About ExportVisor
+                  {language === "bn" ? "আমাদের পরিচিতি" : "About ExportVisor"}
                 </a>
               </li>
               <li>
@@ -212,7 +214,7 @@ export const Footer: React.FC<FooterProps> = ({
                   }}
                   className="hover:text-white transition-colors"
                 >
-                  10-Stage Process
+                  {language === "bn" ? "১০-ধাপের প্রক্রিয়া" : "10-Stage Process"}
                 </a>
               </li>
               <li>
@@ -346,19 +348,19 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Strip */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
-          <p>© 2026 ExportVisor. All rights reserved.</p>
+          <p>© 2026 ExportVisor. {t.footer.allRightsReserved}</p>
           <div className="flex items-center gap-6">
             <button
               onClick={() => setLegalModal("privacy")}
               className="hover:text-stone-400 transition-colors"
             >
-              Privacy Policy
+              {language === "bn" ? "গোপনীয়তা নীতি" : "Privacy Policy"}
             </button>
             <button
               onClick={() => setLegalModal("terms")}
               className="hover:text-stone-400 transition-colors"
             >
-              Terms of Sourcing Agency
+              {language === "bn" ? "বাণিজ্যিক শর্তাবলী" : "Terms of Sourcing Agency"}
             </button>
             <a
               href={siteConfig.company.mapsUrl}
@@ -367,7 +369,7 @@ export const Footer: React.FC<FooterProps> = ({
               className="hover:text-[#C89D43] transition-colors flex items-center gap-1 text-[11px]"
             >
               <MapPin className="w-3 h-3 text-[#C89D43]" />
-              <span>Dhaka, Bangladesh (Google Maps)</span>
+              <span>{language === "bn" ? "ঢাকা, বাংলাদেশ (গুগল ম্যাপস)" : "Dhaka, Bangladesh (Google Maps)"}</span>
             </a>
           </div>
         </div>

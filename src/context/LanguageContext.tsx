@@ -70,6 +70,13 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     setLanguageState(lang);
     try {
       localStorage.setItem("exportvisor_lang", lang);
+      const url = new URL(window.location.href);
+      if (lang === "en") {
+        url.searchParams.delete("lang");
+      } else {
+        url.searchParams.set("lang", lang);
+      }
+      window.history.replaceState(null, "", url.toString());
     } catch {
       // ignore
     }

@@ -604,7 +604,7 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
           <span>Piece-by-piece inspection report & grading distribution sheet attached to each dispatch document.</span>
         </div>
-        <span className="font-mono text-stone-400">Tolerance: SATRA / ISO 3377-2 / IUP Benchmarks</span>
+        <span className="font-mono text-stone-400">Tolerance: SATRA / IUP Physical Testing Standards</span>
       </div>
 
     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import {
   ResponsiveContainer,
   AreaChart,
@@ -172,6 +173,7 @@ interface GlobalTradeImpactProps {
 export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
   onRequestQuote,
 }) => {
+  const { t, language } = useLanguage();
   const [activeChart, setActiveChart] = useState<"volume" | "destinations" | "growth">("volume");
 
   return (
@@ -188,15 +190,15 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
                 <Globe2 className="w-3.5 h-3.5 text-[#C89D43]" />
-                <span>International Trade Footprint</span>
+                <span>{t.globalTrade.kicker}</span>
               </div>
-              <SectionShareButton path="/global-trade-impact" sectionName="Global Trade Impact" />
+              <SectionShareButton path="/global-trade-impact" sectionName={t.globalTrade.kicker} />
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight">
-              Global Trade Impact & <span className="text-gold-gradient">Sourcing Volumes</span>
+              {t.globalTrade.title} <span className="text-gold-gradient">{t.globalTrade.titleHighlight}</span>
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed max-w-2xl">
-              Real-world metrics tracking our coordinated leather export throughput, container dispatch reliability from Chattogram Port, and expanding footprint across 28+ destination economies.
+              {t.globalTrade.subtitle}
             </p>
           </div>
 
@@ -208,7 +210,7 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                 onClick={() => onRequestQuote("Inquiry: High Volume Annual Sourcing Contract")}
                 className="inline-flex items-center gap-2 px-5 py-3 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-xl transition-all shadow-gold-subtle hover:shadow-gold-glow cursor-pointer whitespace-nowrap"
               >
-                <span>Plan Batch Allocation</span>
+                <span>{language === "bn" ? "ব্যাচ বণ্টন পরিকল্পনা" : "Plan Batch Allocation"}</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-[#15120E]" />
               </button>
             )}

@@ -2,54 +2,52 @@ import React, { useState } from "react";
 import { siteConfig } from "../config/siteConfig";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
+import { useLanguage } from "../context/LanguageContext";
 
 export const FAQSection: React.FC = () => {
+  const { t, language } = useLanguage();
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
-  const faqs = [
+  const localizedFaqs = [
     {
-      q: "What leather types does ExportVisor source from Bangladesh?",
-      a: "ExportVisor specializes strictly in leather sourcing. We coordinate supply for Wet Blue, Crust Leather (natural, milling, vegetable, and chrome tanned), Finished Leather (Full Grain, Top Grain, Corrected Grain), Aniline & Semi-Aniline, and Pigmented leathers from reputable Bangladesh tanneries based on buyer technical requirements.",
+      q: t.faq.q1,
+      a: t.faq.a1,
     },
     {
-      q: "What is the Minimum Order Quantity (MOQ)?",
-      a: "Minimum Order Quantities (MOQ) are evaluated on a Request for Quotation (RFQ) basis. They depend on the specific leather grade, tannage type (wet blue, crust, or finished), color selection, and tannery drum capacities. We evaluate each buyer requirement to recommend viable lot sizes.",
+      q: t.faq.q2,
+      a: t.faq.a2,
     },
     {
-      q: "How is leather pricing determined?",
-      a: "Pricing is calculated strictly upon submission of an RFQ. It is governed by raw hide selection, substance/thickness tolerances, finish complexity, chemical standards, testing requirements, and overall order volume.",
+      q: t.faq.q3,
+      a: t.faq.a3,
     },
     {
-      q: "Can buyers request specific custom leather specifications and colors?",
-      a: "Yes. Sourcing to exact buyer specifications is our core business. Buyers can provide target thickness (e.g. 1.1–1.3 mm, 1.4–1.6 mm), temper (soft, medium, firm), grain pattern, and master Pantone references or physical cuttings. We coordinate counter-sample development with matching local tanneries.",
+      q: t.faq.q4,
+      a: t.faq.a4,
     },
     {
-      q: "Can international buyers request leather samples before committing to bulk orders?",
-      a: "Yes. Swatches and reference cuttings can be coordinated for technical review. Once specifications and commercial terms are aligned, counter-samples can be developed and dispatched via express international courier for your testing and approval.",
+      q: t.faq.q5,
+      a: t.faq.a5,
     },
     {
-      q: "What is the typical production lead time?",
-      a: "Production lead times depend on the RFQ specifics—such as whether raw hides are in stock or require fresh sorting, beamhouse drum cycles, lab dip/counter-sample approvals, and overall order yardage. A realistic delivery schedule is provided with your quotation.",
+      q: t.faq.q6,
+      a: t.faq.a6,
     },
     {
-      q: "What international payment terms are accepted?",
-      a: "Transactions are conducted using standard international commercial instruments: Irrevocable Letter of Credit at sight (LC) or Telegraphic Transfer (TT) through recognized international commercial banks.",
+      q: language === "bn"
+        ? "বায়াররা কি নির্দিষ্ট চামড়ার স্পেসিফিকেশন ও কাস্টম কালার দিতে পারেন?"
+        : "Can buyers request specific custom leather specifications and colors?",
+      a: language === "bn"
+        ? "হ্যাঁ। বায়ারের সুনির্দিষ্ট টেকনিক্যাল স্পেসিফিকেশন অনুযায়ী চামড়া সোর্সিং আমাদের মূল কাজ। বায়াররা নির্ধারিত পুরুত্ব (উদাঃ ১.১–১.৩ মিমি), টেম্পার, গ্রেইন প্যাটার্ন এবং প্যানটোন কোড বা কাটিং পাঠালে আমরা নমুনা প্রস্তুত করি।"
+        : "Yes. Sourcing to exact buyer specifications is our core business. Buyers can provide target thickness (e.g. 1.1–1.3 mm, 1.4–1.6 mm), temper (soft, medium, firm), grain pattern, and master Pantone references or physical cuttings. We coordinate counter-sample development with matching local tanneries.",
     },
     {
-      q: "Can buyers arrange on-site or third-party inspections?",
-      a: "Absolutely. ExportVisor provides internal buyer-aligned inspection coordination at the tannery level throughout the tanning, finishing, and packing stages. In addition, international third-party inspection firms (such as SGS, Intertek, or Bureau Veritas) can be facilitated upon buyer request.",
-    },
-    {
-      q: "Is ExportVisor a leather goods manufacturer or a sourcing partner?",
-      a: "ExportVisor is specifically a leather sourcing and export agency in Bangladesh. We focus exclusively on sourcing and exporting genuine leather (wet blue, crust, and finished hides) and do not position ourselves as finished footwear or handbag makers.",
-    },
-    {
-      q: "How does ExportVisor support international buyers?",
-      a: "We act as your local sourcing team in Bangladesh: identifying capable tanneries, negotiating indicative terms, communicating technical tech packs in detail, overseeing production schedules, supervising multi-point quality checks, and managing export documentation.",
-    },
-    {
-      q: "How can I contact ExportVisor to request a quotation?",
-      a: "You can submit an inquiry through our online Request a Quote system, email us directly at info@exportvisor.com, or message our team on WhatsApp at +880 1570-264394. We respond promptly with technical feedback and commercial feasibility.",
+      q: language === "bn"
+        ? "উৎপাদনের সাধারণ লিড টাইম কতদিন?"
+        : "What is the typical production lead time?",
+      a: language === "bn"
+        ? "অর্ডারের পরিধি, ড্রাম সাইজ ও ল্যাব-ডিপ অনুমোদনের ওপর ভিত্তি করে সাধারণত ক্রাস্ট ও ওয়েট ব্লুর ক্ষেত্রে ১৫–২৫ দিন এবং ফিনিশড চামড়ার ক্ষেত্রে ২৫–৩৫ দিনের মধ্যে উৎপাদন সম্পন্ন হয়।"
+        : "Production lead times depend on the RFQ specifics—such as whether raw hides are in stock or require fresh sorting, beamhouse drum cycles, lab dip/counter-sample approvals, and overall order yardage. A realistic delivery schedule is provided with your quotation.",
     },
   ];
 
@@ -62,21 +60,21 @@ export const FAQSection: React.FC = () => {
           <div className="inline-flex items-center gap-3 mb-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               <HelpCircle className="w-3.5 h-3.5 text-[#C89D43]" />
-              <span>Commercial Inquiries & Policies</span>
+              <span>{t.faq.kicker}</span>
             </div>
-            <SectionShareButton path="/faq" sectionName="FAQ" />
+            <SectionShareButton path="/faq" sectionName={t.faq.kicker} />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
-            Frequently Asked <span className="text-gold-gradient">Questions</span>
+            {t.faq.title} <span className="text-gold-gradient">{t.faq.titleHighlight}</span>
           </h2>
           <p className="mt-3 text-sm text-stone-600 max-w-xl mx-auto leading-relaxed">
-            Direct, factual answers regarding sourcing procedures, minimum orders, commercial benchmarks, and export logistics.
+            {t.faq.subtitle}
           </p>
         </div>
 
         {/* Accordion List */}
         <div className="divide-y divide-stone-200 border-t border-b border-stone-200">
-          {faqs.map((faq, index) => {
+          {localizedFaqs.map((faq, index) => {
             const isOpen = openIdx === index;
             return (
               <div key={index} className="py-4">

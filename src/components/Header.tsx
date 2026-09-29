@@ -42,6 +42,7 @@ export const Header: React.FC<HeaderProps> = ({
   const navLinks = [
     { label: t.nav.about, path: "/about" },
     { label: t.nav.leather, path: "/products" },
+    { label: language === "bn" ? "লেদার গাইড" : "Glossary", path: "/glossary" },
     { label: t.nav.terms, path: "/terms" },
     { label: t.nav.knowledge, path: "/knowledge-hub" },
     { label: t.nav.process, path: "/sourcing-process" },

@@ -13,7 +13,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
   onOpenProfile,
   onRequestQuote,
 }) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const corePillars = [
     {
@@ -70,38 +70,67 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           <div className="lg:col-span-5 space-y-6">
             <div className="p-6 bg-stone-50/80 border border-stone-200/90 rounded-xl shadow-2xs">
               <h3 className="font-display text-2xl font-bold text-[#15120E] mb-3">
-                Why International Buyers Need an On-the-Ground Partner
+                {language === "bn"
+                  ? "আন্তর্জাতিক ক্রেতাদের সরাসরি গ্রাউন্ড পার্টনার কেন প্রয়োজন"
+                  : "Why International Buyers Need an On-the-Ground Partner"}
               </h3>
               <p className="text-sm text-stone-600 leading-relaxed mb-4">
-                Sourcing leather across borders often involves hurdles in technical communication, variable tannage grades, ambiguous lead times, and verification challenges.
+                {language === "bn"
+                  ? "আন্তর্জাতিকভাবে চামড়া ক্রয়ের ক্ষেত্রে টেকনিক্যাল যোগাযোগ, বিভিন্ন ট্যানারির মানের তারতম্য, অনিশ্চিত লিড টাইম ও মানের যাচাই সংক্রান্ত নানা প্রতিবন্ধকতা তৈরি হয়।"
+                  : "Sourcing leather across borders often involves hurdles in technical communication, variable tannage grades, ambiguous lead times, and verification challenges."}
               </p>
               <p className="text-sm text-stone-600 leading-relaxed mb-4">
-                ExportVisor solves this by functioning as your local sourcing arm. We ensure your specifications—from substance measurement to shade continuity—are strictly understood, monitored, and inspected directly at the tannery level before the container seals are locked.
+                {language === "bn"
+                  ? "এক্সপোর্টভাইজর আপনার স্থানীয় সোর্সিং প্রতিনিধি হিসেবে কাজ করে। আমরা চামড়ার পুরুত্ব থেকে শুরু করে শেডের ধারাবাহিকতা—প্রতিটি স্পেসিফিকেশন সরাসরি সাভারের ফ্যাক্টরি ফ্লোরে কঠোরভাবে পর্যবেক্ষণ ও অনুমোদন করি।"
+                  : "ExportVisor solves this by functioning as your local sourcing arm. We ensure your specifications—from substance measurement to shade continuity—are strictly understood, monitored, and inspected directly at the tannery level before the container seals are locked."}
               </p>
               <div className="pt-3 border-t border-stone-200 flex items-center justify-between text-xs text-stone-500">
-                <span className="font-medium">Scope: Leather Only</span>
+                <span className="font-medium">
+                  {language === "bn" ? "কাজের ক্ষেত্র: চামড়া রপ্তানি" : "Scope: Leather Only"}
+                </span>
                 <span className="font-bold text-[#7A5A17] px-2 py-0.5 rounded bg-[#C89D43]/15">
-                  Wet Blue · Crust · Finished
+                  {language === "bn" ? "ওয়েট ব্লু · ক্রাস্ট · ফিনিশড" : "Wet Blue · Crust · Finished"}
                 </span>
               </div>
             </div>
 
             <div className="p-6 border border-stone-200 rounded-xl space-y-4 bg-white shadow-2xs">
               <h4 className="text-xs uppercase tracking-wider text-stone-500 font-bold">
-                Our Operating Principles
+                {language === "bn" ? "আমাদের মূল পরিচালন নীতিমালা" : "Our Operating Principles"}
               </h4>
               <ul className="text-xs text-stone-600 space-y-3">
                 <li className="flex items-start gap-2.5">
                   <span className="w-4 h-4 rounded-full bg-[#C89D43]/20 text-[#C89D43] flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">✓</span>
-                  <span><strong className="text-stone-800">Buyer-Centric:</strong> We represent your interests, your tolerance standards, and your inspection protocols.</span>
+                  <span>
+                    <strong className="text-stone-800">
+                      {language === "bn" ? "ক্রেতা-কেন্দ্রিক:" : "Buyer-Centric:"}
+                    </strong>{" "}
+                    {language === "bn"
+                      ? "আমরা আপনার স্বার্থ, নির্দিষ্ট টলারেন্স মানদণ্ড এবং অন-সাইট মান নিয়ন্ত্রণ নিরীক্ষা নিশ্চিত করি।"
+                      : "We represent your interests, your tolerance standards, and your inspection protocols."}
+                  </span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="w-4 h-4 rounded-full bg-[#C89D43]/20 text-[#C89D43] flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">✓</span>
-                  <span><strong className="text-stone-800">Zero Exaggeration:</strong> Factual reporting on tannery capabilities, lead times, and raw material availability.</span>
+                  <span>
+                    <strong className="text-stone-800">
+                      {language === "bn" ? "সঠিক তথ্য ও বাস্তবতা:" : "Zero Exaggeration:"}
+                    </strong>{" "}
+                    {language === "bn"
+                      ? "ট্যানারির প্রকৃত সক্ষমতা, কাঁচামালের প্রাপ্যতা ও সুনির্দিষ্ট উৎপাদন সময়সীমার সত্য রিপোর্ট।"
+                      : "Factual reporting on tannery capabilities, lead times, and raw material availability."}
+                  </span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="w-4 h-4 rounded-full bg-[#C89D43]/20 text-[#C89D43] flex items-center justify-center font-bold text-[10px] shrink-0 mt-0.5">✓</span>
-                  <span><strong className="text-stone-800">Commercial Clarity:</strong> Transparent quotations based on current tannery benchmarks and actual grade yields.</span>
+                  <span>
+                    <strong className="text-stone-800">
+                      {language === "bn" ? "বাণিজ্যিক স্বচ্ছতা:" : "Commercial Clarity:"}
+                    </strong>{" "}
+                    {language === "bn"
+                      ? "ফ্যাক্টরি ভিত্তিক মূল্য প্রস্তাবনা এবং নিশ্চিত চামড়া সিলেকশন ফলনের সরাসরি কোটেশন।"
+                      : "Transparent quotations based on current tannery benchmarks and actual grade yields."}
+                  </span>
                 </li>
               </ul>
               <div className="pt-2">
@@ -109,7 +138,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                   onClick={onOpenProfile}
                   className="inline-flex items-center text-xs font-bold text-[#C89D43] hover:text-[#A67C24] transition-colors cursor-pointer group"
                 >
-                  <span>Read Full Company Profile</span>
+                  <span>{language === "bn" ? "সম্পূর্ণ কোম্পানি প্রোফাইল দেখুন" : "Read Full Company Profile"}</span>
                   <ArrowRight className="w-3.5 h-3.5 ml-1 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
@@ -120,7 +149,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           <div className="lg:col-span-7 space-y-4">
             <h3 className="text-xs uppercase tracking-wider text-stone-500 font-bold mb-4 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#C89D43]" />
-              How We Coordinate Buyer Operations
+              {language === "bn" ? "কীভাবে আমরা বায়ার অপারেশন সমন্বয় করি" : "How We Coordinate Buyer Operations"}
             </h3>
 
             <div className="space-y-3">
@@ -154,15 +183,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               })}
             </div>
 
-            <div className="pt-4 flex items-center justify-between">
+            <div className="pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <span className="text-xs text-stone-500 font-medium">
-                Ready to review specifications with our Bangladesh team?
+                {language === "bn"
+                  ? "আমাদের বাংলাদেশ টিমের সাথে স্পেসিফিকেশন পর্যালোচনা করতে চান?"
+                  : "Ready to review specifications with our Bangladesh team?"}
               </span>
               <button
                 onClick={onRequestQuote}
                 className="text-xs font-bold text-[#C89D43] hover:text-[#A67C24] underline underline-offset-4 transition-colors cursor-pointer"
               >
-                Submit Your Requirements →
+                {language === "bn" ? "আপনার রিকোয়ারমেন্ট পাঠান →" : "Submit Your Requirements →"}
               </button>
             </div>
 

@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import { siteConfig } from "../config/siteConfig";
 import { trackEvent } from "../utils/analytics";
 import { useLanguage } from "../context/LanguageContext";
-import { heroLeatherImg, heroExportImg } from "../data/products";
+import {
+  heroLeatherImg,
+  heroExportImg,
+  crustLeatherImg,
+  finishedAnilineImg,
+  wetBlueImg,
+} from "../data/products";
 import {
   ArrowUpRight,
   ShieldCheck,
@@ -15,8 +21,11 @@ import {
   Sparkles,
   MessageCircle,
   ChevronRight,
+  ChevronLeft,
   Building2,
   ExternalLink,
+  Play,
+  Pause,
 } from "lucide-react";
 
 interface HeroProps {
@@ -25,6 +34,39 @@ interface HeroProps {
   onOpenCompanyProfile?: () => void;
 }
 
+const HERO_SLIDES = [
+  {
+    id: "slide-inspection",
+    image: heroLeatherImg,
+    caption: "Precision Leather Substance Calibration & Grain Inspection · Savar, Dhaka",
+    alt: "ExportVisor artisan leather inspection and thickness calibration in Savar, Bangladesh",
+  },
+  {
+    id: "slide-wet-blue",
+    image: wetBlueImg,
+    caption: "Hydrated Wet Blue Cow Hides · Primary Chrome Tannage",
+    alt: "Wet blue hydrated cow hides ready for international export and re-tanning",
+  },
+  {
+    id: "slide-crust",
+    image: crustLeatherImg,
+    caption: "Drum-Dyed Crust Leather Conditioning · Ready for Finishing",
+    alt: "Natural crust leather hides stacked after drum tanning in Bangladesh tannery",
+  },
+  {
+    id: "slide-aniline",
+    image: finishedAnilineImg,
+    caption: "Luxury Aniline & Semi-Aniline Finished Leather Rolls",
+    alt: "Premium aniline finished leather rolls in rich earthy tones",
+  },
+  {
+    id: "slide-export",
+    image: heroExportImg,
+    caption: "Chittagong Port (BDCGP) Container Stuffing & Maritime Dispatch",
+    alt: "Maritime cargo container export logistics from Chittagong Port (BDCGP)",
+  },
+];
+
 export const Hero: React.FC<HeroProps> = ({
   onExploreLeather,
   onRequestQuote,
@@ -32,17 +74,17 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
   const { t, language } = useLanguage();
   const [activeVisualTab, setActiveVisualTab] = useState<"inspection" | "shipping">("inspection");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Dynamic headline & subheadline tailored to high-converting international B2B buyer brief
-  const headline =
-    language === "en"
-      ? "Premier Leather Sourcing & Export Partner from Bangladesh to the World"
-      : t.hero.headline;
-
-  const subheadline =
-    language === "en"
-      ? "ExportVisor connects international footwear brands, luxury leather goods manufacturers, and global trade importers directly with vetted, LWG-compliant tanneries in Bangladesh. We oversee rigorous AQL 2.5 on-site quality inspections, negotiate direct factory-floor pricing, and coordinate secure port-to-port export logistics."
-      : t.hero.subheadline;
+  // Background slider autoplay with clean cleanup
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
 
   // Stagger animation variants
   const containerVariants: Variants = {
@@ -66,13 +108,41 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-22 border-b border-stone-200/80 bg-gradient-to-b from-[#FAF8F5] via-[#F6F3EE] to-[#FAF8F5]">
-      {/* Subtle architectural ambient grid & warm radial glow */}
-      <div className="absolute inset-0 pointer-events-none opacity-45 bg-[radial-gradient(#C89D43_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_35%,#000_70%,transparent_100%)]" />
-      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#D6AC4B]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#C89D43]/10 rounded-full blur-3xl pointer-events-none" />
+    <section id="hero" className="relative overflow-hidden pt-8 pb-16 lg:pt-14 lg:pb-20 border-b border-stone-200/80 bg-gradient-to-b from-[#FAF8F5] via-[#F6F3EE] to-[#FAF8F5]">
+      {/* High-Performance Photographic Background Hero Slider */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={HERO_SLIDES[currentSlide].id}
+            initial={{ opacity: 0, scale: 1.03 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <img
+              src={HERO_SLIDES[currentSlide].image}
+              alt={HERO_SLIDES[currentSlide].alt}
+              className="w-full h-full object-cover object-center"
+              loading={currentSlide === 0 ? "eager" : "lazy"}
+              // @ts-ignore
+              fetchPriority={currentSlide === 0 ? "high" : "auto"}
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
+        </AnimatePresence>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Eye-Catching Transparent Scrim Overlay: High visibility for buyer-attractive slider photography while preserving crisp text legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F5]/80 via-[#FAF8F5]/50 to-[#FAF8F5]/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#FAF8F5]/45 via-transparent to-[#FAF8F5]/85" />
+      </div>
+
+      {/* Subtle architectural ambient grid & warm radial glow */}
+      <div className="absolute inset-0 pointer-events-none opacity-30 bg-[radial-gradient(#C89D43_1px,transparent_1px)] [background-size:28px_28px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_35%,#000_70%,transparent_100%)] z-1" />
+      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#D6AC4B]/15 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#C89D43]/10 rounded-full blur-3xl pointer-events-none z-1" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -96,7 +166,7 @@ export const Hero: React.FC<HeroProps> = ({
 
               <span className="hidden sm:inline-flex text-xs font-semibold text-stone-600 items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                LWG Compliant Network
+                Direct Tannery Network
               </span>
             </motion.div>
 
@@ -395,6 +465,65 @@ export const Hero: React.FC<HeroProps> = ({
           </motion.div>
 
         </motion.div>
+
+        {/* Ambient Hero Background Slider Control Bar */}
+        <div className="mt-8 pt-4 border-t border-stone-200/70 flex flex-wrap items-center justify-between gap-3 text-xs text-stone-600">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C89D43] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C89D43]" />
+            </span>
+            <span className="text-[11px] font-mono uppercase tracking-wider text-stone-700 font-semibold truncate max-w-xs sm:max-w-md">
+              {HERO_SLIDES[currentSlide].caption}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-xs px-2.5 py-1 rounded-full border border-stone-200/80 shadow-2xs">
+            <button
+              type="button"
+              onClick={() =>
+                setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
+              }
+              aria-label="Previous background slide"
+              className="p-1 rounded-full hover:bg-stone-100 text-stone-600 hover:text-stone-900 transition-colors cursor-pointer"
+            >
+              <ChevronLeft className="w-3.5 h-3.5" />
+            </button>
+
+            <div className="flex items-center gap-1 px-1">
+              {HERO_SLIDES.map((slide, idx) => (
+                <button
+                  key={slide.id}
+                  onClick={() => setCurrentSlide(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                    currentSlide === idx
+                      ? "w-5 bg-[#C89D43]"
+                      : "w-1.5 bg-stone-300 hover:bg-stone-400"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
+              aria-label="Next background slide"
+              className="p-1 rounded-full hover:bg-stone-100 text-stone-600 hover:text-stone-900 transition-colors cursor-pointer"
+            >
+              <ChevronRight className="w-3.5 h-3.5" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+              aria-label={isAutoPlaying ? "Pause background slider" : "Play background slider"}
+              className="p-1 rounded-full hover:bg-stone-100 text-stone-600 hover:text-stone-900 transition-colors ml-0.5 cursor-pointer"
+            >
+              {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );

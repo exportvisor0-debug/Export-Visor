@@ -38,7 +38,7 @@ export const it: TranslationDictionary = {
     "titleHighlight": "Bangladesh",
     "subtitle": "Ponte diretto tra marchi internazionali e concerie conformi a Savar, Dacca. Trasparenza totale, collaudo in stabilimento e gestione export completa.",
     "point1Title": "Direct Tannery Access",
-    "point1Desc": "No middlemen markup. Connect directly with ISO & LWG compliant Bangladesh tanneries with transparent factory costing.",
+    "point1Desc": "No middlemen markup. Connect directly with vetted export Bangladesh tanneries with transparent factory costing.",
     "point2Title": "Technical Specification Matching",
     "point2Desc": "Precise calibration of substance (±0.1mm), grain integrity, tensile strength, and master swatch color matching.",
     "point3Title": "On-Site AQL 2.5 Inspection",

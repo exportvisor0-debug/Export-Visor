@@ -133,13 +133,56 @@ export const SECTION_ROUTES: SectionRoute[] = [
       "Factual answers regarding MOQs, sample development, production lead times, international payment terms (LC/TT), and third-party inspection arrangements.",
     navLabel: "FAQ",
   },
+  {
+    id: "leather-glossary",
+    path: "/glossary",
+    aliases: ["/leather-glossary", "/terms-glossary", "/leather-terms"],
+    title: "Leather Sourcing Glossary & Industry Terminology | ExportVisor",
+    metaDescription:
+      "Definitive guide defining Wet Blue, Crust Leather, Full Grain, Split Leather, Temper, and Caliper standards for international footwear and leather goods buyers.",
+    navLabel: "Glossary",
+  },
 ];
+
+import { LEATHER_PRODUCTS, LeatherProduct } from "../data/products";
+
+export function getProductBySlugOrId(identifier: string): LeatherProduct | undefined {
+  const clean = identifier.trim().toLowerCase().replace(/^\/+/, "").replace(/^product\//, "").replace(/^products\//, "");
+  return LEATHER_PRODUCTS.find(
+    (p) => p.id.toLowerCase() === clean || (p.slug && p.slug.toLowerCase() === clean)
+  );
+}
+
+export function getProductCanonicalUrl(productId: string): string {
+  const prod = LEATHER_PRODUCTS.find((p) => p.id === productId || p.slug === productId);
+  const slug = prod?.slug || prod?.id || productId;
+  return `https://exportvisor.com/product/${slug}`;
+}
 
 /**
  * Finds a route by pathname (including aliases) or by section ID
  */
 export function getRouteByPath(pathname: string): SectionRoute | undefined {
   const normalized = pathname.trim().toLowerCase().replace(/\/+$/, "") || "/";
+  
+  // Check if it's an individual product route: e.g. /product/:slug or /products/:slug
+  if (normalized.startsWith("/product/") || normalized.startsWith("/products/")) {
+    const parts = normalized.split("/");
+    const slug = parts[2];
+    if (slug) {
+      const prod = getProductBySlugOrId(slug);
+      if (prod) {
+        return {
+          id: "leather-products",
+          path: `/product/${prod.id}`,
+          title: prod.seoTitle || `${prod.name} | ExportVisor Leather Sourcing`,
+          metaDescription: prod.seoDescription || prod.shortDescription,
+          navLabel: prod.name,
+        };
+      }
+    }
+  }
+
   return SECTION_ROUTES.find(
     (r) =>
       r.path.toLowerCase() === normalized ||

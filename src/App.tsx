@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { LanguageProvider } from "./context/LanguageContext";
 import { Header } from "./components/Header";
+import { ScrollProgressBar } from "./components/ScrollProgressBar";
 import { Hero } from "./components/Hero";
 import { TrustComplianceStrip } from "./components/TrustComplianceStrip";
 import { AboutSection } from "./components/AboutSection";
 import { LeatherCatalogue } from "./components/LeatherCatalogue";
+import { LeatherGlossarySection } from "./components/LeatherGlossarySection";
 import { CommercialTermsSection } from "./components/CommercialTermsSection";
 import { SourcingProcess } from "./components/SourcingProcess";
 import { QualityInspectionSection } from "./components/QualityInspectionSection";
@@ -20,24 +22,50 @@ import { Footer } from "./components/Footer";
 import { ProductDetailModal } from "./components/ProductDetailModal";
 import { CompanyProfileModal } from "./components/CompanyProfileModal";
 import { QuoteInquiryModal } from "./components/QuoteInquiryModal";
+import { RequestConsultationModal } from "./components/RequestConsultationModal";
+import { LiveChatSimulation } from "./components/LiveChatSimulation";
 import { FloatingActions } from "./components/FloatingActions";
-import { LeatherProduct } from "./data/products";
-import { useSectionRouter, navigateTo } from "./utils/router";
+import { LeatherProduct, LEATHER_PRODUCTS } from "./data/products";
+import { useSectionRouter, navigateTo, syncProductSeo } from "./utils/router";
 
 function AppContent() {
   const [selectedProduct, setSelectedProduct] = useState<LeatherProduct | null>(null);
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [quotePrefill, setQuotePrefill] = useState<string>("");
   const [isCompanyProfileOpen, setIsCompanyProfileOpen] = useState(false);
+  const [isLiveChatOpen, setIsLiveChatOpen] = useState(false);
+  const [isConsultationModalOpen, setIsConsultationModalOpen] = useState(false);
+  const [consultationTopic, setConsultationTopic] = useState("Direct Tannery Pricing & Volume MOQ");
 
-  // Initialize section routing & scroll synchronization
-  useSectionRouter();
+  // Initialize section routing & scroll synchronization with product deep-linking
+  useSectionRouter((prod) => setSelectedProduct(prod));
+
+  const handleSelectProduct = (prod: LeatherProduct) => {
+    setSelectedProduct(prod);
+    syncProductSeo(prod);
+    window.history.pushState(null, "", `/product/${prod.id}`);
+  };
+
+  const handleCloseProductModal = () => {
+    setSelectedProduct(null);
+    syncProductSeo(null);
+    if (window.location.pathname.startsWith("/product/")) {
+      window.history.pushState(null, "", "/products");
+    }
+  };
 
   const handleOpenQuoteModal = (productName?: string) => {
     if (productName) {
       setQuotePrefill(productName);
     }
     setIsQuoteModalOpen(true);
+  };
+
+  const handleOpenConsultationModal = (topic?: string) => {
+    if (topic) {
+      setConsultationTopic(topic);
+    }
+    setIsConsultationModalOpen(true);
   };
 
   const handleScrollToQuoteSection = (productName?: string) => {
@@ -52,8 +80,11 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-stone-900 flex flex-col font-sans selection:bg-[#C89D43]/25 selection:text-[#7A5A17]">
+    <div className="min-h-screen bg-[#FAF8F5] text-stone-900 flex flex-col font-sans selection:bg-[#C89D43]/25 selection:text-[#7A5A17] overflow-x-hidden w-full">
       
+      {/* 0. Topmost Non-Intrusive Scroll Reading Progress Bar & Section Indicator */}
+      <ScrollProgressBar />
+
       {/* 1. Header (Sticky Top Bar with 3-Zone Contract + Multilingual Language Switcher) */}
       <Header
         onRequestQuote={() => handleOpenQuoteModal()}
@@ -61,7 +92,7 @@ function AppContent() {
       />
 
       <main className="flex-1">
-        {/* 2. Hero Section */}
+        {/* 2. Hero Section with Background Slider */}
         <Hero
           onExploreLeather={handleExploreLeather}
           onRequestQuote={() => handleOpenQuoteModal()}
@@ -79,8 +110,19 @@ function AppContent() {
 
         {/* 4. Leather Product Catalogue */}
         <LeatherCatalogue
-          onSelectProduct={(prod) => setSelectedProduct(prod)}
+          onSelectProduct={handleSelectProduct}
           onRequestQuote={(prodName) => handleScrollToQuoteSection(prodName)}
+        />
+
+        {/* 4.1 Leather Glossary Section: Industry terms for non-expert buyers */}
+        <LeatherGlossarySection
+          onSelectProduct={(productId) => {
+            const found = LEATHER_PRODUCTS.find((p) => p.id === productId);
+            if (found) {
+              handleSelectProduct(found);
+            }
+          }}
+          onRequestQuote={(termName) => handleScrollToQuoteSection(termName)}
         />
 
         {/* 5. Confirmed Commercial Benchmarks & Terms (RFQ-Driven) */}
@@ -134,17 +176,34 @@ function AppContent() {
         onRequestQuote={(productName) => handleScrollToQuoteSection(productName)}
       />
 
-      {/* Floating WhatsApp & Quick Quote */}
+      {/* Floating Actions (WhatsApp, Live Chat Desk, Quick Quote) */}
       <FloatingActions
         onRequestQuote={() => handleOpenQuoteModal()}
+        onOpenLiveChat={() => setIsLiveChatOpen(true)}
+        isChatOpen={isLiveChatOpen}
+      />
+
+      {/* Lightweight Live Chat Simulation Desk */}
+      <LiveChatSimulation
+        isOpen={isLiveChatOpen}
+        onOpen={() => setIsLiveChatOpen(true)}
+        onClose={() => setIsLiveChatOpen(false)}
+        onRequestConsultation={(topic) => handleOpenConsultationModal(topic)}
+      />
+
+      {/* High-Intent Request a Consultation Modal */}
+      <RequestConsultationModal
+        isOpen={isConsultationModalOpen}
+        onClose={() => setIsConsultationModalOpen(false)}
+        initialTopic={consultationTopic}
       />
 
       {/* Product Detail Modal */}
       <ProductDetailModal
         product={selectedProduct}
-        onClose={() => setSelectedProduct(null)}
+        onClose={handleCloseProductModal}
         onRequestQuote={(productName) => {
-          setSelectedProduct(null);
+          handleCloseProductModal();
           handleScrollToQuoteSection(productName);
         }}
       />

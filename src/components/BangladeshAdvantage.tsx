@@ -1,8 +1,11 @@
 import React from "react";
 import { CheckCircle2, Factory, Shield, Layers } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
+import { useLanguage } from "../context/LanguageContext";
 
 export const BangladeshAdvantage: React.FC = () => {
+  const { t, language } = useLanguage();
+
   return (
     <section id="bangladesh-sourcing" className="py-16 sm:py-24 bg-white border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,15 +14,15 @@ export const BangladeshAdvantage: React.FC = () => {
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
-              Origin Ecosystem
+              {t.bangladesh.kicker}
             </div>
-            <SectionShareButton path="/bangladesh-sourcing" sectionName="Bangladesh Sourcing" />
+            <SectionShareButton path="/bangladesh-sourcing" sectionName={t.bangladesh.kicker} />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
-            Why Global Brands <span className="text-gold-gradient">Source Leather from Bangladesh</span>
+            {t.bangladesh.title} <span className="text-gold-gradient">{t.bangladesh.titleHighlight}</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-            Bangladesh possesses an established, resource-rich leather tanning sector with direct access to domestic raw bovine hides, organized industrial tanning estates, duty-free access to major global markets, and competitive export manufacturing capabilities.
+            {t.bangladesh.subtitle}
           </p>
         </div>
 
@@ -30,10 +33,12 @@ export const BangladeshAdvantage: React.FC = () => {
           <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
             <div className="space-y-4">
               <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#15120E]">
-                The Bangladesh Sourcing Advantage
+                {language === "bn" ? "বাংলাদেশ লেদার সোর্সিং সুবিধা" : "The Bangladesh Sourcing Advantage"}
               </h3>
               <p className="text-sm text-stone-600 leading-relaxed">
-                For international footwear manufacturers, leather goods producers, and raw leather re-tanners, Bangladesh offers distinct advantages when navigated through an experienced on-the-ground agency:
+                {language === "bn"
+                  ? "আন্তর্জাতিক ফুটওয়্যার ও চামড়াজাত পণ্য প্রস্তুতকারকদের জন্য বাংলাদেশ বিশ্বমানের কাঁচামাল ও শুল্কমুক্ত বাণিজ্যিক সুবিধা প্রদান করে:"
+                  : "For international footwear manufacturers, leather goods producers, and raw leather re-tanners, Bangladesh offers distinct advantages when navigated through an experienced on-the-ground agency:"}
               </p>
 
               <div className="space-y-3 pt-2">
@@ -44,10 +49,10 @@ export const BangladeshAdvantage: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="text-base font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors">
-                        Centralized Tannery Industrial Estate (Savar, Dhaka)
+                        {t.bangladesh.benefit2Title}
                       </h4>
                       <p className="mt-1 text-xs text-stone-600 leading-relaxed">
-                        Tanneries in Bangladesh operate within the dedicated Tannery Industrial Estate at Savar, facilitating clustered production, standardized effluent treatment infrastructure (CETP), and specialized chemical beamhouse operations.
+                        {t.bangladesh.benefit2Desc}
                       </p>
                     </div>
                   </div>
@@ -60,10 +65,10 @@ export const BangladeshAdvantage: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="text-base font-bold text-[#15120E] group-hover:text-emerald-700 transition-colors">
-                        Inherent Raw Material Quality & Grain Tightness
+                        {t.bangladesh.benefit1Title}
                       </h4>
                       <p className="mt-1 text-xs text-stone-600 leading-relaxed">
-                        Bangladesh bovine and goat skins are widely recognized for fine fiber structure, tight grain characteristics, and natural tensile resilience, making them highly versatile across footwear uppers and supple leather accessories.
+                        {t.bangladesh.benefit1Desc}
                       </p>
                     </div>
                   </div>
@@ -76,10 +81,10 @@ export const BangladeshAdvantage: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="text-base font-bold text-[#15120E] group-hover:text-blue-700 transition-colors">
-                        Competitive Value & 0% Import Duty Advantage
+                        {t.bangladesh.benefit3Title}
                       </h4>
                       <p className="mt-1 text-xs text-stone-600 leading-relaxed">
-                        Sourcing directly from Bangladesh tanneries with ExportVisor eliminates multi-tiered trading markups. Furthermore, buyers benefit from preferential duty-free tariff access (GSP / EBA) into the European Union, UK, Japan, and other key trading markets.
+                        {t.bangladesh.benefit3Desc}
                       </p>
                     </div>
                   </div>
@@ -88,7 +93,12 @@ export const BangladeshAdvantage: React.FC = () => {
             </div>
 
             <div className="p-4 bg-[#FBF8F1] border border-[#C89D43]/30 rounded-xl text-xs text-stone-700 shadow-2xs">
-              <span className="font-bold text-[#7A5A17]">Our Commitment:</span> ExportVisor does not replace the tannery; we make the tannery accessible, accountable, and transparent to international buyers with strict quality oversight.
+              <span className="font-bold text-[#7A5A17]">
+                {language === "bn" ? "আমাদের প্রতিশ্রুতি:" : "Our Commitment:"}
+              </span>{" "}
+              {language === "bn"
+                ? "এক্সপোর্টভাইজর বায়ারের স্বার্থে সরাসরি ফ্যাক্টরির সাথে স্বচ্ছ যোগাযোগ, কঠোর মান নিয়ন্ত্রণ এবং ঝামেলাহীন শিপিং নিশ্চিত করে।"
+                : "ExportVisor does not replace the tannery; we make the tannery accessible, accountable, and transparent to international buyers with strict quality oversight."}
             </div>
           </div>
 

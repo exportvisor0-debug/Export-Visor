@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import {
   Droplets,
   ShieldAlert,
@@ -22,6 +23,7 @@ interface LeatherKnowledgeHubProps {
 export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
   onRequestQuote,
 }) => {
+  const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState<"all" | "wet-blue" | "crust" | "finished" | "receiving">("all");
 
   const knowledgeItems = [
@@ -146,15 +148,15 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
-                B2B Value-Add & Technical Advisory
+                {t.knowledgeHub.kicker}
               </div>
-              <SectionShareButton path="/knowledge-hub" sectionName="Knowledge Hub" />
+              <SectionShareButton path="/knowledge-hub" sectionName={t.knowledgeHub.kicker} />
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
-              Leather <span className="text-gold-gradient">Knowledge Hub & Specifications</span>
+              {t.knowledgeHub.title}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-              Professional guidelines for handling, climate-controlled warehousing, and maintaining different leather forms—from hydrated wet blue hides to delicate finished aniline surfaces.
+              {t.knowledgeHub.subtitle}
             </p>
           </div>
 
@@ -164,13 +166,13 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
               className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold text-stone-800 bg-[#FAF8F5] hover:bg-stone-100 border border-stone-300 rounded-lg transition-colors cursor-pointer shadow-2xs"
             >
               <BookOpen className="w-3.5 h-3.5 text-[#C89D43]" />
-              <span>Grading Standards Guide</span>
+              <span>{language === "bn" ? "গ্রেডিং নির্দেশিকা" : "Grading Standards Guide"}</span>
             </a>
             <button
               onClick={() => onRequestQuote("Technical Sourcing Advisory")}
               className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-[#15120E] hover:bg-[#261E17] border border-[#C89D43]/40 rounded-lg transition-colors shadow-xs cursor-pointer whitespace-nowrap"
             >
-              <span>Request Tech Consultation</span>
+              <span>{t.knowledgeHub.consultationCta}</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-[#E5BE58]" />
             </button>
           </div>
@@ -186,7 +188,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
                 : "text-stone-700 hover:text-stone-900 hover:bg-stone-200"
             }`}
           >
-            All Technical Tips
+            {t.knowledgeHub.allTips}
           </button>
           <button
             onClick={() => setActiveTab("wet-blue")}
@@ -196,7 +198,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
                 : "text-stone-700 hover:text-stone-900 hover:bg-stone-200"
             }`}
           >
-            Wet Blue Handling
+            {t.knowledgeHub.wetBlue}
           </button>
           <button
             onClick={() => setActiveTab("crust")}
@@ -206,7 +208,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
                 : "text-stone-700 hover:text-stone-900 hover:bg-stone-200"
             }`}
           >
-            Crust Leather Storage
+            {t.knowledgeHub.crust}
           </button>
           <button
             onClick={() => setActiveTab("finished")}
@@ -216,7 +218,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
                 : "text-stone-700 hover:text-stone-900 hover:bg-stone-200"
             }`}
           >
-            Finished Leather Care
+            {t.knowledgeHub.finished}
           </button>
           <button
             onClick={() => setActiveTab("receiving")}
@@ -226,7 +228,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
                 : "text-stone-700 hover:text-stone-900 hover:bg-stone-200"
             }`}
           >
-            Inbound Receiving Checklist
+            {t.knowledgeHub.receiving}
           </button>
         </div>
 
@@ -288,20 +290,20 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
         <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-stone-900 via-[#1F1914] to-stone-900 border border-[#C89D43]/35 text-white rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1.5 max-w-xl">
             <span className="text-[10px] font-mono uppercase tracking-widest text-[#E5BE58] font-bold">
-              Global Compliance Advisory
+              {language === "bn" ? "গ্লোবাল কমপ্লায়েন্স অ্যাডভাইজরি" : "Global Compliance Advisory"}
             </span>
             <h4 className="font-display text-xl sm:text-2xl font-bold text-white">
-              Have Specific Testing or Chemical Compliance Standards?
+              {t.knowledgeHub.bannerTitle}
             </h4>
             <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
-              ExportVisor coordinates REACH compliance, azo-free certifications, chrome-free tanning formulations, and custom temper requirements upon RFQ submission.
+              {t.knowledgeHub.bannerDesc}
             </p>
           </div>
           <button
             onClick={() => onRequestQuote("REACH / Chemical Standards Inquiry")}
             className="px-6 py-3.5 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-lg transition-all whitespace-nowrap cursor-pointer shadow-gold-subtle hover:shadow-lg"
           >
-            Submit Technical RFQ
+            {t.knowledgeHub.bannerCta}
           </button>
         </div>
 

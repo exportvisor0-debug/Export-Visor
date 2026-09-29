@@ -8,42 +8,49 @@ import {
   Eye,
 } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
+import { useLanguage } from "../context/LanguageContext";
 
 export const WhyExportVisor: React.FC = () => {
+  const { t, language } = useLanguage();
+
   const reasons = [
     {
-      title: "Direct Bangladesh Tannery Access",
-      desc: "We connect international buyers directly with audited tanneries in Bangladesh possessing specific machinery for wet blue, crust, or high-grade finished leather.",
-      icon: Building2,
-      color: "bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30",
-    },
-    {
-      title: "Buyer-Focused Representation",
-      desc: "Our mandate is strictly buyer-aligned. We advocate for your substance tolerances, chemical compliance requirements, and delivery schedules without supplier bias.",
+      title: t.whyUs.reason1Title,
+      desc: t.whyUs.reason1Desc,
       icon: Compass,
       color: "bg-emerald-500/10 text-emerald-600 border border-emerald-500/25",
     },
     {
-      title: "Technical Language Translation",
-      desc: "Leather specifications require exact terminology. We translate your tech packs, Pantone swatches, and temper desires into clear production parameters for local tanners.",
+      title: t.whyUs.reason2Title,
+      desc: t.whyUs.reason2Desc,
+      icon: Building2,
+      color: "bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30",
+    },
+    {
+      title: t.whyUs.reason3Title,
+      desc: t.whyUs.reason3Desc,
       icon: MessageSquare,
       color: "bg-blue-500/10 text-blue-600 border border-blue-500/25",
     },
     {
-      title: "Objective Inspection Coordination",
-      desc: "Coordination of multi-point inspections—measuring hide area, crocking fastness, tensile tolerance, and grain defects before container stuffing.",
-      icon: Eye,
-      color: "bg-purple-500/10 text-purple-600 border border-purple-500/25",
-    },
-    {
-      title: "Transparent Commercial Process",
-      desc: "Clear indicative benchmarks ($0.95–$1.20/sq ft baseline where applicable), formal proforma invoices, and verifiable payment terms via LC or TT.",
+      title: t.whyUs.reason4Title,
+      desc: t.whyUs.reason4Desc,
       icon: FileCheck,
       color: "bg-rose-500/10 text-rose-600 border border-rose-500/25",
     },
     {
-      title: "Long-Term Sourcing Continuity",
-      desc: "We aim for ongoing buyer partnerships rather than one-off trades, ensuring consistent batch-to-batch leather quality season after season.",
+      title: language === "bn" ? "বস্তুনিষ্ঠ পরিদর্শন সমন্বয়" : "Objective Inspection Coordination",
+      desc: language === "bn"
+        ? "কনটেইনার স্টাফিংয়ের পূর্বে চামড়ার আয়তন, কালার ফাস্টনেস, টেনসাইল শক্তি ও ত্রুটি নিরীক্ষণে নিরপেক্ষ কোয়ালিটি কন্ট্রোল।"
+        : "Coordination of multi-point inspections—measuring hide area, crocking fastness, tensile tolerance, and grain defects before container stuffing.",
+      icon: Eye,
+      color: "bg-purple-500/10 text-purple-600 border border-purple-500/25",
+    },
+    {
+      title: language === "bn" ? "দীর্ঘমেয়াদী সোর্সিং ধারাবাহিকতা" : "Long-Term Sourcing Continuity",
+      desc: language === "bn"
+        ? "এককালীন ব্যবসার বদলে দীর্ঘমেয়াদী আন্তর্জাতিক অংশীদারিত্ব স্থাপন এবং সিজন টু সিজন ধারাবাহিক মানের নিশ্চয়তা।"
+        : "We aim for ongoing buyer partnerships rather than one-off trades, ensuring consistent batch-to-batch leather quality season after season.",
       icon: HeartHandshake,
       color: "bg-teal-500/10 text-teal-600 border border-teal-500/25",
     },
@@ -57,15 +64,15 @@ export const WhyExportVisor: React.FC = () => {
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
-              Partnership Value
+              {t.whyUs.kicker}
             </div>
-            <SectionShareButton path="/why-us" sectionName="Why ExportVisor" />
+            <SectionShareButton path="/why-us" sectionName={t.whyUs.kicker} />
           </div>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
-            Why International Buyers <span className="text-gold-gradient">Partner with ExportVisor</span>
+            {t.whyUs.title} <span className="text-gold-gradient">{t.whyUs.titleHighlight}</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-            International leather sourcing requires reliable communication, clear technical expectations, and proactive on-site coordination. Here is how we create dependable value for global buyers.
+            {t.whyUs.subtitle}
           </p>
         </div>
 
@@ -90,8 +97,12 @@ export const WhyExportVisor: React.FC = () => {
                   </p>
                 </div>
                 <div className="mt-5 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-400">
-                  <span className="font-mono font-medium">Advantage 0{idx + 1}</span>
-                  <span className="text-[#C89D43] font-bold">Verified Reliability</span>
+                  <span className="font-mono font-medium">
+                    {language === "bn" ? `সুবিধা ০${idx + 1}` : `Advantage 0${idx + 1}`}
+                  </span>
+                  <span className="text-[#C89D43] font-bold">
+                    {language === "bn" ? "যাচাইকৃত নির্ভরতা" : "Verified Reliability"}
+                  </span>
                 </div>
               </div>
             );

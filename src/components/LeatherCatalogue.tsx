@@ -1,7 +1,17 @@
 import React, { useState, useMemo } from "react";
 import { LEATHER_PRODUCTS, LeatherProduct } from "../data/products";
 import { trackEvent } from "../utils/analytics";
-import { Search, ArrowUpRight, SlidersHorizontal, Info, ShieldAlert, Leaf } from "lucide-react";
+import {
+  Search,
+  ArrowUpRight,
+  SlidersHorizontal,
+  Info,
+  ShieldAlert,
+  Leaf,
+  Link2,
+  Copy,
+  Check,
+} from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -17,6 +27,17 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
   const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+
+  const handleCopyProductLink = (e: React.MouseEvent, productId: string) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const url = `https://exportvisor.com/product/${productId}`;
+    navigator.clipboard.writeText(url);
+    setCopiedId(productId);
+    trackEvent("copy_product_link_card", { product_id: productId });
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   const categories = [
     "All",
@@ -187,14 +208,18 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                   {/* Card Content */}
                   <div className="p-5 sm:p-6 space-y-4">
                     <div>
-                      <h3
-                        className="font-display text-2xl font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors cursor-pointer"
-                        onClick={() => {
-                          trackEvent("product_detail_view", { product_id: product.id });
-                          onSelectProduct(product);
-                        }}
-                      >
-                        {product.name}
+                      <h3 className="font-display text-2xl font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors">
+                        <a
+                          href={`/product/${product.id}`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            trackEvent("product_detail_view", { product_id: product.id });
+                            onSelectProduct(product);
+                          }}
+                          className="hover:underline"
+                        >
+                          {product.name}
+                        </a>
                       </h3>
                       <p className="mt-2 text-xs sm:text-sm text-stone-600 line-clamp-2 leading-relaxed">
                         {product.shortDescription}
@@ -248,16 +273,32 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                 </div>
 
                 {/* Card Action Footer */}
-                <div className="p-5 sm:p-6 pt-0 border-t border-stone-100 mt-2 flex items-center justify-between gap-3">
-                  <button
-                    onClick={() => {
-                      trackEvent("product_detail_view", { product_id: product.id });
-                      onSelectProduct(product);
-                    }}
-                    className="text-xs font-bold text-stone-700 hover:text-[#C89D43] underline underline-offset-4 cursor-pointer transition-colors"
-                  >
-                    {t.catalogue.viewSpecs}
-                  </button>
+                <div className="p-5 sm:p-6 pt-0 border-t border-stone-100 mt-2 flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => {
+                        trackEvent("product_detail_view", { product_id: product.id });
+                        onSelectProduct(product);
+                      }}
+                      className="text-xs font-bold text-stone-700 hover:text-[#C89D43] underline underline-offset-4 cursor-pointer transition-colors"
+                    >
+                      {t.catalogue.viewSpecs}
+                    </button>
+
+                    <button
+                      type="button"
+                      onClick={(e) => handleCopyProductLink(e, product.id)}
+                      title={`Copy direct link: /product/${product.id}`}
+                      className="p-1 rounded text-stone-400 hover:text-[#C89D43] hover:bg-stone-100 transition-colors cursor-pointer"
+                      aria-label={`Copy link for ${product.name}`}
+                    >
+                      {copiedId === product.id ? (
+                        <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      ) : (
+                        <Link2 className="w-3.5 h-3.5" />
+                      )}
+                    </button>
+                  </div>
 
                   <button
                     onClick={() => {

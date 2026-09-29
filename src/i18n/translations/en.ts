@@ -40,7 +40,7 @@ export const en: TranslationDictionary = {
     subtitle:
       "Bridging international footwear and leather goods brands directly with vetted tanneries in Savar, Dhaka—delivering complete transparency, factory-floor quality auditing, and seamless export coordination.",
     point1Title: "Direct Tannery Access",
-    point1Desc: "No middlemen markup. Connect directly with ISO & LWG compliant Bangladesh tanneries with transparent factory costing.",
+    point1Desc: "No middlemen markup. Connect directly with vetted export tanneries in Bangladesh with transparent factory costing.",
     point2Title: "Technical Specification Matching",
     point2Desc: "Precise calibration of substance (±0.1mm), grain integrity, tensile strength, and master swatch color matching.",
     point3Title: "On-Site AQL 2.5 Inspection",

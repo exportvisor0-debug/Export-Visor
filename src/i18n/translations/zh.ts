@@ -38,7 +38,7 @@ export const zh: TranslationDictionary = {
     "titleHighlight": "质检团队",
     "subtitle": "直接连接国际品牌与达卡萨瓦尔优质环保制革厂——全流程透明、车间驻场品控与顺畅出口管理。",
     "point1Title": "Direct Tannery Access",
-    "point1Desc": "No middlemen markup. Connect directly with ISO & LWG compliant Bangladesh tanneries with transparent factory costing.",
+    "point1Desc": "No middlemen markup. Connect directly with vetted export Bangladesh tanneries with transparent factory costing.",
     "point2Title": "Technical Specification Matching",
     "point2Desc": "Precise calibration of substance (±0.1mm), grain integrity, tensile strength, and master swatch color matching.",
     "point3Title": "On-Site AQL 2.5 Inspection",

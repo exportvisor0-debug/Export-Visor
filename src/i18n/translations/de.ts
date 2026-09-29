@@ -41,7 +41,7 @@ export const de: TranslationDictionary = {
     subtitle:
       "Direkte Verbindung internationaler Schuh- und Lederwarenmarken mit geprüften Gerbereien in Savar, Dhaka – vollständige Transparenz, Vor-Ort-Qualitätskontrolle und nahtlose Exportabwicklung.",
     point1Title: "Direkter Gerbereizugang",
-    point1Desc: "Keine Zwischenhändler. Direkte Zusammenarbeit mit ISO- & LWG-konformen Gerbereien mit transparenter Kostenaufstellung.",
+    point1Desc: "Keine Zwischenhändler. Direkte Zusammenarbeit mit geprüften Export-Gerbereien mit transparenter Kostenaufstellung.",
     point2Title: "Technische Spezifikationsabstimmung",
     point2Desc: "Präzise Kalibrierung von Stärke (±0,1 mm), Narbenbild, Zugfestigkeit und Farbabstimmung nach Master-Muster.",
     point3Title: "Vor-Ort AQL 2.5 Inspektion",

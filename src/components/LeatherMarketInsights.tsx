@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import {
   TrendingUp,
   FileText,
@@ -18,7 +19,7 @@ import { SectionShareButton } from "./SectionShareButton";
 
 export interface MarketInsight {
   id: string;
-  category: "Regulatory & LWG" | "Supply Dynamics" | "Export Trends" | "Sustainable Tech";
+  category: "Environmental & CETP" | "Supply Dynamics" | "Export Trends" | "Sustainable Tech";
   title: string;
   date: string;
   source: string;
@@ -32,17 +33,17 @@ export interface MarketInsight {
 
 const MARKET_INSIGHTS: MarketInsight[] = [
   {
-    id: "lwg-savar-cetp-2026",
-    category: "Regulatory & LWG",
+    id: "savar-cetp-upgrade-2026",
+    category: "Environmental & CETP",
     title: "Savar Tannery Estate Advances Chromium Recovery & CETP Biological Stage Upgrades",
     date: "September 2026",
     source: "Bangladesh Tannery Association (BTA) & DoE",
     readTime: "3 min read",
     summary:
-      "Dhaka's central tannery cluster at Hemayetpur, Savar, has deployed upgraded biological oxidation basins and automated chromium recovery units. This modernization accelerates the roadmap for partner tanneries pursuing Leather Working Group (LWG) environmental audits and global retail brand approvals.",
+      "Dhaka's central tannery cluster at Hemayetpur, Savar, has deployed upgraded biological oxidation basins and automated chromium recovery units. This modernization accelerates environmental compliance and global retail brand approvals.",
     procurementTakeaway:
-      "Buyers requiring LWG audit trail documentation can now shortlist specialized wet blue and finished leather tanneries operating dedicated pre-treatment and chromium recovery systems.",
-    keyStats: ["85% CETP capacity optimization", "Direct chromium recovery recycling", "LWG pathway acceleration"],
+      "Buyers requiring strict chemical safety and effluent compliance can now shortlist specialized wet blue and finished leather tanneries operating dedicated pre-treatment and chromium recovery systems.",
+    keyStats: ["85% CETP capacity optimization", "Direct chromium recovery recycling", "Environmental compliance upgrade"],
     impactLevel: "High Strategic Impact",
   },
   {
@@ -124,6 +125,7 @@ interface LeatherMarketInsightsProps {
 export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
   onRequestQuote,
 }) => {
+  const { t, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeArticle, setActiveArticle] = useState<MarketInsight | null>(null);
   const [lastUpdated, setLastUpdated] = useState<string>("September 2026");
@@ -131,7 +133,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
 
   const categories = [
     "All",
-    "Regulatory & LWG",
+    "Environmental & CETP",
     "Supply Dynamics",
     "Export Trends",
     "Sustainable Tech",
@@ -160,15 +162,15 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
                 <TrendingUp className="w-3.5 h-3.5 text-[#C89D43]" />
-                <span>Industry Intelligence & Sourcing Barometer</span>
+                <span>{t.marketInsights.kicker}</span>
               </div>
-              <SectionShareButton path="/market-insights" sectionName="Market Insights" />
+              <SectionShareButton path="/market-insights" sectionName={t.marketInsights.title} />
             </div>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
-              Leather Market <span className="text-gold-gradient">Intelligence & Trends</span>
+              {t.marketInsights.title}
             </h2>
             <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
-              Curated market dynamics, environmental compliance updates, and raw material trends from Savar and Chattogram to help international buyers time procurement decisions effectively.
+              {t.marketInsights.subtitle}
             </p>
           </div>
 

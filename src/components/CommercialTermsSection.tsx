@@ -4,7 +4,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { SectionShareButton } from "./SectionShareButton";
 
 export const CommercialTermsSection: React.FC = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section id="commercial-terms" className="py-14 sm:py-20 bg-white border-b border-stone-200">
@@ -36,14 +36,14 @@ export const CommercialTermsSection: React.FC = () => {
                 <Layers className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">
-                Flexible MOQ
+                {language === "bn" ? "নমনীয় MOQ" : "Flexible MOQ"}
               </span>
             </div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
               {t.commercial.moqTitle}
             </span>
             <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
-              Per RFQ
+              {language === "bn" ? "RFQ অনুযায়ী" : "Per RFQ"}
             </div>
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
               {t.commercial.moqDesc}
@@ -57,14 +57,14 @@ export const CommercialTermsSection: React.FC = () => {
                 <Scale className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-50 text-[#7A5A17] border border-amber-200 font-semibold">
-                Direct Mill FOB/CIF
+                {language === "bn" ? "সরাসরি মিল FOB/CIF" : "Direct Mill FOB/CIF"}
               </span>
             </div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
               {t.commercial.pricingTitle}
             </span>
             <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
-              Quoted upon RFQ
+              {language === "bn" ? "কোটেশন ভিত্তিক" : "Quoted upon RFQ"}
             </div>
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
               {t.commercial.pricingDesc}
@@ -78,14 +78,14 @@ export const CommercialTermsSection: React.FC = () => {
                 <Clock className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-50 text-blue-800 border border-blue-200 font-semibold">
-                Scheduled Batches
+                {language === "bn" ? "শিডিউলড ব্যাচ" : "Scheduled Batches"}
               </span>
             </div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
               {t.commercial.leadTimeTitle}
             </span>
             <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
-              Scheduled per RFQ
+              {language === "bn" ? "RFQ অনুযায়ী শিডিউল" : "Scheduled per RFQ"}
             </div>
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
               {t.commercial.leadTimeDesc}
@@ -99,7 +99,7 @@ export const CommercialTermsSection: React.FC = () => {
                 <CreditCard className="w-5 h-5" />
               </div>
               <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-50 text-purple-800 border border-purple-200 font-semibold">
-                Trade Security
+                {language === "bn" ? "বাণিজ্যিক নিরাপত্তা" : "Trade Security"}
               </span>
             </div>
             <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
@@ -119,7 +119,10 @@ export const CommercialTermsSection: React.FC = () => {
         <div className="mt-8 p-4 border border-[#C89D43]/30 rounded-xl text-[11px] text-stone-600 flex items-start gap-3 bg-[#FBF8F1] shadow-2xs">
           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
           <span>
-            <strong className="text-stone-900">Transparency Notice:</strong> {t.commercial.notice}
+            <strong className="text-stone-900">
+              {language === "bn" ? "স্বচ্ছতার নিশ্চয়তা:" : "Transparency Notice:"}
+            </strong>{" "}
+            {t.commercial.notice}
           </span>
         </div>
 

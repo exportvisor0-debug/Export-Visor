@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLanguage } from "../context/LanguageContext";
 import {
   Award,
   ShieldCheck,
@@ -25,17 +26,17 @@ interface CompliancePillar {
 
 const COMPLIANCE_PILLARS: CompliancePillar[] = [
   {
-    id: "iso-certified",
+    id: "tannery-verified",
     icon: Award,
-    title: "ISO Certified Tanneries",
-    subtext: "ISO 9001 / 14001 Audited Operations",
-    badge: "Quality Verified",
+    title: "Direct Tannery Verification",
+    subtext: "Savar Tannery Estate Audited Facilities",
+    badge: "Tannery Verified",
     iconBg: "bg-amber-500/10 border-amber-500/30",
     iconColor: "text-[#C89D43]",
     badgeClass: "bg-amber-50 text-[#7A5A17] border-amber-200/80",
     details:
-      "We prioritize vetted partner tanneries in Savar and Chattogram that maintain certified ISO 9001 (Quality Management) and ISO 14001 (Environmental Management Systems) manufacturing standards.",
-    standards: ["ISO 9001:2015", "ISO 14001:2015", "Documented Traceability"],
+      "We partner directly with vetted manufacturing tanneries located in the Savar Tannery Industrial Estate and Chattogram, ensuring verified production capacity, drum quality, and full supply chain transparency.",
+    standards: ["Physical Tannery Verification", "Direct Production Tracking", "Raw Hide Traceability"],
   },
   {
     id: "reach-compliance",
@@ -92,7 +93,62 @@ const COMPLIANCE_PILLARS: CompliancePillar[] = [
 ];
 
 export const TrustComplianceStrip: React.FC = () => {
+  const { language } = useLanguage();
   const [selectedPillar, setSelectedPillar] = useState<CompliancePillar | null>(null);
+
+  const getPillarTitle = (pillar: CompliancePillar) => {
+    if (language !== "bn") return pillar.title;
+    switch (pillar.id) {
+      case "tannery-verified":
+        return "সরাসরি ট্যানারি ভেরিফিকেশন";
+      case "reach-compliance":
+        return "REACH ও রাসায়নিক নিরাপত্তা";
+      case "cetp-eco":
+        return "সাভার CETP পরিবেশগত মানদণ্ড";
+      case "pre-shipment-inspection":
+        return "১০০% প্রি-শিপমেন্ট পরিদর্শন";
+      case "global-logistics":
+        return "বৈশ্বিক লজিস্টিকস নেটওয়ার্ক";
+      default:
+        return pillar.title;
+    }
+  };
+
+  const getPillarSubtext = (pillar: CompliancePillar) => {
+    if (language !== "bn") return pillar.subtext;
+    switch (pillar.id) {
+      case "tannery-verified":
+        return "সাভার ট্যানারি এস্টেটের অডিটেড সুবিধাসমূহ";
+      case "reach-compliance":
+        return "অ্যাজো-ফ্রি ও ক্রোমিয়াম(VI) নিয়ন্ত্রিত";
+      case "cetp-eco":
+        return "সাভার কেন্দ্রীয় বর্জ্য পরিশোধনাগার সংযুক্ত";
+      case "pre-shipment-inspection":
+        return "প্রতিটি টুকরো ক্যালিব্রেশন ও গ্রেডিং";
+      case "global-logistics":
+        return "FOB চট্টগ্রাম / CIF বিশ্বব্যাপী সমুদ্র ও আকাশপথ";
+      default:
+        return pillar.subtext;
+    }
+  };
+
+  const getPillarBadge = (pillar: CompliancePillar) => {
+    if (language !== "bn") return pillar.badge;
+    switch (pillar.id) {
+      case "tannery-verified":
+        return "যাচাইকৃত ট্যানারি";
+      case "reach-compliance":
+        return "EU / বৈশ্বিক মানসম্মত";
+      case "cetp-eco":
+        return "পরিবেশবান্ধব";
+      case "pre-shipment-inspection":
+        return "AQL ২.৫ মানদণ্ড";
+      case "global-logistics":
+        return "২৫+ আন্তর্জাতিক বন্দর";
+      default:
+        return pillar.badge;
+    }
+  };
 
   return (
     <>
@@ -106,10 +162,14 @@ export const TrustComplianceStrip: React.FC = () => {
           <div className="flex items-center justify-between mb-3 text-[11px] font-mono uppercase tracking-wider text-stone-600">
             <span className="font-bold text-[#7A5A17] flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#C89D43]" />
-              B2B Trust & Institutional Compliance Framework
+              {language === "bn"
+                ? "B2B বিশ্বাস ও প্রাতিষ্ঠানিক কমপ্লায়েন্স ফ্রেমওয়ার্ক"
+                : "B2B Trust & Institutional Compliance Framework"}
             </span>
             <span className="hidden md:inline-block text-stone-500 font-medium">
-              Verified Tannery Partnerships · International Testing Standards
+              {language === "bn"
+                ? "যাচাইকৃত ট্যানারি অংশীদারিত্ব · আন্তর্জাতিক টেস্টিং মানদণ্ড"
+                : "Verified Tannery Partnerships · International Testing Standards"}
             </span>
           </div>
 
@@ -129,20 +189,20 @@ export const TrustComplianceStrip: React.FC = () => {
                       <Icon className="w-4 h-4" />
                     </div>
                     <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${pillar.badgeClass} font-semibold`}>
-                      {pillar.badge}
+                      {getPillarBadge(pillar)}
                     </span>
                   </div>
 
                   <h3 className="text-xs sm:text-sm font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors leading-tight line-clamp-1">
-                    {pillar.title}
+                    {getPillarTitle(pillar)}
                   </h3>
                   
                   <p className="text-[11px] text-stone-500 leading-snug mt-1 line-clamp-2">
-                    {pillar.subtext}
+                    {getPillarSubtext(pillar)}
                   </p>
 
                   <div className="mt-2.5 pt-2 border-t border-stone-100 flex items-center justify-between text-[10px] font-semibold text-stone-500 group-hover:text-[#7A5A17]">
-                    <span>View criteria</span>
+                    <span>{language === "bn" ? "মানদণ্ড দেখুন" : "View criteria"}</span>
                     <ChevronRight className="w-3 h-3 text-[#C89D43] group-hover:translate-x-0.5 transition-transform" />
                   </div>
                 </button>

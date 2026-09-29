@@ -25,7 +25,15 @@ export type AnalyticsEventName =
   | "sample_request_click"
   | "company_profile_view"
   | "phone_click"
-  | "share_link_copied";
+  | "share_link_copied"
+  | "copy_product_link"
+  | "copy_product_link_card"
+  | "glossary_catalogue_click"
+  | "glossary_inquiry_click"
+  | "live_chat_open"
+  | "live_chat_message"
+  | "consultation_modal_open"
+  | "consultation_form_submit";
 
 export function trackEvent(
   eventName: AnalyticsEventName,

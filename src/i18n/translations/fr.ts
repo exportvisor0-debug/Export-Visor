@@ -38,7 +38,7 @@ export const fr: TranslationDictionary = {
     "titleHighlight": "Bangladesh",
     "subtitle": "Passerelle directe entre marques internationales et tanneries agréées de Savar, Dhaka—offrant une transparence totale, un contrôle sur site et une gestion fluide des exportations.",
     "point1Title": "Accès Direct aux Tanneries",
-    "point1Desc": "Sans intermédiaire. Collaboration directe avec des tanneries certifiées ISO & LWG aux tarifs sortie d'usine.",
+    "point1Desc": "Sans intermédiaire. Collaboration directe avec des tanneries d'exportation vérifiées aux tarifs sortie d'usine.",
     "point2Title": "Conformité Technique Précise",
     "point2Desc": "Calibration rigoureuse de l'épaisseur (±0,1 mm), du grain, de la résistance et concordance exacte des coloris.",
     "point3Title": "Inspection AQL 2.5 en Usine",

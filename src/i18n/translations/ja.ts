@@ -38,7 +38,7 @@ export const ja: TranslationDictionary = {
     "titleHighlight": "品質管理パートナー",
     "subtitle": "ダッカ・サバールの認証タナリーと国際バイヤーを直結。徹底した透明性と工場現場での検査、円滑な輸出管理をお届けします。",
     "point1Title": "Direct Tannery Access",
-    "point1Desc": "No middlemen markup. Connect directly with ISO & LWG compliant Bangladesh tanneries with transparent factory costing.",
+    "point1Desc": "No middlemen markup. Connect directly with vetted export Bangladesh tanneries with transparent factory costing.",
     "point2Title": "Technical Specification Matching",
     "point2Desc": "Precise calibration of substance (±0.1mm), grain integrity, tensile strength, and master swatch color matching.",
     "point3Title": "On-Site AQL 2.5 Inspection",

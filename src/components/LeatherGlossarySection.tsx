@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { motion } from "motion/react";
 import {
   BookOpen,
   Search,
@@ -354,11 +355,28 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.07 },
+              },
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
+          >
             {filteredTerms.map((term) => (
-              <div
+              <motion.div
                 key={term.id}
-                className="bg-white border border-stone-200/90 rounded-xl p-6 sm:p-7 flex flex-col justify-between hover:border-[#C89D43]/60 hover:shadow-md transition-all duration-200 group relative"
+                variants={{
+                  hidden: { opacity: 0, y: 18 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+                }}
+                whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
+                className="bg-white border border-stone-200/90 rounded-xl p-6 sm:p-7 flex flex-col justify-between hover:shadow-md transition-all duration-200 group relative cursor-pointer"
               >
                 <div>
                   {/* Top Bar with Category & Tag */}
@@ -454,9 +472,9 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                   </button>
                 </div>
 
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {/* Bottom Banner */}

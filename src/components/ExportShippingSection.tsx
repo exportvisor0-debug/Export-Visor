@@ -1,5 +1,6 @@
 import React from "react";
-import { exportShippingImg } from "../data/products";
+import { motion } from "motion/react";
+import { containerCargoShipImg, exportShippingImg } from "../data/products";
 import { Anchor, Plane, FileCheck2, Box, ShieldCheck, MapPin } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
 import { useLanguage } from "../context/LanguageContext";
@@ -63,10 +64,16 @@ export const ExportShippingSection: React.FC = () => {
         {/* Visual & Context Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
           
-          <div className="lg:col-span-6 relative rounded-2xl overflow-hidden border border-[#C89D43]/30 shadow-lg bg-stone-900 aspect-[16/10] group">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-6 relative rounded-2xl overflow-hidden border border-[#C89D43]/30 shadow-lg bg-stone-900 aspect-[16/10] group"
+          >
             <img
-              src={exportShippingImg}
-              alt="International container shipping logistics terminal"
+              src={containerCargoShipImg}
+              alt="Deep-sea commercial container cargo ship loaded with freight containers for leather export from Chittagong Port"
               className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-500"
               loading="lazy"
               decoding="async"
@@ -83,9 +90,15 @@ export const ExportShippingSection: React.FC = () => {
                   : "Direct vessel access to European, Asian, Middle Eastern, and American trading hubs with pre-cleared customs documentation."}
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-6 space-y-5">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="lg:col-span-6 space-y-5"
+          >
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#15120E]">
               {language === "bn" ? "লজিস্টিকস ও ট্রেড গেটওয়েসমূহ" : "Logistics Modes & Trade Gateways"}
             </h3>
@@ -129,18 +142,35 @@ export const ExportShippingSection: React.FC = () => {
                   : "* Note: ExportVisor coordinates export documentation and forwarding procedures with top licensed maritime carriers and air freight forwarders."}
               </span>
             </p>
-          </div>
+          </motion.div>
 
         </div>
 
-        {/* 4 Logistics Coordination Steps */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 4 Logistics Coordination Steps with Motion Stagger */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-30px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.08 },
+            },
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {exportSteps.map((step, idx) => {
             const Icon = step.icon;
             return (
-              <div
+              <motion.div
                 key={step.title}
-                className="p-5 bg-white border border-stone-200/90 rounded-xl shadow-2xs hover:border-[#C89D43]/50 transition-all duration-200 flex flex-col justify-between group"
+                variants={{
+                  hidden: { opacity: 0, y: 18 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+                }}
+                whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
+                className="p-5 bg-white border border-stone-200/90 rounded-xl shadow-2xs hover:shadow-md transition-all duration-200 flex flex-col justify-between group cursor-pointer"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
@@ -162,10 +192,10 @@ export const ExportShippingSection: React.FC = () => {
                   <span>{language === "bn" ? "এক্সপোর্ট প্রোটোকল" : "Export Protocol"}</span>
                   <span className="text-stone-400">Step 0{idx + 1}</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
       </div>
     </section>

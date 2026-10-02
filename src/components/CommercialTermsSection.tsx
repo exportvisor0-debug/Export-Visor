@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 import { Scale, Clock, CreditCard, Layers, CheckCircle2 } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { SectionShareButton } from "./SectionShareButton";
@@ -11,7 +12,13 @@ export const CommercialTermsSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-30px" }}
+          transition={{ duration: 0.4 }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
           <div className="flex items-center justify-center gap-2 mb-2">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.commercial.kicker}
@@ -24,13 +31,32 @@ export const CommercialTermsSection: React.FC = () => {
           <p className="text-xs sm:text-sm text-stone-600 mt-2.5 leading-relaxed">
             {t.commercial.notice}
           </p>
-        </div>
+        </motion.div>
 
         {/* 4 Commercial Pillars Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-30px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.08 },
+            },
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           
           {/* Card 1: MOQ */}
-          <div className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-emerald-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+            }}
+            whileHover={{ y: -4, scale: 1.015 }}
+            className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-emerald-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
+          >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 border border-emerald-500/25 flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs">
                 <Layers className="w-5 h-5" />
@@ -48,10 +74,17 @@ export const CommercialTermsSection: React.FC = () => {
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
               {t.commercial.moqDesc}
             </p>
-          </div>
+          </motion.div>
 
           {/* Card 2: Quotation */}
-          <div className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+            }}
+            whileHover={{ y: -4, scale: 1.015 }}
+            className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
+          >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30 flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs">
                 <Scale className="w-5 h-5" />
@@ -69,10 +102,17 @@ export const CommercialTermsSection: React.FC = () => {
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
               {t.commercial.pricingDesc}
             </p>
-          </div>
+          </motion.div>
 
           {/* Card 3: Lead Time */}
-          <div className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-blue-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+            }}
+            whileHover={{ y: -4, scale: 1.015 }}
+            className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-blue-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
+          >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-600 border border-blue-500/25 flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs">
                 <Clock className="w-5 h-5" />
@@ -90,10 +130,17 @@ export const CommercialTermsSection: React.FC = () => {
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
               {t.commercial.leadTimeDesc}
             </p>
-          </div>
+          </motion.div>
 
           {/* Card 4: Payment Terms */}
-          <div className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-purple-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group">
+          <motion.div
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+            }}
+            whileHover={{ y: -4, scale: 1.015 }}
+            className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-purple-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
+          >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-600 border border-purple-500/25 flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs">
                 <CreditCard className="w-5 h-5" />
@@ -111,9 +158,9 @@ export const CommercialTermsSection: React.FC = () => {
             <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
               {t.commercial.paymentDesc}
             </p>
-          </div>
+          </motion.div>
 
-        </div>
+        </motion.div>
 
         {/* Commercial Clarification Footnote */}
         <div className="mt-8 p-4 border border-[#C89D43]/30 rounded-xl text-[11px] text-stone-600 flex items-start gap-3 bg-[#FBF8F1] shadow-2xs">

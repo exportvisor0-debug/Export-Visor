@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import {
   TrendingUp,
@@ -266,12 +267,29 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
           ))}
         </div>
 
-        {/* Insights Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Insights Grid with Motion Stagger */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.08 },
+            },
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
           {filteredInsights.map((insight) => (
-            <article
+            <motion.article
               key={insight.id}
-              className="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between hover:border-stone-300 hover:shadow-xs transition-all group"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
+              }}
+              whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
+              className="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between hover:shadow-md transition-all group cursor-pointer"
             >
               <div>
                 {/* Meta info: Category & Date */}
@@ -343,9 +361,9 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
                   </button>
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom Sourcing Guidance Strip */}
         <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-stone-900 via-[#1F1914] to-stone-900 border border-[#C89D43]/35 text-white rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">

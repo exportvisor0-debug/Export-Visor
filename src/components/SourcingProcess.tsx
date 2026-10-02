@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
 import { useLanguage } from "../context/LanguageContext";
@@ -95,17 +96,34 @@ export const SourcingProcess: React.FC<SourcingProcessProps> = ({
           </p>
         </div>
 
-        {/* Process Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+        {/* Process Steps Grid with Motion Stagger */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.06, delayChildren: 0.05 },
+            },
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6"
+        >
           {steps.map((step) => (
-            <div
+            <motion.div
               key={step.num}
-              className="p-6 bg-white border border-stone-200/90 rounded-xl hover:border-[#C89D43]/50 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between group"
+              variants={{
+                hidden: { opacity: 0, y: 18 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+              }}
+              whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
+              className="p-6 bg-white border border-stone-200/90 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between group cursor-pointer"
             >
               <div>
                 <div className="flex items-center justify-between mb-3.5">
                   <div className="flex items-center gap-2.5">
-                    <span className={`w-8 h-8 rounded-lg bg-gradient-to-br ${step.color} text-white flex items-center justify-center font-mono font-bold text-xs shadow-xs`}>
+                    <span className={`w-8 h-8 rounded-lg bg-gradient-to-br ${step.color} text-white flex items-center justify-center font-mono font-bold text-xs shadow-xs group-hover:scale-110 transition-transform`}>
                       {step.num}
                     </span>
                     <span className="font-mono-data text-xs font-bold text-[#7A5A17] tracking-wider uppercase">
@@ -131,9 +149,9 @@ export const SourcingProcess: React.FC<SourcingProcessProps> = ({
                 </span>
                 <span className="text-[#7A5A17] font-semibold">Verified Deliverable</span>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA Banner */}
         <div className="mt-12 text-center">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "motion/react";
 import { siteConfig } from "../config/siteConfig";
 import { trackEvent } from "../utils/analytics";
 import { useLanguage } from "../context/LanguageContext";
@@ -157,7 +158,13 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 items-start">
           
           {/* Left Column: Direct Contact Info & Sourcing Guidelines */}
-          <div className="lg:col-span-4 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.45 }}
+            className="lg:col-span-4 space-y-6"
+          >
             
             <div className="p-6 bg-[#FAF8F5] border border-stone-200/90 rounded-xl space-y-5 shadow-2xs">
               <h3 className="font-display text-xl font-bold text-[#15120E]">
@@ -270,10 +277,16 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
               </ul>
             </div>
 
-          </div>
+          </motion.div>
 
           {/* Right Column: Inquiry Form / Confirmation State */}
-          <div className="lg:col-span-8">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.45, delay: 0.1 }}
+            className="lg:col-span-8"
+          >
             <div className="p-6 sm:p-8 bg-[#FAF8F5] border border-stone-200 rounded-lg shadow-xs">
               
               {submitted ? (
@@ -650,13 +663,15 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
 
                   {/* Submit Button */}
                   <div className="pt-2">
-                    <button
+                    <motion.button
+                      whileHover={{ scale: 1.015, translateY: -1 }}
+                      whileTap={{ scale: 0.98 }}
                       type="submit"
                       className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-bold uppercase tracking-wider text-[#15120E] bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] rounded-xl transition-all shadow-gold-subtle hover:shadow-gold-glow cursor-pointer"
                     >
                       <Send className="w-4 h-4 text-[#15120E]" />
                       <span>{t.inquiry.submitBtn}</span>
-                    </button>
+                    </motion.button>
                     <p className="text-center text-[11px] text-stone-500 mt-2">
                       {language === "bn"
                         ? "অনুসন্ধান সম্পূর্ণ গোপনীয়তার সাথে পরিচালনা করা হয়। টেকনিক্যাল পর্যালোচনার পর বাণিজ্যিক শর্তাবলী নিশ্চিত করা হয়।"
@@ -668,7 +683,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
               )}
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 

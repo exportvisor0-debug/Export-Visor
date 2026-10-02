@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import {
   Award,
@@ -26,17 +27,22 @@ interface CompliancePillar {
 
 const COMPLIANCE_PILLARS: CompliancePillar[] = [
   {
-    id: "tannery-verified",
+    id: "lwg-certified-network",
     icon: Award,
-    title: "Direct Tannery Verification",
-    subtext: "Savar Tannery Estate Audited Facilities",
-    badge: "Tannery Verified",
+    title: "LWG-Certified Tannery Network",
+    subtext: "Leather Working Group Audited Partner Mills",
+    badge: "LWG Audited",
     iconBg: "bg-amber-500/10 border-amber-500/30",
     iconColor: "text-[#C89D43]",
     badgeClass: "bg-amber-50 text-[#7A5A17] border-amber-200/80",
     details:
-      "We partner directly with vetted manufacturing tanneries located in the Savar Tannery Industrial Estate and Chattogram, ensuring verified production capacity, drum quality, and full supply chain transparency.",
-    standards: ["Physical Tannery Verification", "Direct Production Tracking", "Raw Hide Traceability"],
+      "We partner directly with Leather Working Group (LWG) audited and certified tanneries in Bangladesh. Our partner mills comply with rigorous global environmental audit standards, raw hide traceability, advanced wastewater management (CETP), energy efficiency, and restricted chemical protocols.",
+    standards: [
+      "LWG Protocol Audited Facilities",
+      "Traceable Raw Hide Origins",
+      "Energy & Water Consumption Audits",
+      "Tier-1 Footwear Brand Compliance",
+    ],
   },
   {
     id: "reach-compliance",
@@ -99,8 +105,8 @@ export const TrustComplianceStrip: React.FC = () => {
   const getPillarTitle = (pillar: CompliancePillar) => {
     if (language !== "bn") return pillar.title;
     switch (pillar.id) {
-      case "tannery-verified":
-        return "সরাসরি ট্যানারি ভেরিফিকেশন";
+      case "lwg-certified-network":
+        return "LWG সার্টিফাইড ট্যানারি নেটওয়ার্ক";
       case "reach-compliance":
         return "REACH ও রাসায়নিক নিরাপত্তা";
       case "cetp-eco":
@@ -117,8 +123,8 @@ export const TrustComplianceStrip: React.FC = () => {
   const getPillarSubtext = (pillar: CompliancePillar) => {
     if (language !== "bn") return pillar.subtext;
     switch (pillar.id) {
-      case "tannery-verified":
-        return "সাভার ট্যানারি এস্টেটের অডিটেড সুবিধাসমূহ";
+      case "lwg-certified-network":
+        return "লেদার ওয়ার্কিং গ্রুপ অডিটেড পার্টনার ট্যানারিসমূহ";
       case "reach-compliance":
         return "অ্যাজো-ফ্রি ও ক্রোমিয়াম(VI) নিয়ন্ত্রিত";
       case "cetp-eco":
@@ -135,8 +141,8 @@ export const TrustComplianceStrip: React.FC = () => {
   const getPillarBadge = (pillar: CompliancePillar) => {
     if (language !== "bn") return pillar.badge;
     switch (pillar.id) {
-      case "tannery-verified":
-        return "যাচাইকৃত ট্যানারি";
+      case "lwg-certified-network":
+        return "LWG অডিটেড";
       case "reach-compliance":
         return "EU / বৈশ্বিক মানসম্মত";
       case "cetp-eco":
@@ -173,14 +179,32 @@ export const TrustComplianceStrip: React.FC = () => {
             </span>
           </div>
 
-          {/* Pillars Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4">
+          {/* Pillars Grid with Motion Stagger */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-20px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.07, delayChildren: 0.05 },
+              },
+            }}
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4"
+          >
             {COMPLIANCE_PILLARS.map((pillar) => {
               const Icon = pillar.icon;
               return (
-                <button
+                <motion.button
                   key={pillar.id}
                   type="button"
+                  variants={{
+                    hidden: { opacity: 0, y: 15 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+                  }}
+                  whileHover={{ y: -3, scale: 1.015 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedPillar(pillar)}
                   className="group flex flex-col text-left p-3.5 bg-white hover:bg-stone-50 border border-stone-200/90 hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40"
                 >
@@ -205,10 +229,10 @@ export const TrustComplianceStrip: React.FC = () => {
                     <span>{language === "bn" ? "মানদণ্ড দেখুন" : "View criteria"}</span>
                     <ChevronRight className="w-3 h-3 text-[#C89D43] group-hover:translate-x-0.5 transition-transform" />
                   </div>
-                </button>
+                </motion.button>
               );
             })}
-          </div>
+          </motion.div>
 
         </div>
       </section>

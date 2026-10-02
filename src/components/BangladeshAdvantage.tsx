@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 import { CheckCircle2, Factory, Shield, Layers } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
 import { useLanguage } from "../context/LanguageContext";
@@ -30,7 +31,13 @@ export const BangladeshAdvantage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Left Column: Sourcing Realities */}
-          <div className="lg:col-span-7 space-y-6 flex flex-col justify-between">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.45 }}
+            className="lg:col-span-7 space-y-6 flex flex-col justify-between"
+          >
             <div className="space-y-4">
               <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#15120E]">
                 {language === "bn" ? "বাংলাদেশ লেদার সোর্সিং সুবিধা" : "The Bangladesh Sourcing Advantage"}
@@ -100,12 +107,18 @@ export const BangladeshAdvantage: React.FC = () => {
                 ? "এক্সপোর্টভাইজর বায়ারের স্বার্থে সরাসরি ফ্যাক্টরির সাথে স্বচ্ছ যোগাযোগ, কঠোর মান নিয়ন্ত্রণ এবং ঝামেলাহীন শিপিং নিশ্চিত করে।"
                 : "ExportVisor does not replace the tannery; we make the tannery accessible, accountable, and transparent to international buyers with strict quality oversight."}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Bangladesh Map & Sourcing Hub Card */}
-          <div className="lg:col-span-5 bg-gradient-to-b from-[#15120E] via-[#221C16] to-[#15120E] text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl border border-[#C89D43]/35 relative overflow-hidden">
-            {/* Ambient pattern */}
-            <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C89D43_1px,transparent_1px)] [background-size:16px_16px]" />
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.45, delay: 0.1 }}
+            className="lg:col-span-5 bg-gradient-to-b from-[#15120E] via-[#221C16] to-[#15120E] text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl border border-[#C89D43]/35 relative overflow-hidden"
+          >
+            {/* Ambient luxury glow overlay */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#C89D43]/10 via-transparent to-transparent pointer-events-none" />
 
             <div className="relative space-y-6">
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
@@ -131,6 +144,10 @@ export const BangladeshAdvantage: React.FC = () => {
                 <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
                   <span className="text-stone-400">Primary Tannery Cluster</span>
                   <span className="font-bold text-white">Savar Industrial Estate</span>
+                </div>
+                <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
+                  <span className="text-stone-400">Audit & Compliance</span>
+                  <span className="font-bold text-[#E5BE58]">LWG-Audited Network</span>
                 </div>
                 <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
                   <span className="text-stone-400">Primary Sea Freight Port</span>
@@ -167,7 +184,7 @@ export const BangladeshAdvantage: React.FC = () => {
               <span className="text-[#E5BE58] font-bold">ExportVisor Field Presence</span>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
 

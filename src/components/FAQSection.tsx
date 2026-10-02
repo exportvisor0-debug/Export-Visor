@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { siteConfig } from "../config/siteConfig";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
@@ -56,7 +57,13 @@ export const FAQSection: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-30px" }}
+          transition={{ duration: 0.4 }}
+          className="text-center mb-12"
+        >
           <div className="inline-flex items-center gap-3 mb-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               <HelpCircle className="w-3.5 h-3.5 text-[#C89D43]" />
@@ -70,14 +77,21 @@ export const FAQSection: React.FC = () => {
           <p className="mt-3 text-sm text-stone-600 max-w-xl mx-auto leading-relaxed">
             {t.faq.subtitle}
           </p>
-        </div>
+        </motion.div>
 
-        {/* Accordion List */}
+        {/* Accordion List with Motion */}
         <div className="divide-y divide-stone-200 border-t border-b border-stone-200">
           {localizedFaqs.map((faq, index) => {
             const isOpen = openIdx === index;
             return (
-              <div key={index} className="py-4">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.35, delay: index * 0.04 }}
+                className="py-4"
+              >
                 <button
                   type="button"
                   onClick={() => setOpenIdx(isOpen ? null : index)}
@@ -86,17 +100,31 @@ export const FAQSection: React.FC = () => {
                   <span className="text-sm sm:text-base font-semibold text-[#15120E] group-hover:text-[#C89D43] transition-colors pr-4">
                     {faq.q}
                   </span>
-                  <div className={`w-7 h-7 rounded-lg flex items-center justify-center text-stone-400 group-hover:text-stone-900 shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180 bg-amber-50 text-[#C89D43]" : "bg-stone-100"}`}>
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.25 }}
+                    className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isOpen ? "bg-amber-50 text-[#C89D43]" : "bg-stone-100 text-stone-400 group-hover:text-stone-900"}`}
+                  >
                     <ChevronDown className="w-4 h-4" />
-                  </div>
+                  </motion.div>
                 </button>
 
-                {isOpen && (
-                  <div className="mt-2 pr-6 text-xs sm:text-sm text-stone-600 leading-relaxed animate-fade-in">
-                    <p>{faq.a}</p>
-                  </div>
-                )}
-              </div>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pt-2 pb-1 pr-6 text-xs sm:text-sm text-stone-600 leading-relaxed">
+                        <p>{faq.a}</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>

@@ -33,7 +33,8 @@ export type AnalyticsEventName =
   | "live_chat_open"
   | "live_chat_message"
   | "consultation_modal_open"
-  | "consultation_form_submit";
+  | "consultation_form_submit"
+  | "timeline_segment_select";
 
 export function trackEvent(
   eventName: AnalyticsEventName,

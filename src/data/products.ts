@@ -4,15 +4,30 @@
  * Centralized data architecture for easy updating and addition of leather specifications.
  */
 
-// Import generated photorealistic assets
+
+
+// Import photorealistic assets
 import heroLeatherImg from "../assets/images/hero_leather_inspection_1790421583026.jpg";
 import heroExportImg from "../assets/images/hero_leather_export_1790424538382.jpg";
 import crustLeatherImg from "../assets/images/leather_crust_natural_1790421595126.jpg";
 import finishedAnilineImg from "../assets/images/leather_finished_aniline_1790421606041.jpg";
 import wetBlueImg from "../assets/images/leather_wet_blue_stage_1790421617932.jpg";
 import exportShippingImg from "../assets/images/export_shipping_containers_1790421629253.jpg";
+import containerCargoShipImg from "../assets/images/container_cargo_ship_1790935509406.jpg";
+import cargoShipVesselImg from "../assets/images/cargo_ship_vessel_1790935533371.jpg";
+import portGantryLoadingImg from "../assets/images/port_gantry_loading_1790936100812.jpg";
 
-export { heroLeatherImg, heroExportImg, crustLeatherImg, finishedAnilineImg, wetBlueImg, exportShippingImg };
+export {
+  heroLeatherImg,
+  heroExportImg,
+  crustLeatherImg,
+  finishedAnilineImg,
+  wetBlueImg,
+  exportShippingImg,
+  containerCargoShipImg,
+  cargoShipVesselImg,
+  portGantryLoadingImg,
+};
 
 export interface LeatherProduct {
   id: string;

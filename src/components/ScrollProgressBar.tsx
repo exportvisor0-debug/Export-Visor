@@ -10,9 +10,10 @@ interface SectionMilestone {
 
 const SECTIONS: SectionMilestone[] = [
   { id: "hero", en: "Overview", bn: "পরিচিতি" },
-  { id: "about", en: "About Agency", bn: "আমাদের সম্পর্কে" },
   { id: "leather-products", en: "Leather Catalogue", bn: "লেদার ক্যাটালগ" },
   { id: "leather-glossary", en: "Leather Glossary", bn: "লেদার পরিভাষা" },
+  { id: "about", en: "About Agency", bn: "আমাদের সম্পর্কে" },
+  { id: "tannery-timeline", en: "Network Timeline", bn: "নেটওয়ার্ক টাইমলাইন" },
   { id: "commercial-terms", en: "Commercial Terms", bn: "বাণিজ্যিক শর্তাবলী" },
   { id: "sourcing-process", en: "10-Stage Sourcing", bn: "১০-ধাপ সোর্সিং প্রসেস" },
   { id: "quality-inspection", en: "Quality & AQL 2.5", bn: "গুণমান ও AQL ২.৫" },

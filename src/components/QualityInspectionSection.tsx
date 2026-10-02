@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 import { heroLeatherImg } from "../data/products";
 import { CheckCircle2, ShieldCheck, Eye, Layers, Ruler, Palette } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
@@ -93,7 +94,13 @@ export const QualityInspectionSection: React.FC = () => {
         {/* Top Feature Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
           
-          <div className="lg:col-span-6 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.45 }}
+            className="lg:col-span-6 space-y-4"
+          >
             <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#15120E]">
               {language === "bn" ? "ইন্সপেকশন সমন্বয় কীভাবে কাজ করে" : "How Inspection Coordination Works"}
             </h3>
@@ -130,9 +137,15 @@ export const QualityInspectionSection: React.FC = () => {
                 {t.quality.standardsDesc}
               </p>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-6 relative">
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.45, delay: 0.1 }}
+            className="lg:col-span-6 relative"
+          >
             <div className="rounded-xl overflow-hidden border border-[#C89D43]/30 shadow-lg bg-stone-900 aspect-[4/3] group">
               <img
                 src={heroLeatherImg}
@@ -154,18 +167,35 @@ export const QualityInspectionSection: React.FC = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
-        {/* 4 Core Quality Determinants Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 4 Core Quality Determinants Grid with Motion Stagger */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-30px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.08 },
+            },
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {qualityFactors.map((item) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={item.factor}
-                className="p-6 border border-stone-200/90 rounded-xl bg-white hover:border-[#C89D43]/50 transition-all duration-200 shadow-2xs hover:shadow-md group"
+                variants={{
+                  hidden: { opacity: 0, y: 18 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+                }}
+                whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
+                className="p-6 border border-stone-200/90 rounded-xl bg-white transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
               >
                 <div className={`w-10 h-10 rounded-lg ${item.color} flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-xs`}>
                   <Icon className="w-5 h-5" />
@@ -176,10 +206,10 @@ export const QualityInspectionSection: React.FC = () => {
                 <p className="text-xs text-stone-600 leading-relaxed">
                   {item.desc}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
       </div>
     </section>

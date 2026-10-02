@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 import {
   Compass,
   MessageSquare,
@@ -76,14 +77,31 @@ export const WhyExportVisor: React.FC = () => {
           </p>
         </div>
 
-        {/* 6 Grid Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* 6 Grid Cards with Motion Stagger */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+            },
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
           {reasons.map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={item.title}
-                className="p-6 sm:p-7 bg-white border border-stone-200/90 rounded-xl hover:border-[#C89D43]/50 transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between group"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+                }}
+                whileHover={{ y: -5, borderColor: "rgba(200, 157, 67, 0.65)" }}
+                className="p-6 sm:p-7 bg-white border border-stone-200/90 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between group cursor-pointer"
               >
                 <div>
                   <div className={`w-11 h-11 rounded-lg ${item.color} flex items-center justify-center mb-4 transition-transform group-hover:scale-110 shadow-2xs`}>
@@ -104,10 +122,10 @@ export const WhyExportVisor: React.FC = () => {
                     {language === "bn" ? "যাচাইকৃত নির্ভরতা" : "Verified Reliability"}
                   </span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
       </div>
     </section>

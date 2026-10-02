@@ -5,6 +5,7 @@ import { ScrollProgressBar } from "./components/ScrollProgressBar";
 import { Hero } from "./components/Hero";
 import { TrustComplianceStrip } from "./components/TrustComplianceStrip";
 import { AboutSection } from "./components/AboutSection";
+import { TanneryNetworkTimeline } from "./components/TanneryNetworkTimeline";
 import { LeatherCatalogue } from "./components/LeatherCatalogue";
 import { LeatherGlossarySection } from "./components/LeatherGlossarySection";
 import { CommercialTermsSection } from "./components/CommercialTermsSection";
@@ -102,19 +103,13 @@ function AppContent() {
         {/* 2.1 Trust & Compliance Strip */}
         <TrustComplianceStrip />
 
-        {/* 3. About ExportVisor */}
-        <AboutSection
-          onOpenProfile={() => setIsCompanyProfileOpen(true)}
-          onRequestQuote={() => handleScrollToQuoteSection()}
-        />
-
-        {/* 4. Leather Product Catalogue */}
+        {/* 3. Leather Product Catalogue (Prominently near top so buyers don't have to scroll down far) */}
         <LeatherCatalogue
           onSelectProduct={handleSelectProduct}
           onRequestQuote={(prodName) => handleScrollToQuoteSection(prodName)}
         />
 
-        {/* 4.1 Leather Glossary Section: Industry terms for non-expert buyers */}
+        {/* 3.1 Leather Glossary Section: Industry terms for non-expert buyers */}
         <LeatherGlossarySection
           onSelectProduct={(productId) => {
             const found = LEATHER_PRODUCTS.find((p) => p.id === productId);
@@ -123,6 +118,17 @@ function AppContent() {
             }
           }}
           onRequestQuote={(termName) => handleScrollToQuoteSection(termName)}
+        />
+
+        {/* 4. About ExportVisor */}
+        <AboutSection
+          onOpenProfile={() => setIsCompanyProfileOpen(true)}
+          onRequestQuote={() => handleScrollToQuoteSection()}
+        />
+
+        {/* 4.1 Interactive Tannery Network Timeline: History and Growth */}
+        <TanneryNetworkTimeline
+          onRequestQuote={() => handleScrollToQuoteSection()}
         />
 
         {/* 5. Confirmed Commercial Benchmarks & Terms (RFQ-Driven) */}

@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { LEATHER_PRODUCTS, LeatherProduct } from "../data/products";
 import { trackEvent } from "../utils/analytics";
 import {
@@ -143,7 +144,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
 
         </div>
 
-        {/* Product Cards Grid */}
+        {/* Product Cards Grid with Framer Motion Stagger */}
         {filteredProducts.length === 0 ? (
           <div className="text-center py-16 bg-white border border-stone-200 rounded-lg p-8">
             <p className="text-stone-500 text-sm">
@@ -160,11 +161,33 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-40px" }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.08, delayChildren: 0.05 },
+              },
+            }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+          >
             {filteredProducts.map((product) => (
-              <div
+              <motion.div
                 key={product.id}
-                className="bg-white border border-stone-200 rounded-lg overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-200 group"
+                variants={{
+                  hidden: { opacity: 0, y: 22 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+                }}
+                whileHover={{
+                  y: -6,
+                  boxShadow: "0 18px 36px -4px rgba(200, 157, 67, 0.28)",
+                  borderColor: "rgba(200, 157, 67, 0.65)",
+                }}
+                transition={{ duration: 0.28 }}
+                className="bg-white border border-stone-200 rounded-xl overflow-hidden flex flex-col justify-between transition-colors duration-200 group"
               >
                 <div>
                   {/* Card Media Container */}
@@ -178,17 +201,17 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                     <img
                       src={product.image}
                       alt={`${product.name} hide sample`}
-                      className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-600 ease-out"
                       loading="lazy"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent pointer-events-none" />
 
-                    {/* Sustainable Sourcing Badge Indicator */}
+                    {/* Sustainable / LWG Sourcing Badge Indicator */}
                     {product.isSustainable && (
                       <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-stone-900/90 backdrop-blur-xs text-emerald-400 border border-emerald-500/40 text-[10px] font-semibold tracking-wide shadow-xs">
                         <Leaf className="w-3 h-3 text-emerald-400" />
-                        <span>Sustainable Sourcing</span>
+                        <span>LWG & Eco-Compliant</span>
                       </div>
                     )}
 
@@ -230,7 +253,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                     {product.isSustainable && (
                       <div className="flex items-center gap-1.5 p-2 bg-emerald-50 border border-emerald-200/80 rounded-lg text-[11px] text-emerald-900">
                         <Leaf className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span className="font-bold text-emerald-950">Eco-Compliant:</span>
+                        <span className="font-bold text-emerald-950">LWG / Eco:</span>
                         <span className="truncate text-emerald-800">{product.sustainabilityNote}</span>
                       </div>
                     )}
@@ -280,16 +303,17 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                         trackEvent("product_detail_view", { product_id: product.id });
                         onSelectProduct(product);
                       }}
-                      className="text-xs font-bold text-stone-700 hover:text-[#C89D43] underline underline-offset-4 cursor-pointer transition-colors"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-stone-100 hover:bg-[#C89D43]/15 text-xs font-bold text-stone-800 hover:text-[#7A5A17] border border-stone-200 hover:border-[#C89D43]/40 cursor-pointer transition-all shadow-2xs"
                     >
-                      {t.catalogue.viewSpecs}
+                      <span>View Details</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#C89D43]" />
                     </button>
 
                     <button
                       type="button"
                       onClick={(e) => handleCopyProductLink(e, product.id)}
                       title={`Copy direct link: /product/${product.id}`}
-                      className="p-1 rounded text-stone-400 hover:text-[#C89D43] hover:bg-stone-100 transition-colors cursor-pointer"
+                      className="p-1.5 rounded-md text-stone-400 hover:text-[#C89D43] hover:bg-stone-100 transition-colors cursor-pointer"
                       aria-label={`Copy link for ${product.name}`}
                     >
                       {copiedId === product.id ? (
@@ -308,16 +332,16 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                       });
                       onRequestQuote(product.name);
                     }}
-                    className="inline-flex items-center px-4 py-2 text-xs font-bold text-white bg-[#15120E] hover:bg-[#221C16] border border-[#C89D43]/40 rounded-lg transition-all shadow-xs hover:shadow-md cursor-pointer whitespace-nowrap group/btn"
+                    className="inline-flex items-center px-3.5 py-2 text-xs font-bold text-white bg-[#15120E] hover:bg-[#221C16] border border-[#C89D43]/40 rounded-lg transition-all shadow-xs hover:shadow-md cursor-pointer whitespace-nowrap group/btn"
                   >
                     <span>{t.catalogue.requestQuote}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#E5BE58] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                   </button>
                 </div>
 
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {/* Global Sourcing Footer CTA inside Catalogue */}

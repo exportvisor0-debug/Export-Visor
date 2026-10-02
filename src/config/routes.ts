@@ -26,6 +26,15 @@ export const SECTION_ROUTES: SectionRoute[] = [
     navLabel: "About",
   },
   {
+    id: "tannery-timeline",
+    path: "/timeline",
+    aliases: ["/tannery-timeline", "/history", "/growth"],
+    title: "Tannery Network Timeline & Evolution | ExportVisor",
+    metaDescription:
+      "Explore the 10+ year evolution of ExportVisor's tannery network in Bangladesh—from Savar drum alliances to LWG accreditation, AQL 2.5 testing desks, and global container shipping to 25+ ports.",
+    navLabel: "Timeline",
+  },
+  {
     id: "leather-products",
     path: "/products",
     aliases: ["/leather-products", "/catalogue", "/leather"],

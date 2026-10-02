@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import {
   Droplets,
@@ -232,14 +233,31 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
           </button>
         </div>
 
-        {/* Knowledge Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        {/* Knowledge Cards Grid with Motion Stagger */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.08 },
+            },
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+        >
           {filteredItems.map((item) => {
             const Icon = item.icon;
             return (
-              <div
+              <motion.div
                 key={item.id}
-                className="bg-[#FAF8F5] border border-stone-200/90 rounded-xl p-6 flex flex-col justify-between hover:border-[#C89D43]/50 transition-all shadow-2xs hover:shadow-md group"
+                variants={{
+                  hidden: { opacity: 0, y: 18 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+                }}
+                whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
+                className="bg-[#FAF8F5] border border-stone-200/90 rounded-xl p-6 flex flex-col justify-between transition-all shadow-2xs hover:shadow-md group cursor-pointer"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
@@ -274,10 +292,10 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
                     {item.technicalNote}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Visual Leather Grading Guide Component */}
         <div id="grading-guide" className="scroll-mt-20">

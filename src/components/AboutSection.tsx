@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 import { siteConfig } from "../config/siteConfig";
 import { CheckCircle2, Shield, Eye, FileSpreadsheet, Anchor, ArrowRight } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
@@ -67,7 +68,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Left Context: The Sourcing Reality */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="lg:col-span-5 space-y-6"
+          >
             <div className="p-6 bg-stone-50/80 border border-stone-200/90 rounded-xl shadow-2xs">
               <h3 className="font-display text-2xl font-bold text-[#15120E] mb-3">
                 {language === "bn"
@@ -143,10 +150,16 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Key Operational Pillars */}
-          <div className="lg:col-span-7 space-y-4">
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-30px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+            className="lg:col-span-7 space-y-4"
+          >
             <h3 className="text-xs uppercase tracking-wider text-stone-500 font-bold mb-4 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#C89D43]" />
               {language === "bn" ? "কীভাবে আমরা বায়ার অপারেশন সমন্বয় করি" : "How We Coordinate Buyer Operations"}
@@ -156,9 +169,11 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               {corePillars.map((pillar, idx) => {
                 const IconComponent = pillar.icon;
                 return (
-                  <div
+                  <motion.div
                     key={pillar.title}
-                    className="p-5 border border-stone-200/90 hover:border-[#C89D43]/50 rounded-xl transition-all duration-200 bg-white shadow-2xs hover:shadow-md group"
+                    whileHover={{ x: 6, borderColor: "rgba(200, 157, 67, 0.6)" }}
+                    transition={{ duration: 0.2 }}
+                    className="p-5 border border-stone-200/90 hover:border-[#C89D43]/50 rounded-xl transition-all duration-200 bg-white shadow-2xs hover:shadow-md group cursor-pointer"
                   >
                     <div className="flex items-start gap-4">
                       <div className={`w-10 h-10 rounded-lg ${pillar.color} flex items-center justify-center shrink-0 mt-0.5 transition-transform group-hover:scale-110 shadow-2xs`}>
@@ -178,7 +193,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
@@ -197,7 +212,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
               </button>
             </div>
 
-          </div>
+          </motion.div>
 
         </div>
 

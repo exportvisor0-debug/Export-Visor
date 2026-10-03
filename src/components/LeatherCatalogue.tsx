@@ -234,6 +234,8 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                       <h3 className="font-display text-2xl font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors">
                         <a
                           href={`/product/${product.id}`}
+                          title={`${product.name} - Bangladesh Leather Sourcing & Export`}
+                          aria-label={`View technical specifications for ${product.name}`}
                           onClick={(e) => {
                             e.preventDefault();
                             trackEvent("product_detail_view", { product_id: product.id });

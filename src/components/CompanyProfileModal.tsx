@@ -185,7 +185,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
               >
                 View on Google Maps ↗
               </a>
-              <p className="text-[11px] text-stone-400 mt-1">© 2026 ExportVisor. All rights reserved.</p>
+              <p className="text-[11px] text-stone-400 mt-1">© {new Date().getFullYear()} ExportVisor. All rights reserved.</p>
             </div>
           </div>
 

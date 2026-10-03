@@ -11,6 +11,8 @@ import {
   HelpCircle,
   ShieldCheck,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   ExternalLink,
 } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
@@ -221,6 +223,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
 }) => {
   const { language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [showAll, setShowAll] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
 
   const categories = ["All", "Stages", "Grain Tiers", "Tannage Types", "Specifications"];
@@ -239,6 +242,8 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
       return matchesCategory && matchesSearch;
     });
   }, [activeCategory, searchQuery]);
+
+  const displayedTerms = showAll ? filteredTerms : filteredTerms.slice(0, 2);
 
   return (
     <section
@@ -303,7 +308,10 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
               return (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => {
+                    setActiveCategory(cat);
+                    setShowAll(false);
+                  }}
                   className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                     isSelected
                       ? "bg-[#15120E] text-white shadow-xs border border-[#C89D43]/50"
@@ -331,7 +339,10 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                   : "Search terms (e.g., wet blue, split, temper)..."
               }
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setShowAll(false);
+              }}
               className="w-full pl-9 pr-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40 focus:border-[#C89D43] text-stone-800 placeholder-stone-400 shadow-2xs"
             />
           </div>
@@ -348,6 +359,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
               onClick={() => {
                 setActiveCategory("All");
                 setSearchQuery("");
+                setShowAll(false);
               }}
               className="mt-3 text-xs font-semibold text-[#C89D43] hover:underline cursor-pointer"
             >
@@ -368,7 +380,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
             }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
           >
-            {filteredTerms.map((term) => (
+            {displayedTerms.map((term) => (
               <motion.div
                 key={term.id}
                 variants={{
@@ -475,6 +487,29 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
               </motion.div>
             ))}
           </motion.div>
+        )}
+
+        {/* View All / Show Less Expandable Action */}
+        {filteredTerms.length > 2 && (
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-[#15120E] bg-white hover:bg-stone-50 border border-[#C89D43] hover:border-[#D6AC4B] shadow-xs hover:shadow-md transition-all cursor-pointer group"
+            >
+              <span>
+                {showAll
+                  ? (language === "bn" ? "সংক্ষিপ্ত করুন" : "Show Less")
+                  : (language === "bn"
+                      ? `সবগুলো টার্ম দেখুন (${filteredTerms.length}টি)`
+                      : `View All Terms (${filteredTerms.length} Definitions)`)}
+              </span>
+              {showAll ? (
+                <ChevronUp className="w-4 h-4 text-[#C89D43] group-hover:-translate-y-0.5 transition-transform" />
+              ) : (
+                <ChevronDown className="w-4 h-4 text-[#C89D43] group-hover:translate-y-0.5 transition-transform" />
+              )}
+            </button>
+          </div>
         )}
 
         {/* Bottom Banner */}

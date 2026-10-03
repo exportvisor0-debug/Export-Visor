@@ -22,6 +22,22 @@ export function scrollToSection(sectionId: string, smooth: boolean = true) {
   return false;
 }
 
+export function syncRouteSeo(route: { title: string; metaDescription?: string; path: string }) {
+  document.title = route.title;
+  if (route.metaDescription) {
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", route.metaDescription);
+    }
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", route.title);
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute("content", route.metaDescription);
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute("content", `https://exportvisor.com${route.path}`);
+  }
+}
+
 export function syncProductSeo(product: LeatherProduct | null) {
   if (product) {
     const title = product.seoTitle || `${product.name} | ExportVisor Bangladesh`;
@@ -121,7 +137,7 @@ export function navigateTo(path: string, smooth: boolean = true) {
     if (window.location.pathname !== route.path) {
       window.history.pushState(null, "", route.path);
     }
-    document.title = route.title;
+    syncRouteSeo(route);
     scrollToSection(route.id, smooth);
   } else if (path.startsWith("#")) {
     const id = path.substring(1);
@@ -130,7 +146,7 @@ export function navigateTo(path: string, smooth: boolean = true) {
       if (window.location.pathname !== r.path) {
         window.history.pushState(null, "", r.path);
       }
-      document.title = r.title;
+      syncRouteSeo(r);
     }
     scrollToSection(id, smooth);
   } else {
@@ -258,7 +274,7 @@ export function useSectionRouter(onSelectProductByRoute?: (product: LeatherProdu
             // Update URL without adding redundant history stack entries
             if (window.location.pathname !== route.path) {
               window.history.replaceState(null, "", route.path);
-              document.title = route.title;
+              syncRouteSeo(route);
             }
           }
         }

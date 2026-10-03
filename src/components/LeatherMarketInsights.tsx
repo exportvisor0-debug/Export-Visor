@@ -13,6 +13,8 @@ import {
   Factory,
   RefreshCw,
   ChevronRight,
+  ChevronDown,
+  ChevronUp,
   BookOpen,
   CheckCircle2,
 } from "lucide-react";
@@ -22,7 +24,7 @@ export interface MarketInsight {
   id: string;
   category: "Environmental & CETP" | "Supply Dynamics" | "Export Trends" | "Sustainable Tech";
   title: string;
-  date: string;
+  offsetMonths: number; // 0 = current live running month, 1 = previous month, etc.
   source: string;
   readTime: string;
   summary: string;
@@ -32,12 +34,57 @@ export interface MarketInsight {
   externalLink?: string;
 }
 
+/**
+ * Automatically computes dynamic localized date relative to the current live running month.
+ * offsetMonths = 0 produces the current live month (e.g. October 2026 or অক্টোবর ২০২৬).
+ * As real-world time progresses, the news dates automatically update without manual edits.
+ */
+export const getDynamicMarketMonth = (offsetMonths: number = 0, lang: string = "en"): string => {
+  const d = new Date();
+  d.setDate(1); // prevent month-end day skipping (e.g. 31st)
+  d.setMonth(d.getMonth() - offsetMonths);
+
+  if (lang === "bn") {
+    const bnMonths = [
+      "জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন",
+      "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"
+    ];
+    const month = bnMonths[d.getMonth()];
+    const yearDigits = d.getFullYear().toString().split("");
+    const bnDigits: Record<string, string> = {
+      "0": "০", "1": "১", "2": "২", "3": "৩", "4": "৪",
+      "5": "৫", "6": "৬", "7": "৭", "8": "৮", "9": "৯"
+    };
+    const bnYear = yearDigits.map((char) => bnDigits[char] || char).join("");
+    return `${month} ${bnYear}`;
+  }
+
+  const localeMap: Record<string, string> = {
+    en: "en-US",
+    de: "de-DE",
+    fr: "fr-FR",
+    es: "es-ES",
+    it: "it-IT",
+    zh: "zh-CN",
+    ar: "ar-EG",
+    ja: "ja-JP",
+    ko: "ko-KR",
+    tr: "tr-TR",
+  };
+  const locale = localeMap[lang] || "en-US";
+  try {
+    return d.toLocaleDateString(locale, { month: "long", year: "numeric" });
+  } catch {
+    return d.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+  }
+};
+
 const MARKET_INSIGHTS: MarketInsight[] = [
   {
     id: "savar-cetp-upgrade-2026",
     category: "Environmental & CETP",
     title: "Savar Tannery Estate Advances Chromium Recovery & CETP Biological Stage Upgrades",
-    date: "September 2026",
+    offsetMonths: 0, // Current active month
     source: "Bangladesh Tannery Association (BTA) & DoE",
     readTime: "3 min read",
     summary:
@@ -50,12 +97,12 @@ const MARKET_INSIGHTS: MarketInsight[] = [
   {
     id: "raw-hide-seasonality-2026",
     category: "Supply Dynamics",
-    title: "Post-Eid Raw Hide Influx Stabilizes Commercial Wet Blue & Crust Pricing",
-    date: "August 2026",
+    title: "Seasonal Raw Hide Influx Stabilizes Commercial Wet Blue & Crust Baseline Pricing",
+    offsetMonths: 0, // Current active month
     source: "Export Promotion Bureau (EPB) Market Monitor",
     readTime: "2 min read",
     summary:
-      "The seasonal collection of domestic cow, buffalo, and goat skins has replenished beamhouse inventories across Savar and Chattogram. The influx of tight-grain hides has eased raw material price volatility, creating an advantageous procurement window for international buyers booking H2 export batches.",
+      "The seasonal collection of domestic cow, buffalo, and goat skins has replenished beamhouse inventories across Savar and Chattogram. The influx of tight-grain hides has eased raw material price volatility, creating an advantageous procurement window for international buyers booking export batches.",
     procurementTakeaway:
       "Optimal procurement window for locking in long-term crust and wet blue contracts before peak year-end footwear manufacturing demand.",
     keyStats: ["~10M raw skins seasonal harvest", "Stabilized baseline price band", "Tight epidermal grain sorting"],
@@ -65,7 +112,7 @@ const MARKET_INSIGHTS: MarketInsight[] = [
     id: "eu-supply-diversification-2026",
     category: "Export Trends",
     title: "European Footwear & Leather Goods Importers Accelerate Direct Sourcing from Dhaka",
-    date: "September 2026",
+    offsetMonths: 0, // Current active month
     source: "LFMEAB Global Sourcing Index",
     readTime: "4 min read",
     summary:
@@ -79,7 +126,7 @@ const MARKET_INSIGHTS: MarketInsight[] = [
     id: "chrome-free-eco-tanning-2026",
     category: "Sustainable Tech",
     title: "Rising Commercial Demand for Wet White & Synthetic Bio-Based Tanning Formulations",
-    date: "July 2026",
+    offsetMonths: 1, // Last month
     source: "Leather Engineering & Technology Institute (LETI)",
     readTime: "3 min read",
     summary:
@@ -93,7 +140,7 @@ const MARKET_INSIGHTS: MarketInsight[] = [
     id: "chattogram-port-feeder-logistics",
     category: "Export Trends",
     title: "Direct Transshipment Routes from Chattogram Port Shorten European & Asian Transit",
-    date: "August 2026",
+    offsetMonths: 1, // Last month
     source: "Chattogram Port Authority & International Shipping Council",
     readTime: "2 min read",
     summary:
@@ -107,7 +154,7 @@ const MARKET_INSIGHTS: MarketInsight[] = [
     id: "goat-cow-grain-distinction",
     category: "Supply Dynamics",
     title: "High Demand for Bengal Goat Skin in High-Flex Glove & Garment Sourcing",
-    date: "June 2026",
+    offsetMonths: 2, // 2 months ago
     source: "International Footwear & Leather Trade Review",
     readTime: "3 min read",
     summary:
@@ -128,9 +175,17 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
 }) => {
   const { t, language } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [showAll, setShowAll] = useState<boolean>(false);
   const [activeArticle, setActiveArticle] = useState<MarketInsight | null>(null);
-  const [lastUpdated, setLastUpdated] = useState<string>("September 2026");
+  
+  const currentRunningMonth = getDynamicMarketMonth(0, language);
+  const [lastUpdated, setLastUpdated] = useState<string>(() => currentRunningMonth);
   const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+
+  // Synchronize dynamic month with current language
+  React.useEffect(() => {
+    setLastUpdated(getDynamicMarketMonth(0, language));
+  }, [language]);
 
   const categories = [
     "All",
@@ -145,11 +200,17 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
       ? MARKET_INSIGHTS
       : MARKET_INSIGHTS.filter((item) => item.category === selectedCategory);
 
+  const displayedInsights = showAll ? filteredInsights : filteredInsights.slice(0, 3);
+
   const handleRefresh = () => {
     setIsRefreshing(true);
     setTimeout(() => {
       setIsRefreshing(false);
-      setLastUpdated("Live Briefing (Updated Today)");
+      setLastUpdated(
+        language === "bn"
+          ? `লাইভ বুলেটিন (${getDynamicMarketMonth(0, language)})`
+          : `Live Feed (${getDynamicMarketMonth(0, language)})`
+      );
     }, 450);
   };
 
@@ -176,14 +237,18 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
           </div>
 
           {/* Sourcing Desk Quick Action */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={handleRefresh}
-              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-stone-600 bg-white hover:bg-stone-50 border border-stone-300 rounded-lg transition-colors cursor-pointer shadow-2xs"
-              title="Refresh industry intelligence feed"
+              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-medium text-stone-700 bg-white hover:bg-stone-50 border border-stone-300 rounded-lg transition-colors cursor-pointer shadow-2xs"
+              title="Auto-synchronized to current active month. Click to refresh industry intelligence feed."
             >
-              <RefreshCw className={`w-3.5 h-3.5 text-stone-500 ${isRefreshing ? "animate-spin" : ""}`} />
-              <span className="font-mono text-[11px]">{lastUpdated}</span>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+              </span>
+              <RefreshCw className={`w-3.5 h-3.5 text-stone-500 ${isRefreshing ? "animate-spin text-[#C89D43]" : ""}`} />
+              <span className="font-mono text-[11px] font-semibold text-stone-800">{lastUpdated}</span>
             </button>
             <button
               onClick={() => onRequestQuote("Market Timing Advisory")}
@@ -255,7 +320,10 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => {
+                setSelectedCategory(cat);
+                setShowAll(false);
+              }}
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer whitespace-nowrap ${
                 selectedCategory === cat
                   ? "bg-[#181310] text-white shadow-xs"
@@ -281,7 +349,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
           }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
-          {filteredInsights.map((insight) => (
+          {displayedInsights.map((insight) => (
             <motion.article
               key={insight.id}
               variants={{
@@ -297,9 +365,9 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
                   <span className="font-bold uppercase tracking-wider text-[#7A5A17] bg-[#C89D43]/10 px-2 py-0.5 rounded-full border border-[#C89D43]/20">
                     {insight.category}
                   </span>
-                  <div className="flex items-center gap-1.5">
-                    <Calendar className="w-3 h-3 text-stone-400" />
-                    <span>{insight.date}</span>
+                  <div className="flex items-center gap-1.5 text-stone-600 font-medium">
+                    <Calendar className="w-3 h-3 text-[#C89D43]" />
+                    <span>{getDynamicMarketMonth(insight.offsetMonths, language)}</span>
                   </div>
                 </div>
 
@@ -365,6 +433,29 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
           ))}
         </motion.div>
 
+        {/* View All / Show Less Expandable Action */}
+        {filteredInsights.length > 3 && (
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-[#15120E] bg-white hover:bg-stone-50 border border-[#C89D43] hover:border-[#D6AC4B] shadow-xs hover:shadow-md transition-all cursor-pointer group"
+            >
+              <span>
+                {showAll
+                  ? (language === "bn" ? "সংক্ষিপ্ত করুন" : "Show Less")
+                  : (language === "bn"
+                      ? `সবগুলো মার্কেট ইনসাইট দেখুন (${filteredInsights.length}টি)`
+                      : `View All Market Insights (${filteredInsights.length} Reports)`)}
+              </span>
+              {showAll ? (
+                <ChevronUp className="w-4 h-4 text-[#C89D43] group-hover:-translate-y-0.5 transition-transform" />
+              ) : (
+                <ChevronDown className="w-4 h-4 text-[#C89D43] group-hover:translate-y-0.5 transition-transform" />
+              )}
+            </button>
+          </div>
+        )}
+
         {/* Bottom Sourcing Guidance Strip */}
         <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-stone-900 via-[#1F1914] to-stone-900 border border-[#C89D43]/35 text-white rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="space-y-1.5 max-w-2xl">
@@ -411,7 +502,10 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
             </h3>
 
             <div className="flex items-center gap-3 text-xs text-stone-500">
-              <span>{activeArticle.date}</span>
+              <span className="font-semibold text-stone-800 flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-[#C89D43]" />
+                {getDynamicMarketMonth(activeArticle.offsetMonths, language)}
+              </span>
               <span aria-hidden="true">·</span>
               <span>Source: {activeArticle.source}</span>
               <span aria-hidden="true">·</span>

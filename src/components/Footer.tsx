@@ -348,7 +348,7 @@ export const Footer: React.FC<FooterProps> = ({
 
         {/* Bottom Strip */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
-          <p>© 2026 ExportVisor. {t.footer.allRightsReserved}</p>
+          <p>© {new Date().getFullYear()} ExportVisor. {t.footer.allRightsReserved}</p>
           <div className="flex items-center gap-6">
             <button
               onClick={() => setLegalModal("privacy")}

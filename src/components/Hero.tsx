@@ -155,7 +155,7 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-6 pb-12 sm:pt-9 sm:pb-16 lg:pt-12 lg:pb-18 border-b border-[#C89D43]/30 bg-[#0E0B09] text-white">
+    <section id="hero" className="relative overflow-hidden pt-2.5 pb-3 sm:pt-3.5 sm:pb-5 lg:pt-10 lg:pb-14 border-b border-[#C89D43]/30 bg-[#0E0B09] text-white">
       {/* High-Performance Photographic Background Hero Slider with Maritime Export Imagery */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <AnimatePresence mode="sync">
@@ -170,7 +170,7 @@ export const Hero: React.FC<HeroProps> = ({
             <img
               src={HERO_SLIDES[currentSlide].image}
               alt={HERO_SLIDES[currentSlide].alt}
-              className="w-full h-full object-cover object-center"
+              className="w-full h-full object-cover object-[70%_25%] sm:object-[65%_30%] md:object-center transition-all duration-700"
               loading={currentSlide === 0 ? "eager" : "lazy"}
               // @ts-ignore
               fetchPriority={currentSlide === 0 ? "high" : "auto"}
@@ -179,50 +179,44 @@ export const Hero: React.FC<HeroProps> = ({
           </motion.div>
         </AnimatePresence>
 
-        {/* Deep Luxury Scrim Overlay: Rich deep obsidian so maritime container ships and ExportVisor gold branding pop with maximum brilliance */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0D0A08]/95 via-[#130E0A]/82 to-[#0D0A08]/40 md:from-[#0D0A08]/92 md:via-[#130E0A]/68 md:to-[#0D0A08]/25" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0D0A08]/65 via-transparent to-[#0D0A08]/95" />
+        {/* Deep Luxury Scrim Overlay: Mobile-tailored vertical gradient to preserve leather texture visibility while ensuring buttons pop with high contrast */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0D0A08]/80 via-[#0D0A08]/50 to-[#0D0A08]/95 sm:bg-gradient-to-r sm:from-[#0D0A08]/92 sm:via-[#130E0A]/70 sm:to-[#0D0A08]/30" />
       </div>
 
       {/* Ambient warm ExportVisor gold radial flares */}
       <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#D6AC4B]/15 rounded-full blur-3xl pointer-events-none z-1" />
       <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#C89D43]/12 rounded-full blur-3xl pointer-events-none z-1" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12 items-center"
         >
           {/* Left Column: Value Proposition & Sleek High-Converting Action Area */}
-          <div className="lg:col-span-7 space-y-5 sm:space-y-6">
+          <div className="w-full lg:col-span-7 space-y-2.5 sm:space-y-3.5 lg:space-y-6">
             
-            {/* LWG-Certified Tannery Network Kicker Badge */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/80 text-[#E5BE58] text-xs font-semibold tracking-wide border border-[#C89D43]/60 shadow-gold-subtle backdrop-blur-md">
+            {/* LWG-Certified Tannery Network Kicker Badge - Clean Single Focus */}
+            <motion.div variants={itemVariants} className="flex items-center">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full bg-black/85 text-[#E5BE58] text-[10px] sm:text-xs font-semibold tracking-wide border border-[#C89D43]/60 shadow-gold-subtle backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
-                <Award className="w-3.5 h-3.5 text-[#E5BE58]" />
-                <span className="text-[11px] sm:text-xs font-semibold text-white tracking-wide">
+                <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E5BE58]" />
+                <span className="text-[10px] sm:text-xs font-semibold text-white tracking-wide">
                   {language === "bn"
                     ? "LWG সার্টিফাইড ট্যানারি নেটওয়ার্ক · সাভার, ঢাকা"
                     : "LWG-Certified Tannery Network · Savar Leather Estate"}
                 </span>
               </div>
-
-              <span className="hidden sm:inline-flex text-xs font-semibold items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/80 text-blue-200 border border-blue-400/40 backdrop-blur-md">
-                <Ship className="w-3.5 h-3.5 text-blue-300" />
-                {language === "bn" ? "চট্টগ্রাম পোর্ট এক্সপোর্ট লজিস্টিকস" : "Chattogram (BDCGP) Port Dispatch"}
-              </span>
             </motion.div>
 
             {/* Display Headline */}
             <motion.h1
               variants={itemVariants}
-              className="font-display text-2.5xl sm:text-4xl lg:text-[3.25rem] font-bold tracking-tight text-white leading-[1.12] text-balance drop-shadow-sm"
+              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[3.25rem] font-bold tracking-tight text-white leading-[1.18] lg:leading-[1.12] text-balance drop-shadow-sm"
             >
               {t.hero.headline}
             </motion.h1>
@@ -230,14 +224,14 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Sub-headline */}
             <motion.p
               variants={itemVariants}
-              className="font-body text-sm sm:text-base lg:text-lg text-stone-300 leading-relaxed max-w-2xl text-pretty"
+              className="font-body text-xs sm:text-sm lg:text-lg text-stone-300 leading-snug sm:leading-relaxed max-w-2xl text-pretty"
             >
               {t.hero.subheadline}
             </motion.p>
 
             {/* Streamlined, Eye-Catchy Action Group (Clean, uncluttered, focused) */}
-            <motion.div variants={itemVariants} className="pt-2 space-y-4">
-              <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
+            <motion.div variants={itemVariants} className="pt-0.5 sm:pt-2 space-y-2.5 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
                 {/* Primary Action: Request Commercial Quote with ExportVisor Gold Gradient */}
                 <motion.button
                   whileHover={{ scale: 1.025, translateY: -1 }}
@@ -246,44 +240,47 @@ export const Hero: React.FC<HeroProps> = ({
                     trackEvent("request_quote_click", { location: "hero_primary" });
                     onRequestQuote();
                   }}
-                  className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 text-sm font-bold tracking-wide text-[#15120E] rounded-lg shadow-lg shadow-[#C89D43]/30 hover:shadow-xl hover:shadow-[#D6AC4B]/45 transition-all cursor-pointer group"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold tracking-wide text-[#15120E] rounded-lg shadow-lg shadow-[#C89D43]/30 hover:shadow-xl hover:shadow-[#D6AC4B]/45 transition-all cursor-pointer group w-full sm:w-auto"
                   style={{
                     background: "linear-gradient(135deg, #F5D275 0%, #D6AC4B 50%, #B8892E 100%)",
                   }}
                 >
                   <span>{t.hero.requestQuote}</span>
-                  <ArrowUpRight className="w-4 h-4 text-[#15120E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#15120E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </motion.button>
 
-                {/* Secondary Action: Explore Products */}
-                <motion.button
-                  whileHover={{ scale: 1.025, translateY: -1 }}
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => {
-                    trackEvent("product_detail_view", { source: "hero_explore_primary" });
-                    onExploreLeather();
-                  }}
-                  className="inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 text-sm font-semibold tracking-wide text-white bg-black/75 hover:bg-[#1A140F] rounded-lg shadow-md border-2 border-[#C89D43]/60 hover:border-[#F3CF72] transition-all cursor-pointer group backdrop-blur-xs"
-                >
-                  <Layers className="w-4 h-4 text-[#E5BE58] transition-transform group-hover:rotate-6" />
-                  <span>{t.hero.exploreCatalogue}</span>
-                  <ChevronRight className="w-4 h-4 text-stone-300 group-hover:translate-x-0.5 transition-transform" />
-                </motion.button>
+                {/* Secondary Pair: Clean 2-column grid on mobile to eliminate vertical stacking bloat */}
+                <div className="grid grid-cols-2 gap-2 w-full sm:w-auto sm:flex sm:items-center sm:gap-3">
+                  {/* Explore Products */}
+                  <motion.button
+                    whileHover={{ scale: 1.025, translateY: -1 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      trackEvent("product_detail_view", { source: "hero_explore_primary" });
+                      onExploreLeather();
+                    }}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-white bg-black/80 hover:bg-[#1A140F] rounded-lg shadow-md border border-[#C89D43]/60 hover:border-[#F3CF72] transition-all cursor-pointer group backdrop-blur-xs whitespace-nowrap"
+                  >
+                    <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E5BE58] transition-transform group-hover:rotate-6" />
+                    <span>{t.hero.exploreCatalogue}</span>
+                    <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-300 group-hover:translate-x-0.5 transition-transform hidden sm:inline" />
+                  </motion.button>
 
-                {/* Refined WhatsApp Desk Pill */}
-                <a
-                  href={siteConfig.contact.whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackEvent("whatsapp_click", { location: "hero_direct" })}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 sm:py-3.5 text-xs font-semibold tracking-wide text-emerald-200 bg-emerald-950/80 hover:bg-emerald-900/90 border border-emerald-500/50 rounded-lg transition-all shadow-xs backdrop-blur-xs"
-                  title="Direct WhatsApp Communication"
-                >
-                  <MessageCircle className="w-4 h-4 text-emerald-400" />
-                  <span>{language === "bn" ? "হোয়াটসঅ্যাপে চ্যাট" : "Chat on WhatsApp"}</span>
-                </a>
+                  {/* Refined WhatsApp Desk */}
+                  <a
+                    href={siteConfig.contact.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent("whatsapp_click", { location: "hero_direct" })}
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-4 sm:py-3.5 text-xs font-semibold tracking-wide text-emerald-200 bg-emerald-950/85 hover:bg-emerald-900/90 border border-emerald-500/50 rounded-lg transition-all shadow-xs backdrop-blur-xs whitespace-nowrap"
+                    title="Direct WhatsApp Communication"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+                    <span>{language === "bn" ? "হোয়াটসঅ্যাপ" : "WhatsApp"}</span>
+                  </a>
+                </div>
 
-                {/* Optional Company Profile */}
+                {/* Optional Company Profile (XL screens) */}
                 {onOpenCompanyProfile && (
                   <button
                     onClick={() => {
@@ -299,29 +296,31 @@ export const Hero: React.FC<HeroProps> = ({
               </div>
 
               {/* Clean, Non-Cluttered Trust Verification Ribbon */}
-              <div className="pt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-stone-300 font-medium">
+              <div className="pt-1 sm:pt-1.5 flex flex-wrap items-center gap-x-2.5 sm:gap-x-4 gap-y-1 text-[10px] sm:text-xs text-stone-300 font-medium">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#E5BE58]" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E5BE58] shrink-0" />
                   <span>
                     {language === "bn"
-                      ? "LWG অডিটেড ট্যানারি নেটওয়ার্ক"
-                      : "LWG-Audited Partner Tanneries"}
+                      ? "LWG অডিটেড নেটওয়ার্ক"
+                      : "LWG-Audited Network"}
                   </span>
                 </div>
+                <span className="text-stone-500 hidden sm:inline" aria-hidden="true">·</span>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400 shrink-0" />
                   <span>
                     {language === "bn"
-                      ? "১০০% প্রি-শিপমেন্ট AQL ২.৫ কোয়ালিটি"
+                      ? "১০০% AQL ২.৫ QA"
                       : "100% Pre-Shipment AQL 2.5 QA"}
                   </span>
                 </div>
+                <span className="text-stone-500 hidden sm:inline" aria-hidden="true">·</span>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-blue-400" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-400 shrink-0" />
                   <span>
                     {language === "bn"
-                      ? "চট্টগ্রাম (BDCGP) গ্লোবাল পোর্ট শিপিং"
-                      : "FOB Chattogram (BDCGP) · CIF Global"}
+                      ? "চট্টগ্রাম পোর্ট শিপিং"
+                      : "FOB Chattogram · CIF Global"}
                   </span>
                 </div>
               </div>
@@ -329,8 +328,8 @@ export const Hero: React.FC<HeroProps> = ({
 
           </div>
 
-          {/* Right Column: Hero Visual Showcase with Interactive Switcher & Glass Badges */}
-          <motion.div variants={itemVariants} className="lg:col-span-5 relative">
+          {/* Right Column: Hero Visual Showcase with Interactive Switcher & Glass Badges (Desktop only; hidden on mobile & tablet for ultra-compact viewport presence) */}
+          <motion.div variants={itemVariants} className="hidden lg:block lg:col-span-5 relative">
             
             {/* Visual Header / View Toggle */}
             <div className="flex items-center justify-between mb-3 px-1">
@@ -427,34 +426,6 @@ export const Hero: React.FC<HeroProps> = ({
                   </motion.div>
                 )}
               </AnimatePresence>
-
-              {/* Floating Glassmorphism Badge 1 (Top Left) - LWG Audited Network */}
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-3.5 left-3.5 bg-black/80 backdrop-blur-md text-white px-3.5 py-2 rounded-lg border border-[#C89D43]/50 shadow-lg flex items-center gap-2.5 max-w-[220px]"
-              >
-                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#E5BE58]/30 to-[#C89D43]/20 border border-[#E5BE58]/50 flex items-center justify-center shrink-0">
-                  <Award className="w-4 h-4 text-[#E5BE58]" />
-                </div>
-                <div className="text-[11px] leading-tight">
-                  <span className="block font-bold text-white">LWG-Audited Network</span>
-                  <span className="text-[#E5BE58] text-[10px] font-medium">Environmental Standards</span>
-                </div>
-              </motion.div>
-
-              {/* Floating Glassmorphism Badge 2 (Top Right) - Ocean Container Dispatch */}
-              <motion.div
-                animate={{ y: [0, 5, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-                className="absolute top-3.5 right-3.5 bg-black/80 backdrop-blur-md text-white px-3.5 py-2 rounded-lg border border-blue-400/40 shadow-lg flex items-center gap-2 max-w-[200px]"
-              >
-                <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 animate-pulse shadow-xs" />
-                <div className="text-[11px] leading-tight">
-                  <span className="block font-bold text-white">25+ Export Ports</span>
-                  <span className="text-blue-300 text-[10px] font-medium">Ocean Container Freight</span>
-                </div>
-              </motion.div>
             </div>
 
             {/* Quick Trust Meta Strip Beneath Image */}
@@ -473,8 +444,22 @@ export const Hero: React.FC<HeroProps> = ({
 
         </motion.div>
 
-        {/* Ambient Hero Background Slider Control Bar */}
-        <div className="mt-8 pt-4 border-t border-[#C89D43]/25 flex flex-wrap items-center justify-between gap-3 text-xs text-stone-300">
+        {/* Mobile-only minimal slide indicator: clean, unobtrusive without clutter */}
+        <div className="flex sm:hidden justify-center items-center gap-1.5 pt-3">
+          {HERO_SLIDES.map((slide, idx) => (
+            <button
+              key={slide.id}
+              onClick={() => setCurrentSlide(idx)}
+              aria-label={`Slide ${idx + 1}`}
+              className={`h-1 rounded-full transition-all duration-300 cursor-pointer ${
+                currentSlide === idx ? "w-6 bg-[#D6AC4B]" : "w-1.5 bg-white/25"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Ambient Hero Background Slider Control Bar (Tablet & Desktop only) */}
+        <div className="hidden sm:flex mt-6 lg:mt-8 pt-3 sm:pt-4 border-t border-[#C89D43]/25 flex-wrap items-center justify-between gap-2.5 text-xs text-stone-300">
           <div className="flex items-center gap-2.5">
             <span className="relative flex h-2 w-2 shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E5BE58] opacity-75" />

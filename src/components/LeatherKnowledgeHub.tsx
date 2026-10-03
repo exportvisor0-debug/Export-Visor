@@ -13,6 +13,8 @@ import {
   ArrowUpRight,
   CheckCircle2,
   BookOpen,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { LeatherGradingGuide } from "./LeatherGradingGuide";
 import { SectionShareButton } from "./SectionShareButton";
@@ -26,6 +28,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
 }) => {
   const { t, language } = useLanguage();
   const [activeTab, setActiveTab] = useState<"all" | "wet-blue" | "crust" | "finished" | "receiving">("all");
+  const [showAll, setShowAll] = useState<boolean>(false);
 
   const knowledgeItems = [
     {
@@ -140,6 +143,13 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
     (item) => activeTab === "all" || item.category === activeTab
   );
 
+  const displayedItems = showAll ? filteredItems : filteredItems.slice(0, 3);
+
+  const handleTabChange = (tab: typeof activeTab) => {
+    setActiveTab(tab);
+    setShowAll(false);
+  };
+
   return (
     <section id="knowledge-hub" className="py-16 sm:py-24 bg-white border-b border-stone-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -182,7 +192,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
         {/* Category Tabs */}
         <div className="flex flex-wrap items-center gap-1.5 p-1 bg-stone-100 rounded-lg mb-8 max-w-fit">
           <button
-            onClick={() => setActiveTab("all")}
+            onClick={() => handleTabChange("all")}
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
               activeTab === "all"
                 ? "bg-[#181310] text-white shadow-xs"
@@ -192,7 +202,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
             {t.knowledgeHub.allTips}
           </button>
           <button
-            onClick={() => setActiveTab("wet-blue")}
+            onClick={() => handleTabChange("wet-blue")}
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
               activeTab === "wet-blue"
                 ? "bg-[#181310] text-white shadow-xs"
@@ -202,7 +212,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
             {t.knowledgeHub.wetBlue}
           </button>
           <button
-            onClick={() => setActiveTab("crust")}
+            onClick={() => handleTabChange("crust")}
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
               activeTab === "crust"
                 ? "bg-[#181310] text-white shadow-xs"
@@ -212,7 +222,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
             {t.knowledgeHub.crust}
           </button>
           <button
-            onClick={() => setActiveTab("finished")}
+            onClick={() => handleTabChange("finished")}
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
               activeTab === "finished"
                 ? "bg-[#181310] text-white shadow-xs"
@@ -222,7 +232,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
             {t.knowledgeHub.finished}
           </button>
           <button
-            onClick={() => setActiveTab("receiving")}
+            onClick={() => handleTabChange("receiving")}
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer ${
               activeTab === "receiving"
                 ? "bg-[#181310] text-white shadow-xs"
@@ -247,7 +257,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
           }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
-          {filteredItems.map((item) => {
+          {displayedItems.map((item) => {
             const Icon = item.icon;
             return (
               <motion.div
@@ -296,6 +306,29 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
             );
           })}
         </motion.div>
+
+        {/* View All / Show Less Expandable Action */}
+        {filteredItems.length > 3 && (
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => setShowAll((prev) => !prev)}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-[#15120E] bg-white hover:bg-[#FAF8F5] border border-[#C89D43] hover:border-[#D6AC4B] shadow-xs hover:shadow-md transition-all cursor-pointer group"
+            >
+              <span>
+                {showAll
+                  ? (language === "bn" ? "সংক্ষিপ্ত করুন" : "Show Less")
+                  : (language === "bn"
+                      ? `সবগুলো বিষয় দেখুন (${filteredItems.length}টি)`
+                      : `View All Topics (${filteredItems.length})`)}
+              </span>
+              {showAll ? (
+                <ChevronUp className="w-4 h-4 text-[#C89D43] group-hover:-translate-y-0.5 transition-transform" />
+              ) : (
+                <ChevronDown className="w-4 h-4 text-[#C89D43] group-hover:translate-y-0.5 transition-transform" />
+              )}
+            </button>
+          </div>
+        )}
 
         {/* Visual Leather Grading Guide Component */}
         <div id="grading-guide" className="scroll-mt-20">

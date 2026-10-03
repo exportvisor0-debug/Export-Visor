@@ -60,10 +60,10 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-200 ${
+        className={`sticky top-0 z-40 w-full transition-all duration-200 bg-[#FAF8F5]/95 backdrop-blur-md ${
           isScrolled
-            ? "bg-[#FAF8F5]/95 backdrop-blur-md border-b border-stone-200/80 shadow-xs py-2.5 sm:py-3"
-            : "bg-[#FAF8F5] border-b border-stone-200/50 py-3 sm:py-4"
+            ? "border-b border-stone-200/90 shadow-sm py-2.5 sm:py-3"
+            : "border-b border-stone-200/60 py-3 sm:py-3.5 shadow-2xs"
         }`}
       >
         <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">

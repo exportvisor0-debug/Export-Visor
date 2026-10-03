@@ -17,7 +17,7 @@ export const en: TranslationDictionary = {
     kicker: "LWG-Certified Tannery Network · Bangladesh Leather Export Partner · B2B International",
     headline: "Your Trusted Leather Sourcing Partner from Bangladesh",
     subheadline:
-      "ExportVisor connects international footwear brands, leather goods manufacturers, and global buyers directly with LWG-certified and vetted tanneries in Bangladesh. Direct factory gate pricing, piece-by-piece AQL 2.5 inspection, and ocean container export.",
+      "Direct B2B connection to vetted Bangladesh tanneries in Savar. Sourcing export-grade wet blue, crust, and finished leather with AQL 2.5 quality control and global port shipping.",
     requestQuote: "Request a Quotation",
     exploreCatalogue: "Explore Leather Catalogue",
     pricingBasis: "Pricing Basis",

@@ -30,7 +30,8 @@ import {
 
 interface TimelineSegment {
   id: string;
-  year: string;
+  phase: string;
+  phaseBn: string;
   badge: string;
   badgeBn: string;
   kicker: string;
@@ -49,32 +50,9 @@ interface TimelineSegment {
 
 const TIMELINE_SEGMENTS: TimelineSegment[] = [
   {
-    id: "seg-2014",
-    year: "2014",
-    badge: "Foundational Alliance",
-    badgeBn: "ভিত্তি ও সূচনা",
-    kicker: "Direct Factory Floor Presence",
-    kickerBn: "ফ্যাক্টরি ফ্লোরে সরাসরি উপস্থিতি",
-    title: "Direct Tannery Alliance in Savar Industrial Estate",
-    titleBn: "সাভার ট্যানারি এস্টেটে সরাসরি ফ্যাক্টরি অংশীদারিত্ব",
-    description:
-      "ExportVisor established its foundational ground presence during the relocation of historic Hazaribagh tanneries to the planned Savar Tannery Industrial Estate. We partnered with three premier master tanners, eliminating intermediary broker markups and ensuring direct factory-gate pricing.",
-    descriptionBn:
-      "হাজারীবাগ থেকে সাভার চামড়া শিল্প নগরীতে ট্যানারি স্থানান্তরের সময় এক্সপোর্টভাইজর সরাসরি নিজস্ব গ্রাউন্ড উপস্থিতি প্রতিষ্ঠা করে। মধ্যস্বত্বভোগীদের কমিশনমুক্ত করে তিনটি শীর্ষস্থানীয় ট্যানারির সাথে সরাসরি ফ্যাক্টরি মূল্যে চামড়া সোর্সিং শুরু হয়।",
-    metrics: [
-      { label: "Partner Mills", labelBn: "অংশীদার ট্যানারি", value: "3 Facilities" },
-      { label: "Annual Hide Yield", labelBn: "বাৎসরিক উৎপাদন", value: "450K+ Sq Ft" },
-      { label: "Core Raw Tannage", labelBn: "প্রধান পণ্য", value: "Wet Blue & Crust" },
-    ],
-    standards: ["Direct Factory Gate Costing", "Raw Bovine Hide Traceability", "Physical Hide Selection"],
-    standardsBn: ["সরাসরি ফ্যাক্টরি গেট প্রাইসিং", "কাঁচা চামড়ার উৎস ট্র্যাকিং", "ফিজিক্যাল হাইড সিলেকশন"],
-    image: wetBlueImg,
-    imageAlt: "Wet blue bovine hides being sorted during early foundation stage",
-    icon: Factory,
-  },
-  {
-    id: "seg-2017",
-    year: "2017",
+    id: "seg-phase-1",
+    phase: "Phase 01",
+    phaseBn: "পর্যায় ০১",
     badge: "Eco Compliance",
     badgeBn: "পরিবেশবান্ধব রূপান্তর",
     kicker: "Wastewater & Effluent Governance",
@@ -97,8 +75,9 @@ const TIMELINE_SEGMENTS: TimelineSegment[] = [
     icon: Leaf,
   },
   {
-    id: "seg-2019",
-    year: "2019",
+    id: "seg-phase-2",
+    phase: "Phase 02",
+    phaseBn: "পর্যায় ০২",
     badge: "EU Standards",
     badgeBn: "আন্তর্জাতিক কমপ্লায়েন্স",
     kicker: "Chemical Safety & Zero-Hazard Guarantee",
@@ -121,8 +100,9 @@ const TIMELINE_SEGMENTS: TimelineSegment[] = [
     icon: ShieldCheck,
   },
   {
-    id: "seg-2021",
-    year: "2021",
+    id: "seg-phase-3",
+    phase: "Phase 03",
+    phaseBn: "পর্যায় ০৩",
     badge: "LWG Accreditation",
     badgeBn: "LWG স্বীকৃতি",
     kicker: "Global Sustainability Benchmark",
@@ -145,8 +125,9 @@ const TIMELINE_SEGMENTS: TimelineSegment[] = [
     icon: Award,
   },
   {
-    id: "seg-2023",
-    year: "2023",
+    id: "seg-phase-4",
+    phase: "Phase 04",
+    phaseBn: "পর্যায় ০৪",
     badge: "Quality Engineering",
     badgeBn: "কোয়ালিটি ইঞ্জিনিয়ারিং",
     kicker: "Zero-Defect On-Site Quality Desk",
@@ -169,8 +150,9 @@ const TIMELINE_SEGMENTS: TimelineSegment[] = [
     icon: Layers,
   },
   {
-    id: "seg-present",
-    year: "Present",
+    id: "seg-phase-5",
+    phase: "Global Reach",
+    phaseBn: "বৈশ্বিক বিস্তার",
     badge: "Global Expansion",
     badgeBn: "আন্তর্জাতিক সম্প্রসারণ",
     kicker: "Worldwide Maritime Trade Corridor",
@@ -202,7 +184,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
   onRequestQuote,
 }) => {
   const { language } = useLanguage();
-  const [activeIndex, setActiveIndex] = useState(3); // Default to LWG milestone for maximum impact
+  const [activeIndex, setActiveIndex] = useState(2); // Default to Phase 03 LWG milestone for maximum impact
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -221,7 +203,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
   const handleSelectSegment = (index: number) => {
     setActiveIndex(index);
     trackEvent("timeline_segment_select", {
-      segment_year: TIMELINE_SEGMENTS[index].year,
+      segment_phase: TIMELINE_SEGMENTS[index].phase,
       segment_title: TIMELINE_SEGMENTS[index].title,
     });
   };
@@ -237,11 +219,11 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
   return (
     <section
       id="tannery-timeline"
-      className="py-16 sm:py-24 bg-gradient-to-b from-[#FAF8F5] via-[#F6F3EE] to-[#FAF8F5] border-b border-stone-200/90 relative overflow-hidden"
+      className="py-16 sm:py-24 bg-gradient-to-b from-[#FAF8F5] via-[#F6F3EE] to-[#FAF8F5] dark:from-[#0B0806] dark:via-[#110D0A] dark:to-[#0B0806] border-b border-stone-200/90 dark:border-stone-800/80 relative overflow-hidden transition-colors duration-200"
     >
       {/* Subtle architectural ambient background glow without dot grid */}
-      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#D6AC4B]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#C89D43]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#D6AC4B]/10 dark:bg-[#D6AC4B]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#C89D43]/10 dark:bg-[#C89D43]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={containerRef}>
         
@@ -249,7 +231,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
           <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-3 mb-2.5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
                 <TrendingUp className="w-3.5 h-3.5 text-[#C89D43]" />
                 <span>
                   {language === "bn" ? "ট্যানারি নেটওয়ার্ক ইতিহাস ও ক্রমবিকাশ" : "Tannery Network Evolution"}
@@ -261,7 +243,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
               />
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight text-balance">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#F8F5F0] leading-tight text-balance">
               {language === "bn" ? (
                 <>
                   স্থানীয় কারখানা থেকে{" "}
@@ -275,10 +257,10 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
               )}
             </h2>
 
-            <p className="mt-3.5 text-sm sm:text-base text-stone-600 leading-relaxed text-pretty">
+            <p className="mt-3.5 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed text-pretty">
               {language === "bn"
-                ? "আমাদের ১০+ বছরের ধারাবাহিক বিবর্তন দেখুন—সাভারের প্রথম ড্রাম অংশীদারিত্ব থেকে শুরু করে পরিবেশবান্ধব LWG সার্টিফিকেশন ও বিশ্বমানের কন্টেইনার এক্সপোর্টের সমৃদ্ধ ইতিহাস।"
-                : "Explore our verified growth journey: from raw hide sorting in Savar to LWG environmental accreditation, automated AQL 2.5 testing, and container vessels serving 25+ global ports."}
+                ? "আমাদের ধারাবাহিক বিবর্তন দেখুন—সাভারের আধুনিক ড্রাম অংশীদারিত্ব থেকে শুরু করে পরিবেশবান্ধব LWG সার্টিফিকেশন ও বিশ্বমানের কন্টেইনার এক্সপোর্টের সমৃদ্ধ নেটওয়ার্ক।"
+                : "Explore our verified growth journey: from modern drum partnerships in Savar to LWG environmental accreditation, automated AQL 2.5 testing, and container vessels serving 25+ global ports."}
             </p>
           </div>
 
@@ -288,12 +270,12 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
               type="button"
               onClick={handlePrev}
               aria-label="Previous era"
-              className="p-2.5 rounded-lg bg-white hover:bg-stone-50 border border-stone-200/90 text-stone-700 hover:text-stone-900 shadow-2xs hover:shadow-xs transition-all cursor-pointer group"
+              className="p-2.5 rounded-lg bg-white dark:bg-[#1A1410] hover:bg-stone-50 dark:hover:bg-[#251D17] border border-stone-200/90 dark:border-[#C89D43]/30 text-stone-700 dark:text-stone-200 hover:text-stone-900 dark:hover:text-white shadow-2xs hover:shadow-xs transition-all cursor-pointer group"
             >
               <ChevronLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
             </button>
 
-            <span className="font-mono-data text-xs font-bold text-stone-600 px-3 py-1.5 rounded-lg bg-white border border-stone-200/80 shadow-2xs">
+            <span className="font-mono-data text-xs font-bold text-stone-600 dark:text-stone-300 px-3 py-1.5 rounded-lg bg-white dark:bg-[#1A1410] border border-stone-200/80 dark:border-[#C89D43]/30 shadow-2xs">
               0{activeIndex + 1} / 0{TIMELINE_SEGMENTS.length}
             </span>
 
@@ -301,7 +283,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
               type="button"
               onClick={handleNext}
               aria-label="Next era"
-              className="p-2.5 rounded-lg bg-white hover:bg-stone-50 border border-stone-200/90 text-stone-700 hover:text-stone-900 shadow-2xs hover:shadow-xs transition-all cursor-pointer group"
+              className="p-2.5 rounded-lg bg-white dark:bg-[#1A1410] hover:bg-stone-50 dark:hover:bg-[#251D17] border border-stone-200/90 dark:border-[#C89D43]/30 text-stone-700 dark:text-stone-200 hover:text-stone-900 dark:hover:text-white shadow-2xs hover:shadow-xs transition-all cursor-pointer group"
             >
               <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </button>
@@ -314,7 +296,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
         <div className="relative mb-10 pb-4">
           
           {/* Background Track Line */}
-          <div className="absolute top-5 left-0 right-0 h-1 bg-stone-300/80 rounded-full z-0 hidden sm:block" />
+          <div className="absolute top-5 left-0 right-0 h-1 bg-stone-300/80 dark:bg-stone-800 rounded-full z-0 hidden sm:block" />
 
           {/* Animated Gold Fill Path */}
           <motion.div
@@ -329,7 +311,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
           />
 
           {/* Stepper Nodes Along Path */}
-          <div className="grid grid-cols-2 sm:grid-cols-6 gap-3 sm:gap-2 relative z-10">
+          <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-2 relative z-10">
             {TIMELINE_SEGMENTS.map((seg, idx) => {
               const isPassed = idx <= activeIndex;
               const isActive = idx === activeIndex;
@@ -342,8 +324,8 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                   onClick={() => handleSelectSegment(idx)}
                   className={`group flex flex-col items-center sm:items-start text-left p-3 sm:p-2 rounded-xl transition-all cursor-pointer focus:outline-none ${
                     isActive
-                      ? "bg-white/95 sm:bg-transparent shadow-xs sm:shadow-none border border-[#C89D43]/40 sm:border-transparent"
-                      : "hover:bg-white/60 sm:hover:bg-transparent"
+                      ? "bg-white/95 dark:bg-[#181310] sm:bg-transparent shadow-xs sm:shadow-none border border-[#C89D43]/40 sm:border-transparent"
+                      : "hover:bg-white/60 dark:hover:bg-white/5 sm:hover:bg-transparent"
                   }`}
                 >
                   {/* Interactive Node Point */}
@@ -354,7 +336,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                           ? "bg-gradient-to-br from-[#181310] to-[#261E17] text-[#E5BE58] border-2 border-[#D6AC4B] shadow-gold-subtle scale-110"
                           : isPassed
                           ? "bg-[#D6AC4B] text-stone-950 border-2 border-[#B8892E] shadow-2xs"
-                          : "bg-white text-stone-400 border-2 border-stone-300 group-hover:border-[#C89D43]/60 group-hover:text-stone-700"
+                          : "bg-white dark:bg-[#1A1410] text-stone-400 dark:text-stone-500 border-2 border-stone-300 dark:border-stone-700 group-hover:border-[#C89D43]/60 group-hover:text-stone-700 dark:group-hover:text-stone-300"
                       }`}
                     >
                       <IconComp className="w-4 h-4" />
@@ -366,24 +348,24 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                     </div>
                   </div>
 
-                  {/* Year Tag & Label */}
+                  {/* Phase Tag & Label (No Years / Shal) */}
                   <div className="w-full text-center sm:text-left">
                     <span
                       className={`inline-block font-mono-data text-xs font-bold transition-colors ${
                         isActive
-                          ? "text-[#7A5A17] font-black"
+                          ? "text-[#7A5A17] dark:text-[#E5BE58] font-black"
                           : isPassed
-                          ? "text-stone-800"
-                          : "text-stone-500"
+                          ? "text-stone-800 dark:text-stone-300"
+                          : "text-stone-500 dark:text-stone-400"
                       }`}
                     >
-                      {seg.year}
+                      {language === "bn" ? seg.phaseBn : seg.phase}
                     </span>
                     <h3
                       className={`text-xs font-bold transition-colors truncate block ${
                         isActive
-                          ? "text-[#15120E]"
-                          : "text-stone-600 group-hover:text-stone-900"
+                          ? "text-[#15120E] dark:text-[#F8F5F0]"
+                          : "text-stone-600 dark:text-stone-400 group-hover:text-stone-900 dark:group-hover:text-white"
                       }`}
                       title={language === "bn" ? seg.titleBn : seg.title}
                     >
@@ -406,7 +388,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="bg-white rounded-2xl border border-stone-200/90 shadow-xl overflow-hidden"
+            className="bg-white dark:bg-[#120E0B] rounded-2xl border border-stone-200/90 dark:border-[#C89D43]/35 shadow-xl overflow-hidden transition-colors duration-200"
           >
             <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
               
@@ -414,35 +396,35 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
               <div className="lg:col-span-7 p-6 sm:p-8 lg:p-10 flex flex-col justify-between space-y-6">
                 
                 <div className="space-y-4">
-                  {/* Top Kicker & Badge Row */}
+                  {/* Top Kicker & Badge Row (No Years / Shal) */}
                   <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="font-mono-data text-sm font-bold text-white px-3 py-1 rounded-md bg-[#181310] border border-[#C89D43]/40 shadow-2xs">
-                      {activeSegment.year}
+                    <span className="font-mono-data text-xs font-bold text-[#E5BE58] px-3 py-1 rounded-md bg-[#181310] dark:bg-[#1F1813] border border-[#C89D43]/40 shadow-2xs">
+                      {language === "bn" ? activeSegment.phaseBn : activeSegment.phase}
                     </span>
 
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30">
                       <Sparkles className="w-3.5 h-3.5 text-[#C89D43]" />
                       <span>{language === "bn" ? activeSegment.badgeBn : activeSegment.badge}</span>
                     </span>
 
-                    <span className="text-xs font-semibold text-stone-500 uppercase tracking-wider hidden sm:inline">
+                    <span className="text-xs font-semibold text-stone-500 dark:text-stone-400 uppercase tracking-wider hidden sm:inline">
                       {language === "bn" ? activeSegment.kickerBn : activeSegment.kicker}
                     </span>
                   </div>
 
                   {/* Main Milestone Title */}
-                  <h3 className="font-display text-2xl sm:text-3xl lg:text-3.5xl font-bold text-[#15120E] leading-tight text-balance">
+                  <h3 className="font-display text-2xl sm:text-3xl lg:text-3.5xl font-bold text-[#15120E] dark:text-[#F8F5F0] leading-tight text-balance">
                     {language === "bn" ? activeSegment.titleBn : activeSegment.title}
                   </h3>
 
                   {/* Narrative Body */}
-                  <p className="text-sm sm:text-base text-stone-600 leading-relaxed text-pretty">
+                  <p className="text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed text-pretty">
                     {language === "bn" ? activeSegment.descriptionBn : activeSegment.description}
                   </p>
 
                   {/* Key Operational Standards Tags */}
                   <div className="pt-2">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block mb-2">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 block mb-2">
                       {language === "bn" ? "প্রতিষ্ঠিত মানদণ্ডসমূহ:" : "Accredited Operating Protocols:"}
                     </span>
                     <div className="flex flex-wrap gap-2">
@@ -450,7 +432,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                         (std, idx) => (
                           <span
                             key={idx}
-                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FAF8F5] border border-stone-200/90 text-xs font-medium text-stone-700 shadow-2xs"
+                            className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#FAF8F5] dark:bg-[#1A1410] border border-stone-200/90 dark:border-stone-800 text-xs font-medium text-stone-700 dark:text-stone-300 shadow-2xs"
                           >
                             <CheckCircle2 className="w-3 h-3 text-[#C89D43]" />
                             <span>{std}</span>
@@ -462,17 +444,17 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                 </div>
 
                 {/* Quantitative Metric Strip for the Era */}
-                <div className="pt-6 border-t border-stone-100">
+                <div className="pt-6 border-t border-stone-100 dark:border-stone-800/80">
                   <div className="grid grid-cols-3 gap-3 sm:gap-4">
                     {activeSegment.metrics.map((m, idx) => (
                       <div
                         key={idx}
-                        className="p-3 bg-stone-50/80 rounded-xl border border-stone-200/70"
+                        className="p-3 bg-stone-50/80 dark:bg-[#18130F] rounded-xl border border-stone-200/70 dark:border-stone-800/80"
                       >
-                        <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 font-semibold truncate">
+                        <span className="block text-[10px] sm:text-[11px] uppercase tracking-wider text-stone-500 dark:text-stone-400 font-semibold truncate">
                           {language === "bn" ? m.labelBn : m.label}
                         </span>
-                        <span className="font-mono-data text-sm sm:text-base font-bold text-[#15120E] block mt-0.5 truncate">
+                        <span className="font-mono-data text-sm sm:text-base font-bold text-[#15120E] dark:text-[#E5BE58] block mt-0.5 truncate">
                           {m.value}
                         </span>
                       </div>
@@ -482,7 +464,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                   {/* CTA link to quote / inquiry */}
                   {onRequestQuote && (
                     <div className="pt-4 flex items-center justify-between">
-                      <span className="text-xs text-stone-500">
+                      <span className="text-xs text-stone-500 dark:text-stone-400">
                         {language === "bn"
                           ? "আমাদের বর্তমান ট্যানারি নেটওয়ার্ক থেকে কোটেশন পেতে চান?"
                           : "Interested in sourcing through our audited partner network?"}
@@ -490,7 +472,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                       <button
                         type="button"
                         onClick={onRequestQuote}
-                        className="inline-flex items-center gap-1 text-xs font-bold text-[#C89D43] hover:text-[#7A5A17] transition-colors cursor-pointer group"
+                        className="inline-flex items-center gap-1 text-xs font-bold text-[#C89D43] hover:text-[#7A5A17] dark:hover:text-[#E5BE58] transition-colors cursor-pointer group"
                       >
                         <span>{language === "bn" ? "সোর্সিং কোটেশন পাঠান" : "Request Sourcing Quote"}</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -508,19 +490,22 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                   alt={activeSegment.imageAlt}
                   className="w-full h-full object-cover object-center transform transition-transform duration-700 hover:scale-104"
                   loading="lazy"
+                  decoding="async"
                   referrerPolicy="no-referrer"
                 />
                 
                 {/* Visual Scrim */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent pointer-events-none" />
 
-                {/* Floating Milestone Era Badge (Top Left) */}
+                {/* Floating Milestone Era Badge (Top Left - No Years) */}
                 <div className="absolute top-4 left-4 bg-black/75 backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-[#C89D43]/40 text-white flex items-center gap-2 shadow-lg">
                   <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span className="font-mono-data text-xs font-bold text-[#E5BE58]">
-                    {activeSegment.year} Era
+                    {language === "bn" ? activeSegment.phaseBn : activeSegment.phase}
                   </span>
-                  <span className="text-stone-300 text-xs font-medium">· Verified Milestone</span>
+                  <span className="text-stone-300 text-xs font-medium">
+                    · {language === "bn" ? "যাচাইকৃত মাইলফলক" : "Verified Milestone"}
+                  </span>
                 </div>
 
                 {/* Bottom Photo Caption */}

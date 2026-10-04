@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { LanguageProvider } from "./context/LanguageContext";
+import { ThemeProvider } from "./context/ThemeContext";
 import { Header } from "./components/Header";
 import { ScrollProgressBar } from "./components/ScrollProgressBar";
 import { Hero } from "./components/Hero";
@@ -11,6 +12,7 @@ import { LeatherGlossarySection } from "./components/LeatherGlossarySection";
 import { CommercialTermsSection } from "./components/CommercialTermsSection";
 import { SourcingProcess } from "./components/SourcingProcess";
 import { QualityInspectionSection } from "./components/QualityInspectionSection";
+import { LeatherMaintenanceCare } from "./components/LeatherMaintenanceCare";
 import { LeatherKnowledgeHub } from "./components/LeatherKnowledgeHub";
 import { LeatherMarketInsights } from "./components/LeatherMarketInsights";
 import { ExportShippingSection } from "./components/ExportShippingSection";
@@ -81,7 +83,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-stone-900 flex flex-col font-sans selection:bg-[#C89D43]/25 selection:text-[#7A5A17] overflow-x-clip w-full">
+    <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#0B0806] text-stone-900 dark:text-[#F3EEEA] flex flex-col font-sans selection:bg-[#C89D43]/25 selection:text-[#E5BE58] overflow-x-clip w-full transition-colors duration-200">
       
       {/* 0. Topmost Non-Intrusive Scroll Reading Progress Bar & Section Indicator */}
       <ScrollProgressBar />
@@ -141,6 +143,11 @@ function AppContent() {
 
         {/* 7. Quality & Inspection Coordination */}
         <QualityInspectionSection />
+
+        {/* 7.1 Leather Maintenance, Handling & Storage Guide */}
+        <LeatherMaintenanceCare
+          onRequestQuote={(context) => handleScrollToQuoteSection(context)}
+        />
 
         {/* 8. Leather Knowledge Hub (Wet Blue vs Finished Technical Advisory) */}
         <LeatherKnowledgeHub
@@ -237,8 +244,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <AppContent />
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <AppContent />
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

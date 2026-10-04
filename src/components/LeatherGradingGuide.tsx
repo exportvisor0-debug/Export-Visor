@@ -113,34 +113,34 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
   const [selectedGrade, setSelectedGrade] = useState<GradeSpec>(GRADING_DATA[0]);
 
   return (
-    <div className="mt-16 bg-[#FAF8F5] border border-stone-200/90 rounded-xl p-6 sm:p-8 lg:p-10 shadow-xs">
+    <div className="mt-16 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 rounded-xl p-6 sm:p-8 lg:p-10 shadow-xs transition-colors duration-200">
       
       {/* Component Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 mb-8 border-b border-stone-200 gap-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between pb-6 mb-8 border-b border-stone-200 dark:border-stone-800 gap-4">
         <div>
-          <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#7A5A17]">
+          <div className="flex items-center gap-2 text-xs font-mono font-semibold uppercase tracking-wider text-[#7A5A17] dark:text-[#E5BE58]">
             <Award className="w-4 h-4 text-[#C89D43]" />
             <span>International Tannery Standards</span>
-            <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-stone-500 font-normal">Technical Grading Benchmark</span>
+            <span aria-hidden="true" className="text-stone-300 dark:text-stone-700">·</span>
+            <span className="text-stone-500 dark:text-stone-400 font-normal">Technical Grading Benchmark</span>
           </div>
-          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#15120E] tracking-tight mt-1">
+          <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#15120E] dark:text-[#FAF6F0] tracking-tight mt-1">
             Visual Leather <span className="text-gold-gradient">Grading Guide & Specifications</span>
           </h3>
-          <p className="mt-2 text-xs sm:text-sm text-stone-600 max-w-2xl leading-relaxed">
+          <p className="mt-2 text-xs sm:text-sm text-stone-600 dark:text-stone-300 max-w-2xl leading-relaxed">
             Understand how Bangladesh export tanneries grade wet blue, crust, and finished leather against European (Italian Scelta), American (LIA), and International Tannery Run (TR) specifications.
           </p>
         </div>
 
         {/* View Switcher Controls */}
-        <div className="flex items-center gap-1.5 p-1 bg-stone-200/80 rounded-lg self-start md:self-auto">
+        <div className="flex items-center gap-1.5 p-1 bg-stone-100 dark:bg-stone-800/80 border border-stone-200 dark:border-stone-700/60 rounded-lg self-start md:self-auto">
           <button
             type="button"
             onClick={() => setActiveView("grades")}
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all cursor-pointer ${
               activeView === "grades"
-                ? "bg-[#181310] text-white shadow-xs"
-                : "text-stone-700 hover:text-stone-900 hover:bg-stone-300/60"
+                ? "bg-[#C89D43] text-white dark:text-[#15120E] shadow-xs"
+                : "text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-white dark:hover:bg-stone-700/50"
             }`}
           >
             Table I–IV Grades
@@ -150,8 +150,8 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
             onClick={() => setActiveView("zones")}
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all cursor-pointer ${
               activeView === "zones"
-                ? "bg-[#181310] text-white shadow-xs"
-                : "text-stone-700 hover:text-stone-900 hover:bg-stone-300/60"
+                ? "bg-[#C89D43] text-white dark:text-[#15120E] shadow-xs"
+                : "text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-white dark:hover:bg-stone-700/50"
             }`}
           >
             Hide Anatomy & Yield
@@ -161,8 +161,8 @@ export const LeatherGradingGuide: React.FC<LeatherGradingGuideProps> = ({
             onClick={() => setActiveView("tr-packs")}
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all cursor-pointer ${
               activeView === "tr-packs"
-                ? "bg-[#181310] text-white shadow-xs"
-                : "text-stone-700 hover:text-stone-900 hover:bg-stone-300/60"
+                ? "bg-[#C89D43] text-white dark:text-[#15120E] shadow-xs"
+                : "text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-white dark:hover:bg-stone-700/50"
             }`}
           >
             Tannery Run (TR) Ratios

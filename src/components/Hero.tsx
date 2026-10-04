@@ -52,7 +52,7 @@ interface HeroSlide {
 const HERO_SLIDES: HeroSlide[] = [
   {
     id: "slide-ship-open-sea",
-    image: containerCargoShipImg,
+    image: "/hero-ship.jpg",
     tag: "Ocean Container Freight",
     tagBn: "মহাসাগরীয় কনটেইনার ফ্রেইট",
     caption: "Deep Sea Ocean Container Cargo Shipping · Direct Sailings to 25+ Global Ports",
@@ -172,6 +172,7 @@ export const Hero: React.FC<HeroProps> = ({
               alt={HERO_SLIDES[currentSlide].alt}
               className="w-full h-full object-cover object-[70%_25%] sm:object-[65%_30%] md:object-center transition-all duration-700"
               loading={currentSlide === 0 ? "eager" : "lazy"}
+              decoding={currentSlide === 0 ? "sync" : "async"}
               // @ts-ignore
               fetchPriority={currentSlide === 0 ? "high" : "auto"}
               referrerPolicy="no-referrer"

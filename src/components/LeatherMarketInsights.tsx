@@ -215,23 +215,23 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
   };
 
   return (
-    <section id="market-insights" className="py-16 sm:py-24 bg-[#F5EFEB]/50 border-b border-stone-200">
+    <section id="market-insights" className="py-16 sm:py-24 bg-[#FAF8F5] dark:bg-[#0B0806] border-b border-stone-200/90 dark:border-stone-800/80 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 dark:border-stone-800/80 gap-6">
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 mb-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
                 <TrendingUp className="w-3.5 h-3.5 text-[#C89D43]" />
                 <span>{t.marketInsights.kicker}</span>
               </div>
               <SectionShareButton path="/market-insights" sectionName={t.marketInsights.title} />
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#F8F5F0] leading-tight mt-1">
               {t.marketInsights.title}
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
+            <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
               {t.marketInsights.subtitle}
             </p>
           </div>
@@ -240,15 +240,15 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
           <div className="flex flex-wrap items-center gap-3">
             <button
               onClick={handleRefresh}
-              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-medium text-stone-700 bg-white hover:bg-stone-50 border border-stone-300 rounded-lg transition-colors cursor-pointer shadow-2xs"
+              className="inline-flex items-center gap-2 px-3 py-2 text-xs font-medium text-stone-700 dark:text-stone-200 bg-white dark:bg-[#1A1410] hover:bg-stone-50 dark:hover:bg-[#251D17] border border-stone-300 dark:border-[#C89D43]/30 rounded-lg transition-colors cursor-pointer shadow-2xs"
               title="Auto-synchronized to current active month. Click to refresh industry intelligence feed."
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
               </span>
-              <RefreshCw className={`w-3.5 h-3.5 text-stone-500 ${isRefreshing ? "animate-spin text-[#C89D43]" : ""}`} />
-              <span className="font-mono text-[11px] font-semibold text-stone-800">{lastUpdated}</span>
+              <RefreshCw className={`w-3.5 h-3.5 text-stone-500 dark:text-stone-400 ${isRefreshing ? "animate-spin text-[#C89D43]" : ""}`} />
+              <span className="font-mono text-[11px] font-semibold text-stone-800 dark:text-stone-200">{lastUpdated}</span>
             </button>
             <button
               onClick={() => onRequestQuote("Market Timing Advisory")}
@@ -261,16 +261,16 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
         </div>
 
         {/* Market Barometer Overview Strip */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 sm:p-5 bg-white border border-stone-200/90 rounded-lg shadow-xs mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 sm:p-5 bg-white dark:bg-[#130E0B] border border-stone-200/90 dark:border-[#C89D43]/25 rounded-lg shadow-xs mb-8">
           <div>
             <span className="text-[11px] uppercase tracking-wider text-stone-400 font-medium block">
               Raw Hide Supply Index
             </span>
             <div className="flex items-baseline gap-2 mt-0.5">
-              <span className="font-mono-data text-lg font-bold text-emerald-700">Abundant / Stable</span>
-              <span className="text-[11px] text-emerald-600 font-semibold">↑ Post-Harvest</span>
+              <span className="font-mono-data text-lg font-bold text-emerald-700 dark:text-emerald-400">Abundant / Stable</span>
+              <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">↑ Post-Harvest</span>
             </div>
-            <span className="text-[11px] text-stone-500 block leading-tight mt-0.5">
+            <span className="text-[11px] text-stone-500 dark:text-stone-400 block leading-tight mt-0.5">
               Strong stock of domestic cow & goat skins
             </span>
           </div>
@@ -280,10 +280,10 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
               Savar CETP Compliance
             </span>
             <div className="flex items-baseline gap-2 mt-0.5">
-              <span className="font-mono-data text-lg font-bold text-[#181310]">Upgrading (CRU)</span>
-              <span className="text-[11px] text-amber-700 font-semibold">● In Progress</span>
+              <span className="font-mono-data text-lg font-bold text-[#181310] dark:text-[#FAF6F0]">Upgrading (CRU)</span>
+              <span className="text-[11px] text-amber-700 dark:text-amber-400 font-semibold">● In Progress</span>
             </div>
-            <span className="text-[11px] text-stone-500 block leading-tight mt-0.5">
+            <span className="text-[11px] text-stone-500 dark:text-stone-400 block leading-tight mt-0.5">
               Automated chrome recovery in deployment
             </span>
           </div>
@@ -293,10 +293,10 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
               EU Tariff Advantage
             </span>
             <div className="flex items-baseline gap-2 mt-0.5">
-              <span className="font-mono-data text-lg font-bold text-[#181310]">0% Import Duty</span>
-              <span className="text-[11px] text-emerald-600 font-semibold">Preferential GSP</span>
+              <span className="font-mono-data text-lg font-bold text-[#181310] dark:text-[#FAF6F0]">0% Import Duty</span>
+              <span className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">Preferential GSP</span>
             </div>
-            <span className="text-[11px] text-stone-500 block leading-tight mt-0.5">
+            <span className="text-[11px] text-stone-500 dark:text-stone-400 block leading-tight mt-0.5">
               Duty-free access to EU & UK markets
             </span>
           </div>
@@ -306,17 +306,17 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
               Chattogram Maritime Transit
             </span>
             <div className="flex items-baseline gap-2 mt-0.5">
-              <span className="font-mono-data text-lg font-bold text-[#181310]">18–24 Days</span>
-              <span className="text-[11px] text-stone-500 font-semibold">To Main EU Ports</span>
+              <span className="font-mono-data text-lg font-bold text-[#181310] dark:text-[#FAF6F0]">18–24 Days</span>
+              <span className="text-[11px] text-stone-500 dark:text-stone-400 font-semibold">To Main EU Ports</span>
             </div>
-            <span className="text-[11px] text-stone-500 block leading-tight mt-0.5">
+            <span className="text-[11px] text-stone-500 dark:text-stone-400 block leading-tight mt-0.5">
               Direct feeder via Colombo / Singapore
             </span>
           </div>
         </div>
 
         {/* Category Filter Controls */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-stone-200/70 rounded-lg mb-8 max-w-fit">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-stone-100 dark:bg-stone-800/60 border border-stone-200/70 dark:border-stone-700/60 rounded-lg mb-8 max-w-fit">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -326,8 +326,8 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
               }}
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer whitespace-nowrap ${
                 selectedCategory === cat
-                  ? "bg-[#181310] text-white shadow-xs"
-                  : "text-stone-700 hover:text-stone-900 hover:bg-stone-300/60"
+                  ? "bg-[#181310] dark:bg-[#C89D43] text-white dark:text-[#15120E] shadow-xs"
+                  : "text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-stone-200/60 dark:hover:bg-stone-700/50"
               }`}
             >
               {cat}
@@ -335,44 +335,31 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
           ))}
         </div>
 
-        {/* Insights Grid with Motion Stagger */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-40px" }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: { staggerChildren: 0.08 },
-            },
-          }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
-        >
+        {/* Insights Grid with Motion */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {displayedInsights.map((insight) => (
             <motion.article
               key={insight.id}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
-              }}
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
               whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
-              className="bg-white border border-stone-200 rounded-lg p-6 flex flex-col justify-between hover:shadow-md transition-all group cursor-pointer"
+              className="bg-white dark:bg-[#130E0B] border border-stone-200 dark:border-[#C89D43]/25 rounded-lg p-6 flex flex-col justify-between hover:shadow-md transition-all group cursor-pointer"
             >
               <div>
                 {/* Meta info: Category & Date */}
-                <div className="flex items-center justify-between text-[11px] text-stone-500 mb-3 pb-2.5 border-b border-stone-100">
-                  <span className="font-bold uppercase tracking-wider text-[#7A5A17] bg-[#C89D43]/10 px-2 py-0.5 rounded-full border border-[#C89D43]/20">
+                <div className="flex items-center justify-between text-[11px] text-stone-500 dark:text-stone-400 mb-3 pb-2.5 border-b border-stone-100 dark:border-stone-800">
+                  <span className="font-bold uppercase tracking-wider text-[#7A5A17] dark:text-[#E5BE58] bg-[#C89D43]/10 px-2 py-0.5 rounded-full border border-[#C89D43]/20">
                     {insight.category}
                   </span>
-                  <div className="flex items-center gap-1.5 text-stone-600 font-medium">
+                  <div className="flex items-center gap-1.5 text-stone-600 dark:text-stone-300 font-medium">
                     <Calendar className="w-3 h-3 text-[#C89D43]" />
                     <span>{getDynamicMarketMonth(insight.offsetMonths, language)}</span>
                   </div>
                 </div>
 
                 {/* Title */}
-                <h3 className="font-display text-xl font-bold text-[#15120E] leading-snug group-hover:text-[#C89D43] transition-colors">
+                <h3 className="font-display text-xl font-bold text-[#15120E] dark:text-[#FAF6F0] leading-snug group-hover:text-[#C89D43] transition-colors">
                   {insight.title}
                 </h3>
 
@@ -384,7 +371,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
                 </div>
 
                 {/* Summary */}
-                <p className="text-xs text-stone-600 leading-relaxed mb-4">
+                <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed mb-4">
                   {insight.summary}
                 </p>
 
@@ -394,7 +381,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
                     {insight.keyStats.map((stat, sIdx) => (
                       <span
                         key={sIdx}
-                        className="px-2 py-0.5 bg-stone-100 text-stone-700 rounded text-[10px] font-mono font-medium border border-stone-200/60"
+                        className="px-2 py-0.5 bg-stone-100 dark:bg-[#1C1612] text-stone-700 dark:text-stone-300 rounded text-[10px] font-mono font-medium border border-stone-200/60 dark:border-stone-800"
                       >
                         {stat}
                       </span>
@@ -404,9 +391,9 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
               </div>
 
               {/* Bottom: Procurement Actionable Takeaway */}
-              <div className="pt-4 border-t border-stone-100 space-y-3">
-                <div className="p-3 bg-[#FAF8F5] border border-stone-200/70 rounded text-xs text-stone-700 leading-relaxed">
-                  <span className="font-bold text-[#181310] block mb-0.5">
+              <div className="pt-4 border-t border-stone-100 dark:border-stone-800 space-y-3">
+                <div className="p-3 bg-[#FAF8F5] dark:bg-[#1A1410] border border-stone-200/70 dark:border-stone-800 rounded text-xs text-stone-700 dark:text-stone-300 leading-relaxed">
+                  <span className="font-bold text-[#181310] dark:text-[#E5BE58] block mb-0.5">
                     Procurement Takeaway:
                   </span>
                   {insight.procurementTakeaway}
@@ -423,7 +410,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
 
                   <button
                     onClick={() => onRequestQuote(`Market Insight: ${insight.title}`)}
-                    className="text-[11px] text-stone-500 hover:text-[#C89D43] underline underline-offset-2 transition-colors cursor-pointer"
+                    className="text-[11px] text-stone-500 dark:text-stone-400 hover:text-[#C89D43] dark:hover:text-[#E5BE58] underline underline-offset-2 transition-colors cursor-pointer"
                   >
                     Inquire on this Trend
                   </button>
@@ -431,14 +418,14 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
               </div>
             </motion.article>
           ))}
-        </motion.div>
+        </div>
 
         {/* View All / Show Less Expandable Action */}
         {filteredInsights.length > 3 && (
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-[#15120E] bg-white hover:bg-stone-50 border border-[#C89D43] hover:border-[#D6AC4B] shadow-xs hover:shadow-md transition-all cursor-pointer group"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-[#15120E] dark:text-[#FAF6F0] bg-white dark:bg-[#16110D] hover:bg-stone-50 dark:hover:bg-[#201812] border border-[#C89D43] hover:border-[#D6AC4B] shadow-xs hover:shadow-md transition-all cursor-pointer group"
             >
               <span>
                 {showAll
@@ -457,16 +444,16 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
         )}
 
         {/* Bottom Sourcing Guidance Strip */}
-        <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-stone-900 via-[#1F1914] to-stone-900 border border-[#C89D43]/35 text-white rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-[#FAF6F0] via-[#F4EFE6] to-[#FAF6F0] dark:from-stone-900 dark:via-[#1F1914] dark:to-stone-900 border border-[#C89D43]/35 text-stone-900 dark:text-white rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-md dark:shadow-xl transition-colors duration-200">
           <div className="space-y-1.5 max-w-2xl">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#E5BE58]">
-              <ShieldCheck className="w-4 h-4 text-[#E5BE58]" />
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#9E731C] dark:text-[#E5BE58]">
+              <ShieldCheck className="w-4 h-4 text-[#C89D43] dark:text-[#E5BE58]" />
               <span>Independent Technical Assessment</span>
             </div>
-            <h4 className="font-display text-xl sm:text-2xl font-bold text-white">
+            <h4 className="font-display text-xl sm:text-2xl font-bold text-[#15120E] dark:text-white">
               Need Current Price Benchmarks or Drum Capacity Forecasts?
             </h4>
-            <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
               ExportVisor provides prospective international buyers with unfiltered ground feedback on raw hide inventory depth, chemical supply stability, and real-time tannery drum loading schedules.
             </p>
           </div>
@@ -484,54 +471,54 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
       {/* Detail Briefing Modal */}
       {activeArticle && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-lg border border-stone-200 shadow-xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-5 animate-fade-in">
-            <div className="flex items-center justify-between pb-3 border-b border-stone-200">
+          <div className="bg-white dark:bg-[#140F0C] rounded-lg border border-stone-200 dark:border-[#C89D43]/30 shadow-xl max-w-2xl w-full p-6 sm:p-8 max-h-[90vh] overflow-y-auto space-y-5 animate-fade-in">
+            <div className="flex items-center justify-between pb-3 border-b border-stone-200 dark:border-stone-800">
               <span className="text-xs uppercase font-bold tracking-wider text-[#C89D43]">
                 {activeArticle.category} · Technical Briefing
               </span>
               <button
                 onClick={() => setActiveArticle(null)}
-                className="text-stone-400 hover:text-stone-700 text-sm font-semibold p-1 cursor-pointer"
+                className="text-stone-400 dark:text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 text-sm font-semibold p-1 cursor-pointer"
               >
                 ✕ Close
               </button>
             </div>
 
-            <h3 className="font-display text-2xl sm:text-3xl font-semibold text-[#181310] leading-tight">
+            <h3 className="font-display text-2xl sm:text-3xl font-semibold text-[#181310] dark:text-[#FAF6F0] leading-tight">
               {activeArticle.title}
             </h3>
 
-            <div className="flex items-center gap-3 text-xs text-stone-500">
-              <span className="font-semibold text-stone-800 flex items-center gap-1.5">
+            <div className="flex items-center gap-3 text-xs text-stone-500 dark:text-stone-400">
+              <span className="font-semibold text-stone-800 dark:text-stone-300 flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5 text-[#C89D43]" />
                 {getDynamicMarketMonth(activeArticle.offsetMonths, language)}
               </span>
               <span aria-hidden="true">·</span>
               <span>Source: {activeArticle.source}</span>
               <span aria-hidden="true">·</span>
-              <span className="font-medium text-emerald-700">{activeArticle.impactLevel}</span>
+              <span className="font-medium text-emerald-700 dark:text-emerald-400">{activeArticle.impactLevel}</span>
             </div>
 
-            <div className="space-y-3 text-sm text-stone-700 leading-relaxed">
+            <div className="space-y-3 text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
               <p>{activeArticle.summary}</p>
               <p>
                 As international supply chains balance pricing pressure with rigorous sustainability credentials, Bangladesh continues to position itself as a resilient sourcing corridor. For manufacturers planning upcoming seasonal collections, early booking ensures priority hide selection from premier beamhouse drums.
               </p>
             </div>
 
-            <div className="p-4 bg-[#FAF8F5] border border-stone-200 rounded-md">
-              <h5 className="text-xs uppercase font-bold text-[#181310] tracking-wider mb-1">
+            <div className="p-4 bg-[#FAF8F5] dark:bg-[#1A1410] border border-stone-200 dark:border-stone-800 rounded-md">
+              <h5 className="text-xs uppercase font-bold text-[#181310] dark:text-[#E5BE58] tracking-wider mb-1">
                 Strategic Buyer Action Plan
               </h5>
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
                 {activeArticle.procurementTakeaway}
               </p>
             </div>
 
-            <div className="pt-3 border-t border-stone-200 flex flex-wrap items-center justify-between gap-3">
+            <div className="pt-3 border-t border-stone-200 dark:border-stone-800 flex flex-wrap items-center justify-between gap-3">
               <button
                 onClick={() => setActiveArticle(null)}
-                className="px-4 py-2 text-xs font-semibold text-stone-600 hover:text-stone-900 border border-stone-200 rounded-md cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white border border-stone-200 dark:border-stone-700 rounded-md cursor-pointer"
               >
                 Back to Market Feed
               </button>

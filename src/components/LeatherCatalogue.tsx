@@ -203,6 +203,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                       alt={`${product.name} hide sample`}
                       className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-600 ease-out"
                       loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent pointer-events-none" />

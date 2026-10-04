@@ -3,6 +3,8 @@ import { siteConfig } from "../config/siteConfig";
 import { trackEvent } from "../utils/analytics";
 import { useLanguage } from "../context/LanguageContext";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ThemeSwitcher } from "./ThemeSwitcher";
+import { useTheme } from "../context/ThemeContext";
 import { Menu, X, ArrowUpRight, MessageSquareText, Mail, Phone, Globe, Check } from "lucide-react";
 import { navigateTo } from "../utils/router";
 
@@ -18,6 +20,9 @@ export const Header: React.FC<HeaderProps> = ({
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t, language, setLanguage, options } = useLanguage();
+  const { theme } = useTheme();
+
+  const logoSrc = theme === "dark" ? "/assets/branding/logo-white.png" : "/Logo3_4.png";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,11 +84,11 @@ export const Header: React.FC<HeaderProps> = ({
               title="ExportVisor - Go Global with ExportVisor"
             >
               <img
-                src="/Logo3_4.png"
+                src={logoSrc}
                 alt="ExportVisor - Bangladesh Leather Sourcing & Export"
                 className="h-7 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-102"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = "/Logo_3_4_-removebg-preview.png";
+                  (e.currentTarget as HTMLImageElement).src = "/assets/branding/logo-white.png";
                 }}
               />
             </a>
@@ -113,6 +118,9 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Zone 3: Desktop & Tablet Actions */}
             <div className="flex items-center gap-2 sm:gap-2.5 md:gap-3 shrink-0">
+              {/* Theme Switcher - Light / Dark Mode Toggle */}
+              <ThemeSwitcher />
+
               {/* Language Switcher - visible on tablet & desktop */}
               <div className="hidden sm:block">
                 <LanguageSwitcher />
@@ -177,18 +185,19 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Mobile Navigation Drawer */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden flex flex-col bg-[#FAF8F5] animate-fade-in">
+        <div className="fixed inset-0 z-50 lg:hidden flex flex-col bg-[#FAF8F5] dark:bg-[#0B0806] animate-fade-in">
           {/* Drawer Top Bar */}
-          <div className="flex items-center justify-between px-4 py-3.5 border-b border-stone-200 bg-white">
-            <div className="flex items-center">
+          <div className="flex items-center justify-between px-4 py-3.5 border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-[#120E0B]">
+            <div className="flex items-center gap-3">
               <img
-                src="/Logo3_4.png"
+                src={logoSrc}
                 alt="ExportVisor Logo"
                 className="h-8 w-auto object-contain"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = "/Logo_3_4_-removebg-preview.png";
+                  (e.currentTarget as HTMLImageElement).src = "/assets/branding/logo-white.png";
                 }}
               />
+              <ThemeSwitcher />
             </div>
 
             <button
@@ -202,6 +211,12 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Drawer Body - Scrollable */}
           <div className="flex-1 px-4 py-5 overflow-y-auto space-y-6">
+            {/* Appearance Theme Selector */}
+            <div className="p-3.5 bg-white border border-stone-200 rounded-xl shadow-2xs flex items-center justify-between">
+              <span className="text-xs font-semibold text-stone-700">Display Theme / থিম</span>
+              <ThemeSwitcher showLabel />
+            </div>
+
             {/* Quick Actions (Request a Quote + WhatsApp) */}
             <div className="grid grid-cols-2 gap-2.5">
               <button

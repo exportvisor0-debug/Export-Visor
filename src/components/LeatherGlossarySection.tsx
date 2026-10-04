@@ -367,26 +367,13 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
             </button>
           </div>
         ) : (
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-40px" }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.07 },
-              },
-            }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {displayedTerms.map((term) => (
               <motion.div
                 key={term.id}
-                variants={{
-                  hidden: { opacity: 0, y: 18 },
-                  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-                }}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
                 whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
                 className="bg-white border border-stone-200/90 rounded-xl p-6 sm:p-7 flex flex-col justify-between hover:shadow-md transition-all duration-200 group relative cursor-pointer"
               >
@@ -486,7 +473,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
 
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         )}
 
         {/* View All / Show Less Expandable Action */}

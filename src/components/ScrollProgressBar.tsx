@@ -17,6 +17,7 @@ const SECTIONS: SectionMilestone[] = [
   { id: "commercial-terms", en: "Commercial Terms", bn: "বাণিজ্যিক শর্তাবলী" },
   { id: "sourcing-process", en: "10-Stage Sourcing", bn: "১০-ধাপ সোর্সিং প্রসেস" },
   { id: "quality-inspection", en: "Quality & AQL 2.5", bn: "গুণমান ও AQL ২.৫" },
+  { id: "leather-care", en: "Care & Storage", bn: "রক্ষণাবেক্ষণ ও সংরক্ষণ" },
   { id: "knowledge-hub", en: "Knowledge Hub", bn: "নলেজ হাব" },
   { id: "market-insights", en: "Market Insights", bn: "মার্কেট ইনসাইটস" },
   { id: "export-shipping", en: "Export & Shipping", bn: "রপ্তানি ও শিপিং" },

@@ -160,19 +160,19 @@ export const TrustComplianceStrip: React.FC = () => {
     <>
       <section
         aria-label="Trust and Compliance Verification Strip"
-        className="relative bg-white border-b border-stone-200/90 shadow-2xs z-20 py-4 sm:py-5"
+        className="relative bg-white dark:bg-[#110D0A] border-b border-stone-200/90 dark:border-stone-800/80 shadow-2xs z-20 py-4 sm:py-5"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Header Micro-label */}
-          <div className="flex items-center justify-between mb-3 text-[11px] font-mono uppercase tracking-wider text-stone-600">
-            <span className="font-bold text-[#7A5A17] flex items-center gap-1.5">
+          <div className="flex items-center justify-between mb-3 text-[11px] font-mono uppercase tracking-wider text-stone-600 dark:text-stone-400">
+            <span className="font-bold text-[#7A5A17] dark:text-[#F5D275] flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#C89D43]" />
               {language === "bn"
                 ? "B2B বিশ্বাস ও প্রাতিষ্ঠানিক কমপ্লায়েন্স ফ্রেমওয়ার্ক"
                 : "B2B Trust & Institutional Compliance Framework"}
             </span>
-            <span className="hidden md:inline-block text-stone-500 font-medium">
+            <span className="hidden md:inline-block text-stone-500 dark:text-stone-400 font-medium">
               {language === "bn"
                 ? "যাচাইকৃত ট্যানারি অংশীদারিত্ব · আন্তর্জাতিক টেস্টিং মানদণ্ড"
                 : "Verified Tannery Partnerships · International Testing Standards"}
@@ -206,26 +206,26 @@ export const TrustComplianceStrip: React.FC = () => {
                   whileHover={{ y: -3, scale: 1.015 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedPillar(pillar)}
-                  className="group flex flex-col text-left p-3.5 bg-white hover:bg-stone-50 border border-stone-200/90 hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40"
+                  className="group flex flex-col text-left p-3.5 bg-white dark:bg-[#181310] hover:bg-stone-50 dark:hover:bg-[#201A15] border border-stone-200/90 dark:border-stone-800 hover:border-[#C89D43]/60 dark:hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40"
                 >
                   <div className="flex items-center justify-between mb-2.5">
                     <div className={`w-9 h-9 rounded-lg ${pillar.iconBg} ${pillar.iconColor} border flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs`}>
                       <Icon className="w-4 h-4" />
                     </div>
-                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${pillar.badgeClass} font-semibold`}>
+                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${pillar.badgeClass} font-semibold dark:bg-[#251D16] dark:text-[#F5D275] dark:border-[#C89D43]/30`}>
                       {getPillarBadge(pillar)}
                     </span>
                   </div>
 
-                  <h3 className="text-xs sm:text-sm font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors leading-tight line-clamp-1">
+                  <h3 className="text-xs sm:text-sm font-bold text-[#15120E] dark:text-[#F3EFEA] group-hover:text-[#C89D43] transition-colors leading-tight line-clamp-1">
                     {getPillarTitle(pillar)}
                   </h3>
                   
-                  <p className="text-[11px] text-stone-500 leading-snug mt-1 line-clamp-2">
+                  <p className="text-[11px] text-stone-500 dark:text-stone-400 leading-snug mt-1 line-clamp-2">
                     {getPillarSubtext(pillar)}
                   </p>
 
-                  <div className="mt-2.5 pt-2 border-t border-stone-100 flex items-center justify-between text-[10px] font-semibold text-stone-500 group-hover:text-[#7A5A17]">
+                  <div className="mt-2.5 pt-2 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-[10px] font-semibold text-stone-500 dark:text-stone-400 group-hover:text-[#7A5A17] dark:group-hover:text-[#F5D275]">
                     <span>{language === "bn" ? "মানদণ্ড দেখুন" : "View criteria"}</span>
                     <ChevronRight className="w-3 h-3 text-[#C89D43] group-hover:translate-x-0.5 transition-transform" />
                   </div>
@@ -240,13 +240,13 @@ export const TrustComplianceStrip: React.FC = () => {
       {/* Compliance Criteria Modal */}
       {selectedPillar && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-xs animate-fade-in"
           role="dialog"
           aria-modal="true"
           aria-labelledby="pillar-title"
         >
-          <div className="bg-white rounded-lg border border-stone-200 shadow-xl max-w-lg w-full p-6 space-y-4">
-            <div className="flex items-start justify-between pb-3 border-b border-stone-200">
+          <div className="bg-white dark:bg-[#15110E] rounded-lg border border-stone-200 dark:border-stone-800 shadow-xl max-w-lg w-full p-6 space-y-4 text-stone-900 dark:text-[#F3EFEA]">
+            <div className="flex items-start justify-between pb-3 border-b border-stone-200 dark:border-stone-800">
               <div className="flex items-center gap-3">
                 <div className={`w-11 h-11 rounded-xl ${selectedPillar.iconBg} ${selectedPillar.iconColor} border flex items-center justify-center shadow-xs`}>
                   <selectedPillar.icon className="w-5 h-5" />

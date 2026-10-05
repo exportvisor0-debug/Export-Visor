@@ -56,20 +56,20 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-[#FAF8F5]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-[#15100C]">
           <div className="flex items-center gap-2.5 flex-wrap">
             <span className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               {product.category}
             </span>
-            <span aria-hidden="true" className="text-stone-300">·</span>
-            <span className="text-xs text-stone-600 font-medium">
+            <span aria-hidden="true" className="text-stone-300 dark:text-stone-700">·</span>
+            <span className="text-xs text-stone-600 dark:text-stone-400 font-medium">
               Origin: {product.origin}
             </span>
-            <span aria-hidden="true" className="hidden sm:inline text-stone-300">·</span>
+            <span aria-hidden="true" className="hidden sm:inline text-stone-300 dark:text-stone-700">·</span>
             <button
               onClick={handleCopyLink}
               title="Copy direct product link for sharing"
-              className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-stone-100 hover:bg-stone-200 text-stone-700 border border-stone-200 transition-colors cursor-pointer"
+              className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-800 hover:bg-stone-200 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 border border-stone-200 dark:border-stone-700 transition-colors cursor-pointer"
             >
               {copiedLink ? (
                 <>
@@ -86,7 +86,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 text-stone-400 hover:text-stone-700 hover:bg-stone-200/60 rounded-md transition-colors cursor-pointer"
+            className="p-1.5 text-stone-400 hover:text-stone-700 dark:hover:text-white hover:bg-stone-200/60 dark:hover:bg-stone-800 rounded-md transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -148,36 +148,36 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               )}
 
               {/* Commercial Metrics Strip */}
-              <div className="grid grid-cols-2 gap-3 p-3.5 bg-[#FAF8F5] border border-stone-200 rounded-md">
+              <div className="grid grid-cols-2 gap-3 p-3.5 bg-stone-50/70 dark:bg-[#15100C] border border-stone-200 dark:border-stone-800 rounded-md">
                 <div>
-                  <span className="block text-[10px] uppercase font-bold text-stone-500">
+                  <span className="block text-[10px] uppercase font-bold text-stone-500 dark:text-stone-400">
                     MOQ & Batch Volume
                   </span>
-                  <span className="font-mono-data text-xs font-semibold text-[#181310]">
+                  <span className="font-mono-data text-xs font-semibold text-[#181310] dark:text-[#FAF6F0]">
                     Determined per RFQ
                   </span>
                 </div>
                 <div>
-                  <span className="block text-[10px] uppercase font-bold text-stone-500">
+                  <span className="block text-[10px] uppercase font-bold text-stone-500 dark:text-stone-400">
                     Quotation Basis
                   </span>
-                  <span className="font-mono-data text-xs font-semibold text-[#181310]">
+                  <span className="font-mono-data text-xs font-semibold text-[#181310] dark:text-[#FAF6F0]">
                     Quoted upon RFQ
                   </span>
                 </div>
                 <div>
-                  <span className="block text-[10px] uppercase font-bold text-stone-500">
+                  <span className="block text-[10px] uppercase font-bold text-stone-500 dark:text-stone-400">
                     Production Lead Time
                   </span>
-                  <span className="font-mono-data text-xs font-semibold text-[#181310]">
+                  <span className="font-mono-data text-xs font-semibold text-[#181310] dark:text-[#FAF6F0]">
                     Scheduled per RFQ
                   </span>
                 </div>
                 <div>
-                  <span className="block text-[10px] uppercase font-bold text-stone-500">
+                  <span className="block text-[10px] uppercase font-bold text-stone-500 dark:text-stone-400">
                     Sourcing Origin
                   </span>
-                  <span className="text-xs font-semibold text-[#181310]">
+                  <span className="text-xs font-semibold text-[#181310] dark:text-[#FAF6F0]">
                     Bangladesh Tanneries
                   </span>
                 </div>
@@ -261,26 +261,26 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           {/* Quality & Inspection Coordination Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
-            <div className="p-4 border border-stone-200 rounded-xl bg-[#FAF8F5]">
-              <div className="flex items-center gap-2 mb-2 text-stone-900 font-bold text-xs">
-                <div className="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-600 border border-emerald-500/25 flex items-center justify-center">
+            <div className="p-4 border border-stone-200 dark:border-stone-800 rounded-xl bg-stone-50/70 dark:bg-[#15100C]">
+              <div className="flex items-center gap-2 mb-2 text-stone-900 dark:text-[#FAF6F0] font-bold text-xs">
+                <div className="w-7 h-7 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/25 flex items-center justify-center">
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <span>Quality & Inspection Protocol</span>
               </div>
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
                 {product.qualityInspection}
               </p>
             </div>
 
-            <div className="p-4 border border-stone-200 rounded-xl bg-[#FAF8F5]">
-              <div className="flex items-center gap-2 mb-2 text-stone-900 font-bold text-xs">
-                <div className="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-600 border border-blue-500/25 flex items-center justify-center">
+            <div className="p-4 border border-stone-200 dark:border-stone-800 rounded-xl bg-stone-50/70 dark:bg-[#15100C]">
+              <div className="flex items-center gap-2 mb-2 text-stone-900 dark:text-[#FAF6F0] font-bold text-xs">
+                <div className="w-7 h-7 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/25 flex items-center justify-center">
                   <Package className="w-4 h-4" />
                 </div>
                 <span>Export Packaging & Shipping</span>
               </div>
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
                 {product.packagingShipping}
               </p>
             </div>
@@ -288,14 +288,14 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           </div>
 
           {/* Buyer Requirements Guidance */}
-          <div className="p-4 bg-stone-50 border border-stone-200 rounded-xl text-xs space-y-1">
-            <span className="font-bold text-[#7A5A17] uppercase tracking-wider block text-[10px]">
+          <div className="p-4 bg-stone-50 dark:bg-[#15100C] border border-stone-200 dark:border-stone-800 rounded-xl text-xs space-y-1">
+            <span className="font-bold text-[#7A5A17] dark:text-[#E5BE58] uppercase tracking-wider block text-[10px]">
               Buyer Specification Guide
             </span>
-            <p className="text-stone-600 leading-relaxed">
+            <p className="text-stone-600 dark:text-stone-300 leading-relaxed">
               {product.buyerRequirementsNote}
             </p>
-            <p className="text-[11px] text-[#C89D43] font-semibold pt-1">
+            <p className="text-[11px] text-[#C89D43] dark:text-[#E5BE58] font-semibold pt-1">
               Availability: {product.availabilityNote}
             </p>
           </div>
@@ -303,9 +303,9 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         </div>
 
         {/* Modal Action Footer */}
-        <div className="px-6 py-4 border-t border-stone-200 bg-[#FAF8F5] flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="text-xs text-stone-500">
-            Selected product: <strong className="text-stone-800">{product.name}</strong>
+        <div className="px-6 py-4 border-t border-stone-200 dark:border-stone-800 bg-white dark:bg-[#15100C] flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="text-xs text-stone-500 dark:text-stone-400">
+            Selected product: <strong className="text-stone-800 dark:text-stone-200">{product.name}</strong>
           </div>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">

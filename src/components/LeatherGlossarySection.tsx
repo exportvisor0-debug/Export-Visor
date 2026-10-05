@@ -248,17 +248,17 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
   return (
     <section
       id="leather-glossary"
-      className="py-16 sm:py-24 bg-white border-b border-stone-200/90 relative"
+      className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200/90 dark:border-stone-800/80 relative transition-colors duration-200"
       aria-label="Leather Industry Terms Glossary"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200 dark:border-stone-800 gap-6">
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 mb-2">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#15120E] text-[#E5BE58] border border-[#C89D43]/40 text-xs font-bold uppercase tracking-wider shadow-xs">
-                <BookOpen className="w-3.5 h-3.5 text-[#E5BE58]" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider shadow-xs">
+                <BookOpen className="w-3.5 h-3.5 text-[#C89D43]" />
                 <span>
                   {language === "bn" ? "লেদার গাইড ও পরিভাষা" : "Leather Sourcing Glossary"}
                 </span>
@@ -269,13 +269,13 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
               />
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#FAF6F0] leading-tight">
               {language === "bn"
                 ? "আন্তর্জাতিক লেদার ট্রেড পরিভাষা নির্দেশিকা"
                 : "Demystifying Leather: Terms Every Buyer Must Know"}
             </h2>
 
-            <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed max-w-2xl">
+            <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl">
               {language === "bn"
                 ? "ওয়েট ব্লু, ক্রাস্ট, ফুল গ্রেইন ও স্প্লিট লেদারের মতো গুরুত্বপূর্ণ বৈশ্বিক পরিভাষাগুলোর সহজ ও প্রাতিষ্ঠানিক ব্যাখ্যা—যাতে নন-এক্সপার্ট ও আন্তর্জাতিক বায়াররা আত্মবিশ্বাসের সাথে সঠিক স্পেসিফিকেশন নির্বাচন করতে পারেন।"
                 : "A definitive reference guide defining essential tannery terminology—from 'Wet Blue' and 'Crust' to 'Full Grain' and 'Split Leather'—designed to empower global brand managers and procurement specialists."}
@@ -283,14 +283,14 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
           </div>
 
           {/* Quick Help Card */}
-          <div className="p-4 bg-[#FAF8F5] border border-[#C89D43]/30 rounded-xl max-w-sm text-xs text-stone-700 shadow-2xs">
-            <div className="flex items-center gap-1.5 font-bold text-[#15120E] mb-1">
+          <div className="p-4 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-[#C89D43]/30 rounded-xl max-w-sm text-xs text-stone-700 dark:text-stone-300 shadow-2xs">
+            <div className="flex items-center gap-1.5 font-bold text-[#15120E] dark:text-[#FAF6F0] mb-1">
               <HelpCircle className="w-4 h-4 text-[#C89D43]" />
               <span>
                 {language === "bn" ? "টেকনিক্যাল টিম সহায়তা" : "Need Spec Guidance?"}
               </span>
             </div>
-            <p className="text-[11px] leading-relaxed text-stone-500">
+            <p className="text-[11px] leading-relaxed text-stone-500 dark:text-stone-400">
               {language === "bn"
                 ? "আপনার কাঙ্ক্ষিত পণ্যের জন্য কোন সাবস্ট্যান্স ও গ্রেড উপযুক্ত তা নিশ্চিত না হলে আমাদের সাভার এক্সপোর্ট ডেস্কের সাথে কথা বলুন।"
                 : "Unsure which substance, temper, or tannage fits your footwear or accessories tech pack? Our Savar engineering desk is ready to advise."}
@@ -302,7 +302,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8">
           
           {/* Segmented Filter Pills */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-stone-100 rounded-xl border border-stone-200">
+          <div className="flex flex-wrap items-center gap-1.5 p-1 bg-stone-100 dark:bg-stone-800/70 rounded-xl border border-stone-200 dark:border-stone-700">
             {categories.map((cat) => {
               const isSelected = activeCategory === cat;
               return (
@@ -314,8 +314,8 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                   }}
                   className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                     isSelected
-                      ? "bg-[#15120E] text-white shadow-xs border border-[#C89D43]/50"
-                      : "text-stone-600 hover:text-stone-900 hover:bg-stone-200/70"
+                      ? "bg-[#C89D43] text-white dark:text-[#15120E] shadow-xs border border-[#C89D43]"
+                      : "text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-white dark:hover:bg-stone-700/50"
                   }`}
                 >
                   {cat === "All"
@@ -330,7 +330,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
 
           {/* Search Input */}
           <div className="relative w-full sm:w-80">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 dark:text-stone-500" />
             <input
               type="text"
               placeholder={
@@ -343,7 +343,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                 setSearchQuery(e.target.value);
                 setShowAll(false);
               }}
-              className="w-full pl-9 pr-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40 focus:border-[#C89D43] text-stone-800 placeholder-stone-400 shadow-2xs"
+              className="w-full pl-9 pr-3 py-2 text-xs bg-white dark:bg-[#120E0B] border border-stone-300 dark:border-stone-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40 focus:border-[#C89D43] text-stone-800 dark:text-stone-100 placeholder-stone-400 dark:placeholder-stone-500 shadow-2xs"
             />
           </div>
 
@@ -351,8 +351,8 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
 
         {/* Glossary Grid */}
         {filteredTerms.length === 0 ? (
-          <div className="text-center py-16 bg-[#FAF8F5] border border-stone-200 rounded-xl p-8">
-            <p className="text-stone-500 text-sm">
+          <div className="text-center py-16 bg-[#FAF8F5] dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 rounded-xl p-8">
+            <p className="text-stone-500 dark:text-stone-400 text-sm">
               No glossary terms match your search query.
             </p>
             <button
@@ -375,12 +375,12 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
                 whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
-                className="bg-white border border-stone-200/90 rounded-xl p-6 sm:p-7 flex flex-col justify-between hover:shadow-md transition-all duration-200 group relative cursor-pointer"
+                className="bg-white dark:bg-[#120E0B] border border-stone-200/90 dark:border-stone-800 rounded-xl p-6 sm:p-7 flex flex-col justify-between hover:shadow-md transition-all duration-200 group relative cursor-pointer"
               >
                 <div>
                   {/* Top Bar with Category & Tag */}
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-medium">
+                    <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 font-medium">
                       {term.category}
                     </span>
                     <span
@@ -391,35 +391,35 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                   </div>
 
                   {/* Term Title */}
-                  <h3 className="font-display text-2xl font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors leading-tight">
+                  <h3 className="font-display text-2xl font-bold text-[#15120E] dark:text-[#FAF6F0] group-hover:text-[#C89D43] transition-colors leading-tight">
                     {language === "bn" ? term.termBn : term.term}
                   </h3>
 
                   {/* Definition */}
-                  <p className="mt-3 text-xs sm:text-sm text-stone-600 leading-relaxed text-pretty">
+                  <p className="mt-3 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed text-pretty">
                     {language === "bn" ? term.definitionBn : term.definition}
                   </p>
 
                   {/* Buyer Procurement Takeaway */}
-                  <div className="mt-4 p-3 bg-[#FAF8F5] border-l-2 border-[#C89D43] rounded-r-lg text-xs">
-                    <span className="font-bold text-[#7A5A17] block mb-0.5">
+                  <div className="mt-4 p-3 bg-stone-50 dark:bg-[#181310] border-l-2 border-[#C89D43] rounded-r-lg text-xs">
+                    <span className="font-bold text-[#7A5A17] dark:text-[#E5BE58] block mb-0.5">
                       {language === "bn" ? "বায়ার গাইডলাইন:" : "Buyer Takeaway:"}
                     </span>
-                    <span className="text-stone-700 leading-relaxed">
+                    <span className="text-stone-700 dark:text-stone-300 leading-relaxed">
                       {language === "bn" ? term.buyerTakeawayBn : term.buyerTakeaway}
                     </span>
                   </div>
 
                   {/* Typical Applications Tags */}
-                  <div className="mt-4 pt-3 border-t border-stone-100">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 block mb-1.5">
+                  <div className="mt-4 pt-3 border-t border-stone-100 dark:border-stone-800">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-stone-400 dark:text-stone-500 block mb-1.5">
                       {language === "bn" ? "প্রচলিত ব্যবহার ক্ষেত্র" : "Common Applications"}
                     </span>
                     <div className="flex flex-wrap gap-1.5">
                       {term.bestFor.map((app, idx) => (
                         <span
                           key={idx}
-                          className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-stone-100 text-stone-700 font-medium"
+                          className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 font-medium"
                         >
                           <CheckCircle2 className="w-3 h-3 text-[#C89D43]" />
                           <span>{app}</span>
@@ -430,7 +430,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                 </div>
 
                 {/* Action Footer */}
-                <div className="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+                <div className="mt-6 pt-4 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-xs">
                   {term.productLink ? (
                     <button
                       onClick={() => {
@@ -439,7 +439,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                           onSelectProduct(term.productLink!);
                         }
                       }}
-                      className="inline-flex items-center gap-1 font-bold text-[#7A5A17] hover:text-[#C89D43] transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-1 font-bold text-[#7A5A17] dark:text-[#E5BE58] hover:text-[#C89D43] transition-colors cursor-pointer"
                     >
                       <Layers className="w-3.5 h-3.5" />
                       <span>
@@ -450,7 +450,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                       <ChevronRight className="w-3 h-3" />
                     </button>
                   ) : (
-                    <span className="text-stone-400 text-[11px]">
+                    <span className="text-stone-400 dark:text-stone-500 text-[11px]">
                       {language === "bn" ? "টেকনিক্যাল প্যারামিটার" : "Technical Specification Standard"}
                     </span>
                   )}
@@ -462,7 +462,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                         onRequestQuote(term.term);
                       }
                     }}
-                    className="inline-flex items-center gap-1 font-semibold text-stone-700 hover:text-[#15120E] transition-colors cursor-pointer"
+                    className="inline-flex items-center gap-1 font-semibold text-stone-700 dark:text-stone-300 hover:text-[#15120E] dark:hover:text-white transition-colors cursor-pointer"
                   >
                     <span>
                       {language === "bn" ? "কোটেশন রিকোয়েস্ট" : "Inquire Spec"}
@@ -481,7 +481,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-[#15120E] bg-white hover:bg-stone-50 border border-[#C89D43] hover:border-[#D6AC4B] shadow-xs hover:shadow-md transition-all cursor-pointer group"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-stone-800 dark:text-stone-200 bg-white dark:bg-[#1A1410] hover:bg-stone-50 dark:hover:bg-[#251D17] border border-[#C89D43] shadow-xs hover:shadow-md transition-all cursor-pointer group"
             >
               <span>
                 {showAll
@@ -500,14 +500,14 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
         )}
 
         {/* Bottom Banner */}
-        <div className="mt-12 p-6 rounded-xl bg-[#FAF8F5] border border-stone-200 text-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 p-6 rounded-xl bg-[#FAF8F5] dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 text-stone-800 dark:text-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="space-y-1 text-center sm:text-left">
-            <h4 className="font-display text-lg font-bold text-[#15120E]">
+            <h4 className="font-display text-lg font-bold text-[#15120E] dark:text-white">
               {language === "bn"
                 ? "আপনার স্পেসিফিকেশন অনুযায়ী স্যাম্পল চান?"
                 : "Need physical counter-samples matched to your exact tech pack?"}
             </h4>
-            <p className="text-xs text-stone-600 max-w-xl">
+            <p className="text-xs text-stone-600 dark:text-stone-300 max-w-xl">
               {language === "bn"
                 ? "আমাদের ল্যাবে সোয়াচ কালার, সাবস্ট্যান্স ও টেম্পার মিলিয়ে দ্রুত ট্রায়াল কাট ও কুরিয়ার শিপমেন্টের সুবিধা রয়েছে।"
                 : "Submit your target substance, temper, and master color swatch for rapid lab-dip development and international air express couriering."}
@@ -519,7 +519,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                 onRequestQuote("Custom Spec Inquiry");
               }
             }}
-            className="px-5 py-2.5 text-xs font-bold text-white bg-[#15120E] hover:bg-[#251F19] rounded-lg transition-all shadow-xs cursor-pointer whitespace-nowrap"
+            className="px-5 py-2.5 text-xs font-bold text-white dark:text-[#15120E] bg-[#15120E] dark:bg-[#D6AC4B] hover:bg-[#251F19] dark:hover:bg-[#E5BE58] rounded-lg transition-all shadow-xs cursor-pointer whitespace-nowrap"
           >
             {language === "bn" ? "স্পেসিফিকেশন আলোচনা করুন" : "Discuss Tech Pack"}
           </button>

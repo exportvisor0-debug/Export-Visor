@@ -215,7 +215,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
   };
 
   return (
-    <section id="market-insights" className="py-16 sm:py-24 bg-[#FAF8F5] dark:bg-[#0B0806] border-b border-stone-200/90 dark:border-stone-800/80 transition-colors duration-200">
+    <section id="market-insights" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200/90 dark:border-stone-800/80 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

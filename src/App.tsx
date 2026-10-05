@@ -83,7 +83,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#0B0806] text-stone-900 dark:text-[#F3EEEA] flex flex-col font-sans selection:bg-[#C89D43]/25 selection:text-[#E5BE58] overflow-x-clip w-full transition-colors duration-200">
+    <div className="min-h-screen bg-white dark:bg-[#0B0806] text-stone-900 dark:text-[#F3EEEA] flex flex-col font-sans selection:bg-[#C89D43]/25 selection:text-[#E5BE58] overflow-x-clip w-full transition-colors duration-200">
       
       {/* 0. Topmost Non-Intrusive Scroll Reading Progress Bar & Section Indicator */}
       <ScrollProgressBar />

@@ -27,16 +27,16 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-4xl bg-white rounded-lg shadow-xl border border-stone-200 overflow-hidden my-auto max-h-[92vh] flex flex-col print:max-h-none print:shadow-none print:border-none"
+        className="relative w-full max-w-4xl bg-white dark:bg-[#120E0B] rounded-lg shadow-xl border border-stone-200 dark:border-stone-800 overflow-hidden my-auto max-h-[92vh] flex flex-col print:max-h-none print:shadow-none print:border-none"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Bar */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-[#FAF8F5] print:hidden">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-[#181310] print:hidden">
           <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded bg-[#181310] text-[#C89D43] flex items-center justify-center font-serif text-xs font-bold border border-[#C89D43]/40">
+            <span className="w-6 h-6 rounded bg-[#181310] dark:bg-stone-800 text-[#C89D43] flex items-center justify-center font-serif text-xs font-bold border border-[#C89D43]/40">
               EV
             </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-stone-700">
+            <span className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
               ExportVisor Corporate Brief & Scope
             </span>
           </div>
@@ -44,14 +44,14 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-stone-700 bg-white border border-stone-300 rounded hover:bg-stone-50 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-stone-700 dark:text-stone-300 bg-white dark:bg-[#1A1410] border border-stone-300 dark:border-stone-700 rounded hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>Print / Save PDF</span>
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 text-stone-400 hover:text-stone-700 rounded transition-colors"
+              className="p-1.5 text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 rounded transition-colors"
               aria-label="Close profile"
             >
               <X className="w-5 h-5" />
@@ -192,8 +192,8 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
         </div>
 
         {/* Modal Bottom CTA */}
-        <div className="px-6 py-4 border-t border-stone-200 bg-[#FAF8F5] flex items-center justify-between print:hidden">
-          <span className="text-xs text-stone-500">
+        <div className="px-6 py-4 border-t border-stone-200 dark:border-stone-800 bg-white dark:bg-[#181310] flex items-center justify-between print:hidden">
+          <span className="text-xs text-stone-500 dark:text-stone-400">
             ExportVisor B2B Leather Sourcing Agency · Bangladesh
           </span>
           <button

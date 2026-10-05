@@ -3,6 +3,7 @@ import { siteConfig } from "../config/siteConfig";
 import { trackEvent } from "../utils/analytics";
 import { navigateTo } from "../utils/router";
 import { useLanguage } from "../context/LanguageContext";
+import { useTheme } from "../context/ThemeContext";
 import {
   Mail,
   Phone,
@@ -25,33 +26,37 @@ export const Footer: React.FC<FooterProps> = ({
   onRequestQuote,
 }) => {
   const { t, language } = useLanguage();
+  const { theme } = useTheme();
   const [legalModal, setLegalModal] = useState<"privacy" | "terms" | null>(null);
 
+  const logoSrc = theme === "dark" ? "/assets/branding/logo-white.png" : "/Logo3_4.png";
+
   return (
-    <footer className="bg-[#181310] text-stone-300 pt-16 pb-12 border-t border-stone-800">
+    <footer className="bg-white dark:bg-[#181310] text-stone-700 dark:text-stone-300 pt-16 pb-12 border-t border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main 4-Column Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-stone-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-stone-200 dark:border-stone-800">
           
           {/* Col 1: Brand & Sourcing Statement (4 cols) */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center py-1">
               <img
-                src="/assets/branding/logo-white.png"
+                src={logoSrc}
                 alt="ExportVisor - Go Global With ExportVisor"
                 className="h-10 w-auto object-contain"
                 onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src = "/Logo3_4.png";
+                  (e.currentTarget as HTMLImageElement).src =
+                    theme === "dark" ? "/assets/branding/logo-white.png" : "/Logo3_4.png";
                 }}
               />
             </div>
 
-            <p className="text-xs text-stone-400 leading-relaxed max-w-sm">
+            <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed max-w-sm">
               {t.footer.desc}
             </p>
 
-            <div className="pt-2 text-xs text-stone-400 space-y-2">
+            <div className="pt-2 text-xs text-stone-600 dark:text-stone-400 space-y-2">
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#C89D43] shrink-0 mt-0.5" />
                 <div>
@@ -60,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     title="View ExportVisor office location on Google Maps"
-                    className="hover:text-white transition-colors block leading-relaxed"
+                    className="hover:text-[#C89D43] dark:hover:text-white transition-colors block leading-relaxed"
                   >
                     <span>{siteConfig.company.address}</span>
                     <span className="text-[11px] text-[#C89D43] hover:underline font-semibold block mt-0.5">
@@ -74,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({
                 <a
                   href={siteConfig.contact.emailUrl}
                   onClick={() => trackEvent("email_click", { location: "footer" })}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   {siteConfig.contact.email}
                 </a>
@@ -86,7 +91,7 @@ export const Footer: React.FC<FooterProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent("whatsapp_click", { location: "footer" })}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
                 >
                   {siteConfig.contact.whatsappFormatted}
                 </a>
@@ -100,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("linkedin_click")}
-                className="w-8 h-8 rounded bg-white/5 hover:bg-white/15 text-stone-300 hover:text-white flex items-center justify-center transition-colors border border-white/10"
+                className="w-8 h-8 rounded bg-stone-100 hover:bg-stone-200 dark:bg-white/5 dark:hover:bg-white/15 text-stone-700 hover:text-[#15120E] dark:text-stone-300 dark:hover:text-white flex items-center justify-center transition-colors border border-stone-200 dark:border-white/10"
                 aria-label="ExportVisor LinkedIn"
               >
                 <Linkedin className="w-4 h-4" />
@@ -111,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("facebook_click")}
-                className="w-8 h-8 rounded bg-white/5 hover:bg-white/15 text-stone-300 hover:text-white flex items-center justify-center transition-colors border border-white/10"
+                className="w-8 h-8 rounded bg-stone-100 hover:bg-stone-200 dark:bg-white/5 dark:hover:bg-white/15 text-stone-700 hover:text-[#15120E] dark:text-stone-300 dark:hover:text-white flex items-center justify-center transition-colors border border-stone-200 dark:border-white/10"
                 aria-label="ExportVisor Facebook"
               >
                 <Facebook className="w-4 h-4" />
@@ -122,7 +127,7 @@ export const Footer: React.FC<FooterProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackEvent("instagram_click")}
-                className="w-8 h-8 rounded bg-white/5 hover:bg-white/15 text-stone-300 hover:text-white flex items-center justify-center transition-colors border border-white/10"
+                className="w-8 h-8 rounded bg-stone-100 hover:bg-stone-200 dark:bg-white/5 dark:hover:bg-white/15 text-stone-700 hover:text-[#15120E] dark:text-stone-300 dark:hover:text-white flex items-center justify-center transition-colors border border-stone-200 dark:border-white/10"
                 aria-label="ExportVisor Instagram"
               >
                 <Instagram className="w-4 h-4" />
@@ -132,14 +137,14 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 2: Leather Scope (3 cols) */}
           <div className="lg:col-span-3 space-y-3">
-            <h4 className="text-xs uppercase font-bold tracking-wider text-white">
+            <h4 className="text-xs uppercase font-bold tracking-wider text-[#15120E] dark:text-white">
               {t.footer.categories}
             </h4>
-            <ul className="text-xs text-stone-400 space-y-2">
+            <ul className="text-xs text-stone-600 dark:text-stone-400 space-y-2">
               <li>
                 <button
                   onClick={() => onRequestQuote("Crust Leather")}
-                  className="hover:text-white transition-colors text-left"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
                   {language === "bn" ? "ক্রাস্ট লেদার (ন্যাচারাল ও মিলিং)" : "Crust Leather (Natural & Milling)"}
                 </button>
@@ -147,7 +152,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onRequestQuote("Finished Leather")}
-                  className="hover:text-white transition-colors text-left"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
                   {language === "bn" ? "ফিনিশড লেদার (ফুল ও টপ গ্রেইন)" : "Finished Leather (Full / Top Grain)"}
                 </button>
@@ -155,7 +160,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onRequestQuote("Wet Blue Leather")}
-                  className="hover:text-white transition-colors text-left"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
                   {language === "bn" ? "ওয়েট ব্লু ক্রোম ট্যানড হাইডস" : "Wet Blue Chrome Tanned Hides"}
                 </button>
@@ -163,7 +168,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onRequestQuote("Aniline & Semi-Aniline")}
-                  className="hover:text-white transition-colors text-left"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
                   {language === "bn" ? "অ্যানিলিন ও সেমি-অ্যানিলিন লেদার" : "Aniline & Semi-Aniline Leather"}
                 </button>
@@ -171,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onRequestQuote("Corrected Grain Leather")}
-                  className="hover:text-white transition-colors text-left"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
                   {language === "bn" ? "কারেক্টেড গ্রেইন ও এমবসিং" : "Corrected Grain & Embossed"}
                 </button>
@@ -179,7 +184,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={() => onRequestQuote("Custom Sourcing")}
-                  className="hover:text-white transition-colors text-left"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
                   {language === "bn" ? "বায়ার কাস্টম স্পেসিফিকেশন" : "Buyer Custom Specification"}
                 </button>
@@ -189,10 +194,10 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 3: Company & Process (2 cols) */}
           <div className="lg:col-span-2 space-y-3">
-            <h4 className="text-xs uppercase font-bold tracking-wider text-white">
+            <h4 className="text-xs uppercase font-bold tracking-wider text-[#15120E] dark:text-white">
               {t.footer.quickLinks}
             </h4>
-            <ul className="text-xs text-stone-400 space-y-2">
+            <ul className="text-xs text-stone-600 dark:text-stone-400 space-y-2">
               <li>
                 <a
                   href="/about"
@@ -200,7 +205,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     navigateTo("/about", true);
                   }}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   {language === "bn" ? "আমাদের পরিচিতি" : "About ExportVisor"}
                 </a>
@@ -212,7 +217,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     navigateTo("/sourcing-process", true);
                   }}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   {language === "bn" ? "১০-ধাপের প্রক্রিয়া" : "10-Stage Process"}
                 </a>
@@ -224,7 +229,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     navigateTo("/quality-inspection", true);
                   }}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   Quality Coordination
                 </a>
@@ -236,7 +241,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     navigateTo("/knowledge-hub", true);
                   }}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   Leather Knowledge Hub
                 </a>
@@ -248,7 +253,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     navigateTo("/market-insights", true);
                   }}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   Market Insights & Trends
                 </a>
@@ -260,7 +265,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     navigateTo("/export-shipping", true);
                   }}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   Export & Logistics
                 </a>
@@ -272,7 +277,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     navigateTo("/bangladesh-sourcing", true);
                   }}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   Bangladesh Sourcing
                 </a>
@@ -284,7 +289,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     navigateTo("/global-trade-impact", true);
                   }}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   Global Trade Impact & Data
                 </a>
@@ -292,7 +297,7 @@ export const Footer: React.FC<FooterProps> = ({
               <li>
                 <button
                   onClick={onOpenCompanyProfile}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors text-left cursor-pointer"
                 >
                   Company Profile (PDF)
                 </button>
@@ -304,7 +309,7 @@ export const Footer: React.FC<FooterProps> = ({
                     e.preventDefault();
                     navigateTo("/faq", true);
                   }}
-                  className="hover:text-white transition-colors"
+                  className="hover:text-[#C89D43] dark:hover:text-white transition-colors"
                 >
                   Sourcing FAQ
                 </a>
@@ -314,23 +319,23 @@ export const Footer: React.FC<FooterProps> = ({
 
           {/* Col 4: Commercial Terms & CTA (3 cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs uppercase font-bold tracking-wider text-white">
+            <h4 className="text-xs uppercase font-bold tracking-wider text-[#15120E] dark:text-white">
               Commercial Terms
             </h4>
-            <div className="p-3 bg-white/5 border border-white/10 rounded text-xs space-y-1.5 text-stone-300">
+            <div className="p-3 bg-stone-50 dark:bg-white/5 border border-stone-200 dark:border-white/10 rounded-lg text-xs space-y-1.5 text-stone-700 dark:text-stone-300">
               <div>
-                <span className="text-stone-400">Order MOQ:</span>{" "}
-                <strong className="text-white">Determined per RFQ</strong>
+                <span className="text-stone-500 dark:text-stone-400">Order MOQ:</span>{" "}
+                <strong className="text-stone-900 dark:text-white">Determined per RFQ</strong>
               </div>
               <div>
-                <span className="text-stone-400">Quotation:</span>{" "}
-                <strong className="text-white">Formulated per RFQ</strong>
+                <span className="text-stone-500 dark:text-stone-400">Quotation:</span>{" "}
+                <strong className="text-stone-900 dark:text-white">Formulated per RFQ</strong>
               </div>
               <div>
-                <span className="text-stone-400">Payment:</span>{" "}
-                <strong className="text-white">LC / TT</strong>
+                <span className="text-stone-500 dark:text-stone-400">Payment:</span>{" "}
+                <strong className="text-stone-900 dark:text-white">LC / TT</strong>
               </div>
-              <div className="pt-1 text-[11px] text-stone-400 italic">
+              <div className="pt-1 text-[11px] text-stone-500 dark:text-stone-400 italic">
                 All pricing and schedules depend on RFQ specifications and volume.
               </div>
             </div>
@@ -347,18 +352,18 @@ export const Footer: React.FC<FooterProps> = ({
         </div>
 
         {/* Bottom Strip */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 dark:text-stone-400 gap-4">
           <p>© {new Date().getFullYear()} ExportVisor. {t.footer.allRightsReserved}</p>
           <div className="flex items-center gap-6">
             <button
               onClick={() => setLegalModal("privacy")}
-              className="hover:text-stone-400 transition-colors"
+              className="hover:text-stone-800 dark:hover:text-stone-300 transition-colors cursor-pointer"
             >
               {language === "bn" ? "গোপনীয়তা নীতি" : "Privacy Policy"}
             </button>
             <button
               onClick={() => setLegalModal("terms")}
-              className="hover:text-stone-400 transition-colors"
+              className="hover:text-stone-800 dark:hover:text-stone-300 transition-colors cursor-pointer"
             >
               {language === "bn" ? "বাণিজ্যিক শর্তাবলী" : "Terms of Sourcing Agency"}
             </button>

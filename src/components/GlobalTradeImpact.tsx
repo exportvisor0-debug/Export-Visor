@@ -180,24 +180,24 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
     <section
       id="global-trade-impact"
       aria-label="Global Trade Impact & Export Volume Data"
-      className="py-16 sm:py-24 bg-[#FAF8F5] border-b border-stone-200"
+      className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-10 border-b border-stone-200/90 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-10 border-b border-stone-200/90 dark:border-stone-800/90 gap-6">
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 mb-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
                 <Globe2 className="w-3.5 h-3.5 text-[#C89D43]" />
                 <span>{t.globalTrade.kicker}</span>
               </div>
               <SectionShareButton path="/global-trade-impact" sectionName={t.globalTrade.kicker} />
             </div>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight">
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#FAF6F0] leading-tight">
               {t.globalTrade.title} <span className="text-gold-gradient">{t.globalTrade.titleHighlight}</span>
             </h2>
-            <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed max-w-2xl">
+            <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed max-w-2xl">
               {t.globalTrade.subtitle}
             </p>
           </div>
@@ -219,99 +219,99 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
 
         {/* 4 High-Authority KPI Metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          <div className="bg-white border border-stone-200/90 rounded-xl p-5 shadow-2xs hover:border-[#C89D43]/50 transition-all group">
+          <div className="bg-white dark:bg-[#120E0B] border border-stone-200/90 dark:border-stone-800 rounded-xl p-5 shadow-2xs hover:border-[#C89D43]/50 transition-all group">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 font-semibold">
                 Annual Sourcing Volume
               </span>
               <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30 flex items-center justify-center transition-transform group-hover:scale-110">
                 <Layers className="w-4 h-4" />
               </div>
             </div>
-            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E]">
-              7.1M+ <span className="text-sm font-sans font-normal text-stone-500">sq.ft</span>
+            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E] dark:text-[#FAF6F0]">
+              7.1M+ <span className="text-sm font-sans font-normal text-stone-500 dark:text-stone-400">sq.ft</span>
             </div>
-            <p className="text-[11px] text-stone-600 mt-1">
+            <p className="text-[11px] text-stone-600 dark:text-stone-300 mt-1">
               Coordinated wet blue, crust & finished hides
             </p>
           </div>
 
-          <div className="bg-white border border-stone-200/90 rounded-xl p-5 shadow-2xs hover:border-emerald-500/40 transition-all group">
+          <div className="bg-white dark:bg-[#120E0B] border border-stone-200/90 dark:border-stone-800 rounded-xl p-5 shadow-2xs hover:border-emerald-500/40 transition-all group">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 font-semibold">
                 Destination Markets
               </span>
               <div className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 border border-emerald-500/25 flex items-center justify-center transition-transform group-hover:scale-110">
                 <Globe2 className="w-4 h-4" />
               </div>
             </div>
-            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E]">
-              28+ <span className="text-sm font-sans font-normal text-stone-500">Nations</span>
+            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E] dark:text-[#FAF6F0]">
+              28+ <span className="text-sm font-sans font-normal text-stone-500 dark:text-stone-400">Nations</span>
             </div>
-            <p className="text-[11px] text-stone-600 mt-1">
+            <p className="text-[11px] text-stone-600 dark:text-stone-300 mt-1">
               EU, North America, Japan, Korea, Vietnam
             </p>
           </div>
 
-          <div className="bg-white border border-stone-200/90 rounded-xl p-5 shadow-2xs hover:border-blue-500/40 transition-all group">
+          <div className="bg-white dark:bg-[#120E0B] border border-stone-200/90 dark:border-stone-800 rounded-xl p-5 shadow-2xs hover:border-blue-500/40 transition-all group">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 font-semibold">
                 Pre-Shipment Pass Rate
               </span>
               <div className="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-600 border border-blue-500/25 flex items-center justify-center transition-transform group-hover:scale-110">
                 <ShieldCheck className="w-4 h-4" />
               </div>
             </div>
-            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E]">
+            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E] dark:text-[#FAF6F0]">
               99.2%
             </div>
-            <p className="text-[11px] text-stone-600 mt-1">
+            <p className="text-[11px] text-stone-600 dark:text-stone-300 mt-1">
               Strict multi-point tannery floor inspection
             </p>
           </div>
 
-          <div className="bg-white border border-stone-200/90 rounded-xl p-5 shadow-2xs hover:border-purple-500/40 transition-all group">
+          <div className="bg-white dark:bg-[#120E0B] border border-stone-200/90 dark:border-stone-800 rounded-xl p-5 shadow-2xs hover:border-purple-500/40 transition-all group">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 font-semibold">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 font-semibold">
                 Repeat Order Velocity
               </span>
               <div className="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 border border-purple-500/25 flex items-center justify-center transition-transform group-hover:scale-110">
                 <TrendingUp className="w-4 h-4" />
               </div>
             </div>
-            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E]">
+            <div className="font-mono-data text-2xl sm:text-3xl font-bold text-[#15120E] dark:text-[#FAF6F0]">
               94.6%
             </div>
-            <p className="text-[11px] text-stone-600 mt-1">
+            <p className="text-[11px] text-stone-600 dark:text-stone-300 mt-1">
               Multi-season retention among global buyers
             </p>
           </div>
         </div>
 
         {/* Interactive Visualization Panel */}
-        <div className="bg-white border border-stone-200 rounded-xl p-6 sm:p-8 shadow-xs">
+        <div className="bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 rounded-xl p-6 sm:p-8 shadow-xs">
           
           {/* Chart Header & Tab Switcher */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-stone-100 gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-6 border-b border-stone-100 dark:border-stone-800 gap-4">
             <div>
-              <span className="text-[10px] font-mono uppercase tracking-wider text-stone-600 block">
+              <span className="text-[10px] font-mono uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
                 Interactive Analytical Dashboard
               </span>
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-[#181310]">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-[#181310] dark:text-[#FAF6F0]">
                 {activeChart === "volume" && "Export Volume Trajectory (Million Sq. Ft.)"}
                 {activeChart === "destinations" && "Global Export Destination Breakdown"}
                 {activeChart === "growth" && "Client Growth & Container Dispatch Velocity"}
               </h3>
             </div>
 
-            <div className="flex items-center gap-1.5 p-1 bg-stone-100 rounded-lg self-start sm:self-auto">
+            <div className="flex items-center gap-1.5 p-1 bg-stone-100 dark:bg-stone-800/80 rounded-lg self-start sm:self-auto">
               <button
                 type="button"
                 onClick={() => setActiveChart("volume")}
                 className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all flex items-center gap-1.5 cursor-pointer ${
                   activeChart === "volume"
-                    ? "bg-[#181310] text-white shadow-xs"
-                    : "text-stone-700 hover:text-stone-900 hover:bg-stone-200"
+                    ? "bg-[#181310] dark:bg-[#C89D43] text-white dark:text-[#120E0B] shadow-xs font-bold"
+                    : "text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-stone-200 dark:hover:bg-stone-700"
                 }`}
               >
                 <BarChart3 className="w-3.5 h-3.5" />
@@ -322,8 +322,8 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                 onClick={() => setActiveChart("destinations")}
                 className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all flex items-center gap-1.5 cursor-pointer ${
                   activeChart === "destinations"
-                    ? "bg-[#181310] text-white shadow-xs"
-                    : "text-stone-700 hover:text-stone-900 hover:bg-stone-200"
+                    ? "bg-[#181310] dark:bg-[#C89D43] text-white dark:text-[#120E0B] shadow-xs font-bold"
+                    : "text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-stone-200 dark:hover:bg-stone-700"
                 }`}
               >
                 <PieIcon className="w-3.5 h-3.5" />
@@ -334,8 +334,8 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                 onClick={() => setActiveChart("growth")}
                 className={`px-3 py-1.5 text-xs font-medium rounded-md transition-all flex items-center gap-1.5 cursor-pointer ${
                   activeChart === "growth"
-                    ? "bg-[#181310] text-white shadow-xs"
-                    : "text-stone-700 hover:text-stone-900 hover:bg-stone-200"
+                    ? "bg-[#181310] dark:bg-[#C89D43] text-white dark:text-[#120E0B] shadow-xs font-bold"
+                    : "text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-stone-200 dark:hover:bg-stone-700"
                 }`}
               >
                 <TrendingUp className="w-3.5 h-3.5" />

@@ -113,16 +113,16 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-lg shadow-2xl border border-stone-200 overflow-hidden my-auto max-h-[92vh] flex flex-col"
+        className="relative w-full max-w-2xl bg-white dark:bg-[#120E0B] rounded-lg shadow-2xl border border-stone-200 dark:border-stone-800 overflow-hidden my-auto max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 bg-[#FAF8F5]">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-[#181310]">
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               Direct Inquiries Desk
             </span>
-            <h3 className="font-display text-xl font-bold text-[#15120E]">
+            <h3 className="font-display text-xl font-bold text-[#15120E] dark:text-white">
               Request a Leather <span className="text-gold-gradient">Quotation</span>
             </h3>
           </div>

@@ -155,7 +155,7 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-2.5 pb-3 sm:pt-3.5 sm:pb-5 lg:pt-10 lg:pb-14 border-b border-[#C89D43]/30 bg-[#0E0B09] text-white">
+    <section id="hero" className="relative overflow-hidden pt-2.5 pb-3 sm:pt-3.5 sm:pb-5 lg:pt-10 lg:pb-14 border-b border-stone-200 dark:border-[#C89D43]/30 bg-white dark:bg-[#0E0B09] text-stone-900 dark:text-white transition-colors duration-200">
       {/* High-Performance Photographic Background Hero Slider with Maritime Export Imagery */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <AnimatePresence mode="sync">
@@ -180,13 +180,13 @@ export const Hero: React.FC<HeroProps> = ({
           </motion.div>
         </AnimatePresence>
 
-        {/* Deep Luxury Scrim Overlay: Mobile-tailored vertical gradient to preserve leather texture visibility while ensuring buttons pop with high contrast */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0D0A08]/80 via-[#0D0A08]/50 to-[#0D0A08]/95 sm:bg-gradient-to-r sm:from-[#0D0A08]/92 sm:via-[#130E0A]/70 sm:to-[#0D0A08]/30" />
+        {/* Dual Luxury Scrim Overlay: Bright airy white in light theme, deep obsidian scrim in dark theme */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/88 to-white/98 sm:bg-gradient-to-r sm:from-white/96 sm:via-white/90 sm:to-white/40 dark:from-[#0D0A08]/85 dark:via-[#0D0A08]/60 dark:to-[#0D0A08]/95 dark:sm:from-[#0D0A08]/95 dark:sm:via-[#130E0A]/75 dark:sm:to-[#0D0A08]/40 transition-colors duration-200" />
       </div>
 
       {/* Ambient warm ExportVisor gold radial flares */}
-      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#D6AC4B]/15 rounded-full blur-3xl pointer-events-none z-1" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#C89D43]/12 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#D6AC4B]/10 dark:bg-[#D6AC4B]/15 rounded-full blur-3xl pointer-events-none z-1" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#C89D43]/10 dark:bg-[#C89D43]/12 rounded-full blur-3xl pointer-events-none z-1" />
 
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -200,13 +200,13 @@ export const Hero: React.FC<HeroProps> = ({
             
             {/* LWG-Certified Tannery Network Kicker Badge - Clean Single Focus */}
             <motion.div variants={itemVariants} className="flex items-center">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full bg-black/85 text-[#E5BE58] text-[10px] sm:text-xs font-semibold tracking-wide border border-[#C89D43]/60 shadow-gold-subtle backdrop-blur-md">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full bg-stone-100/90 dark:bg-black/85 text-[#7A5A17] dark:text-[#E5BE58] text-[10px] sm:text-xs font-semibold tracking-wide border border-stone-300 dark:border-[#C89D43]/60 shadow-2xs backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
-                <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E5BE58]" />
-                <span className="text-[10px] sm:text-xs font-semibold text-white tracking-wide">
+                <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C89D43] dark:text-[#E5BE58]" />
+                <span className="text-[10px] sm:text-xs font-semibold text-stone-800 dark:text-white tracking-wide">
                   {language === "bn"
                     ? "LWG সার্টিফাইড ট্যানারি নেটওয়ার্ক · সাভার, ঢাকা"
                     : "LWG-Certified Tannery Network · Savar Leather Estate"}
@@ -217,7 +217,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Display Headline */}
             <motion.h1
               variants={itemVariants}
-              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[3.25rem] font-bold tracking-tight text-white leading-[1.18] lg:leading-[1.12] text-balance drop-shadow-sm"
+              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[3.25rem] font-bold tracking-tight text-[#15120E] dark:text-white leading-[1.18] lg:leading-[1.12] text-balance drop-shadow-xs"
             >
               {t.hero.headline}
             </motion.h1>
@@ -225,7 +225,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Sub-headline */}
             <motion.p
               variants={itemVariants}
-              className="font-body text-xs sm:text-sm lg:text-lg text-stone-300 leading-snug sm:leading-relaxed max-w-2xl text-pretty"
+              className="font-body text-xs sm:text-sm lg:text-lg text-stone-600 dark:text-stone-300 leading-snug sm:leading-relaxed max-w-2xl text-pretty"
             >
               {t.hero.subheadline}
             </motion.p>
@@ -260,11 +260,11 @@ export const Hero: React.FC<HeroProps> = ({
                       trackEvent("product_detail_view", { source: "hero_explore_primary" });
                       onExploreLeather();
                     }}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-white bg-black/80 hover:bg-[#1A140F] rounded-lg shadow-md border border-[#C89D43]/60 hover:border-[#F3CF72] transition-all cursor-pointer group backdrop-blur-xs whitespace-nowrap"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-stone-900 dark:text-white bg-white dark:bg-black/80 hover:bg-stone-50 dark:hover:bg-[#1A140F] rounded-lg shadow-xs hover:shadow-md border border-stone-300 dark:border-[#C89D43]/60 hover:border-[#C89D43] transition-all cursor-pointer group backdrop-blur-xs whitespace-nowrap"
                   >
-                    <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E5BE58] transition-transform group-hover:rotate-6" />
+                    <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C89D43] dark:text-[#E5BE58] transition-transform group-hover:rotate-6" />
                     <span>{t.hero.exploreCatalogue}</span>
-                    <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-300 group-hover:translate-x-0.5 transition-transform hidden sm:inline" />
+                    <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-400 group-hover:translate-x-0.5 transition-transform hidden sm:inline" />
                   </motion.button>
 
                   {/* Refined WhatsApp Desk */}
@@ -273,10 +273,10 @@ export const Hero: React.FC<HeroProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackEvent("whatsapp_click", { location: "hero_direct" })}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-4 sm:py-3.5 text-xs font-semibold tracking-wide text-emerald-200 bg-emerald-950/85 hover:bg-emerald-900/90 border border-emerald-500/50 rounded-lg transition-all shadow-xs backdrop-blur-xs whitespace-nowrap"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-4 sm:py-3.5 text-xs font-semibold tracking-wide text-emerald-800 dark:text-emerald-200 bg-emerald-50 dark:bg-emerald-950/85 hover:bg-emerald-100 dark:hover:bg-emerald-900/90 border border-emerald-300 dark:border-emerald-500/50 rounded-lg transition-all shadow-xs backdrop-blur-xs whitespace-nowrap"
                     title="Direct WhatsApp Communication"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
+                    <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400" />
                     <span>{language === "bn" ? "হোয়াটসঅ্যাপ" : "WhatsApp"}</span>
                   </a>
                 </div>
@@ -288,36 +288,36 @@ export const Hero: React.FC<HeroProps> = ({
                       trackEvent("company_profile_view", { location: "hero_quick" });
                       onOpenCompanyProfile();
                     }}
-                    className="hidden xl:inline-flex items-center justify-center gap-1.5 px-3 py-3 text-xs font-semibold text-stone-300 hover:text-[#E5BE58] transition-colors"
+                    className="hidden xl:inline-flex items-center justify-center gap-1.5 px-3 py-3 text-xs font-semibold text-stone-600 dark:text-stone-300 hover:text-[#C89D43] dark:hover:text-[#E5BE58] transition-colors cursor-pointer"
                   >
-                    <FileText className="w-3.5 h-3.5 text-[#E5BE58]" />
+                    <FileText className="w-3.5 h-3.5 text-[#C89D43] dark:text-[#E5BE58]" />
                     <span>{language === "bn" ? "কোম্পানি ডেক" : "Company Deck"}</span>
                   </button>
                 )}
               </div>
 
               {/* Clean, Non-Cluttered Trust Verification Ribbon */}
-              <div className="pt-1 sm:pt-1.5 flex flex-wrap items-center gap-x-2.5 sm:gap-x-4 gap-y-1 text-[10px] sm:text-xs text-stone-300 font-medium">
+              <div className="pt-1 sm:pt-1.5 flex flex-wrap items-center gap-x-2.5 sm:gap-x-4 gap-y-1 text-[10px] sm:text-xs text-stone-700 dark:text-stone-300 font-medium">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E5BE58] shrink-0" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C89D43] dark:text-[#E5BE58] shrink-0" />
                   <span>
                     {language === "bn"
                       ? "LWG অডিটেড নেটওয়ার্ক"
                       : "LWG-Audited Network"}
                   </span>
                 </div>
-                <span className="text-stone-500 hidden sm:inline" aria-hidden="true">·</span>
+                <span className="text-stone-400 dark:text-stone-600 hidden sm:inline" aria-hidden="true">·</span>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
                   <span>
                     {language === "bn"
                       ? "১০০% AQL ২.৫ QA"
                       : "100% Pre-Shipment AQL 2.5 QA"}
                   </span>
                 </div>
-                <span className="text-stone-500 hidden sm:inline" aria-hidden="true">·</span>
+                <span className="text-stone-400 dark:text-stone-600 hidden sm:inline" aria-hidden="true">·</span>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-400 shrink-0" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
                   <span>
                     {language === "bn"
                       ? "চট্টগ্রাম পোর্ট শিপিং"
@@ -334,19 +334,19 @@ export const Hero: React.FC<HeroProps> = ({
             
             {/* Visual Header / View Toggle */}
             <div className="flex items-center justify-between mb-3 px-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-stone-300 flex items-center gap-1.5">
-                <Globe2 className="w-3.5 h-3.5 text-[#E5BE58]" />
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 flex items-center gap-1.5">
+                <Globe2 className="w-3.5 h-3.5 text-[#C89D43] dark:text-[#E5BE58]" />
                 Live Sourcing & Export Operations
               </span>
 
               {/* View Selector Tabs */}
-              <div className="inline-flex p-0.5 bg-black/60 backdrop-blur-md rounded-lg text-xs border border-white/10">
+              <div className="inline-flex p-0.5 bg-stone-100 dark:bg-black/60 backdrop-blur-md rounded-lg text-xs border border-stone-200 dark:border-white/10">
                 <button
                   onClick={() => setActiveVisualTab("inspection")}
                   className={`px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
                     activeVisualTab === "inspection"
                       ? "bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] text-stone-950 shadow-xs font-bold"
-                      : "text-stone-300 hover:text-white"
+                      : "text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white"
                   }`}
                 >
                   Quality Inspection
@@ -356,7 +356,7 @@ export const Hero: React.FC<HeroProps> = ({
                   className={`px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
                     activeVisualTab === "shipping"
                       ? "bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] text-stone-950 shadow-xs font-bold"
-                      : "text-stone-300 hover:text-white"
+                      : "text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white"
                   }`}
                 >
                   Container Shipping
@@ -365,7 +365,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Showcase Visual Card */}
-            <div className="relative rounded-xl overflow-hidden border border-[#C89D43]/40 bg-stone-950 shadow-2xl aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] group">
+            <div className="relative rounded-xl overflow-hidden border border-stone-200 dark:border-[#C89D43]/40 bg-white dark:bg-stone-950 shadow-xl aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] group">
               <AnimatePresence mode="wait">
                 {activeVisualTab === "inspection" ? (
                   <motion.div
@@ -460,24 +460,24 @@ export const Hero: React.FC<HeroProps> = ({
         </div>
 
         {/* Ambient Hero Background Slider Control Bar (Tablet & Desktop only) */}
-        <div className="hidden sm:flex mt-6 lg:mt-8 pt-3 sm:pt-4 border-t border-[#C89D43]/25 flex-wrap items-center justify-between gap-2.5 text-xs text-stone-300">
+        <div className="hidden sm:flex mt-6 lg:mt-8 pt-3 sm:pt-4 border-t border-stone-200/80 dark:border-[#C89D43]/25 flex-wrap items-center justify-between gap-2.5 text-xs text-stone-600 dark:text-stone-300">
           <div className="flex items-center gap-2.5">
             <span className="relative flex h-2 w-2 shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E5BE58] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E5BE58]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C89D43] dark:bg-[#E5BE58] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C89D43] dark:bg-[#E5BE58]" />
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-black/80 border border-[#C89D43]/50 text-[#E5BE58] font-bold shadow-2xs shrink-0">
-              <Ship className="w-3 h-3 text-[#E5BE58]" />
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-stone-100 dark:bg-black/80 border border-stone-300 dark:border-[#C89D43]/50 text-[#7A5A17] dark:text-[#E5BE58] font-bold shadow-2xs shrink-0">
+              <Ship className="w-3 h-3 text-[#C89D43] dark:text-[#E5BE58]" />
               <span>{language === "bn" ? HERO_SLIDES[currentSlide].tagBn : HERO_SLIDES[currentSlide].tag}</span>
             </span>
-            <span className="text-[11px] font-mono text-stone-300 font-semibold truncate max-w-xs sm:max-w-md">
+            <span className="text-[11px] font-mono text-stone-700 dark:text-stone-300 font-semibold truncate max-w-xs sm:max-w-md">
               {language === "bn" ? HERO_SLIDES[currentSlide].captionBn : HERO_SLIDES[currentSlide].caption}
             </span>
           </div>
 
-          <div className="flex items-center gap-2 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#C89D43]/40 shadow-lg text-stone-200">
-            <span className="text-[11px] font-mono font-bold text-[#E5BE58] pr-1">
-              0{currentSlide + 1} <span className="text-stone-500 font-normal">/ 0{HERO_SLIDES.length}</span>
+          <div className="flex items-center gap-2 bg-white/90 dark:bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-lg border border-stone-200 dark:border-[#C89D43]/40 shadow-xs text-stone-700 dark:text-stone-200">
+            <span className="text-[11px] font-mono font-bold text-[#7A5A17] dark:text-[#E5BE58] pr-1">
+              0{currentSlide + 1} <span className="text-stone-400 dark:text-stone-500 font-normal">/ 0{HERO_SLIDES.length}</span>
             </span>
 
             <button
@@ -486,7 +486,7 @@ export const Hero: React.FC<HeroProps> = ({
                 setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
               }
               aria-label="Previous background slide"
-              className="p-1 rounded hover:bg-white/10 text-stone-300 hover:text-white transition-colors cursor-pointer"
+              className="p-1 rounded hover:bg-stone-100 dark:hover:bg-white/10 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
             </button>
@@ -501,8 +501,8 @@ export const Hero: React.FC<HeroProps> = ({
                   title={slide.tag}
                   className={`h-1 rounded-xs transition-all duration-300 cursor-pointer ${
                     currentSlide === idx
-                      ? "w-7 bg-gradient-to-r from-[#F5D275] to-[#D6AC4B] shadow-[0_0_8px_rgba(230,190,88,0.6)]"
-                      : "w-3 bg-white/25 hover:bg-white/50"
+                      ? "w-7 bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] dark:from-[#F5D275] dark:to-[#D6AC4B] shadow-[0_0_8px_rgba(200,157,67,0.5)]"
+                      : "w-3 bg-stone-300 dark:bg-white/25 hover:bg-stone-400 dark:hover:bg-white/50"
                   }`}
                 />
               ))}
@@ -512,7 +512,7 @@ export const Hero: React.FC<HeroProps> = ({
               type="button"
               onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
               aria-label="Next background slide"
-              className="p-1 rounded hover:bg-white/10 text-stone-300 hover:text-white transition-colors cursor-pointer"
+              className="p-1 rounded hover:bg-stone-100 dark:hover:bg-white/10 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer"
             >
               <ChevronRight className="w-3.5 h-3.5" />
             </button>
@@ -521,7 +521,7 @@ export const Hero: React.FC<HeroProps> = ({
               type="button"
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
               aria-label={isAutoPlaying ? "Pause background slider" : "Play background slider"}
-              className="p-1 rounded hover:bg-white/10 text-stone-300 hover:text-white transition-colors ml-0.5 cursor-pointer"
+              className="p-1 rounded hover:bg-stone-100 dark:hover:bg-white/10 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors ml-0.5 cursor-pointer"
             >
               {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
             </button>

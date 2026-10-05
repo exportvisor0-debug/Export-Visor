@@ -58,21 +58,21 @@ export const WhyExportVisor: React.FC = () => {
   ];
 
   return (
-    <section id="why-exportvisor" className="py-16 sm:py-24 bg-[#FAF8F5] border-b border-stone-200">
+    <section id="why-exportvisor" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.whyUs.kicker}
             </div>
             <SectionShareButton path="/why-us" sectionName={t.whyUs.kicker} />
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#FAF6F0] leading-tight mt-1">
             {t.whyUs.title} <span className="text-gold-gradient">{t.whyUs.titleHighlight}</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
             {t.whyUs.subtitle}
           </p>
         </div>
@@ -101,20 +101,20 @@ export const WhyExportVisor: React.FC = () => {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
                 }}
                 whileHover={{ y: -5, borderColor: "rgba(200, 157, 67, 0.65)" }}
-                className="p-6 sm:p-7 bg-white border border-stone-200/90 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between group cursor-pointer"
+                className="p-6 sm:p-7 bg-white dark:bg-[#120E0B] border border-stone-200/90 dark:border-stone-800 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between group cursor-pointer"
               >
                 <div>
                   <div className={`w-11 h-11 rounded-lg ${item.color} flex items-center justify-center mb-4 transition-transform group-hover:scale-110 shadow-2xs`}>
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="font-display text-xl sm:text-2xl font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors mb-2">
+                  <h3 className="font-display text-xl sm:text-2xl font-bold text-[#15120E] dark:text-[#FAF6F0] group-hover:text-[#C89D43] transition-colors mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-stone-600 leading-relaxed">
+                  <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
-                <div className="mt-5 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-400">
+                <div className="mt-5 pt-3 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-[11px] text-stone-400 dark:text-stone-500">
                   <span className="font-mono font-medium">
                     {language === "bn" ? `সুবিধা ০${idx + 1}` : `Advantage 0${idx + 1}`}
                   </span>

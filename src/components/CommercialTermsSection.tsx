@@ -8,7 +8,7 @@ export const CommercialTermsSection: React.FC = () => {
   const { t, language } = useLanguage();
 
   return (
-    <section id="commercial-terms" className="py-14 sm:py-20 bg-white border-b border-stone-200">
+    <section id="commercial-terms" className="py-14 sm:py-20 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -20,15 +20,15 @@ export const CommercialTermsSection: React.FC = () => {
           className="text-center max-w-2xl mx-auto mb-12"
         >
           <div className="flex items-center justify-center gap-2 mb-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.commercial.kicker}
             </span>
             <SectionShareButton path="/terms" sectionName={t.commercial.kicker} />
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#15120E] mt-1">
+          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-[#15120E] dark:text-[#FAF6F0] mt-1">
             {t.commercial.title} <span className="text-gold-gradient">{t.commercial.subtitle}</span>
           </h2>
-          <p className="text-xs sm:text-sm text-stone-600 mt-2.5 leading-relaxed">
+          <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-2.5 leading-relaxed">
             {t.commercial.notice}
           </p>
         </motion.div>
@@ -55,23 +55,23 @@ export const CommercialTermsSection: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
             }}
             whileHover={{ y: -4, scale: 1.015 }}
-            className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-emerald-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
+            className="p-6 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 hover:border-emerald-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
           >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 border border-emerald-500/25 flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs">
                 <Layers className="w-5 h-5" />
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 font-semibold">
                 {language === "bn" ? "নমনীয় MOQ" : "Flexible MOQ"}
               </span>
             </div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
               {t.commercial.moqTitle}
             </span>
-            <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
+            <div className="font-mono-data text-xl font-bold text-[#15120E] dark:text-[#FAF6F0] mt-1">
               {language === "bn" ? "RFQ অনুযায়ী" : "Per RFQ"}
             </div>
-            <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
+            <p className="text-xs text-stone-600 dark:text-stone-300 mt-2.5 leading-relaxed">
               {t.commercial.moqDesc}
             </p>
           </motion.div>
@@ -83,23 +83,23 @@ export const CommercialTermsSection: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
             }}
             whileHover={{ y: -4, scale: 1.015 }}
-            className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
+            className="p-6 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
           >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30 flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs">
                 <Scale className="w-5 h-5" />
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-50 text-[#7A5A17] border border-amber-200 font-semibold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-amber-50 dark:bg-amber-950/40 text-[#7A5A17] dark:text-[#E5BE58] border border-amber-200 dark:border-amber-800 font-semibold">
                 {language === "bn" ? "সরাসরি মিল FOB/CIF" : "Direct Mill FOB/CIF"}
               </span>
             </div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
               {t.commercial.pricingTitle}
             </span>
-            <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
+            <div className="font-mono-data text-xl font-bold text-[#15120E] dark:text-[#FAF6F0] mt-1">
               {language === "bn" ? "কোটেশন ভিত্তিক" : "Quoted upon RFQ"}
             </div>
-            <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
+            <p className="text-xs text-stone-600 dark:text-stone-300 mt-2.5 leading-relaxed">
               {t.commercial.pricingDesc}
             </p>
           </motion.div>
@@ -111,23 +111,23 @@ export const CommercialTermsSection: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
             }}
             whileHover={{ y: -4, scale: 1.015 }}
-            className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-blue-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
+            className="p-6 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 hover:border-blue-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
           >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-600 border border-blue-500/25 flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs">
                 <Clock className="w-5 h-5" />
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-50 text-blue-800 border border-blue-200 font-semibold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-800 font-semibold">
                 {language === "bn" ? "শিডিউলড ব্যাচ" : "Scheduled Batches"}
               </span>
             </div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
               {t.commercial.leadTimeTitle}
             </span>
-            <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
+            <div className="font-mono-data text-xl font-bold text-[#15120E] dark:text-[#FAF6F0] mt-1">
               {language === "bn" ? "RFQ অনুযায়ী শিডিউল" : "Scheduled per RFQ"}
             </div>
-            <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
+            <p className="text-xs text-stone-600 dark:text-stone-300 mt-2.5 leading-relaxed">
               {t.commercial.leadTimeDesc}
             </p>
           </motion.div>
@@ -139,23 +139,23 @@ export const CommercialTermsSection: React.FC = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
             }}
             whileHover={{ y: -4, scale: 1.015 }}
-            className="p-6 bg-[#FAF8F5] border border-stone-200/90 hover:border-purple-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
+            className="p-6 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 hover:border-purple-500/40 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
           >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 rounded-lg bg-purple-500/10 text-purple-600 border border-purple-500/25 flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs">
                 <CreditCard className="w-5 h-5" />
               </div>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-50 text-purple-800 border border-purple-200 font-semibold">
+              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-50 dark:bg-purple-950/40 text-purple-800 dark:text-purple-300 border border-purple-200 dark:border-purple-800 font-semibold">
                 {language === "bn" ? "বাণিজ্যিক নিরাপত্তা" : "Trade Security"}
               </span>
             </div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 block">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-stone-500 dark:text-stone-400 block">
               {t.commercial.paymentTitle}
             </span>
-            <div className="font-mono-data text-xl font-bold text-[#15120E] mt-1">
+            <div className="font-mono-data text-xl font-bold text-[#15120E] dark:text-[#FAF6F0] mt-1">
               LC / TT
             </div>
-            <p className="text-xs text-stone-600 mt-2.5 leading-relaxed">
+            <p className="text-xs text-stone-600 dark:text-stone-300 mt-2.5 leading-relaxed">
               {t.commercial.paymentDesc}
             </p>
           </motion.div>
@@ -163,10 +163,10 @@ export const CommercialTermsSection: React.FC = () => {
         </motion.div>
 
         {/* Commercial Clarification Footnote */}
-        <div className="mt-8 p-4 border border-[#C89D43]/30 rounded-xl text-[11px] text-stone-600 flex items-start gap-3 bg-[#FBF8F1] shadow-2xs">
+        <div className="mt-8 p-4 border border-[#C89D43]/30 rounded-xl text-[11px] text-stone-600 dark:text-stone-300 flex items-start gap-3 bg-stone-50 dark:bg-[#120E0B] shadow-2xs">
           <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
           <span>
-            <strong className="text-stone-900">
+            <strong className="text-stone-900 dark:text-stone-100">
               {language === "bn" ? "স্বচ্ছতার নিশ্চয়তা:" : "Transparency Notice:"}
             </strong>{" "}
             {t.commercial.notice}

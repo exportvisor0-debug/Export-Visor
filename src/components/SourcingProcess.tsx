@@ -77,21 +77,21 @@ export const SourcingProcess: React.FC<SourcingProcessProps> = ({
   ];
 
   return (
-    <section id="sourcing-process" className="py-16 sm:py-24 bg-[#FAF8F5] border-b border-stone-200">
+    <section id="sourcing-process" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.process.kicker}
             </div>
             <SectionShareButton path="/sourcing-process" sectionName={t.process.kicker} />
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#FAF6F0] leading-tight mt-1">
             {t.process.title} <span className="text-gold-gradient">{t.process.titleHighlight}</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
             {t.process.subtitle}
           </p>
         </div>
@@ -118,7 +118,7 @@ export const SourcingProcess: React.FC<SourcingProcessProps> = ({
                 visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
               }}
               whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
-              className="p-6 bg-white border border-stone-200/90 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between group cursor-pointer"
+              className="p-6 bg-white dark:bg-[#120E0B] border border-stone-200/90 dark:border-stone-800 rounded-xl transition-all duration-200 shadow-2xs hover:shadow-md flex flex-col justify-between group cursor-pointer"
             >
               <div>
                 <div className="flex items-center justify-between mb-3.5">
@@ -126,23 +126,23 @@ export const SourcingProcess: React.FC<SourcingProcessProps> = ({
                     <span className={`w-8 h-8 rounded-lg bg-gradient-to-br ${step.color} text-white flex items-center justify-center font-mono font-bold text-xs shadow-xs group-hover:scale-110 transition-transform`}>
                       {step.num}
                     </span>
-                    <span className="font-mono-data text-xs font-bold text-[#7A5A17] tracking-wider uppercase">
+                    <span className="font-mono-data text-xs font-bold text-[#7A5A17] dark:text-[#E5BE58] tracking-wider uppercase">
                       Stage {step.num}
                     </span>
                   </div>
-                  <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 bg-stone-100 px-2 py-0.5 rounded">
+                  <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 dark:text-stone-500 bg-stone-100 dark:bg-stone-800 px-2 py-0.5 rounded">
                     B2B Protocol
                   </span>
                 </div>
-                <h3 className="font-display text-xl sm:text-2xl font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors">
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-[#15120E] dark:text-[#FAF6F0] group-hover:text-[#C89D43] transition-colors">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-xs sm:text-sm text-stone-600 leading-relaxed">
+                <p className="mt-2 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                   {step.desc}
                 </p>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-stone-100 flex items-center justify-between text-[11px] text-stone-400 font-medium">
+              <div className="mt-5 pt-3 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between text-[11px] text-stone-400 dark:text-stone-500 font-medium">
                 <span className="flex items-center gap-1 text-stone-500">
                   <CheckCircle2 className="w-3.5 h-3.5 text-[#C89D43]" />
                   Managed by ExportVisor

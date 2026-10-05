@@ -53,7 +53,7 @@ export const FAQSection: React.FC = () => {
   ];
 
   return (
-    <section id="faq" className="py-16 sm:py-24 bg-white border-b border-stone-200">
+    <section id="faq" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -65,22 +65,22 @@ export const FAQSection: React.FC = () => {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-3 mb-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               <HelpCircle className="w-3.5 h-3.5 text-[#C89D43]" />
               <span>{t.faq.kicker}</span>
             </div>
             <SectionShareButton path="/faq" sectionName={t.faq.kicker} />
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#FAF6F0] leading-tight mt-1">
             {t.faq.title} <span className="text-gold-gradient">{t.faq.titleHighlight}</span>
           </h2>
-          <p className="mt-3 text-sm text-stone-600 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-3 text-sm text-stone-600 dark:text-stone-300 max-w-xl mx-auto leading-relaxed">
             {t.faq.subtitle}
           </p>
         </motion.div>
 
         {/* Accordion List with Motion */}
-        <div className="divide-y divide-stone-200 border-t border-b border-stone-200">
+        <div className="divide-y divide-stone-200 dark:divide-stone-800 border-t border-b border-stone-200 dark:border-stone-800">
           {localizedFaqs.map((faq, index) => {
             const isOpen = openIdx === index;
             return (
@@ -97,13 +97,13 @@ export const FAQSection: React.FC = () => {
                   onClick={() => setOpenIdx(isOpen ? null : index)}
                   className="w-full flex items-center justify-between text-left py-2 focus:outline-none cursor-pointer group"
                 >
-                  <span className="text-sm sm:text-base font-semibold text-[#15120E] group-hover:text-[#C89D43] transition-colors pr-4">
+                  <span className="text-sm sm:text-base font-semibold text-[#15120E] dark:text-[#FAF6F0] group-hover:text-[#C89D43] transition-colors pr-4">
                     {faq.q}
                   </span>
                   <motion.div
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.25 }}
-                    className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isOpen ? "bg-amber-50 text-[#C89D43]" : "bg-stone-100 text-stone-400 group-hover:text-stone-900"}`}
+                    className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${isOpen ? "bg-[#C89D43]/15 text-[#C89D43]" : "bg-stone-100 dark:bg-stone-800 text-stone-400 group-hover:text-stone-900 dark:group-hover:text-stone-100"}`}
                   >
                     <ChevronDown className="w-4 h-4" />
                   </motion.div>
@@ -118,7 +118,7 @@ export const FAQSection: React.FC = () => {
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="overflow-hidden"
                     >
-                      <div className="pt-2 pb-1 pr-6 text-xs sm:text-sm text-stone-600 leading-relaxed">
+                      <div className="pt-2 pb-1 pr-6 text-xs sm:text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                         <p>{faq.a}</p>
                       </div>
                     </motion.div>

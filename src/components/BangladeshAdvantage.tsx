@@ -8,21 +8,21 @@ export const BangladeshAdvantage: React.FC = () => {
   const { t, language } = useLanguage();
 
   return (
-    <section id="bangladesh-sourcing" className="py-16 sm:py-24 bg-white border-b border-stone-200">
+    <section id="bangladesh-sourcing" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.bangladesh.kicker}
             </div>
             <SectionShareButton path="/bangladesh-sourcing" sectionName={t.bangladesh.kicker} />
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#FAF6F0] leading-tight mt-1">
             {t.bangladesh.title} <span className="text-gold-gradient">{t.bangladesh.titleHighlight}</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
             {t.bangladesh.subtitle}
           </p>
         </div>
@@ -39,58 +39,58 @@ export const BangladeshAdvantage: React.FC = () => {
             className="lg:col-span-7 space-y-6 flex flex-col justify-between"
           >
             <div className="space-y-4">
-              <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#15120E]">
+              <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#15120E] dark:text-[#FAF6F0]">
                 {language === "bn" ? "বাংলাদেশ লেদার সোর্সিং সুবিধা" : "The Bangladesh Sourcing Advantage"}
               </h3>
-              <p className="text-sm text-stone-600 leading-relaxed">
+              <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                 {language === "bn"
                   ? "আন্তর্জাতিক ফুটওয়্যার ও চামড়াজাত পণ্য প্রস্তুতকারকদের জন্য বাংলাদেশ বিশ্বমানের কাঁচামাল ও শুল্কমুক্ত বাণিজ্যিক সুবিধা প্রদান করে:"
                   : "For international footwear manufacturers, leather goods producers, and raw leather re-tanners, Bangladesh offers distinct advantages when navigated through an experienced on-the-ground agency:"}
               </p>
 
               <div className="space-y-3 pt-2">
-                <div className="p-5 bg-[#FAF8F5] border border-stone-200/90 rounded-xl shadow-2xs hover:border-[#C89D43]/50 transition-colors group">
+                <div className="p-5 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 rounded-xl shadow-2xs hover:border-[#C89D43]/50 transition-colors group">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30 flex items-center justify-center shrink-0 mt-0.5 transition-transform group-hover:scale-110 shadow-xs">
                       <Factory className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-[#15120E] group-hover:text-[#C89D43] transition-colors">
+                      <h4 className="text-base font-bold text-[#15120E] dark:text-[#FAF6F0] group-hover:text-[#C89D43] transition-colors">
                         {t.bangladesh.benefit2Title}
                       </h4>
-                      <p className="mt-1 text-xs text-stone-600 leading-relaxed">
+                      <p className="mt-1 text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
                         {t.bangladesh.benefit2Desc}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-5 bg-[#FAF8F5] border border-stone-200/90 rounded-xl shadow-2xs hover:border-emerald-500/40 transition-colors group">
+                <div className="p-5 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 rounded-xl shadow-2xs hover:border-emerald-500/40 transition-colors group">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-600 border border-emerald-500/25 flex items-center justify-center shrink-0 mt-0.5 transition-transform group-hover:scale-110 shadow-xs">
                       <Layers className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-[#15120E] group-hover:text-emerald-700 transition-colors">
+                      <h4 className="text-base font-bold text-[#15120E] dark:text-[#FAF6F0] group-hover:text-emerald-700 dark:group-hover:text-emerald-400 transition-colors">
                         {t.bangladesh.benefit1Title}
                       </h4>
-                      <p className="mt-1 text-xs text-stone-600 leading-relaxed">
+                      <p className="mt-1 text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
                         {t.bangladesh.benefit1Desc}
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="p-5 bg-[#FAF8F5] border border-stone-200/90 rounded-xl shadow-2xs hover:border-blue-500/40 transition-colors group">
+                <div className="p-5 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 rounded-xl shadow-2xs hover:border-blue-500/40 transition-colors group">
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-lg bg-blue-500/10 text-blue-600 border border-blue-500/25 flex items-center justify-center shrink-0 mt-0.5 transition-transform group-hover:scale-110 shadow-xs">
                       <Shield className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-[#15120E] group-hover:text-blue-700 transition-colors">
+                      <h4 className="text-base font-bold text-[#15120E] dark:text-[#FAF6F0] group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
                         {t.bangladesh.benefit3Title}
                       </h4>
-                      <p className="mt-1 text-xs text-stone-600 leading-relaxed">
+                      <p className="mt-1 text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
                         {t.bangladesh.benefit3Desc}
                       </p>
                     </div>
@@ -99,8 +99,8 @@ export const BangladeshAdvantage: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-4 bg-[#FBF8F1] border border-[#C89D43]/30 rounded-xl text-xs text-stone-700 shadow-2xs">
-              <span className="font-bold text-[#7A5A17]">
+            <div className="p-4 bg-[#FBF8F1] dark:bg-[#181310] border border-[#C89D43]/30 rounded-xl text-xs text-stone-700 dark:text-stone-300 shadow-2xs">
+              <span className="font-bold text-[#7A5A17] dark:text-[#E5BE58]">
                 {language === "bn" ? "আমাদের প্রতিশ্রুতি:" : "Our Commitment:"}
               </span>{" "}
               {language === "bn"

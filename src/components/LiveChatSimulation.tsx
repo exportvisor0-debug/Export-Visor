@@ -211,7 +211,7 @@ export const LiveChatSimulation: React.FC<LiveChatSimulationProps> = ({
   return (
     <aside
       aria-label="ExportVisor Live Sourcing Desk Chat"
-      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[390px] h-[550px] max-h-[85vh] bg-white rounded-2xl shadow-2xl border border-stone-200/90 flex flex-col overflow-hidden animate-fade-in font-sans"
+      className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[calc(100vw-2rem)] sm:w-[390px] h-[550px] max-h-[85vh] bg-white dark:bg-[#120E0B] rounded-2xl shadow-2xl border border-stone-200/90 dark:border-stone-800 flex flex-col overflow-hidden animate-fade-in font-sans"
     >
       {/* Chat Window Header */}
           <div className="px-4 py-3.5 bg-gradient-to-r from-[#181310] via-[#241C15] to-[#181310] text-white flex items-center justify-between border-b border-stone-800">
@@ -250,18 +250,18 @@ export const LiveChatSimulation: React.FC<LiveChatSimulationProps> = ({
           </div>
 
           {/* Sub-Header Notice / Trust Micro-Badge */}
-          <div className="bg-[#FAF8F5] px-3.5 py-1.5 border-b border-stone-200 flex items-center justify-between text-[10px] text-stone-600">
+          <div className="bg-stone-50 dark:bg-[#181310] px-3.5 py-1.5 border-b border-stone-200 dark:border-stone-800 flex items-center justify-between text-[10px] text-stone-600 dark:text-stone-300">
             <span className="flex items-center gap-1.5 font-medium">
               <Clock className="w-3 h-3 text-[#C89D43]" />
               <span>{language === "bn" ? "গড় প্রতিক্রিয়া: তাৎক্ষণিক" : "Avg Response: Immediate"}</span>
             </span>
-            <span className="font-mono text-[#7A5A17] font-semibold">
+            <span className="font-mono text-[#7A5A17] dark:text-[#E5BE58] font-semibold">
               Dhaka UTC+6
             </span>
           </div>
 
           {/* Chat Message Scrollable Feed */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-3.5 bg-[#F9F7F4]/60">
+          <div className="flex-1 p-4 overflow-y-auto space-y-3.5 bg-stone-50/60 dark:bg-[#0E0B09]">
             {messages.map((msg) => (
               <div
                 key={msg.id}
@@ -375,13 +375,13 @@ export const LiveChatSimulation: React.FC<LiveChatSimulationProps> = ({
           </form>
 
           {/* Bottom WhatsApp Fallback */}
-          <div className="px-3 py-1.5 bg-[#FAF8F5] border-t border-stone-200 text-center">
+          <div className="px-3 py-1.5 bg-stone-50 dark:bg-[#181310] border-t border-stone-200 dark:border-stone-800 text-center">
             <a
               href={siteConfig.contact.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackEvent("whatsapp_click", { location: "chat_footer" })}
-              className="text-[10px] text-stone-500 hover:text-emerald-700 inline-flex items-center gap-1 font-medium"
+              className="text-[10px] text-stone-500 dark:text-stone-400 hover:text-emerald-700 dark:hover:text-emerald-400 inline-flex items-center gap-1 font-medium"
             >
               <span>{language === "bn" ? "অথবা সরাসরি হোয়াটসঅ্যাপে কথা বলুন" : "Prefer direct WhatsApp messaging?"}</span>
               <span className="text-emerald-600 font-semibold underline">WhatsApp ↗</span>

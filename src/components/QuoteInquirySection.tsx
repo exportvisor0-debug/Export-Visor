@@ -136,21 +136,21 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 bg-white border-b border-stone-200">
+    <section id="contact" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.inquiry.kicker}
             </div>
             <SectionShareButton path="/quote" sectionName={t.inquiry.kicker} />
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#FAF6F0] leading-tight mt-1">
             {t.inquiry.title}
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
             {t.inquiry.subtitle}
           </p>
         </div>
@@ -166,11 +166,11 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
             className="lg:col-span-4 space-y-6"
           >
             
-            <div className="p-6 bg-[#FAF8F5] border border-stone-200/90 rounded-xl space-y-5 shadow-2xs">
-              <h3 className="font-display text-xl font-bold text-[#15120E]">
+            <div className="p-6 bg-white dark:bg-[#120E0B] border border-stone-200/90 dark:border-stone-800 rounded-xl space-y-5 shadow-2xs">
+              <h3 className="font-display text-xl font-bold text-[#15120E] dark:text-[#FAF6F0]">
                 {language === "bn" ? "সরাসরি যোগাযোগ মাধ্যম" : "Direct Contact Channels"}
               </h3>
-              <p className="text-xs text-stone-600 leading-relaxed">
+              <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
                 {language === "bn"
                   ? "তাৎক্ষণিক টেকনিক্যাল পরামর্শ প্রয়োজন? সরাসরি হোয়াটসঅ্যাপ বা ইমেইলে আমাদের সাথে যোগাযোগ করুন।"
                   : "Prefer immediate technical consultation? Connect directly with our team via WhatsApp or email."}
@@ -182,16 +182,16 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent("whatsapp_click", { location: "inquiry_sidebar" })}
-                  className="flex items-center gap-3 p-3.5 bg-white border border-stone-200 rounded-xl hover:border-emerald-500 transition-colors group shadow-2xs"
+                  className="flex items-center gap-3 p-3.5 bg-stone-50/70 dark:bg-[#181310] border border-stone-200 dark:border-stone-800 rounded-xl hover:border-emerald-500 transition-colors group shadow-2xs"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-200 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <MessageSquareText className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 block">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 dark:text-stone-500 block">
                       WhatsApp Commercial Desk
                     </span>
-                    <span className="text-xs font-bold text-stone-900 group-hover:text-emerald-700">
+                    <span className="text-xs font-bold text-stone-900 dark:text-stone-100 group-hover:text-emerald-700 dark:group-hover:text-emerald-400">
                       {siteConfig.contact.whatsappFormatted}
                     </span>
                   </div>
@@ -200,16 +200,16 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                 <a
                   href={siteConfig.contact.emailUrl}
                   onClick={() => trackEvent("email_click", { location: "inquiry_sidebar" })}
-                  className="flex items-center gap-3 p-3.5 bg-white border border-stone-200 rounded-xl hover:border-[#C89D43] transition-colors group shadow-2xs"
+                  className="flex items-center gap-3 p-3.5 bg-stone-50/70 dark:bg-[#181310] border border-stone-200 dark:border-stone-800 rounded-xl hover:border-[#C89D43] transition-colors group shadow-2xs"
                 >
                   <div className="w-10 h-10 rounded-lg bg-amber-500/10 text-[#C89D43] border border-[#C89D43]/30 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 block">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 dark:text-stone-500 block">
                       Official Inquiries Email
                     </span>
-                    <span className="text-xs font-bold text-stone-900 group-hover:text-[#C89D43]">
+                    <span className="text-xs font-bold text-stone-900 dark:text-stone-100 group-hover:text-[#C89D43]">
                       {siteConfig.contact.email}
                     </span>
                   </div>
@@ -221,22 +221,22 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackEvent("phone_click", { location: "office_map_sidebar" })}
-                  className="flex items-start gap-3 p-3.5 bg-white border border-stone-200 rounded-xl hover:border-[#C89D43] transition-colors group shadow-2xs"
+                  className="flex items-start gap-3 p-3.5 bg-stone-50/70 dark:bg-[#181310] border border-stone-200 dark:border-stone-800 rounded-xl hover:border-[#C89D43] transition-colors group shadow-2xs"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-rose-50 text-rose-600 border border-rose-200 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform mt-0.5">
+                  <div className="w-10 h-10 rounded-lg bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800/50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform mt-0.5">
                     <MapPin className="w-4 h-4" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 block">
+                      <span className="text-[10px] uppercase font-bold tracking-wider text-stone-400 dark:text-stone-500 block">
                         Registered Office & Sourcing Hub
                       </span>
                       <ExternalLink className="w-3 h-3 text-stone-400 group-hover:text-[#C89D43] shrink-0" />
                     </div>
-                    <span className="text-xs font-bold text-stone-900 group-hover:text-[#C89D43] block mt-0.5 leading-snug">
+                    <span className="text-xs font-bold text-stone-900 dark:text-stone-100 group-hover:text-[#C89D43] block mt-0.5 leading-snug">
                       {siteConfig.company.address}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#7A5A17] mt-1 group-hover:underline">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#7A5A17] dark:text-[#E5BE58] mt-1 group-hover:underline">
                       <Navigation className="w-3 h-3 text-[#C89D43]" />
                       <span>Open in Google Maps</span>
                     </span>
@@ -244,24 +244,24 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
                 </a>
               </div>
 
-              <div className="pt-2 border-t border-stone-200 text-xs text-stone-500 space-y-2">
+              <div className="pt-2 border-t border-stone-200 dark:border-stone-800 text-xs text-stone-500 dark:text-stone-400 space-y-2">
                 <div className="flex items-center justify-between">
                   <span>Operating Timezone:</span>
-                  <span className="font-semibold text-stone-700">Dhaka, Bangladesh (GMT+6)</span>
+                  <span className="font-semibold text-stone-700 dark:text-stone-300">Dhaka, Bangladesh (GMT+6)</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Standard Response:</span>
-                  <span className="font-semibold text-stone-700">Within 24 Hours</span>
+                  <span className="font-semibold text-stone-700 dark:text-stone-300">Within 24 Hours</span>
                 </div>
               </div>
             </div>
 
             {/* Sourcing Parameters Reminder */}
-            <div className="p-5 border border-stone-200/90 rounded-xl space-y-3 bg-white shadow-2xs">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A5A17] block">
+            <div className="p-5 border border-stone-200/90 dark:border-stone-800 rounded-xl space-y-3 bg-white dark:bg-[#120E0B] shadow-2xs">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A5A17] dark:text-[#E5BE58] block">
                 RFQ Sourcing Guidelines
               </span>
-              <ul className="text-xs text-stone-600 space-y-2">
+              <ul className="text-xs text-stone-600 dark:text-stone-300 space-y-2">
                 <li className="flex items-start gap-2">
                   <span className="text-[#C89D43] font-bold">•</span>
                   <span><strong>MOQ & Volumes:</strong> Tailored to your RFQ and tannery drum capacity.</span>
@@ -287,7 +287,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
             transition={{ duration: 0.45, delay: 0.1 }}
             className="lg:col-span-8"
           >
-            <div className="p-6 sm:p-8 bg-[#FAF8F5] border border-stone-200 rounded-lg shadow-xs">
+            <div className="p-6 sm:p-8 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 rounded-xl shadow-xs">
               
               {submitted ? (
                 /* Success Confirmation State with subtle animated checkmark */

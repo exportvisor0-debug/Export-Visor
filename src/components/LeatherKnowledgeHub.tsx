@@ -317,7 +317,7 @@ export const LeatherKnowledgeHub: React.FC<LeatherKnowledgeHubProps> = ({
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => setShowAll((prev) => !prev)}
-              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-[#15120E] bg-white hover:bg-stone-50 border border-[#C89D43] hover:border-[#D6AC4B] shadow-xs hover:shadow-md transition-all cursor-pointer group"
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-lg text-xs font-bold text-stone-800 dark:text-stone-200 bg-white dark:bg-[#1A1410] hover:bg-stone-50 dark:hover:bg-[#251D17] border border-[#C89D43] shadow-xs hover:shadow-md transition-all cursor-pointer group"
             >
               <span>
                 {showAll

@@ -219,7 +219,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
   return (
     <section
       id="tannery-timeline"
-      className="py-16 sm:py-24 bg-gradient-to-b from-[#FAF8F5] via-[#F6F3EE] to-[#FAF8F5] dark:from-[#0B0806] dark:via-[#110D0A] dark:to-[#0B0806] border-b border-stone-200/90 dark:border-stone-800/80 relative overflow-hidden transition-colors duration-200"
+      className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200/90 dark:border-stone-800/80 relative overflow-hidden transition-colors duration-200"
     >
       {/* Subtle architectural ambient background glow without dot grid */}
       <div className="absolute top-1/3 left-10 w-96 h-96 bg-[#D6AC4B]/10 dark:bg-[#D6AC4B]/5 rounded-full blur-3xl pointer-events-none" />

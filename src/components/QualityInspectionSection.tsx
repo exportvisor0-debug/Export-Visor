@@ -72,21 +72,21 @@ export const QualityInspectionSection: React.FC = () => {
   ];
 
   return (
-    <section id="quality-inspection" className="py-16 sm:py-24 bg-white border-b border-stone-200">
+    <section id="quality-inspection" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12 sm:mb-16">
           <div className="flex flex-wrap items-center gap-3 mb-2">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.quality.kicker}
             </div>
             <SectionShareButton path="/quality-inspection" sectionName={t.quality.kicker} />
           </div>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] leading-tight mt-1">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#15120E] dark:text-[#FAF6F0] leading-tight mt-1">
             {t.quality.title} <span className="text-gold-gradient">{t.quality.titleHighlight}</span>
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-stone-600 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
             {t.quality.subtitle}
           </p>
         </div>
@@ -101,10 +101,10 @@ export const QualityInspectionSection: React.FC = () => {
             transition={{ duration: 0.45 }}
             className="lg:col-span-6 space-y-4"
           >
-            <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#15120E]">
+            <h3 className="font-display text-2xl sm:text-3xl font-bold text-[#15120E] dark:text-[#FAF6F0]">
               {language === "bn" ? "ইন্সপেকশন সমন্বয় কীভাবে কাজ করে" : "How Inspection Coordination Works"}
             </h3>
-            <p className="text-sm text-stone-600 leading-relaxed">
+            <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
               {language === "bn"
                 ? "আন্তর্জাতিক ক্রেতাদের পক্ষে প্রতিটি ব্যাচের উৎপাদনে বাংলাদেশে সশরীরে আসা সবসময় সম্ভব হয় না। এক্সপোর্টভাইজর পার্টনার ট্যানারির ভেতরে ক্রেতার বস্তুনিষ্ঠ টেকনিক্যাল প্রতিনিধি হিসেবে কাজ করে।"
                 : "International buyers cannot always travel to Bangladesh for every production batch. ExportVisor acts as the buyer's objective technical coordinator inside partner tanneries."}
@@ -112,28 +112,28 @@ export const QualityInspectionSection: React.FC = () => {
 
             <div className="space-y-3 pt-2">
               {stages.map((stage) => (
-                <div key={stage.num} className="p-4 bg-[#FAF8F5] border border-stone-200/90 rounded-xl text-xs space-y-1 shadow-2xs hover:border-[#C89D43]/40 transition-colors">
+                <div key={stage.num} className="p-4 bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 rounded-xl text-xs space-y-1 shadow-2xs hover:border-[#C89D43]/40 transition-colors">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="w-5 h-5 rounded-full bg-[#C89D43]/20 text-[#7A5A17] font-mono font-bold text-[10px] flex items-center justify-center">
+                    <span className="w-5 h-5 rounded-full bg-[#C89D43]/20 text-[#7A5A17] dark:text-[#E5BE58] font-mono font-bold text-[10px] flex items-center justify-center">
                       {stage.num}
                     </span>
-                    <span className="font-bold text-[#15120E] uppercase tracking-wider text-[11px] block">
+                    <span className="font-bold text-[#15120E] dark:text-[#FAF6F0] uppercase tracking-wider text-[11px] block">
                       {stage.title}
                     </span>
                   </div>
-                  <p className="text-stone-600 leading-relaxed pl-7">
+                  <p className="text-stone-600 dark:text-stone-300 leading-relaxed pl-7">
                     {stage.desc}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="p-3 bg-amber-500/5 rounded-lg border border-[#C89D43]/20 text-xs">
-              <div className="font-bold text-[#7A5A17] flex items-center gap-1.5 mb-1">
+            <div className="p-3 bg-[#C89D43]/10 dark:bg-amber-950/20 rounded-lg border border-[#C89D43]/30 text-xs">
+              <div className="font-bold text-[#7A5A17] dark:text-[#E5BE58] flex items-center gap-1.5 mb-1">
                 <ShieldCheck className="w-4 h-4 text-[#C89D43]" />
                 <span>{t.quality.standardsTitle}</span>
               </div>
-              <p className="text-stone-600 text-[11px] leading-relaxed">
+              <p className="text-stone-600 dark:text-stone-300 text-[11px] leading-relaxed">
                 {t.quality.standardsDesc}
               </p>
             </div>
@@ -195,15 +195,15 @@ export const QualityInspectionSection: React.FC = () => {
                   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
                 }}
                 whileHover={{ y: -4, borderColor: "rgba(200, 157, 67, 0.6)" }}
-                className="p-6 border border-stone-200/90 rounded-xl bg-white transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
+                className="p-6 border border-stone-200 dark:border-stone-800 rounded-xl bg-white dark:bg-[#120E0B] transition-all duration-200 shadow-2xs hover:shadow-md group cursor-pointer"
               >
                 <div className={`w-10 h-10 rounded-lg ${item.color} flex items-center justify-center mb-3.5 transition-transform group-hover:scale-110 shadow-xs`}>
                   <Icon className="w-5 h-5" />
                 </div>
-                <h4 className="text-sm font-bold text-[#15120E] mb-1.5 group-hover:text-[#C89D43] transition-colors">
+                <h4 className="text-sm font-bold text-[#15120E] dark:text-[#FAF6F0] mb-1.5 group-hover:text-[#C89D43] transition-colors">
                   {item.factor}
                 </h4>
-                <p className="text-xs text-stone-600 leading-relaxed">
+                <p className="text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>

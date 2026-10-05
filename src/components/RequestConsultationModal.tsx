@@ -145,7 +145,7 @@ Generated via ExportVisor Live Consultation Portal`;
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl border border-stone-200 overflow-hidden my-auto max-h-[92vh] flex flex-col"
+        className="relative w-full max-w-2xl bg-white dark:bg-[#120E0B] rounded-2xl shadow-2xl border border-stone-200 dark:border-stone-800 overflow-hidden my-auto max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Bar */}
@@ -207,9 +207,9 @@ Generated via ExportVisor Live Consultation Portal`;
               </div>
 
               {/* Fast-Track Immediate Transmit Panel */}
-              <div className="p-4.5 bg-[#FAF8F5] border border-stone-200 rounded-xl text-left space-y-3.5 max-w-lg mx-auto shadow-2xs">
-                <div className="flex items-center justify-between text-xs pb-2 border-b border-stone-200">
-                  <span className="font-bold text-[#7A5A17] uppercase tracking-wider text-[11px]">
+              <div className="p-4.5 bg-stone-50 dark:bg-[#181310] border border-stone-200 dark:border-stone-800 rounded-xl text-left space-y-3.5 max-w-lg mx-auto shadow-2xs">
+                <div className="flex items-center justify-between text-xs pb-2 border-b border-stone-200 dark:border-stone-800">
+                  <span className="font-bold text-[#7A5A17] dark:text-[#E5BE58] uppercase tracking-wider text-[11px]">
                     {language === "bn" ? "তাৎক্ষণিক সংযোগ" : "Fast-Track Options"}
                   </span>
                   <button

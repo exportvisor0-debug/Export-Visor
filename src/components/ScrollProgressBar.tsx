@@ -140,7 +140,7 @@ export const ScrollProgressBar: React.FC = () => {
         <button
           type="button"
           onClick={() => scrollToSection(activeSection.id, true)}
-          className="pointer-events-auto inline-flex items-center gap-2 px-3 py-1 bg-[#181310]/90 hover:bg-[#181310] text-stone-200 rounded-full border border-[#C89D43]/40 shadow-lg backdrop-blur-md cursor-pointer transition-all hover:border-[#C89D43] group"
+          className="pointer-events-auto inline-flex items-center gap-2 px-3 py-1 bg-white/95 dark:bg-[#181310]/95 hover:bg-stone-50 dark:hover:bg-[#181310] text-stone-800 dark:text-stone-200 rounded-full border border-stone-300 dark:border-[#C89D43]/40 shadow-lg backdrop-blur-md cursor-pointer transition-all hover:border-[#C89D43] group"
           title={`Currently reading: ${currentLabel}. Click to jump to section.`}
         >
           {/* Small pulsing location ring */}
@@ -149,11 +149,11 @@ export const ScrollProgressBar: React.FC = () => {
             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#C89D43]" />
           </span>
 
-          <span className="text-[10px] sm:text-[11px] font-medium tracking-wide text-stone-300 group-hover:text-white truncate max-w-[140px] sm:max-w-[200px]">
+          <span className="text-[10px] sm:text-[11px] font-medium tracking-wide text-stone-700 dark:text-stone-300 group-hover:text-stone-900 dark:group-hover:text-white truncate max-w-[140px] sm:max-w-[200px]">
             {currentLabel}
           </span>
 
-          <span className="text-[10px] font-mono font-bold text-[#E5BE58] pl-1 border-l border-stone-700">
+          <span className="text-[10px] font-mono font-bold text-[#7A5A17] dark:text-[#E5BE58] pl-1 border-l border-stone-200 dark:border-stone-700">
             {progressPercentText}
           </span>
         </button>

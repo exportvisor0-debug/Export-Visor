@@ -33,7 +33,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
         {/* Modal Top Bar */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-stone-200 dark:border-stone-800 bg-white dark:bg-[#181310] print:hidden">
           <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded bg-[#181310] dark:bg-stone-800 text-[#C89D43] flex items-center justify-center font-serif text-xs font-bold border border-[#C89D43]/40">
+            <span className="w-6 h-6 rounded bg-[#C89D43]/15 text-[#7A5A17] dark:bg-stone-800 dark:text-[#E5BE58] flex items-center justify-center font-serif text-xs font-bold border border-[#C89D43]/40">
               EV
             </span>
             <span className="text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300">
@@ -60,13 +60,13 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
         </div>
 
         {/* Scrollable Printable Profile Content */}
-        <div className="overflow-y-auto flex-1 p-8 sm:p-10 space-y-8 bg-white text-stone-800">
+        <div className="overflow-y-auto flex-1 p-6 sm:p-10 space-y-8 bg-white dark:bg-[#120E0B] text-stone-800 dark:text-stone-200 print:bg-white print:text-stone-900">
           
           {/* Header Block */}
-          <div className="border-b border-stone-300 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div className="border-b border-stone-300 dark:border-stone-800 pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <span className="text-2xl font-bold tracking-tight text-[#181310]">
+                <span className="text-2xl font-bold tracking-tight text-[#181310] dark:text-white print:text-black">
                   Export<span className="text-[#C89D43]">Visor</span>
                 </span>
                 <span className="text-xs uppercase tracking-widest text-stone-400 font-semibold">
@@ -75,7 +75,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
               </div>
             </div>
 
-            <div className="text-left sm:text-right text-xs text-stone-500 space-y-1">
+            <div className="text-left sm:text-right text-xs text-stone-500 dark:text-stone-400 space-y-1">
               <p>Origin: Dhaka, Bangladesh</p>
               <p>Email: {siteConfig.contact.email}</p>
               <p>WhatsApp: {siteConfig.contact.whatsappFormatted}</p>
@@ -87,7 +87,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
             <h2 className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               1. Executive Summary
             </h2>
-            <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
               ExportVisor is a Bangladesh-based B2B leather sourcing agency acting as an international buyer’s liaison and inspection coordinator. We connect global footwear manufacturers, leather goods brands, and wholesale importers with vetted tanneries across Bangladesh. We do not manufacture finished goods; our core specialization is sourcing and exporting genuine leather (Wet Blue, Crust, and Finished Leather) strictly aligned with buyer technical specifications.
             </p>
           </div>
@@ -98,21 +98,21 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
               2. Sourcing Scope & Product Classifications
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-              <div className="p-3 bg-stone-50 border border-stone-200 rounded">
-                <strong className="block text-stone-900 mb-1">Wet Blue Leather</strong>
-                <p className="text-stone-600 leading-relaxed">
+              <div className="p-3 bg-stone-50 dark:bg-[#181310] border border-stone-200 dark:border-stone-800 rounded">
+                <strong className="block text-stone-900 dark:text-stone-100 mb-1">Wet Blue Leather</strong>
+                <p className="text-stone-600 dark:text-stone-300 leading-relaxed">
                   Full substance, grain splits, and drop splits for international re-tanning mills.
                 </p>
               </div>
-              <div className="p-3 bg-stone-50 border border-stone-200 rounded">
-                <strong className="block text-stone-900 mb-1">Crust Leather</strong>
-                <p className="text-stone-600 leading-relaxed">
+              <div className="p-3 bg-stone-50 dark:bg-[#181310] border border-stone-200 dark:border-stone-800 rounded">
+                <strong className="block text-stone-900 dark:text-stone-100 mb-1">Crust Leather</strong>
+                <p className="text-stone-600 dark:text-stone-300 leading-relaxed">
                   Chrome-tanned and vegetable-tanned crust, natural milling crust ready for coloration.
                 </p>
               </div>
-              <div className="p-3 bg-stone-50 border border-stone-200 rounded">
-                <strong className="block text-stone-900 mb-1">Finished Leather</strong>
-                <p className="text-stone-600 leading-relaxed">
+              <div className="p-3 bg-stone-50 dark:bg-[#181310] border border-stone-200 dark:border-stone-800 rounded">
+                <strong className="block text-stone-900 dark:text-stone-100 mb-1">Finished Leather</strong>
+                <p className="text-stone-600 dark:text-stone-300 leading-relaxed">
                   Full grain, top grain, corrected grain, aniline, semi-aniline, and pigmented leathers.
                 </p>
               </div>
@@ -124,28 +124,28 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
             <h2 className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               3. Commercial Framework & RFQ Evaluation
             </h2>
-            <div className="border border-stone-200 rounded divide-y divide-stone-200 text-xs">
-              <div className="grid grid-cols-3 p-2.5">
-                <span className="font-semibold text-stone-700">Minimum Order Quantity (MOQ)</span>
-                <span className="col-span-2 text-stone-800">
+            <div className="border border-stone-200 dark:border-stone-800 rounded divide-y divide-stone-200 dark:divide-stone-800 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-3 p-2.5">
+                <span className="font-semibold text-stone-700 dark:text-stone-300">Minimum Order Quantity (MOQ)</span>
+                <span className="sm:col-span-2 text-stone-800 dark:text-stone-200">
                   Determined per RFQ (Tailored to leather type, grade distribution & drum capacity)
                 </span>
               </div>
-              <div className="grid grid-cols-3 p-2.5">
-                <span className="font-semibold text-stone-700">Tannery Quotation Basis</span>
-                <span className="col-span-2 text-stone-800">
+              <div className="grid grid-cols-1 sm:grid-cols-3 p-2.5">
+                <span className="font-semibold text-stone-700 dark:text-stone-300">Tannery Quotation Basis</span>
+                <span className="sm:col-span-2 text-stone-800 dark:text-stone-200">
                   Formulated upon RFQ review (Governed by substance, finish, testing & volume)
                 </span>
               </div>
-              <div className="grid grid-cols-3 p-2.5">
-                <span className="font-semibold text-stone-700">Production Lead Time</span>
-                <span className="col-span-2 text-stone-800">
+              <div className="grid grid-cols-1 sm:grid-cols-3 p-2.5">
+                <span className="font-semibold text-stone-700 dark:text-stone-300">Production Lead Time</span>
+                <span className="sm:col-span-2 text-stone-800 dark:text-stone-200">
                   Scheduled per RFQ & proforma invoice agreement
                 </span>
               </div>
-              <div className="grid grid-cols-3 p-2.5">
-                <span className="font-semibold text-stone-700">International Payment Terms</span>
-                <span className="col-span-2 text-stone-800">
+              <div className="grid grid-cols-1 sm:grid-cols-3 p-2.5">
+                <span className="font-semibold text-stone-700 dark:text-stone-300">International Payment Terms</span>
+                <span className="sm:col-span-2 text-stone-800 dark:text-stone-200">
                   Irrevocable Letter of Credit (LC at sight) or Telegraphic Transfer (TT)
                 </span>
               </div>
@@ -157,7 +157,7 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
             <h2 className="text-xs font-bold uppercase tracking-wider text-[#C89D43]">
               4. Key Buyer Services
             </h2>
-            <ul className="text-xs text-stone-700 space-y-1.5 list-disc list-inside">
+            <ul className="text-xs text-stone-700 dark:text-stone-300 space-y-1.5 list-disc list-inside">
               <li>Tannery matching and vetting tailored to product machinery requirements.</li>
               <li>Translation of buyer tech packs, thickness tolerances, and color swatches.</li>
               <li>Counter-sample coordination and courier dispatch.</li>
@@ -168,14 +168,14 @@ export const CompanyProfileModal: React.FC<CompanyProfileModalProps> = ({
           </div>
 
           {/* Official Contacts Block */}
-          <div className="pt-4 border-t border-stone-300 text-xs text-stone-600 flex flex-col sm:flex-row justify-between gap-4">
+          <div className="pt-4 border-t border-stone-300 dark:border-stone-800 text-xs text-stone-600 dark:text-stone-400 flex flex-col sm:flex-row justify-between gap-4">
             <div>
-              <p className="font-semibold text-stone-900">ExportVisor Sourcing Desk</p>
+              <p className="font-semibold text-stone-900 dark:text-stone-100">ExportVisor Sourcing Desk</p>
               <p>Email: {siteConfig.contact.email}</p>
               <p>WhatsApp: {siteConfig.contact.whatsappFormatted}</p>
             </div>
             <div>
-              <p className="font-semibold text-stone-900">Registered Office & Hub</p>
+              <p className="font-semibold text-stone-900 dark:text-stone-100">Registered Office & Hub</p>
               <p>{siteConfig.company.address}</p>
               <a
                 href={siteConfig.company.mapsUrl}

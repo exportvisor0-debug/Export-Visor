@@ -45,8 +45,14 @@ export const ExportShippingSection: React.FC = () => {
     <section id="export-shipping" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        {/* Header with Fade-In-Up Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl mb-12 sm:mb-16"
+        >
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.shipping.kicker}
@@ -59,7 +65,7 @@ export const ExportShippingSection: React.FC = () => {
           <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
             {t.shipping.subtitle}
           </p>
-        </div>
+        </motion.div>
 
         {/* Visual & Context Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
@@ -69,7 +75,7 @@ export const ExportShippingSection: React.FC = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-6 relative rounded-2xl overflow-hidden border border-[#C89D43]/30 shadow-lg bg-stone-900 aspect-[16/10] group"
+            className="lg:col-span-6 relative rounded-2xl overflow-hidden border border-stone-200 dark:border-[#C89D43]/30 shadow-lg bg-stone-100 dark:bg-stone-900 aspect-[16/10] group"
           >
             <img
               src={containerCargoShipImg}
@@ -174,7 +180,7 @@ export const ExportShippingSection: React.FC = () => {
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
-                    <span className="font-mono-data text-xs text-[#7A5A17] dark:text-[#E5BE58] font-bold bg-[#FAF8F5] dark:bg-[#181310] border border-stone-200/80 dark:border-stone-700 px-2 py-0.5 rounded">
+                    <span className="font-mono-data text-xs text-[#7A5A17] dark:text-[#E5BE58] font-bold bg-stone-100 dark:bg-[#181310] border border-stone-200/80 dark:border-stone-700 px-2 py-0.5 rounded">
                       0{idx + 1}.
                     </span>
                     <div className={`w-8 h-8 rounded-lg ${step.badgeColor} flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs`}>

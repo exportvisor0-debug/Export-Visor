@@ -222,7 +222,7 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Zone 1: Brand Logo */}
             <a
               href="/"
-              className="flex items-center group py-0.5 shrink-0 max-w-[140px] sm:max-w-[190px]"
+              className="flex items-center group py-0.5 shrink-0 max-w-[130px] sm:max-w-[190px]"
               onClick={(e) => {
                 e.preventDefault();
                 navigateTo("/", true);
@@ -232,7 +232,7 @@ export const Header: React.FC<HeaderProps> = ({
               <img
                 src={logoSrc}
                 alt="ExportVisor - Bangladesh Leather Sourcing & Export"
-                className="h-7 sm:h-9 md:h-10 w-auto object-contain transition-transform duration-200 group-hover:scale-102"
+                className="h-7 sm:h-9 md:h-10 w-auto max-w-[125px] sm:max-w-[190px] object-contain transition-transform duration-200 group-hover:scale-102"
                 onError={(e) => {
                   (e.currentTarget as HTMLImageElement).src =
                     theme === "dark" ? "/assets/branding/logo-white.png" : "/Logo3_4.png";
@@ -433,10 +433,10 @@ export const Header: React.FC<HeaderProps> = ({
                   trackEvent("request_quote_click", { location: "header" });
                   onRequestQuote();
                 }}
-                className="hidden sm:inline-flex items-center justify-center px-3 sm:px-3.5 py-2 text-xs font-bold tracking-wide text-white bg-gradient-to-r from-[#181310] to-[#261E17] hover:from-[#261E17] hover:to-[#382C22] border border-[#C89D43]/40 rounded-md transition-all duration-150 shadow-xs hover:shadow-md cursor-pointer whitespace-nowrap group"
+                className="hidden sm:inline-flex items-center justify-center px-3 sm:px-3.5 py-2 text-xs font-bold tracking-wide text-[#15120E] dark:text-white bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] dark:from-[#181310] dark:to-[#261E17] dark:hover:from-[#261E17] dark:hover:to-[#382C22] border border-[#C89D43]/50 rounded-md transition-all duration-150 shadow-gold-subtle hover:shadow-md cursor-pointer whitespace-nowrap group"
               >
                 <span>{t.nav.requestQuote}</span>
-                <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#E5BE58] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#15120E] dark:text-[#E5BE58] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </button>
 
               {/* Mobile Quick Flag Indicator (<640px) */}
@@ -509,10 +509,10 @@ export const Header: React.FC<HeaderProps> = ({
                   setMobileMenuOpen(false);
                   onRequestQuote();
                 }}
-                className="flex items-center justify-center gap-1.5 py-3 px-3 rounded-lg text-xs font-bold bg-[#181310] dark:bg-[#C89D43] text-white dark:text-[#120E0B] border border-[#C89D43]/40 shadow-xs cursor-pointer active:scale-98 transition-transform"
+                className="flex items-center justify-center gap-1.5 py-3 px-3 rounded-lg text-xs font-bold bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] text-[#15120E] border border-[#C89D43]/60 shadow-xs cursor-pointer active:scale-98 transition-transform"
               >
                 <span>{t.nav.requestQuote}</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[#E5BE58] dark:text-[#120E0B]" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#15120E]" />
               </button>
               <a
                 href={siteConfig.contact.whatsappUrl}
@@ -555,7 +555,7 @@ export const Header: React.FC<HeaderProps> = ({
                       }}
                       className={`flex items-center justify-between p-2 rounded-lg text-left text-xs transition-all cursor-pointer ${
                         isSelected
-                          ? "bg-[#181310] dark:bg-[#C89D43] text-white dark:text-[#120E0B] font-bold shadow-xs border border-[#C89D43]/40"
+                          ? "bg-[#C89D43] text-stone-950 font-bold shadow-xs border border-[#C89D43]"
                           : "bg-stone-50 dark:bg-[#181310] hover:bg-stone-100 dark:hover:bg-[#221C16] text-stone-700 dark:text-stone-300 border border-stone-200/80 dark:border-stone-800"
                       }`}
                     >
@@ -566,7 +566,7 @@ export const Header: React.FC<HeaderProps> = ({
                         </span>
                       </div>
                       {isSelected && (
-                        <Check className="w-3 h-3 text-[#E5BE58] dark:text-[#120E0B] shrink-0 ml-1" />
+                        <Check className="w-3 h-3 text-stone-950 shrink-0 ml-1" />
                       )}
                     </button>
                   );

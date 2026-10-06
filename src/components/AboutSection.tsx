@@ -43,12 +43,31 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
     },
   ];
 
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 26 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.09, delayChildren: 0.05 },
+    },
+  };
+
   return (
     <section id="about" className="py-16 sm:py-22 bg-white dark:bg-[#0B0806] border-b border-stone-200/90 dark:border-stone-800/80 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        {/* Section Header with Fade-In-Up Animation */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={fadeInUp}
+          className="max-w-3xl mb-12 sm:mb-16"
+        >
           <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.about.kicker}
@@ -62,15 +81,15 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           <p className="mt-4 text-base sm:text-lg text-stone-600 dark:text-stone-300 leading-relaxed text-pretty">
             {t.about.subtitle}
           </p>
-        </div>
+        </motion.div>
 
         {/* Narrative & Value Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Left Context: The Sourcing Reality */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="lg:col-span-5 space-y-6"
@@ -155,10 +174,10 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
 
           {/* Right Column: Key Operational Pillars */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: "-30px" }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+            variants={staggerContainer}
             className="lg:col-span-7 space-y-4"
           >
             <h3 className="text-xs uppercase tracking-wider text-stone-500 dark:text-stone-400 font-bold mb-4 flex items-center gap-2">
@@ -172,6 +191,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
                 return (
                   <motion.div
                     key={pillar.title}
+                    variants={fadeInUp}
                     whileHover={{ x: 6, borderColor: "rgba(200, 157, 67, 0.6)" }}
                     transition={{ duration: 0.2 }}
                     className="p-5 border border-stone-200/90 dark:border-stone-800/80 hover:border-[#C89D43]/50 dark:hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 bg-white dark:bg-[#120E0B] shadow-2xs hover:shadow-md group cursor-pointer"

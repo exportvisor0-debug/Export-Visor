@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import {
   ResponsiveContainer,
@@ -113,28 +114,28 @@ const VolumeTooltip: React.FC<CustomTooltipProps> = ({ active, payload, label })
   if (active && payload && payload.length) {
     const total = payload.reduce((sum, entry) => sum + (Number(entry.value) || 0), 0);
     return (
-      <div className="bg-[#15120E] text-white p-3.5 rounded-xl shadow-xl border border-[#C89D43]/30 text-xs">
-        <p className="font-mono text-[#E5BE58] font-bold mb-1.5 pb-1 border-b border-white/10">
+      <div className="bg-white dark:bg-[#15120E] text-stone-900 dark:text-white p-3.5 rounded-xl shadow-xl border border-stone-200 dark:border-[#C89D43]/30 text-xs">
+        <p className="font-mono text-[#7A5A17] dark:text-[#E5BE58] font-bold mb-1.5 pb-1 border-b border-stone-100 dark:border-white/10">
           FY {label} Sourcing Volume
         </p>
         <div className="space-y-1.5">
           {payload.map((entry, idx) => (
             <div key={idx} className="flex items-center justify-between gap-4">
-              <span className="flex items-center gap-1.5 text-stone-300">
+              <span className="flex items-center gap-1.5 text-stone-600 dark:text-stone-300">
                 <span
                   className="w-2.5 h-2.5 rounded-full inline-block"
                   style={{ backgroundColor: entry.color }}
                 />
                 {entry.name}:
               </span>
-              <span className="font-mono font-semibold text-white">
+              <span className="font-mono font-semibold text-stone-900 dark:text-white">
                 {Number(entry.value).toFixed(1)}M sq.ft
               </span>
             </div>
           ))}
-          <div className="pt-1.5 mt-1 border-t border-white/10 flex justify-between font-bold">
-            <span className="text-stone-300">Coordinated Total:</span>
-            <span className="font-mono text-[#E5BE58]">{total.toFixed(1)}M sq.ft</span>
+          <div className="pt-1.5 mt-1 border-t border-stone-100 dark:border-white/10 flex justify-between font-bold">
+            <span className="text-stone-600 dark:text-stone-300">Coordinated Total:</span>
+            <span className="font-mono text-[#7A5A17] dark:text-[#E5BE58]">{total.toFixed(1)}M sq.ft</span>
           </div>
         </div>
       </div>
@@ -147,18 +148,18 @@ const DestinationTooltip: React.FC<CustomTooltipProps> = ({ active, payload }) =
   if (active && payload && payload.length) {
     const data = payload[0].payload as DestinationDataPoint;
     return (
-      <div className="bg-[#15120E] text-white p-3.5 rounded-xl shadow-xl border border-[#C89D43]/30 text-xs max-w-xs">
-        <div className="flex items-center justify-between gap-2 mb-1.5 pb-1 border-b border-white/10">
-          <span className="font-bold text-[#E5BE58]">{data.name}</span>
+      <div className="bg-white dark:bg-[#15120E] text-stone-900 dark:text-white p-3.5 rounded-xl shadow-xl border border-stone-200 dark:border-[#C89D43]/30 text-xs max-w-xs">
+        <div className="flex items-center justify-between gap-2 mb-1.5 pb-1 border-b border-stone-100 dark:border-white/10">
+          <span className="font-bold text-[#7A5A17] dark:text-[#E5BE58]">{data.name}</span>
           <span className="font-mono font-bold text-stone-950 bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] px-2 py-0.5 rounded text-[10px]">
             {data.share}% Share
           </span>
         </div>
-        <p className="text-[11px] text-stone-300">
-          <strong className="text-white">Annual Volume:</strong> {data.volumeSqFt}
+        <p className="text-[11px] text-stone-600 dark:text-stone-300">
+          <strong className="text-stone-900 dark:text-white">Annual Volume:</strong> {data.volumeSqFt}
         </p>
-        <p className="text-[10px] text-stone-400 mt-1">
-          <strong className="text-stone-300">Discharge Hubs:</strong> {data.topPorts}
+        <p className="text-[10px] text-stone-500 dark:text-stone-400 mt-1">
+          <strong className="text-stone-700 dark:text-stone-300">Discharge Hubs:</strong> {data.topPorts}
         </p>
       </div>
     );
@@ -184,8 +185,14 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-10 border-b border-stone-200/90 dark:border-stone-800/90 gap-6">
+        {/* Section Header with Fade-In-Up Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between pb-8 mb-10 border-b border-stone-200/90 dark:border-stone-800/90 gap-6"
+        >
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
@@ -215,7 +222,7 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
               </button>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* 4 High-Authority KPI Metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
@@ -454,7 +461,7 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                 {DESTINATION_DATA.map((d, idx) => (
                   <div
                     key={idx}
-                    className="p-3.5 rounded-lg border border-stone-200 bg-[#FAF8F5] flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                    className="p-3.5 rounded-lg border border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-[#15100C] flex flex-col sm:flex-row sm:items-center justify-between gap-2"
                   >
                     <div className="flex items-center gap-3">
                       <span
@@ -462,20 +469,20 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                         style={{ backgroundColor: d.color }}
                       />
                       <div>
-                        <span className="font-semibold text-xs sm:text-sm text-stone-900 block">
+                        <span className="font-semibold text-xs sm:text-sm text-stone-900 dark:text-stone-100 block">
                           {d.name}
                         </span>
-                        <span className="text-[11px] text-stone-500 block truncate">
+                        <span className="text-[11px] text-stone-500 dark:text-stone-400 block truncate">
                           Primary: {d.topPorts}
                         </span>
                       </div>
                     </div>
 
                     <div className="text-left sm:text-right shrink-0">
-                      <span className="font-mono text-xs sm:text-sm font-bold text-stone-900">
+                      <span className="font-mono text-xs sm:text-sm font-bold text-stone-900 dark:text-[#E5BE58]">
                         {d.share}% Share
                       </span>
-                      <span className="text-[11px] text-stone-500 block">
+                      <span className="text-[11px] text-stone-500 dark:text-stone-400 block">
                         {d.volumeSqFt} / yr
                       </span>
                     </div>
@@ -535,7 +542,7 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                     <Legend
                       wrapperStyle={{ paddingTop: "14px", fontSize: "11px" }}
                       formatter={(val) => (
-                        <span className="text-stone-700 font-medium">{val}</span>
+                        <span className="text-stone-700 dark:text-stone-300 font-medium">{val}</span>
                       )}
                     />
                     <Bar
@@ -558,9 +565,9 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
                 </ResponsiveContainer>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-stone-100 flex flex-wrap items-center justify-between text-xs text-stone-500 gap-2">
+              <div className="mt-4 pt-4 border-t border-stone-100 dark:border-stone-800 flex flex-wrap items-center justify-between text-xs text-stone-500 dark:text-stone-400 gap-2">
                 <span>Metrics derived from repeat commercial L/C releases and vetted buyer contracts.</span>
-                <span className="font-mono text-emerald-700 font-semibold">
+                <span className="font-mono text-emerald-700 dark:text-emerald-400 font-semibold">
                   Zero container demurrage claims in 2024–2025
                 </span>
               </div>
@@ -570,14 +577,14 @@ export const GlobalTradeImpact: React.FC<GlobalTradeImpactProps> = ({
         </div>
 
         {/* Institutional Accreditation Footnote */}
-        <div className="mt-8 p-4 bg-white border border-stone-200/90 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-stone-600 gap-3">
+        <div className="mt-8 p-4 bg-white dark:bg-[#120E0B] border border-stone-200/90 dark:border-stone-800 rounded-lg flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-stone-600 dark:text-stone-300 gap-3">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
             <span>
               All trade volumes validated via Chattogram Customs bills of export, chamber certificates, and verified proforma records.
             </span>
           </div>
-          <div className="flex items-center gap-3 text-stone-600 font-mono text-[11px] self-end sm:self-auto">
+          <div className="flex items-center gap-3 text-stone-600 dark:text-stone-400 font-mono text-[11px] self-end sm:self-auto">
             <span>Harmonized HS: 4104 / 4107 / 4112</span>
           </div>
         </div>

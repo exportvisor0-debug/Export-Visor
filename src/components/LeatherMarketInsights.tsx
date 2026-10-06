@@ -218,8 +218,14 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
     <section id="market-insights" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200/90 dark:border-stone-800/80 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 dark:border-stone-800/80 gap-6">
+        {/* Section Header with Fade-In-Up Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 dark:border-stone-800/80 gap-6"
+        >
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
@@ -258,7 +264,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
               <ArrowUpRight className="w-3.5 h-3.5 text-[#15120E]" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Market Barometer Overview Strip */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 p-4 sm:p-5 bg-white dark:bg-[#130E0B] border border-stone-200/90 dark:border-[#C89D43]/25 rounded-lg shadow-xs mb-8">
@@ -326,7 +332,7 @@ export const LeatherMarketInsights: React.FC<LeatherMarketInsightsProps> = ({
               }}
               className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors cursor-pointer whitespace-nowrap ${
                 selectedCategory === cat
-                  ? "bg-[#181310] dark:bg-[#C89D43] text-white dark:text-[#15120E] shadow-xs"
+                  ? "bg-[#C89D43] text-stone-950 font-bold shadow-xs"
                   : "text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white hover:bg-stone-200/60 dark:hover:bg-stone-700/50"
               }`}
             >

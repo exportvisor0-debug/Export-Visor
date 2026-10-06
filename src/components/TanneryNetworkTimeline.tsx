@@ -227,8 +227,14 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" ref={containerRef}>
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6">
+        {/* Section Header with Fade-In-Up Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-12 sm:mb-16 gap-6"
+        >
           <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-3 mb-2.5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
@@ -288,7 +294,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
               <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* ============================================================== */}
         {/* INTERACTIVE HORIZONTAL GOLD-ACCENTED PROGRESS PATH */}
@@ -333,7 +339,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                     <div
                       className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 relative ${
                         isActive
-                          ? "bg-gradient-to-br from-[#181310] to-[#261E17] text-[#E5BE58] border-2 border-[#D6AC4B] shadow-gold-subtle scale-110"
+                          ? "bg-gradient-to-br from-[#F5D275] to-[#D6AC4B] dark:from-[#181310] dark:to-[#261E17] text-stone-950 dark:text-[#E5BE58] border-2 border-[#B8892E] dark:border-[#D6AC4B] shadow-gold-subtle scale-110"
                           : isPassed
                           ? "bg-[#D6AC4B] text-stone-950 border-2 border-[#B8892E] shadow-2xs"
                           : "bg-white dark:bg-[#1A1410] text-stone-400 dark:text-stone-500 border-2 border-stone-300 dark:border-stone-700 group-hover:border-[#C89D43]/60 group-hover:text-stone-700 dark:group-hover:text-stone-300"
@@ -398,7 +404,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
                 <div className="space-y-4">
                   {/* Top Kicker & Badge Row (No Years / Shal) */}
                   <div className="flex flex-wrap items-center gap-2.5">
-                    <span className="font-mono-data text-xs font-bold text-[#E5BE58] px-3 py-1 rounded-md bg-[#181310] dark:bg-[#1F1813] border border-[#C89D43]/40 shadow-2xs">
+                    <span className="font-mono-data text-xs font-bold text-[#7A5A17] dark:text-[#E5BE58] px-3 py-1 rounded-md bg-amber-50 dark:bg-[#1F1813] border border-amber-300 dark:border-[#C89D43]/40 shadow-2xs">
                       {language === "bn" ? activeSegment.phaseBn : activeSegment.phase}
                     </span>
 
@@ -484,7 +490,7 @@ export const TanneryNetworkTimeline: React.FC<TanneryNetworkTimelineProps> = ({
               </div>
 
               {/* Right Column: Visual Milestone Showcase with Photo and Ambient Badges */}
-              <div className="lg:col-span-5 relative bg-stone-900 overflow-hidden min-h-[280px] sm:min-h-[340px] lg:min-h-full">
+              <div className="lg:col-span-5 relative bg-stone-100 dark:bg-stone-900 overflow-hidden min-h-[280px] sm:min-h-[340px] lg:min-h-full">
                 <img
                   src={activeSegment.image}
                   alt={activeSegment.imageAlt}

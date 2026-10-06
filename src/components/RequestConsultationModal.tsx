@@ -149,22 +149,22 @@ Generated via ExportVisor Live Consultation Portal`;
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4.5 border-b border-stone-200/90 bg-gradient-to-r from-[#181310] via-[#241C15] to-[#181310] text-white">
+        <div className="flex items-center justify-between px-6 py-4.5 border-b border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-gradient-to-r dark:from-[#181310] dark:via-[#241C15] dark:to-[#181310] text-stone-900 dark:text-white">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[#C89D43]/20 border border-[#C89D43]/40 flex items-center justify-center text-[#E5BE58]">
+            <div className="w-9 h-9 rounded-xl bg-[#C89D43]/15 dark:bg-[#C89D43]/20 border border-[#C89D43]/30 dark:border-[#C89D43]/40 flex items-center justify-center text-[#7A5A17] dark:text-[#E5BE58]">
               <Calendar className="w-4 h-4" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-bold tracking-tight text-white font-display sm:text-base">
+                <span className="text-sm font-bold tracking-tight text-[#15120E] dark:text-white font-display sm:text-base">
                   {language === "bn" ? "টেকনিক্যাল সোর্সিং কনসালটেশন" : "Request a Sourcing Consultation"}
                 </span>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-mono font-semibold border border-emerald-500/30">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/15 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-[10px] font-mono font-semibold border border-emerald-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                   Live Desk
                 </span>
               </div>
-              <p className="text-[11px] text-stone-300 mt-0.5">
+              <p className="text-[11px] text-stone-500 dark:text-stone-300 mt-0.5">
                 {language === "bn"
                   ? "সাভারের ট্যানারি বিশেষজ্ঞ দলের সাথে সরাসরি কারিগরি পরামর্শ"
                   : "Direct advisory with ExportVisor on-site leather specialists in Bangladesh"}
@@ -174,7 +174,7 @@ Generated via ExportVisor Live Consultation Portal`;
 
           <button
             onClick={onClose}
-            className="p-1.5 text-stone-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
+            className="p-1.5 text-stone-400 hover:text-stone-700 dark:hover:text-white hover:bg-stone-200/60 dark:hover:bg-white/10 rounded-lg transition-colors cursor-pointer"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -272,14 +272,14 @@ Generated via ExportVisor Live Consultation Portal`;
 
               {/* Consultation Topic Selector */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-1.5">
+                <label className="block text-xs font-bold uppercase tracking-wider text-stone-700 dark:text-stone-300 mb-1.5">
                   {language === "bn" ? "পরামর্শের প্রধান বিষয় *" : "Primary Consultation Focus *"}
                 </label>
                 <select
                   name="topic"
                   value={formData.topic}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 text-xs bg-[#FAF8F5] border border-stone-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43] font-medium"
+                  className="w-full px-3 py-2 text-xs bg-[#FAF8F5] dark:bg-[#181310] border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43] font-medium"
                 >
                   {consultationTopics.map((item) => (
                     <option key={item} value={item}>
@@ -292,7 +292,7 @@ Generated via ExportVisor Live Consultation Portal`;
               {/* 2-Column: Name & Company */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block text-xs font-medium text-stone-700 mb-1">
+                  <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1">
                     {language === "bn" ? "আপনার নাম *" : "Full Name *"}
                   </label>
                   <input
@@ -302,12 +302,12 @@ Generated via ExportVisor Live Consultation Portal`;
                     value={formData.fullName}
                     onChange={handleChange}
                     placeholder="e.g. John Doe"
-                    className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
+                    className="w-full px-3 py-2 text-xs bg-white dark:bg-[#181310] border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-stone-700 mb-1">
+                  <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1">
                     {language === "bn" ? "কোম্পানির নাম *" : "Company Name *"}
                   </label>
                   <input
@@ -317,7 +317,7 @@ Generated via ExportVisor Live Consultation Portal`;
                     value={formData.companyName}
                     onChange={handleChange}
                     placeholder="e.g. Acme Footwear Ltd"
-                    className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
+                    className="w-full px-3 py-2 text-xs bg-white dark:bg-[#181310] border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                   />
                 </div>
               </div>
@@ -325,7 +325,7 @@ Generated via ExportVisor Live Consultation Portal`;
               {/* 2-Column: Email & Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block text-xs font-medium text-stone-700 mb-1">
+                  <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1">
                     {language === "bn" ? "কর্পোরেট ইমেইল *" : "Corporate Email *"}
                   </label>
                   <input
@@ -335,12 +335,12 @@ Generated via ExportVisor Live Consultation Portal`;
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="buyer@company.com"
-                    className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
+                    className="w-full px-3 py-2 text-xs bg-white dark:bg-[#181310] border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-stone-700 mb-1">
+                  <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1">
                     {language === "bn" ? "ফোন / হোয়াটসঅ্যাপ (কান্ট্রি কোড সহ)" : "Phone / WhatsApp (with country code)"}
                   </label>
                   <input
@@ -349,7 +349,7 @@ Generated via ExportVisor Live Consultation Portal`;
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="+1 (555) 000-0000"
-                    className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
+                    className="w-full px-3 py-2 text-xs bg-white dark:bg-[#181310] border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                   />
                 </div>
               </div>
@@ -357,7 +357,7 @@ Generated via ExportVisor Live Consultation Portal`;
               {/* 2-Column: Country & Estimated Volume */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                  <label className="block text-xs font-medium text-stone-700 mb-1">
+                  <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1">
                     {language === "bn" ? "গন্তব্য দেশ" : "Country / Region"}
                   </label>
                   <input
@@ -366,12 +366,12 @@ Generated via ExportVisor Live Consultation Portal`;
                     value={formData.country}
                     onChange={handleChange}
                     placeholder="e.g. Germany, Italy, Japan..."
-                    className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
+                    className="w-full px-3 py-2 text-xs bg-white dark:bg-[#181310] border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-stone-700 mb-1">
+                  <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1">
                     {language === "bn" ? "আনুমানিক অর্ডারের পরিমাণ" : "Estimated Order Volume"}
                   </label>
                   <input
@@ -380,14 +380,14 @@ Generated via ExportVisor Live Consultation Portal`;
                     value={formData.estimatedVolume}
                     onChange={handleChange}
                     placeholder="e.g. 5,000 sq.ft or 1 x 20ft FCL"
-                    className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
+                    className="w-full px-3 py-2 text-xs bg-white dark:bg-[#181310] border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43]"
                   />
                 </div>
               </div>
 
               {/* Notes / Technical Specs */}
               <div>
-                <label className="block text-xs font-medium text-stone-700 mb-1">
+                <label className="block text-xs font-medium text-stone-700 dark:text-stone-300 mb-1">
                   {language === "bn"
                     ? "নির্দিষ্ট প্রযুক্তিগত চাহিদা বা প্রশ্ন (ঐচ্ছিক)"
                     : "Technical Specifications & Inquiries (Optional)"}
@@ -402,12 +402,12 @@ Generated via ExportVisor Live Consultation Portal`;
                       ? "পুরুত্ব (যেমন ১.২-১.৪ মিমি), ফিনিশ, কালার বা যেকোনো বিশেষ প্রশ্ন এখানে লিখুন..."
                       : "Describe target caliper (e.g. 1.2-1.4mm), desired temper, end-application (footwear/leather goods), or timeline requirements..."
                   }
-                  className="w-full px-3 py-2 text-xs bg-white border border-stone-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43] resize-none"
+                  className="w-full px-3 py-2 text-xs bg-white dark:bg-[#181310] border border-stone-300 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43] resize-none"
                 />
               </div>
 
               {/* Trust Indicators Strip */}
-              <div className="p-3 bg-[#FAF8F5] rounded-xl border border-stone-200/80 text-[11px] text-stone-600 flex flex-wrap items-center justify-between gap-2">
+              <div className="p-3 bg-[#FAF8F5] dark:bg-[#181310] rounded-xl border border-stone-200/80 dark:border-stone-800 text-[11px] text-stone-600 dark:text-stone-300 flex flex-wrap items-center justify-between gap-2">
                 <span className="flex items-center gap-1.5">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#C89D43]" />
                   <span>{language === "bn" ? "১০০% নিরাপদ বাণিজ্যিক গোপনীয়তা" : "Strict Commercial Confidentiality"}</span>

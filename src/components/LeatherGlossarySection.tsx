@@ -253,8 +253,14 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200 dark:border-stone-800 gap-6">
+        {/* Header Block with Fade-In-Up Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200 dark:border-stone-800 gap-6"
+        >
           <div className="max-w-3xl">
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider shadow-xs">
@@ -296,7 +302,7 @@ export const LeatherGlossarySection: React.FC<LeatherGlossarySectionProps> = ({
                 : "Unsure which substance, temper, or tannage fits your footwear or accessories tech pack? Our Savar engineering desk is ready to advise."}
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Filter Controls & Search */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-8">

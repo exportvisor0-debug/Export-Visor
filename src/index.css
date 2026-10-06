@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([class~="dark"], [class~="dark"] *));
+
 @layer base {
   :root {
     --brand-primary: #15120E;

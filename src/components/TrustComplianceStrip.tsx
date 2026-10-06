@@ -191,7 +191,7 @@ export const TrustComplianceStrip: React.FC = () => {
                 transition: { staggerChildren: 0.07, delayChildren: 0.05 },
               },
             }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 lg:gap-4"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3 lg:gap-4"
           >
             {COMPLIANCE_PILLARS.map((pillar) => {
               const Icon = pillar.icon;
@@ -206,13 +206,13 @@ export const TrustComplianceStrip: React.FC = () => {
                   whileHover={{ y: -3, scale: 1.015 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedPillar(pillar)}
-                  className="group flex flex-col text-left p-3.5 bg-white dark:bg-[#181310] hover:bg-stone-50 dark:hover:bg-[#201A15] border border-stone-200/90 dark:border-stone-800 hover:border-[#C89D43]/60 dark:hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40"
+                  className="group flex flex-col text-left p-2.5 sm:p-3.5 bg-white dark:bg-[#181310] hover:bg-stone-50 dark:hover:bg-[#201A15] border border-stone-200/90 dark:border-stone-800 hover:border-[#C89D43]/60 dark:hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40"
                 >
-                  <div className="flex items-center justify-between mb-2.5">
-                    <div className={`w-9 h-9 rounded-lg ${pillar.iconBg} ${pillar.iconColor} border flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs`}>
-                      <Icon className="w-4 h-4" />
+                  <div className="flex items-center justify-between mb-2 sm:mb-2.5">
+                    <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg ${pillar.iconBg} ${pillar.iconColor} border flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs shrink-0`}>
+                      <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </div>
-                    <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full border ${pillar.badgeClass} font-semibold dark:bg-[#251D16] dark:text-[#F5D275] dark:border-[#C89D43]/30`}>
+                    <span className={`text-[9px] sm:text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded-full border ${pillar.badgeClass} font-semibold dark:bg-[#251D16] dark:text-[#F5D275] dark:border-[#C89D43]/30 truncate max-w-[85px] sm:max-w-none`}>
                       {getPillarBadge(pillar)}
                     </span>
                   </div>
@@ -252,10 +252,10 @@ export const TrustComplianceStrip: React.FC = () => {
                   <selectedPillar.icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#946E1E] font-bold block">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-[#946E1E] dark:text-[#E5BE58] font-bold block">
                     {selectedPillar.badge}
                   </span>
-                  <h4 id="pillar-title" className="font-display text-xl font-bold text-[#181310] leading-tight">
+                  <h4 id="pillar-title" className="font-display text-xl font-bold text-[#181310] dark:text-white leading-tight">
                     {selectedPillar.title}
                   </h4>
                 </div>
@@ -263,22 +263,22 @@ export const TrustComplianceStrip: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setSelectedPillar(null)}
-                className="text-stone-600 hover:text-stone-900 text-sm font-semibold p-1 cursor-pointer"
+                className="text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 text-sm font-semibold p-1 cursor-pointer"
                 aria-label="Close compliance details"
               >
                 ✕
               </button>
             </div>
 
-            <p className="text-xs sm:text-sm text-stone-700 leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-700 dark:text-stone-300 leading-relaxed">
               {selectedPillar.details}
             </p>
 
-            <div className="bg-[#FAF8F5] p-3.5 rounded-lg border border-[#C89D43]/20 space-y-2">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A5A17] block">
+            <div className="bg-[#FAF8F5] dark:bg-[#1C1612] p-3.5 rounded-lg border border-[#C89D43]/20 dark:border-[#C89D43]/30 space-y-2">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-[#7A5A17] dark:text-[#E5BE58] block">
                 Applicable Technical Benchmarks
               </span>
-              <ul className="grid grid-cols-1 gap-1.5 text-xs text-stone-700">
+              <ul className="grid grid-cols-1 gap-1.5 text-xs text-stone-700 dark:text-stone-300">
                 {selectedPillar.standards.map((std, idx) => (
                   <li key={idx} className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#C89D43]" />
@@ -288,8 +288,8 @@ export const TrustComplianceStrip: React.FC = () => {
               </ul>
             </div>
 
-            <div className="pt-2 flex items-center justify-between border-t border-stone-100">
-              <span className="text-[11px] text-stone-600">
+            <div className="pt-2 flex items-center justify-between border-t border-stone-100 dark:border-stone-800">
+              <span className="text-[11px] text-stone-600 dark:text-stone-400">
                 Formal test certificates issued per export batch
               </span>
               <button

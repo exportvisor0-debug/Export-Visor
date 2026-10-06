@@ -272,8 +272,8 @@ export const LiveChatSimulation: React.FC<LiveChatSimulationProps> = ({
                 <div
                   className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-xs leading-relaxed shadow-2xs ${
                     msg.sender === "user"
-                      ? "bg-[#181310] text-white rounded-br-xs font-medium"
-                      : "bg-white text-stone-800 border border-stone-200/90 rounded-bl-xs"
+                      ? "bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] text-stone-950 font-bold rounded-br-xs shadow-xs"
+                      : "bg-white dark:bg-[#181310] text-stone-800 dark:text-stone-200 border border-stone-200/90 dark:border-stone-800 rounded-bl-xs"
                   }`}
                 >
                   <p>{msg.text}</p>
@@ -322,8 +322,8 @@ export const LiveChatSimulation: React.FC<LiveChatSimulationProps> = ({
           </div>
 
           {/* Quick Option Suggestion Chips */}
-          <div className="p-2.5 bg-white border-t border-stone-200 space-y-1.5">
-            <div className="flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-stone-400 px-1">
+          <div className="p-2.5 bg-white dark:bg-[#120E0B] border-t border-stone-200 dark:border-stone-800 space-y-1.5">
+            <div className="flex items-center justify-between text-[10px] uppercase font-bold tracking-wider text-stone-400 dark:text-stone-500 px-1">
               <span>{language === "bn" ? "প্রস্তাবিত বিষয়সমূহ" : "Quick Inquiries"}</span>
               <button
                 type="button"
@@ -340,7 +340,7 @@ export const LiveChatSimulation: React.FC<LiveChatSimulationProps> = ({
                   key={idx}
                   type="button"
                   onClick={() => handleSelectChip(chip)}
-                  className="shrink-0 px-2.5 py-1 text-[11px] font-medium text-stone-700 bg-stone-100 hover:bg-stone-200/80 hover:text-stone-900 border border-stone-200 rounded-lg transition-colors cursor-pointer whitespace-nowrap"
+                  className="shrink-0 px-2.5 py-1 text-[11px] font-medium text-stone-700 dark:text-stone-300 bg-stone-100 dark:bg-stone-800 hover:bg-stone-200/80 dark:hover:bg-stone-700 hover:text-stone-900 dark:hover:text-white border border-stone-200 dark:border-stone-700 rounded-lg transition-colors cursor-pointer whitespace-nowrap"
                 >
                   {chip.label}
                 </button>
@@ -351,7 +351,7 @@ export const LiveChatSimulation: React.FC<LiveChatSimulationProps> = ({
           {/* Message Input Bar */}
           <form
             onSubmit={handleSendCustomMessage}
-            className="p-3 bg-white border-t border-stone-100 flex items-center gap-2"
+            className="p-3 bg-white dark:bg-[#120E0B] border-t border-stone-200 dark:border-stone-800 flex items-center gap-2"
           >
             <input
               type="text"
@@ -362,15 +362,15 @@ export const LiveChatSimulation: React.FC<LiveChatSimulationProps> = ({
                   ? "আপনার প্রশ্ন বা স্পেসিফিকেশন লিখুন..."
                   : "Ask about MOQ, pricing, or leather specs..."
               }
-              className="flex-1 px-3.5 py-2 text-xs bg-stone-50 border border-stone-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43] transition-colors"
+              className="flex-1 px-3.5 py-2 text-xs bg-stone-50 dark:bg-[#181310] border border-stone-200 dark:border-stone-700 text-stone-900 dark:text-stone-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-[#C89D43] focus:border-[#C89D43] transition-colors"
             />
             <button
               type="submit"
               disabled={!inputValue.trim()}
-              className="w-8 h-8 rounded-xl bg-[#181310] hover:bg-[#261E17] text-white flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed transition-colors shrink-0 shadow-xs cursor-pointer"
+              className="w-8 h-8 rounded-xl bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] hover:from-[#E5BE58] hover:to-[#D6AC4B] text-stone-950 flex items-center justify-center disabled:opacity-30 disabled:cursor-not-allowed transition-colors shrink-0 shadow-xs cursor-pointer"
               aria-label="Send Message"
             >
-              <Send className="w-3.5 h-3.5 text-[#E5BE58]" />
+              <Send className="w-3.5 h-3.5 text-stone-950" />
             </button>
           </form>
 

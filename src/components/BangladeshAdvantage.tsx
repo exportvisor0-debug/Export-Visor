@@ -115,73 +115,73 @@ export const BangladeshAdvantage: React.FC = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-30px" }}
             transition={{ duration: 0.45, delay: 0.1 }}
-            className="lg:col-span-5 bg-gradient-to-b from-[#15120E] via-[#221C16] to-[#15120E] text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl border border-[#C89D43]/35 relative overflow-hidden"
+            className="lg:col-span-5 bg-white dark:bg-gradient-to-b dark:from-[#15120E] dark:via-[#221C16] dark:to-[#15120E] text-stone-900 dark:text-white rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-lg dark:shadow-xl border border-stone-200 dark:border-[#C89D43]/35 relative overflow-hidden transition-colors duration-200"
           >
             {/* Ambient luxury glow overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-[#C89D43]/10 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-[#C89D43]/5 dark:from-[#C89D43]/10 via-transparent to-transparent pointer-events-none" />
 
             <div className="relative space-y-6">
-              <div className="flex items-center justify-between border-b border-white/10 pb-4">
-                <span className="text-xs uppercase tracking-widest text-[#E5BE58] font-bold">
+              <div className="flex items-center justify-between border-b border-stone-200 dark:border-white/10 pb-4">
+                <span className="text-xs uppercase tracking-widest text-[#9E731C] dark:text-[#E5BE58] font-bold">
                   Sourcing Hub Profile
                 </span>
-                <span className="font-mono-data text-xs text-[#E5BE58] font-bold px-2 py-0.5 rounded bg-white/10">
+                <span className="font-mono-data text-xs text-[#7A5A17] dark:text-[#E5BE58] font-bold px-2 py-0.5 rounded bg-stone-100 dark:bg-white/10">
                   Dhaka / Savar
                 </span>
               </div>
 
               <div>
-                <h4 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-white">
+                <h4 className="font-display text-2xl sm:text-3xl font-bold tracking-tight text-[#15120E] dark:text-white">
                   Industrial Leather Axis
                 </h4>
-                <p className="mt-2 text-xs text-stone-300 leading-relaxed">
+                <p className="mt-2 text-xs text-stone-600 dark:text-stone-300 leading-relaxed">
                   Located strategically in the South Asian manufacturing corridor with direct maritime access to global trade lanes.
                 </p>
               </div>
 
               {/* Schematic Map Representation */}
-              <div className="p-4 bg-white/5 border border-white/10 rounded-xl space-y-3">
-                <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
-                  <span className="text-stone-400">Primary Tannery Cluster</span>
-                  <span className="font-bold text-white">Savar Industrial Estate</span>
+              <div className="p-4 bg-stone-50 dark:bg-white/5 border border-stone-200 dark:border-white/10 rounded-xl space-y-3">
+                <div className="flex items-center justify-between text-xs pb-2 border-b border-stone-200 dark:border-white/10">
+                  <span className="text-stone-500 dark:text-stone-400">Primary Tannery Cluster</span>
+                  <span className="font-bold text-stone-900 dark:text-white">Savar Industrial Estate</span>
                 </div>
-                <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
-                  <span className="text-stone-400">Audit & Compliance</span>
-                  <span className="font-bold text-[#E5BE58]">LWG-Audited Network</span>
+                <div className="flex items-center justify-between text-xs pb-2 border-b border-stone-200 dark:border-white/10">
+                  <span className="text-stone-500 dark:text-stone-400">Audit & Compliance</span>
+                  <span className="font-bold text-[#9E731C] dark:text-[#E5BE58]">LWG-Audited Network</span>
                 </div>
-                <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
-                  <span className="text-stone-400">Primary Sea Freight Port</span>
-                  <span className="font-bold text-white">Chittagong Port (CTG)</span>
+                <div className="flex items-center justify-between text-xs pb-2 border-b border-stone-200 dark:border-white/10">
+                  <span className="text-stone-500 dark:text-stone-400">Primary Sea Freight Port</span>
+                  <span className="font-bold text-stone-900 dark:text-white">Chittagong Port (CTG)</span>
                 </div>
-                <div className="flex items-center justify-between text-xs pb-2 border-b border-white/10">
-                  <span className="text-stone-400">Air Cargo Hub</span>
-                  <span className="font-bold text-white">Dhaka Airport (DAC)</span>
+                <div className="flex items-center justify-between text-xs pb-2 border-b border-stone-200 dark:border-white/10">
+                  <span className="text-stone-500 dark:text-stone-400">Air Cargo Hub</span>
+                  <span className="font-bold text-stone-900 dark:text-white">Dhaka Airport (DAC)</span>
                 </div>
                 <div className="flex items-center justify-between text-xs">
-                  <span className="text-stone-400">Typical Lead Time</span>
-                  <span className="font-bold text-[#E5BE58]">15–20 Days</span>
+                  <span className="text-stone-500 dark:text-stone-400">Typical Lead Time</span>
+                  <span className="font-bold text-[#9E731C] dark:text-[#E5BE58]">15–20 Days</span>
                 </div>
               </div>
 
-              <div className="space-y-2.5 text-xs text-stone-300">
+              <div className="space-y-2.5 text-xs text-stone-600 dark:text-stone-300">
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#E5BE58] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#C89D43] dark:text-[#E5BE58] shrink-0" />
                   <span>Direct tannery coordination in Dhaka & Savar</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#E5BE58] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#C89D43] dark:text-[#E5BE58] shrink-0" />
                   <span>Full container load (FCL) & LCL consolidation</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-[#E5BE58] shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#C89D43] dark:text-[#E5BE58] shrink-0" />
                   <span>Multi-country export documentation & GSP/COO support</span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-stone-400">
+            <div className="mt-6 pt-4 border-t border-stone-200 dark:border-white/10 flex items-center justify-between text-xs text-stone-500 dark:text-stone-400">
               <span>Timezone: GMT+6</span>
-              <span className="text-[#E5BE58] font-bold">ExportVisor Field Presence</span>
+              <span className="text-[#9E731C] dark:text-[#E5BE58] font-bold">ExportVisor Field Presence</span>
             </div>
 
           </motion.div>

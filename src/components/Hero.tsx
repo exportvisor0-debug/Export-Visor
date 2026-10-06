@@ -430,13 +430,13 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Quick Trust Meta Strip Beneath Image */}
-            <div className="mt-3.5 flex items-center justify-between px-2 text-xs text-stone-300">
-              <span className="flex items-center gap-1.5 font-semibold text-stone-200">
-                <Building2 className="w-3.5 h-3.5 text-[#E5BE58]" />
+            <div className="mt-3.5 flex items-center justify-between px-2 text-xs text-stone-600 dark:text-stone-300">
+              <span className="flex items-center gap-1.5 font-semibold text-stone-800 dark:text-stone-200">
+                <Building2 className="w-3.5 h-3.5 text-[#C89D43] dark:text-[#E5BE58]" />
                 <span>Savar Tannery Estate, Dhaka</span>
               </span>
-              <span className="flex items-center gap-1.5 font-semibold text-stone-200">
-                <Globe2 className="w-3.5 h-3.5 text-blue-400" />
+              <span className="flex items-center gap-1.5 font-semibold text-stone-800 dark:text-stone-200">
+                <Globe2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
                 <span>Incoterms: FOB · CIF · CFR</span>
               </span>
             </div>
@@ -453,7 +453,7 @@ export const Hero: React.FC<HeroProps> = ({
               onClick={() => setCurrentSlide(idx)}
               aria-label={`Slide ${idx + 1}`}
               className={`h-1 rounded-full transition-all duration-300 cursor-pointer ${
-                currentSlide === idx ? "w-6 bg-[#D6AC4B]" : "w-1.5 bg-white/25"
+                currentSlide === idx ? "w-6 bg-[#D6AC4B]" : "w-1.5 bg-stone-300 dark:bg-white/25"
               }`}
             />
           ))}

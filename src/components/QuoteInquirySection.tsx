@@ -139,8 +139,14 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
     <section id="contact" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        {/* Header with Fade-In-Up Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl mb-12 sm:mb-16"
+        >
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.inquiry.kicker}
@@ -153,7 +159,7 @@ export const QuoteInquirySection: React.FC<QuoteInquirySectionProps> = ({
           <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
             {t.inquiry.subtitle}
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12 items-start">
           

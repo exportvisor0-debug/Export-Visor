@@ -75,8 +75,14 @@ export const QualityInspectionSection: React.FC = () => {
     <section id="quality-inspection" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12 sm:mb-16">
+        {/* Section Header with Fade-In-Up Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-3xl mb-12 sm:mb-16"
+        >
           <div className="flex flex-wrap items-center gap-3 mb-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
               {t.quality.kicker}
@@ -89,7 +95,7 @@ export const QualityInspectionSection: React.FC = () => {
           <p className="mt-3 text-sm sm:text-base text-stone-600 dark:text-stone-300 leading-relaxed">
             {t.quality.subtitle}
           </p>
-        </div>
+        </motion.div>
 
         {/* Top Feature Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center mb-16">
@@ -146,7 +152,7 @@ export const QualityInspectionSection: React.FC = () => {
             transition={{ duration: 0.45, delay: 0.1 }}
             className="lg:col-span-6 relative"
           >
-            <div className="rounded-xl overflow-hidden border border-[#C89D43]/30 shadow-lg bg-stone-900 aspect-[4/3] group">
+            <div className="rounded-xl overflow-hidden border border-stone-200 dark:border-[#C89D43]/30 shadow-lg bg-stone-100 dark:bg-stone-900 aspect-[4/3] group">
               <img
                 src={heroLeatherImg}
                 alt="Leather grading and inspection inspection table"

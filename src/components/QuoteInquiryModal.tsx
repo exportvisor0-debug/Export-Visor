@@ -196,7 +196,7 @@ export const QuoteInquiryModal: React.FC<QuoteInquiryModalProps> = ({
                   </button>
                   <button
                     onClick={handleSendViaEmail}
-                    className="flex items-center justify-center gap-1.5 py-2 px-3 bg-[#181310] text-white rounded text-xs font-semibold"
+                    className="flex items-center justify-center gap-1.5 py-2 px-3 bg-stone-100 hover:bg-stone-200 dark:bg-[#1F1813] dark:hover:bg-[#2A211A] text-stone-800 dark:text-white border border-stone-300 dark:border-stone-700 rounded text-xs font-semibold transition-colors"
                   >
                     <Mail className="w-3.5 h-3.5" />
                     <span>Send via Email</span>

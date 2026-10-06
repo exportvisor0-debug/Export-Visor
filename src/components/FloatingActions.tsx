@@ -35,23 +35,23 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
     >
       {/* WhatsApp Tooltip */}
       {showTooltip && (
-        <div className="pointer-events-auto bg-[#181310] text-white p-3 rounded-lg shadow-lg border border-stone-800 text-xs max-w-xs animate-fade-in relative mb-1">
-          <div className="flex items-center justify-between pb-1 mb-1 border-b border-white/10">
-            <span className="font-bold text-[#E5BE58] text-[11px] uppercase tracking-wider">
+        <div className="pointer-events-auto bg-white dark:bg-[#181310] text-stone-900 dark:text-white p-3 rounded-lg shadow-lg border border-stone-200 dark:border-stone-800 text-xs max-w-xs animate-fade-in relative mb-1">
+          <div className="flex items-center justify-between pb-1 mb-1 border-b border-stone-200 dark:border-white/10">
+            <span className="font-bold text-[#9E731C] dark:text-[#E5BE58] text-[11px] uppercase tracking-wider">
               Direct Sourcing Desk
             </span>
             <button
               onClick={() => setShowTooltip(false)}
-              className="text-stone-400 hover:text-white"
+              className="text-stone-400 hover:text-stone-700 dark:hover:text-white"
               aria-label="Close tooltip"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           </div>
-          <p className="text-stone-200 text-[11px] leading-relaxed">
+          <p className="text-stone-600 dark:text-stone-200 text-[11px] leading-relaxed">
             Message our Bangladesh team directly on WhatsApp for real-time specification review & price indications.
           </p>
-          <div className="absolute right-6 -bottom-1.5 w-3 h-3 bg-[#181310] rotate-45 border-r border-b border-stone-800" />
+          <div className="absolute right-6 -bottom-1.5 w-3 h-3 bg-white dark:bg-[#181310] rotate-45 border-r border-b border-stone-200 dark:border-stone-800" />
         </div>
       )}
 
@@ -65,15 +65,15 @@ export const FloatingActions: React.FC<FloatingActionsProps> = ({
               trackEvent("live_chat_open", { location: "floating_action" });
               onOpenLiveChat();
             }}
-            className="flex items-center gap-2 px-3.5 py-2.5 bg-[#181310] hover:bg-[#241C15] text-white text-xs font-semibold rounded-full border border-[#C89D43]/50 shadow-xl transition-all transform hover:scale-102 cursor-pointer group"
+            className="flex items-center gap-2 px-3.5 py-2.5 bg-white dark:bg-[#181310] hover:bg-stone-50 dark:hover:bg-[#241C15] text-stone-800 dark:text-white text-xs font-semibold rounded-full border border-stone-300 dark:border-[#C89D43]/50 shadow-md dark:shadow-xl transition-all transform hover:scale-102 cursor-pointer group"
             aria-label="Open Live Sourcing Chat Desk"
           >
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
-            <span className="hidden sm:inline text-stone-200 group-hover:text-white">Live Chat Desk</span>
-            <MessageSquareText className="w-4 h-4 text-[#E5BE58]" />
+            <span className="hidden sm:inline text-stone-700 dark:text-stone-200 group-hover:text-stone-900 dark:group-hover:text-white">Live Chat Desk</span>
+            <MessageSquareText className="w-4 h-4 text-[#C89D43] dark:text-[#E5BE58]" />
           </button>
         )}
 

@@ -72,8 +72,14 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
     <section id="leather-products" className="py-16 sm:py-24 bg-white dark:bg-[#0B0806] border-b border-stone-200 dark:border-stone-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 dark:border-stone-800/80 gap-6">
+        {/* Section Header with Fade-In-Up Animation */}
+        <motion.div
+          initial={{ opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-stone-200/80 dark:border-stone-800/80 gap-6"
+        >
           <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C89D43]/15 text-[#7A5A17] dark:text-[#E5BE58] border border-[#C89D43]/30 text-xs font-bold uppercase tracking-wider">
@@ -99,7 +105,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
               {t.catalogue.sourcingNote}
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Filter Controls & Search Bar */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -192,7 +198,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                 <div>
                   {/* Card Media Container */}
                   <div
-                    className="relative aspect-[4/3] bg-stone-900 overflow-hidden cursor-pointer"
+                    className="relative aspect-[4/3] bg-stone-100 dark:bg-stone-900 overflow-hidden cursor-pointer"
                     onClick={() => {
                       trackEvent("product_detail_view", { product_id: product.id });
                       onSelectProduct(product);
@@ -210,7 +216,7 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
 
                     {/* Sustainable / LWG Sourcing Badge Indicator */}
                     {product.isSustainable && (
-                      <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-stone-900/90 backdrop-blur-xs text-emerald-400 border border-emerald-500/40 text-[10px] font-semibold tracking-wide shadow-xs">
+                      <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/90 dark:bg-stone-900/90 backdrop-blur-xs text-emerald-700 dark:text-emerald-400 border border-emerald-500/40 text-[10px] font-semibold tracking-wide shadow-xs">
                         <Leaf className="w-3 h-3 text-emerald-400" />
                         <span>LWG & Eco-Compliant</span>
                       </div>
@@ -335,10 +341,10 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                       });
                       onRequestQuote(product.name);
                     }}
-                    className="inline-flex items-center px-3.5 py-2 text-xs font-bold text-white bg-[#15120E] hover:bg-[#221C16] border border-[#C89D43]/40 rounded-lg transition-all shadow-xs hover:shadow-md cursor-pointer whitespace-nowrap group/btn"
+                    className="inline-flex items-center px-3.5 py-2 text-xs font-bold text-stone-900 dark:text-white bg-stone-100 hover:bg-stone-200 dark:bg-[#15120E] dark:hover:bg-[#221C16] border border-stone-300 dark:border-[#C89D43]/40 rounded-lg transition-all shadow-xs hover:shadow-md cursor-pointer whitespace-nowrap group/btn"
                   >
                     <span>{t.catalogue.requestQuote}</span>
-                    <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#E5BE58] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                    <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#C89D43] dark:text-[#E5BE58] group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                   </button>
                 </div>
 
@@ -348,15 +354,15 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
         )}
 
         {/* Global Sourcing Footer CTA inside Catalogue */}
-        <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-stone-900 via-[#1D1712] to-stone-900 text-white border border-[#C89D43]/35 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg">
+        <div className="mt-12 p-6 sm:p-8 bg-gradient-to-r from-stone-50 via-white to-stone-50 dark:from-stone-900 dark:via-[#1D1712] dark:to-stone-900 text-stone-900 dark:text-white border border-stone-200 dark:border-[#C89D43]/35 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm dark:shadow-lg">
           <div>
-            <div className="text-[11px] font-mono text-[#E5BE58] uppercase tracking-wider mb-1 font-bold">
+            <div className="text-[11px] font-mono text-[#9E731C] dark:text-[#E5BE58] uppercase tracking-wider mb-1 font-bold">
               Custom Leather Formulation
             </div>
-            <h4 className="font-display text-xl sm:text-2xl font-bold text-white">
+            <h4 className="font-display text-xl sm:text-2xl font-bold text-[#15120E] dark:text-white">
               {t.catalogue.customPromptTitle}
             </h4>
-            <p className="text-xs sm:text-sm text-stone-300 mt-1 max-w-xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-stone-600 dark:text-stone-300 mt-1 max-w-xl leading-relaxed">
               {t.catalogue.customPromptDesc}
             </p>
           </div>

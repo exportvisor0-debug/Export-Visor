@@ -6,6 +6,7 @@ import {
   getProductBySlugOrId,
 } from "../config/routes";
 import { LeatherProduct, LEATHER_PRODUCTS } from "../data/products";
+import { generateProductJsonLd } from "./productSchema";
 
 export function scrollToSection(sectionId: string, smooth: boolean = true) {
   const elem = document.getElementById(sectionId);
@@ -85,6 +86,15 @@ export function syncProductSeo(product: LeatherProduct | null) {
       setOgTag("og:image", product.image);
     }
 
+    // Canonical URL update
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute("href", url);
+
     // Product Schema JSON-LD
     let script = document.getElementById("product-schema-jsonld") as HTMLScriptElement | null;
     if (!script) {
@@ -93,37 +103,14 @@ export function syncProductSeo(product: LeatherProduct | null) {
       script.type = "application/ld+json";
       document.head.appendChild(script);
     }
-    script.textContent = JSON.stringify({
-      "@context": "https://schema.org/",
-      "@type": "Product",
-      name: product.name,
-      image: product.image,
-      description: product.overview || product.shortDescription,
-      category: product.category,
-      material: product.materialType,
-      brand: {
-        "@type": "Brand",
-        name: "ExportVisor Bangladesh",
-      },
-      offers: {
-        "@type": "AggregateOffer",
-        priceCurrency: "USD",
-        price: "Quoted upon RFQ",
-        availability: "https://schema.org/InStock",
-        seller: {
-          "@type": "Organization",
-          name: "ExportVisor",
-          url: "https://exportvisor.com",
-        },
-      },
-      countryOfOrigin: {
-        "@type": "Country",
-        name: "Bangladesh",
-      },
-    });
+    script.textContent = JSON.stringify(generateProductJsonLd(product));
   } else {
     // Reset to default
     document.title = "ExportVisor | Bangladesh Leather Sourcing & Export Partner";
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute("href", "https://exportvisor.com/");
+    }
     const script = document.getElementById("product-schema-jsonld");
     if (script) {
       script.remove();

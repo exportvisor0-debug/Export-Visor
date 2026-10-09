@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LeatherProduct } from "../data/products";
 import { siteConfig } from "../config/siteConfig";
 import { trackEvent } from "../utils/analytics";
 import { useLanguage } from "../context/LanguageContext";
 import { LeatherImageMagnifier } from "./LeatherImageMagnifier";
+import { generateProductJsonLd } from "../utils/productSchema";
 import {
   X,
   ArrowUpRight,
@@ -52,6 +53,12 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
       className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-xs overflow-y-auto animate-fade-in"
       onClick={onClose}
     >
+      {/* Product-Specific JSON-LD Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(generateProductJsonLd(product)) }}
+      />
+
       <div
         className="relative w-full max-w-4xl bg-white dark:bg-[#120E0B] rounded-lg shadow-xl border border-stone-200 dark:border-stone-800 overflow-hidden my-auto max-h-[92vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}

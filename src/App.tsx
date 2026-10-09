@@ -7,6 +7,7 @@ import { Hero } from "./components/Hero";
 import { TrustComplianceStrip } from "./components/TrustComplianceStrip";
 import { AboutSection } from "./components/AboutSection";
 import { TanneryNetworkTimeline } from "./components/TanneryNetworkTimeline";
+import { VirtualTanneryTour } from "./components/VirtualTanneryTour";
 import { LeatherCatalogue } from "./components/LeatherCatalogue";
 import { LeatherGlossarySection } from "./components/LeatherGlossarySection";
 import { CommercialTermsSection } from "./components/CommercialTermsSection";
@@ -83,7 +84,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0B0806] text-stone-900 dark:text-[#F3EEEA] flex flex-col font-sans selection:bg-[#C89D43]/25 selection:text-[#E5BE58] overflow-x-clip w-full transition-colors duration-200">
+    <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#0B0806] text-stone-900 dark:text-[#F3EEEA] flex flex-col font-sans selection:bg-[#C89D43]/25 selection:text-[#7A5A17] dark:selection:text-[#E5BE58] overflow-x-clip w-full transition-colors duration-200">
       
       {/* 0. Topmost Non-Intrusive Scroll Reading Progress Bar & Section Indicator */}
       <ScrollProgressBar />
@@ -131,6 +132,12 @@ function AppContent() {
         {/* 4.1 Interactive Tannery Network Timeline: History and Growth */}
         <TanneryNetworkTimeline
           onRequestQuote={() => handleScrollToQuoteSection()}
+        />
+
+        {/* 4.2 Virtual Tannery Tour: Short looped video clips of Savar production process */}
+        <VirtualTanneryTour
+          onRequestQuote={(context) => handleScrollToQuoteSection(context)}
+          onScheduleTour={(topic) => handleOpenConsultationModal(topic)}
         />
 
         {/* 5. Confirmed Commercial Benchmarks & Terms (RFQ-Driven) */}

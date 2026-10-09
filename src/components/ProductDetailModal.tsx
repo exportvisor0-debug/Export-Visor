@@ -3,6 +3,7 @@ import { LeatherProduct } from "../data/products";
 import { siteConfig } from "../config/siteConfig";
 import { trackEvent } from "../utils/analytics";
 import { useLanguage } from "../context/LanguageContext";
+import { LeatherImageMagnifier } from "./LeatherImageMagnifier";
 import {
   X,
   ArrowUpRight,
@@ -99,26 +100,16 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           {/* Top Overview Split */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 items-start">
             
-            {/* Image Preview */}
-            <div className="md:col-span-5 relative rounded-lg overflow-hidden bg-stone-100 dark:bg-stone-900 aspect-[4/3] border border-stone-200 dark:border-stone-800">
-              <img
+            {/* Image Preview with Interactive 2.8x Grain Magnifier */}
+            <div className="md:col-span-5 rounded-lg overflow-hidden border border-stone-200 dark:border-stone-800 shadow-md">
+              <LeatherImageMagnifier
                 src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover object-center"
+                zoomLevel={2.8}
+                aspectRatioClass="aspect-[4/3]"
+                isSustainable={product.isSustainable}
+                category="Photographed Sample"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-              
-              {/* Sustainable Sourcing badge overlay */}
-              {product.isSustainable && (
-                <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/90 dark:bg-stone-900/90 backdrop-blur-xs text-emerald-700 dark:text-emerald-400 border border-emerald-500/40 text-[10px] font-semibold tracking-wide shadow-xs">
-                  <Leaf className="w-3 h-3 text-emerald-400" />
-                  <span>Sustainable Sourcing</span>
-                </div>
-              )}
-
-              <div className="absolute bottom-3 left-3 text-white text-xs font-medium">
-                Photographed Leather Sample
-              </div>
             </div>
 
             {/* Title & Core Overview */}

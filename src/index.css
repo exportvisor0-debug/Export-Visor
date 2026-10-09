@@ -22,8 +22,8 @@
 
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    background-color: #ffffff;
-    color: #1A1F2C;
+    background-color: #FAF8F5;
+    color: #15120E;
   }
 
   .font-display {
@@ -107,6 +107,63 @@
   animation: ring-glow 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Global Website Animations: Gold Shimmer, Float, and Soft Glow */
+@keyframes gold-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulse-subtle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes light-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  50%, 100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-gold-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(245, 210, 117, 0.25), transparent);
+  background-size: 200% 100%;
+  animation: gold-shimmer 4s infinite linear;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 4.5s ease-in-out infinite;
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 3s ease-in-out infinite;
+}
+
+.animate-light-sweep {
+  animation: light-sweep 6s ease-in-out infinite;
+}
+
 /* Premium Gold Utilities matching Logo Icon (#C89D43 / #D6AC4B / #B8892E) */
 .text-gold-gradient {
   background: linear-gradient(135deg, #DFB75A 0%, #C89D43 45%, #E5BE58 75%, #B8892E 100%);
@@ -147,6 +204,24 @@
   background: linear-gradient(135deg, rgba(200, 157, 67, 0.18) 0%, rgba(229, 190, 88, 0.08) 100%);
   color: #C89D43;
   border: 1px solid rgba(200, 157, 67, 0.3);
+}
+
+/* Ensure Hero section always retains deep dark luxury background and dark-gold blend in both themes */
+#hero {
+  background: radial-gradient(ellipse at 75% 25%, rgba(200, 157, 67, 0.18) 0%, rgba(20, 13, 6, 0.96) 50%, #070503 100%) !important;
+  color: #FFFFFF !important;
+}
+
+/* ExportVisor Light Theme Brand Accents matching Logo */
+.brand-badge-light {
+  background: linear-gradient(135deg, rgba(212, 167, 44, 0.14) 0%, rgba(200, 157, 67, 0.06) 100%);
+  color: #7A5A17;
+  border: 1px solid rgba(200, 157, 67, 0.38);
+}
+
+.brand-card-light:hover {
+  border-color: rgba(200, 157, 67, 0.65);
+  box-shadow: 0 12px 30px -4px rgba(200, 157, 67, 0.22);
 }
 
 .icon-badge-emerald {

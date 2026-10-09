@@ -160,7 +160,7 @@ export const TrustComplianceStrip: React.FC = () => {
     <>
       <section
         aria-label="Trust and Compliance Verification Strip"
-        className="relative bg-white dark:bg-[#110D0A] border-b border-stone-200/90 dark:border-stone-800/80 shadow-2xs z-20 py-4 sm:py-5"
+        className="relative bg-[#FAF8F5] dark:bg-[#110D0A] border-b border-[#C89D43]/20 dark:border-stone-800/80 shadow-2xs z-20 py-4 sm:py-5"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -206,7 +206,7 @@ export const TrustComplianceStrip: React.FC = () => {
                   whileHover={{ y: -3, scale: 1.015 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => setSelectedPillar(pillar)}
-                  className="group flex flex-col text-left p-2.5 sm:p-3.5 bg-white dark:bg-[#181310] hover:bg-stone-50 dark:hover:bg-[#201A15] border border-stone-200/90 dark:border-stone-800 hover:border-[#C89D43]/60 dark:hover:border-[#C89D43]/60 rounded-xl transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40"
+                  className="group flex flex-col text-left p-2.5 sm:p-3.5 bg-white dark:bg-[#181310] hover:bg-[#FAF8F5] dark:hover:bg-[#201A15] border border-[#C89D43]/20 dark:border-stone-800 hover:border-[#C89D43] dark:hover:border-[#C89D43]/80 rounded-xl transition-all duration-200 cursor-pointer shadow-2xs hover:shadow-md focus:outline-none focus:ring-2 focus:ring-[#C89D43]/40"
                 >
                   <div className="flex items-center justify-between mb-2 sm:mb-2.5">
                     <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg ${pillar.iconBg} ${pillar.iconColor} border flex items-center justify-center transition-transform group-hover:scale-110 shadow-xs shrink-0`}>

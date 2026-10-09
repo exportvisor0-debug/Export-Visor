@@ -35,6 +35,15 @@ export const SECTION_ROUTES: SectionRoute[] = [
     navLabel: "Timeline",
   },
   {
+    id: "virtual-tannery-tour",
+    path: "/virtual-tour",
+    aliases: ["/tannery-tour", "/tour", "/live-tour"],
+    title: "Virtual Tannery Tour | Live Leather Manufacturing in Savar, Bangladesh",
+    metaDescription:
+      "Watch short, looped video footage of drum tanning, precision splitting, dye milling, and AQL 2.5 quality control at Savar Leather Estate with ExportVisor.",
+    navLabel: "Virtual Tour",
+  },
+  {
     id: "leather-products",
     path: "/products",
     aliases: ["/leather-products", "/catalogue", "/leather"],

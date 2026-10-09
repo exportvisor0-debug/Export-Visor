@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { SectionShareButton } from "./SectionShareButton";
 import { useLanguage } from "../context/LanguageContext";
+import { LeatherImageMagnifier } from "./LeatherImageMagnifier";
 
 interface LeatherCatalogueProps {
   onSelectProduct: (product: LeatherProduct) => void;
@@ -196,44 +197,20 @@ export const LeatherCatalogue: React.FC<LeatherCatalogueProps> = ({
                 className="bg-white dark:bg-[#120E0B] border border-stone-200 dark:border-stone-800 rounded-xl overflow-hidden flex flex-col justify-between transition-colors duration-200 group"
               >
                 <div>
-                  {/* Card Media Container */}
-                  <div
-                    className="relative aspect-[4/3] bg-stone-100 dark:bg-stone-900 overflow-hidden cursor-pointer"
+                  {/* Card Media Container with 2.4x Interactive Grain Magnifier */}
+                  <LeatherImageMagnifier
+                    src={product.image}
+                    alt={`${product.name} hide sample`}
+                    zoomLevel={2.4}
+                    aspectRatioClass="aspect-[4/3]"
+                    category={product.category}
+                    badgeLabel={product.badgeLabel}
+                    isSustainable={product.isSustainable}
                     onClick={() => {
                       trackEvent("product_detail_view", { product_id: product.id });
                       onSelectProduct(product);
                     }}
-                  >
-                    <img
-                      src={product.image}
-                      alt={`${product.name} hide sample`}
-                      className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-600 ease-out"
-                      loading="lazy"
-                      decoding="async"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent pointer-events-none" />
-
-                    {/* Sustainable / LWG Sourcing Badge Indicator */}
-                    {product.isSustainable && (
-                      <div className="absolute top-3 left-3 z-10 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/90 dark:bg-stone-900/90 backdrop-blur-xs text-emerald-700 dark:text-emerald-400 border border-emerald-500/40 text-[10px] font-semibold tracking-wide shadow-xs">
-                        <Leaf className="w-3 h-3 text-emerald-400" />
-                        <span>LWG & Eco-Compliant</span>
-                      </div>
-                    )}
-
-                    {/* Clean unboxed category label at bottom of image */}
-                    <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-xs text-white">
-                      <span className="font-medium tracking-wide">
-                        {product.category}
-                      </span>
-                      {product.badgeLabel && (
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#E5BE58] px-2 py-0.5 rounded bg-black/60 backdrop-blur-xs border border-[#C89D43]/40">
-                          {product.badgeLabel}
-                        </span>
-                      )}
-                    </div>
-                  </div>
+                  />
 
                   {/* Card Content */}
                   <div className="p-5 sm:p-6 space-y-4">

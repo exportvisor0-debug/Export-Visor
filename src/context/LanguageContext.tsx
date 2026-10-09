@@ -17,25 +17,38 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [language, setLanguageState] = useState<SupportedLanguage>("en");
-
-  // Load preferred language from URL search param or localStorage
-  useEffect(() => {
+  // Synchronously initialize language from localStorage or URL param to prevent reload flicker
+  const [language, setLanguageState] = useState<SupportedLanguage>(() => {
+    if (typeof window === "undefined") return "en";
     try {
+      // 1. Prioritize explicit URL param ?lang=xx
       const params = new URLSearchParams(window.location.search);
       const urlLang = params.get("lang") as SupportedLanguage;
       if (urlLang && TRANSLATIONS[urlLang]) {
-        setLanguageState(urlLang);
-        return;
+        localStorage.setItem("exportvisor_lang", urlLang);
+        return urlLang;
       }
 
+      // 2. Read persisted language preference from localStorage
       const saved = localStorage.getItem("exportvisor_lang") as SupportedLanguage;
       if (saved && TRANSLATIONS[saved]) {
-        setLanguageState(saved);
+        return saved;
       }
     } catch {
-      // localStorage may fail in hermetic or incognito environments
+      // Fallback in restricted or private browsing mode
     }
+    return "en";
+  });
+
+  // Cross-tab synchronization: keep language in sync across multiple tabs
+  useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === "exportvisor_lang" && e.newValue && TRANSLATIONS[e.newValue as SupportedLanguage]) {
+        setLanguageState(e.newValue as SupportedLanguage);
+      }
+    };
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
   }, []);
 
   useEffect(() => {

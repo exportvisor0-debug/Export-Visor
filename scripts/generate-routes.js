@@ -42,6 +42,11 @@ const routes = [
     description: "Step-by-step transparency from initial RFQ and lab-dip counter-sample approval to drum production, AQL 2.5 on-site quality inspection, container stuffing, and export logistics.",
   },
   {
+    path: "virtual-tour",
+    title: "Virtual Tannery Tour | Live Leather Manufacturing in Savar | ExportVisor",
+    description: "Watch short, looped video footage of drum tanning, precision splitting, dye milling, and AQL 2.5 quality control at Savar Leather Estate with ExportVisor.",
+  },
+  {
     path: "quality-inspection",
     title: "Quality Control & AQL 2.5 Inspection Coordination | ExportVisor",
     description: "Rigorous hide-by-hide quality inspection protocols: thickness calibration (±0.1 mm), tensile strength, color fastness testing, and pre-shipment container audits.",

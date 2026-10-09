@@ -34,7 +34,8 @@ export type AnalyticsEventName =
   | "live_chat_message"
   | "consultation_modal_open"
   | "consultation_form_submit"
-  | "timeline_segment_select";
+  | "timeline_segment_select"
+  | "virtual_tour_stage_click";
 
 export function trackEvent(
   eventName: AnalyticsEventName,

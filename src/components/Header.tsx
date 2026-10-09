@@ -24,6 +24,7 @@ import {
   TrendingUp,
   Sparkles,
   Factory,
+  Video,
 } from "lucide-react";
 import { navigateTo, scrollToSection } from "../utils/router";
 
@@ -193,6 +194,17 @@ export const Header: React.FC<HeaderProps> = ({
           : "Interactive timeline, CETP effluent compliance & mill hubs",
     },
     {
+      id: "virtual-tour",
+      path: "/#virtual-tannery-tour",
+      icon: Video,
+      title: language === "bn" ? "ভার্চুয়াল ট্যানারি ট্যুর (ভিডিও)" : "Virtual Tannery Tour (Video)",
+      badge: language === "bn" ? "লাইভ ড্রাম" : "Live Footage",
+      desc:
+        language === "bn"
+          ? "সাভারের এলডব্লিউজি সার্টিফাইড ট্যানারির সরাসরি ভিডিও ক্লিপ"
+          : "Short looped footage of drum tanning, splitting & AQL 2.5 QA in Savar",
+    },
+    {
       id: "market-insights",
       path: "/#market-insights",
       icon: TrendingUp,
@@ -209,11 +221,14 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
+      {/* ExportVisor Signature Brand Gradient Hairline Strip matching Logo */}
+      <div className="h-[2.5px] w-full bg-gradient-to-r from-[#B3861F] via-[#F5D275] to-[#C89D43] z-50 relative shrink-0" />
+
       <header
         className={`sticky top-0 z-40 w-full transition-all duration-200 bg-white/95 dark:bg-[#0B0806]/95 backdrop-blur-md ${
           isScrolled
-            ? "border-b border-stone-200/90 dark:border-stone-800/90 shadow-xs py-2.5 sm:py-3"
-            : "border-b border-stone-200/60 dark:border-stone-800/60 py-3 sm:py-3.5 shadow-2xs"
+            ? "border-b border-[#C89D43]/25 dark:border-stone-800/90 shadow-xs py-2.5 sm:py-3"
+            : "border-b border-[#C89D43]/15 dark:border-stone-800/60 py-3 sm:py-3.5 shadow-2xs"
         }`}
       >
         <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">

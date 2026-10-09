@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Immediate Theme Hydration to default to light mode on entry -->
+    <!-- Immediate Theme & Language Hydration to default to light mode on entry -->
     <script>
       (function() {
         try {
@@ -19,6 +19,15 @@
           } else {
             document.documentElement.classList.remove("dark");
             document.documentElement.style.colorScheme = "light";
+          }
+
+          // Language Hydration
+          var params = new URLSearchParams(window.location.search);
+          var urlLang = params.get("lang");
+          var savedLang = urlLang || localStorage.getItem("exportvisor_lang");
+          if (savedLang) {
+            document.documentElement.lang = savedLang;
+            if (savedLang === 'ar') document.documentElement.dir = 'rtl';
           }
         } catch(e) {}
       })();

@@ -106,6 +106,16 @@ const HERO_SLIDES: HeroSlide[] = [
   },
 ];
 
+const AMBIENT_GOLD_PARTICLES = [
+  { left: 14, size: 3, delay: 0, duration: 8.5, drift: 18, opacity: 0.65, color: "#F5D275" },
+  { left: 26, size: 2, delay: 2.2, duration: 11, drift: -14, opacity: 0.5, color: "#E5BE58" },
+  { left: 42, size: 3.5, delay: 1, duration: 7.5, drift: 22, opacity: 0.7, color: "#D6AC4B" },
+  { left: 58, size: 2.5, delay: 3.4, duration: 9.5, drift: -18, opacity: 0.55, color: "#C89D43" },
+  { left: 74, size: 4, delay: 0.7, duration: 10, drift: 16, opacity: 0.65, color: "#F5D275" },
+  { left: 86, size: 2, delay: 4.1, duration: 9, drift: -12, opacity: 0.45, color: "#E5BE58" },
+  { left: 32, size: 3, delay: 4.8, duration: 12, drift: 14, opacity: 0.6, color: "#D4A72C" },
+];
+
 export const Hero: React.FC<HeroProps> = ({
   onExploreLeather,
   onRequestQuote,
@@ -155,22 +165,32 @@ export const Hero: React.FC<HeroProps> = ({
   };
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-2.5 pb-3 sm:pt-3.5 sm:pb-5 lg:pt-10 lg:pb-14 border-b border-stone-200 dark:border-[#C89D43]/30 bg-white dark:bg-[#0E0B09] text-stone-900 dark:text-white transition-colors duration-200">
+    <section id="hero" className="relative overflow-hidden pt-3 pb-4 sm:pt-4 sm:pb-6 lg:pt-10 lg:pb-16 border-b border-[#C89D43]/35 bg-[#070503] text-white transition-colors duration-200">
       {/* High-Performance Photographic Background Hero Slider with Maritime Export Imagery */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         <AnimatePresence mode="sync">
           <motion.div
             key={HERO_SLIDES[currentSlide].id}
-            initial={{ opacity: 0, scale: 1.04 }}
+            initial={{ opacity: 0, scale: 1.08 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 1.4, ease: [0.25, 0.1, 0.25, 1] }}
+            transition={{ duration: 1.6, ease: [0.25, 0.1, 0.25, 1] }}
             className="absolute inset-0 w-full h-full"
           >
-            <img
+            <motion.img
+              animate={{
+                scale: [1, 1.06, 1.01],
+                x: [0, -10, 0],
+              }}
+              transition={{
+                duration: 14,
+                repeat: Infinity,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
               src={HERO_SLIDES[currentSlide].image}
               alt={HERO_SLIDES[currentSlide].alt}
-              className="w-full h-full object-cover object-[70%_25%] sm:object-[65%_30%] md:object-center transition-all duration-700"
+              className="w-full h-full object-cover object-[70%_25%] sm:object-[65%_30%] md:object-center"
               loading={currentSlide === 0 ? "eager" : "lazy"}
               decoding={currentSlide === 0 ? "sync" : "async"}
               // @ts-ignore
@@ -180,13 +200,83 @@ export const Hero: React.FC<HeroProps> = ({
           </motion.div>
         </AnimatePresence>
 
-        {/* Dual Luxury Scrim Overlay: Bright airy white in light theme, deep obsidian scrim in dark theme */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/88 to-white/98 sm:bg-gradient-to-r sm:from-white/96 sm:via-white/90 sm:to-white/40 dark:from-[#0D0A08]/85 dark:via-[#0D0A08]/60 dark:to-[#0D0A08]/95 dark:sm:from-[#0D0A08]/95 dark:sm:via-[#130E0A]/75 dark:sm:to-[#0D0A08]/40 transition-colors duration-200" />
+        {/* ExportVisor Signature Dark-Gold Brand Blend Scrim (Vibrant photographic visibility blended with luxury dark-gold aura) */}
+        {/* Layer 1: Horizontal Vignette keeping typography readable on the left while letting right-side export imagery shine vividly */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#080503]/85 via-[#120B05]/50 to-[#181006]/20 pointer-events-none" />
+        
+        {/* Layer 2: Vertical Ambient Depth with dark-gold gradient transition */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080503]/90 via-[#1A1207]/25 to-[#080503]/35 pointer-events-none" />
+        
+        {/* Layer 3: ExportVisor Brand Signature Dark Gold Radiance Blends */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(212,167,44,0.25)_0%,rgba(200,157,67,0.12)_35%,transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(200,157,67,0.22)_0%,rgba(168,124,36,0.08)_45%,transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(229,190,88,0.08)_0%,transparent_60%)] pointer-events-none" />
+
+        {/* Layer 4: Eye-Catching Luxury Technical Grid Mesh */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(200,157,67,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(200,157,67,0.06)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_45%,transparent_85%)] pointer-events-none" />
+
+        {/* Eye-Catching Floating Gold Bokeh Embers */}
+        <div className="absolute inset-0 pointer-events-none z-1 overflow-hidden">
+          {AMBIENT_GOLD_PARTICLES.map((p, i) => (
+            <motion.div
+              key={i}
+              initial={{ y: "110%", opacity: 0 }}
+              animate={{
+                y: "-15%",
+                opacity: [0, p.opacity, p.opacity * 0.85, 0],
+                x: [0, p.drift, 0],
+              }}
+              transition={{
+                duration: p.duration,
+                repeat: Infinity,
+                delay: p.delay,
+                ease: "easeInOut",
+              }}
+              className="absolute rounded-full"
+              style={{
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                left: `${p.left}%`,
+                background: p.color,
+                boxShadow: `0 0 ${p.size * 3}px ${p.color}`,
+              }}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Ambient warm ExportVisor gold radial flares */}
-      <div className="absolute top-1/4 right-10 w-96 h-96 bg-[#D6AC4B]/10 dark:bg-[#D6AC4B]/15 rounded-full blur-3xl pointer-events-none z-1" />
-      <div className="absolute bottom-10 left-10 w-80 h-80 bg-[#C89D43]/10 dark:bg-[#C89D43]/12 rounded-full blur-3xl pointer-events-none z-1" />
+      {/* Dynamic Animated Radiant ExportVisor Gold Ambient Auroras & Light Sweeps */}
+      <motion.div
+        animate={{
+          scale: [1, 1.25, 1],
+          opacity: [0.22, 0.40, 0.22],
+          x: [0, 30, 0],
+          y: [0, -20, 0],
+        }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 right-8 w-[460px] h-[460px] bg-[#D6AC4B]/30 rounded-full blur-[95px] pointer-events-none z-1"
+      />
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.18, 0.35, 0.18],
+          x: [0, -25, 0],
+          y: [0, 25, 0],
+        }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-10 left-10 w-[420px] h-[420px] bg-[#C89D43]/28 rounded-full blur-[85px] pointer-events-none z-1"
+      />
+
+      {/* Radiant Diagonal Shimmering Gold Light Ray Beam */}
+      <motion.div
+        animate={{
+          opacity: [0.10, 0.28, 0.10],
+          rotate: [-25, -20, -25],
+          scale: [0.95, 1.05, 0.95],
+        }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute -top-32 right-1/4 w-[550px] h-[450px] bg-gradient-to-b from-[#E5BE58]/25 via-[#C89D43]/15 to-transparent blur-3xl pointer-events-none z-1 transform -rotate-25"
+      />
 
       <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 relative z-10">
         <motion.div
@@ -200,13 +290,13 @@ export const Hero: React.FC<HeroProps> = ({
             
             {/* LWG-Certified Tannery Network Kicker Badge - Clean Single Focus */}
             <motion.div variants={itemVariants} className="flex items-center">
-              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full bg-stone-100/90 dark:bg-black/85 text-[#7A5A17] dark:text-[#E5BE58] text-[10px] sm:text-xs font-semibold tracking-wide border border-stone-300 dark:border-[#C89D43]/60 shadow-2xs backdrop-blur-md">
+              <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 py-0.5 sm:px-3.5 sm:py-1.5 rounded-full bg-black/85 text-[#E5BE58] text-[10px] sm:text-xs font-semibold tracking-wide border border-[#C89D43]/60 shadow-lg backdrop-blur-md">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                 </span>
-                <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C89D43] dark:text-[#E5BE58]" />
-                <span className="text-[10px] sm:text-xs font-semibold text-stone-800 dark:text-white tracking-wide">
+                <Award className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E5BE58]" />
+                <span className="text-[10px] sm:text-xs font-semibold text-white tracking-wide">
                   {language === "bn"
                     ? "LWG সার্টিফাইড ট্যানারি নেটওয়ার্ক · সাভার, ঢাকা"
                     : "LWG-Certified Tannery Network · Savar Leather Estate"}
@@ -217,7 +307,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Display Headline */}
             <motion.h1
               variants={itemVariants}
-              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[3.25rem] font-bold tracking-tight text-[#15120E] dark:text-white leading-[1.18] lg:leading-[1.12] text-balance drop-shadow-xs"
+              className="font-display text-xl sm:text-2xl md:text-3xl lg:text-[3.25rem] font-bold tracking-tight text-white leading-[1.18] lg:leading-[1.12] text-balance drop-shadow-md"
             >
               {t.hero.headline}
             </motion.h1>
@@ -225,7 +315,7 @@ export const Hero: React.FC<HeroProps> = ({
             {/* Sub-headline */}
             <motion.p
               variants={itemVariants}
-              className="font-body text-xs sm:text-sm lg:text-lg text-stone-600 dark:text-stone-300 leading-snug sm:leading-relaxed max-w-2xl text-pretty"
+              className="font-body text-xs sm:text-sm lg:text-lg text-stone-300 leading-snug sm:leading-relaxed max-w-2xl text-pretty"
             >
               {t.hero.subheadline}
             </motion.p>
@@ -241,7 +331,7 @@ export const Hero: React.FC<HeroProps> = ({
                     trackEvent("request_quote_click", { location: "hero_primary" });
                     onRequestQuote();
                   }}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold tracking-wide text-[#15120E] rounded-lg shadow-lg shadow-[#C89D43]/30 hover:shadow-xl hover:shadow-[#D6AC4B]/45 transition-all cursor-pointer group w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:px-7 sm:py-3.5 text-xs sm:text-sm font-bold tracking-wide text-[#15120E] rounded-lg shadow-lg shadow-[#C89D43]/35 hover:shadow-xl hover:shadow-[#D6AC4B]/50 transition-all cursor-pointer group w-full sm:w-auto"
                   style={{
                     background: "linear-gradient(135deg, #F5D275 0%, #D6AC4B 50%, #B8892E 100%)",
                   }}
@@ -260,9 +350,9 @@ export const Hero: React.FC<HeroProps> = ({
                       trackEvent("product_detail_view", { source: "hero_explore_primary" });
                       onExploreLeather();
                     }}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-stone-900 dark:text-white bg-white dark:bg-black/80 hover:bg-stone-50 dark:hover:bg-[#1A140F] rounded-lg shadow-xs hover:shadow-md border border-stone-300 dark:border-[#C89D43]/60 hover:border-[#C89D43] transition-all cursor-pointer group backdrop-blur-xs whitespace-nowrap"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold tracking-wide text-white bg-black/75 hover:bg-[#1A140F] rounded-lg shadow-xs hover:shadow-md border border-[#C89D43]/60 hover:border-[#E5BE58] transition-all cursor-pointer group backdrop-blur-xs whitespace-nowrap"
                   >
-                    <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C89D43] dark:text-[#E5BE58] transition-transform group-hover:rotate-6" />
+                    <Layers className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#E5BE58] transition-transform group-hover:rotate-6" />
                     <span>{t.hero.exploreCatalogue}</span>
                     <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-stone-400 group-hover:translate-x-0.5 transition-transform hidden sm:inline" />
                   </motion.button>
@@ -273,10 +363,10 @@ export const Hero: React.FC<HeroProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => trackEvent("whatsapp_click", { location: "hero_direct" })}
-                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-4 sm:py-3.5 text-xs font-semibold tracking-wide text-emerald-800 dark:text-emerald-200 bg-emerald-50 dark:bg-emerald-950/85 hover:bg-emerald-100 dark:hover:bg-emerald-900/90 border border-emerald-300 dark:border-emerald-500/50 rounded-lg transition-all shadow-xs backdrop-blur-xs whitespace-nowrap"
+                    className="inline-flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-4 sm:py-3.5 text-xs font-semibold tracking-wide text-emerald-300 bg-emerald-950/80 hover:bg-emerald-900/90 border border-emerald-500/50 rounded-lg transition-all shadow-xs backdrop-blur-xs whitespace-nowrap"
                     title="Direct WhatsApp Communication"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400" />
+                    <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400" />
                     <span>{language === "bn" ? "হোয়াটসঅ্যাপ" : "WhatsApp"}</span>
                   </a>
                 </div>
@@ -288,36 +378,36 @@ export const Hero: React.FC<HeroProps> = ({
                       trackEvent("company_profile_view", { location: "hero_quick" });
                       onOpenCompanyProfile();
                     }}
-                    className="hidden xl:inline-flex items-center justify-center gap-1.5 px-3 py-3 text-xs font-semibold text-stone-600 dark:text-stone-300 hover:text-[#C89D43] dark:hover:text-[#E5BE58] transition-colors cursor-pointer"
+                    className="hidden xl:inline-flex items-center justify-center gap-1.5 px-3 py-3 text-xs font-semibold text-stone-300 hover:text-[#E5BE58] transition-colors cursor-pointer"
                   >
-                    <FileText className="w-3.5 h-3.5 text-[#C89D43] dark:text-[#E5BE58]" />
+                    <FileText className="w-3.5 h-3.5 text-[#E5BE58]" />
                     <span>{language === "bn" ? "কোম্পানি ডেক" : "Company Deck"}</span>
                   </button>
                 )}
               </div>
 
               {/* Clean, Non-Cluttered Trust Verification Ribbon */}
-              <div className="pt-1 sm:pt-1.5 flex flex-wrap items-center gap-x-2.5 sm:gap-x-4 gap-y-1 text-[10px] sm:text-xs text-stone-700 dark:text-stone-300 font-medium">
+              <div className="pt-1 sm:pt-1.5 flex flex-wrap items-center gap-x-2.5 sm:gap-x-4 gap-y-1 text-[10px] sm:text-xs text-stone-300 font-medium">
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C89D43] dark:text-[#E5BE58] shrink-0" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E5BE58] shrink-0" />
                   <span>
                     {language === "bn"
                       ? "LWG অডিটেড নেটওয়ার্ক"
                       : "LWG-Audited Network"}
                   </span>
                 </div>
-                <span className="text-stone-400 dark:text-stone-600 hidden sm:inline" aria-hidden="true">·</span>
+                <span className="text-stone-500 hidden sm:inline" aria-hidden="true">·</span>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-400 shrink-0" />
                   <span>
                     {language === "bn"
                       ? "১০০% AQL ২.৫ QA"
                       : "100% Pre-Shipment AQL 2.5 QA"}
                   </span>
                 </div>
-                <span className="text-stone-400 dark:text-stone-600 hidden sm:inline" aria-hidden="true">·</span>
+                <span className="text-stone-500 hidden sm:inline" aria-hidden="true">·</span>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-600 dark:text-blue-400 shrink-0" />
+                  <CheckCircle2 className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-blue-400 shrink-0" />
                   <span>
                     {language === "bn"
                       ? "চট্টগ্রাম পোর্ট শিপিং"
@@ -329,24 +419,24 @@ export const Hero: React.FC<HeroProps> = ({
 
           </div>
 
-          {/* Right Column: Hero Visual Showcase with Interactive Switcher & Glass Badges (Desktop only; hidden on mobile & tablet for ultra-compact viewport presence) */}
+          {/* Right Column: Hero Visual Showcase with Interactive Switcher & Glass Badges */}
           <motion.div variants={itemVariants} className="hidden lg:block lg:col-span-5 relative">
             
             {/* Visual Header / View Toggle */}
             <div className="flex items-center justify-between mb-3 px-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-stone-600 dark:text-stone-300 flex items-center gap-1.5">
-                <Globe2 className="w-3.5 h-3.5 text-[#C89D43] dark:text-[#E5BE58]" />
+              <span className="text-xs font-bold uppercase tracking-wider text-stone-300 flex items-center gap-1.5">
+                <Globe2 className="w-3.5 h-3.5 text-[#E5BE58]" />
                 Live Sourcing & Export Operations
               </span>
 
               {/* View Selector Tabs */}
-              <div className="inline-flex p-0.5 bg-stone-100 dark:bg-black/60 backdrop-blur-md rounded-lg text-xs border border-stone-200 dark:border-white/10">
+              <div className="inline-flex p-0.5 bg-black/70 backdrop-blur-md rounded-lg text-xs border border-white/10">
                 <button
                   onClick={() => setActiveVisualTab("inspection")}
                   className={`px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
                     activeVisualTab === "inspection"
                       ? "bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] text-stone-950 shadow-xs font-bold"
-                      : "text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white"
+                      : "text-stone-300 hover:text-white"
                   }`}
                 >
                   Quality Inspection
@@ -356,7 +446,7 @@ export const Hero: React.FC<HeroProps> = ({
                   className={`px-3 py-1 rounded-md text-xs font-semibold transition-all cursor-pointer ${
                     activeVisualTab === "shipping"
                       ? "bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] text-stone-950 shadow-xs font-bold"
-                      : "text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white"
+                      : "text-stone-300 hover:text-white"
                   }`}
                 >
                   Container Shipping
@@ -365,7 +455,7 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Showcase Visual Card */}
-            <div className="relative rounded-xl overflow-hidden border border-stone-200 dark:border-[#C89D43]/40 bg-white dark:bg-stone-950 shadow-xl aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] group">
+            <div className="relative rounded-xl overflow-hidden border border-[#C89D43]/40 bg-stone-950 shadow-2xl aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] group">
               <AnimatePresence mode="wait">
                 {activeVisualTab === "inspection" ? (
                   <motion.div
@@ -430,13 +520,13 @@ export const Hero: React.FC<HeroProps> = ({
             </div>
 
             {/* Quick Trust Meta Strip Beneath Image */}
-            <div className="mt-3.5 flex items-center justify-between px-2 text-xs text-stone-600 dark:text-stone-300">
-              <span className="flex items-center gap-1.5 font-semibold text-stone-800 dark:text-stone-200">
-                <Building2 className="w-3.5 h-3.5 text-[#C89D43] dark:text-[#E5BE58]" />
+            <div className="mt-3.5 flex items-center justify-between px-2 text-xs text-stone-300">
+              <span className="flex items-center gap-1.5 font-semibold text-stone-200">
+                <Building2 className="w-3.5 h-3.5 text-[#E5BE58]" />
                 <span>Savar Tannery Estate, Dhaka</span>
               </span>
-              <span className="flex items-center gap-1.5 font-semibold text-stone-800 dark:text-stone-200">
-                <Globe2 className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+              <span className="flex items-center gap-1.5 font-semibold text-stone-200">
+                <Globe2 className="w-3.5 h-3.5 text-blue-400" />
                 <span>Incoterms: FOB · CIF · CFR</span>
               </span>
             </div>
@@ -451,33 +541,35 @@ export const Hero: React.FC<HeroProps> = ({
             <button
               key={slide.id}
               onClick={() => setCurrentSlide(idx)}
-              aria-label={`Slide ${idx + 1}`}
-              className={`h-1 rounded-full transition-all duration-300 cursor-pointer ${
-                currentSlide === idx ? "w-6 bg-[#D6AC4B]" : "w-1.5 bg-stone-300 dark:bg-white/25"
+              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                currentSlide === idx
+                  ? "w-6 bg-[#E5BE58] shadow-[0_0_8px_rgba(229,190,88,0.6)]"
+                  : "w-1.5 bg-white/30 hover:bg-white/50"
               }`}
+              aria-label={`Jump to slide ${idx + 1}`}
             />
           ))}
         </div>
 
         {/* Ambient Hero Background Slider Control Bar (Tablet & Desktop only) */}
-        <div className="hidden sm:flex mt-6 lg:mt-8 pt-3 sm:pt-4 border-t border-stone-200/80 dark:border-[#C89D43]/25 flex-wrap items-center justify-between gap-2.5 text-xs text-stone-600 dark:text-stone-300">
+        <div className="hidden sm:flex mt-6 lg:mt-8 pt-3 sm:pt-4 border-t border-[#C89D43]/25 flex-wrap items-center justify-between gap-2.5 text-xs text-stone-300">
           <div className="flex items-center gap-2.5">
             <span className="relative flex h-2 w-2 shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#C89D43] dark:bg-[#E5BE58] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#C89D43] dark:bg-[#E5BE58]" />
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#E5BE58] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#E5BE58]" />
             </span>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-stone-100 dark:bg-black/80 border border-stone-300 dark:border-[#C89D43]/50 text-[#7A5A17] dark:text-[#E5BE58] font-bold shadow-2xs shrink-0">
-              <Ship className="w-3 h-3 text-[#C89D43] dark:text-[#E5BE58]" />
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[10px] font-mono uppercase tracking-wider bg-black/80 border border-[#C89D43]/50 text-[#E5BE58] font-bold shadow-2xs shrink-0">
+              <Ship className="w-3 h-3 text-[#E5BE58]" />
               <span>{language === "bn" ? HERO_SLIDES[currentSlide].tagBn : HERO_SLIDES[currentSlide].tag}</span>
             </span>
-            <span className="text-[11px] font-mono text-stone-700 dark:text-stone-300 font-semibold truncate max-w-xs sm:max-w-md">
+            <span className="text-[11px] font-mono text-stone-300 font-semibold truncate max-w-xs sm:max-w-md">
               {language === "bn" ? HERO_SLIDES[currentSlide].captionBn : HERO_SLIDES[currentSlide].caption}
             </span>
           </div>
 
-          <div className="flex items-center gap-2 bg-white/90 dark:bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-lg border border-stone-200 dark:border-[#C89D43]/40 shadow-xs text-stone-700 dark:text-stone-200">
-            <span className="text-[11px] font-mono font-bold text-[#7A5A17] dark:text-[#E5BE58] pr-1">
-              0{currentSlide + 1} <span className="text-stone-400 dark:text-stone-500 font-normal">/ 0{HERO_SLIDES.length}</span>
+          <div className="flex items-center gap-2 bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#C89D43]/40 shadow-xs text-stone-200">
+            <span className="text-[11px] font-mono font-bold text-[#E5BE58] pr-1">
+              0{currentSlide + 1} <span className="text-stone-500 font-normal">/ 0{HERO_SLIDES.length}</span>
             </span>
 
             <button
@@ -486,12 +578,12 @@ export const Hero: React.FC<HeroProps> = ({
                 setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length)
               }
               aria-label="Previous background slide"
-              className="p-1 rounded hover:bg-stone-100 dark:hover:bg-white/10 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer"
+              className="p-1 rounded hover:bg-white/10 text-stone-300 hover:text-white transition-colors cursor-pointer"
             >
               <ChevronLeft className="w-3.5 h-3.5" />
             </button>
 
-            {/* Sleek Linear Segments (No round dots) */}
+            {/* Sleek Animated Linear Segments */}
             <div className="flex items-center gap-1.5 px-1">
               {HERO_SLIDES.map((slide, idx) => (
                 <button
@@ -499,12 +591,22 @@ export const Hero: React.FC<HeroProps> = ({
                   onClick={() => setCurrentSlide(idx)}
                   aria-label={`Go to slide ${idx + 1}: ${slide.tag}`}
                   title={slide.tag}
-                  className={`h-1 rounded-xs transition-all duration-300 cursor-pointer ${
+                  className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer overflow-hidden relative ${
                     currentSlide === idx
-                      ? "w-7 bg-gradient-to-r from-[#D6AC4B] to-[#C89D43] dark:from-[#F5D275] dark:to-[#D6AC4B] shadow-[0_0_8px_rgba(200,157,67,0.5)]"
-                      : "w-3 bg-stone-300 dark:bg-white/25 hover:bg-stone-400 dark:hover:bg-white/50"
+                      ? "w-8 bg-black/70 border border-[#C89D43]/60 shadow-[0_0_10px_rgba(200,157,67,0.5)]"
+                      : "w-3 bg-white/25 hover:bg-white/50"
                   }`}
-                />
+                >
+                  {currentSlide === idx && (
+                    <motion.div
+                      key={`progress-${idx}`}
+                      initial={{ width: "0%" }}
+                      animate={{ width: "100%" }}
+                      transition={{ duration: isAutoPlaying ? 7 : 0.3, ease: "linear" }}
+                      className="h-full bg-gradient-to-r from-[#F5D275] via-[#D6AC4B] to-[#C89D43] rounded-full"
+                    />
+                  )}
+                </button>
               ))}
             </div>
 
@@ -512,7 +614,7 @@ export const Hero: React.FC<HeroProps> = ({
               type="button"
               onClick={() => setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length)}
               aria-label="Next background slide"
-              className="p-1 rounded hover:bg-stone-100 dark:hover:bg-white/10 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors cursor-pointer"
+              className="p-1 rounded hover:bg-white/10 text-stone-300 hover:text-white transition-colors cursor-pointer"
             >
               <ChevronRight className="w-3.5 h-3.5" />
             </button>
@@ -521,9 +623,9 @@ export const Hero: React.FC<HeroProps> = ({
               type="button"
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
               aria-label={isAutoPlaying ? "Pause background slider" : "Play background slider"}
-              className="p-1 rounded hover:bg-stone-100 dark:hover:bg-white/10 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors ml-0.5 cursor-pointer"
+              className="p-1 rounded hover:bg-white/10 text-stone-300 hover:text-white transition-colors ml-0.5 cursor-pointer"
             >
-              {isAutoPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
+              {isAutoPlaying ? <Pause className="w-3 h-3 text-[#E5BE58]" /> : <Play className="w-3 h-3 text-stone-300" />}
             </button>
           </div>
         </div>

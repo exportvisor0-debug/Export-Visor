@@ -165,7 +165,7 @@ export const SECTION_ROUTES: SectionRoute[] = [
 import { LEATHER_PRODUCTS, LeatherProduct } from "../data/products";
 
 export function getProductBySlugOrId(identifier: string): LeatherProduct | undefined {
-  const clean = identifier.trim().toLowerCase().replace(/^\/+/, "").replace(/^product\//, "").replace(/^products\//, "");
+  const clean = identifier.trim().toLowerCase().replace(/^\/+/, "").replace(/^product\//, "").replace(/^products\//, "").replace(/\/+$/, "");
   return LEATHER_PRODUCTS.find(
     (p) => p.id.toLowerCase() === clean || (p.slug && p.slug.toLowerCase() === clean)
   );
